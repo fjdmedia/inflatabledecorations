@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inquire | Inflatable Decorations</title>
+  <meta name="description" content="Tell Inflatable Decorations about your event — date, vibe, colors, headcount. We reply within 24 hours with a custom mockup and quote." />
+  <meta name="robots" content="index,follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Caveat:wght@500;700&family=DM+Sans:wght@400;500;600;700&display=swap" />
+
+  <link rel="icon" type="image/png" href="Assets/Brand/logo-512.png" />
+
+  <style>
+    *,*::before,*::after { box-sizing: border-box; }
+    :root {
+      --pink-hot: #FF5FA2;
+      --pink-hot-dk: #E94F7F;
+      --pink-baby: #FFC2D6;
+      --pink-baby-soft: #FFE0EC;
+      --plum: #2D1B3D;
+      --cream: #FFF7F4;
+    }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--cream);
+      color: var(--plum);
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .page-wrap {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 48px 24px 64px;
+    }
+    .container {
+      width: 100%;
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+    }
+    .brand-row img { width: 48px; height: 48px; border-radius: 12px; }
+    .brand-row span {
+      font-family: 'Caprasimo', Georgia, serif;
+      font-size: 22px;
+      color: var(--plum);
+    }
+    .head { text-align: center; display: flex; flex-direction: column; gap: 10px; }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--pink-hot);
+    }
+    h1 {
+      font-family: 'Caprasimo', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      margin: 0;
+      color: var(--plum);
+    }
+    h1 em {
+      font-family: 'Caveat', cursive;
+      font-style: normal;
+      color: var(--pink-hot);
+      font-weight: 700;
+    }
+    .sub {
+      font-size: 16px;
+      color: rgba(45, 27, 61, 0.72);
+      line-height: 1.6;
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+    .meta {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: rgba(45, 27, 61, 0.7);
+      margin-top: 4px;
+    }
+    .meta strong { color: var(--plum); }
+    .meta .dot { color: rgba(255, 95, 162, 0.7); }
+    .form-shell {
+      background: #fff;
+      border-radius: 24px;
+      padding: 8px;
+      box-shadow: 0 24px 48px rgba(45, 27, 61, 0.10), 0 0 0 6px var(--pink-baby-soft);
+      overflow: hidden;
+    }
+    .form-shell iframe {
+      width: 100%;
+      min-height: 1100px;
+      border: 0;
+      display: block;
+      border-radius: 18px;
+      background: #fff;
+    }
+    .alt-contact {
+      text-align: center;
+      font-size: 14px;
+      color: rgba(45, 27, 61, 0.7);
+    }
+    .alt-contact a { color: var(--pink-hot-dk); font-weight: 600; text-decoration: none; }
+    .alt-contact a:hover { text-decoration: underline; }
+    footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(45, 27, 61, 0.5);
+    }
+    footer a { color: inherit; }
+    @media (max-width: 560px) {
+      .page-wrap { padding: 28px 16px 48px; }
+      .form-shell iframe { min-height: 1280px; border-radius: 14px; }
+      .form-shell { padding: 4px; border-radius: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="container">
+      <div class="brand-row">
+        <img src="Assets/Brand/logo-512.png" alt="Inflatable Decorations logo" />
+        <span>Inflatable Decorations</span>
+      </div>
+      <div class="head">
+        <span class="eyebrow">Inquiry Form</span>
+        <h1>Tell us your <em>vibe</em></h1>
+        <p class="sub">Date, venue, vibe, colors, headcount &mdash; the more detail you share, the better we can match it.</p>
+        <span class="meta">
+          <span><strong>~3 mins</strong> to fill</span>
+          <span class="dot">&bull;</span>
+          <span>Reply within <strong>24h</strong></span>
+          <span class="dot">&bull;</span>
+          <span>Custom mockup in <strong>48h</strong></span>
+        </span>
+      </div>
+      <div class="form-shell">
+        <iframe id="JotFormIFrame-251727255666061"
+                title="Inflatable Decorations Inquiry Form"
+                allowtransparency="true"
+                allow="geolocation; microphone; camera; fullscreen"
+                src="https://form.jotform.com/251727255666061"
+                frameborder="0"
+                scrolling="no"></iframe>
+      </div>
+      <p class="alt-contact">Prefer to DM? <a href="https://instagram.com/inflatabledecorations" target="_blank" rel="noopener">@inflatabledecorations</a> on Instagram.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; <span id="yr"></span> Inflatable Decorations &middot; Winnipeg, MB
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+  <script src="https://cdn.jotform.com/s/umd/latest/for-form-embed-handler.js"></script>
+  <script>
+    window.jotformEmbedHandler &&
+      window.jotformEmbedHandler("iframe[id='JotFormIFrame-251727255666061']", "https://form.jotform.com");
+  </script>
+</body>
+</html>
