@@ -18,6 +18,10 @@ dist/
 _duplicates/
 Assets/Gallery/_duplicates/
 
+# Local-only docs (contain password / internal scripts — not for public deploy)
+Assets/Docs/Cover-Note-DM.md
+Assets/Docs/build_proposal_pdf.py
+
 # Python build artifacts
 __pycache__/
 *.pyc
