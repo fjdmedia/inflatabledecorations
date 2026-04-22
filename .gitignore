@@ -22,6 +22,11 @@ Assets/Gallery/_duplicates/
 Assets/Docs/Cover-Note-DM.md
 Assets/Docs/build_proposal_pdf.py
 
+# Local-only working folders (super-saiyan archives + delete staging + QA artifacts)
+Archive/
+delete/
+.qa/
+
 # Python build artifacts
 __pycache__/
 *.pyc

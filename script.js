@@ -1,332 +1,399 @@
 /* =========================================================
-   Inflatable Decorations — site script
-   Animation system: IntersectionObserver drives reveals.
-   GSAP is kept only for the hero intro sequence (sequencing).
+   Inflatable Decorations — Website_3 "Confetti Party" JS
+   - IntersectionObserver reveals (single source of truth)
+   - Sticky nav scrolled state + active link highlight
+   - Mobile nav toggle
+   - Gallery filter + lightbox (focus trap, keyboard nav)
+   - Scroll-to-top
+   - Form submit stub with confetti burst
+   - Reduced-motion friendly
    ========================================================= */
 (function () {
   'use strict';
 
-  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
-  // ---------- Year in footer ----------
-  var yr = document.getElementById('yr');
+  /* ---------- Current year ---------- */
+  const yr = $('#yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  // ---------- Mobile nav toggle ----------
-  var navEl      = document.querySelector('.nav');
-  var navToggle  = document.getElementById('navToggle');
-  var navLinks   = document.getElementById('navLinks');
+  /* ---------- Reveal ---------- */
+  const revealEls = $$('.reveal');
+  if (reduced) {
+    revealEls.forEach(el => el.classList.add('in'));
+  } else if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+
+    // Above-the-fold: reveal immediately on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const vh = window.innerHeight;
+      revealEls.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < vh - 40) el.classList.add('in');
+      });
+    });
+
+    // Safety fallback — force-reveal stragglers
+    setTimeout(() => revealEls.forEach(el => el.classList.add('in')), 2500);
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  /* ---------- Sticky nav ---------- */
+  const nav = $('#nav');
+  const onScroll = () => {
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Mobile nav ---------- */
+  const navToggle = $('#navToggle');
+  const navLinks  = $('#navLinks');
   if (navToggle && navLinks) {
-    navToggle.addEventListener('click', function () {
-      var isOpen = navLinks.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    navLinks.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        if (navLinks.classList.contains('open')) {
-          navLinks.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
-        }
+    $$('a', navLinks).forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
 
-  // ---------- Sticky nav scrolled state ----------
-  if (navEl) {
-    var onScroll = function () {
-      var y = window.scrollY || window.pageYOffset;
-      navEl.classList.toggle('scrolled', y > 20);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  // ---------- Active nav link highlight via IO ----------
-  var sectionLinks = Array.prototype.slice.call(
-    document.querySelectorAll('.nav-links a[href^="#"]')
-  ).filter(function (a) {
-    var href = a.getAttribute('href');
-    return href && href.length > 1 && !a.classList.contains('btn');
+  /* ---------- Active nav link on scroll ---------- */
+  const sectionIds = ['top', 'services', 'gallery', 'about', 'contact'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+  const linkMap  = {};
+  $$('#navLinks a:not(.btn)').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    if (href.startsWith('#')) linkMap[href.slice(1)] = a;
   });
-  var sectionTargets = sectionLinks
-    .map(function (a) {
-      var id = a.getAttribute('href').slice(1);
-      return { link: a, el: document.getElementById(id) };
-    })
-    .filter(function (t) { return !!t.el; });
+  function updateActive() {
+    const y = window.scrollY + 140;
+    let activeId = sectionIds[0];
+    for (const s of sections) {
+      if (s.offsetTop <= y) activeId = s.id;
+    }
+    Object.keys(linkMap).forEach(k => linkMap[k].classList.toggle('active', k === activeId));
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
 
-  if (sectionTargets.length && 'IntersectionObserver' in window) {
-    var activeLinkMap = {};
-    var setActive = function (id) {
-      sectionLinks.forEach(function (a) {
-        var isMatch = a.getAttribute('href') === '#' + id;
-        if (isMatch) a.setAttribute('aria-current', 'true');
-        else a.removeAttribute('aria-current');
-      });
-    };
-    var linkObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        activeLinkMap[entry.target.id] = entry.isIntersecting ? entry.intersectionRatio : 0;
-      });
-      // Pick the currently most-visible section
-      var best = null;
-      var bestRatio = 0;
-      Object.keys(activeLinkMap).forEach(function (id) {
-        if (activeLinkMap[id] > bestRatio) {
-          bestRatio = activeLinkMap[id];
-          best = id;
-        }
-      });
-      if (best) setActive(best);
-    }, {
-      rootMargin: '-40% 0px -45% 0px',
-      threshold: [0, 0.25, 0.5, 0.75, 1]
-    });
-    sectionTargets.forEach(function (t) { linkObserver.observe(t.el); });
+  /* ---------- Scroll-to-top ---------- */
+  const scrollTop = $('#scrollTop');
+  if (scrollTop) {
+    const toggleBtn = () => scrollTop.classList.toggle('show', window.scrollY > 800);
+    window.addEventListener('scroll', toggleBtn, { passive: true });
+    scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }));
+    toggleBtn();
   }
 
-  // ---------- Gallery filter ----------
-  var filters = document.querySelectorAll('.filter-btn');
-  var items   = document.querySelectorAll('.gallery-item');
-  filters.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      filters.forEach(function (b) {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
+  /* ---------- Gallery filter + random shuffle + cross-section routing ---------- */
+  const filterBtns = $$('.filter-btn');
+  const galleryItems = $$('.gallery-item');
+  const galleryGrid = $('#galleryGrid');
 
-      var f = btn.getAttribute('data-filter');
-      items.forEach(function (it) {
-        var matches = (f === 'all' || it.getAttribute('data-cat') === f);
-        it.classList.toggle('hidden', !matches);
-        // Guarantee the card is revealed even if it never entered the IO viewport
-        if (matches) it.classList.add('is-revealed');
-      });
+  // Shuffle items on load so "All" feels fresh each visit
+  if (galleryGrid && galleryItems.length) {
+    const shuffled = galleryItems.slice().sort(() => Math.random() - 0.5);
+    shuffled.forEach(item => galleryGrid.appendChild(item));
+  }
+
+  function applyFilter(filter) {
+    filterBtns.forEach(b => {
+      const isActive = b.dataset.filter === filter;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    galleryItems.forEach(item => {
+      const cat = item.dataset.cat;
+      if (filter === 'all' || cat === filter) item.classList.remove('hide');
+      else item.classList.add('hide');
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+  });
+
+  // Service-card → gallery routing: clicking "View N examples" filters the gallery
+  $$('a.inquire[data-cat]').forEach(link => {
+    link.addEventListener('click', () => {
+      const cat = link.dataset.cat;
+      if (cat) setTimeout(() => applyFilter(cat), 60);
     });
   });
 
-  // ---------- Lightbox with focus trap + keyboard nav ----------
-  var lightbox = document.getElementById('lightbox');
-  var lbImage  = document.getElementById('lbImage');
-  var lbClose  = document.getElementById('lbClose');
-  var lbPrev   = document.getElementById('lbPrev');
-  var lbNext   = document.getElementById('lbNext');
-  var currentIdx = -1;
-  var lastFocus  = null;
-
-  function getVisibleItems() {
-    return Array.prototype.filter.call(items, function (it) {
-      return !it.classList.contains('hidden');
-    });
-  }
-
-  function swapLightboxImage(img) {
-    if (!img || !lbImage) return;
-    lbImage.classList.add('is-swapping');
-    // Tiny delay so the opacity transition is visible
-    setTimeout(function () {
-      lbImage.src = img.src;
-      lbImage.alt = img.alt || '';
-      lbImage.classList.remove('is-swapping');
-    }, 120);
-  }
+  /* ---------- Lightbox ---------- */
+  const lightbox = $('#lightbox');
+  const lbImage  = $('#lbImage');
+  const lbClose  = $('#lbClose');
+  const lbPrev   = $('#lbPrev');
+  const lbNext   = $('#lbNext');
+  let currentIdx = 0;
+  let visibleItems = [];
+  let lastFocused = null;
 
   function openLightbox(idx) {
-    var visible = getVisibleItems();
-    if (!visible.length || !lightbox || !lbImage) return;
-    currentIdx = (idx + visible.length) % visible.length;
-    var img = visible[currentIdx].querySelector('img');
-    if (!img) return;
-
-    var firstOpen = !lightbox.classList.contains('open');
-    if (firstOpen) {
-      lastFocus = document.activeElement;
-      lbImage.src = img.src;
-      lbImage.alt = img.alt || '';
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      if (lbClose) lbClose.focus();
-    } else {
-      swapLightboxImage(img);
-    }
+    visibleItems = galleryItems.filter(i => !i.classList.contains('hide'));
+    if (!visibleItems.length) return;
+    currentIdx = Math.max(0, Math.min(idx, visibleItems.length - 1));
+    const img = visibleItems[currentIdx].querySelector('img');
+    lbImage.src = img.src;
+    lbImage.alt = img.alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lastFocused = document.activeElement;
+    lbClose.focus();
   }
 
   function closeLightbox() {
-    if (!lightbox) return;
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
-    if (lbImage) lbImage.src = '';
-    currentIdx = -1;
-    if (lastFocus && typeof lastFocus.focus === 'function') {
-      lastFocus.focus();
-      lastFocus = null;
-    }
+    lbImage.src = '';
+    if (lastFocused) lastFocused.focus();
   }
 
-  items.forEach(function (it) {
-    it.addEventListener('click', function () {
-      var visible = getVisibleItems();
-      var visibleIdx = visible.indexOf(it);
-      if (visibleIdx !== -1) openLightbox(visibleIdx);
+  function showAt(idx) {
+    if (!visibleItems.length) return;
+    currentIdx = (idx + visibleItems.length) % visibleItems.length;
+    const img = visibleItems[currentIdx].querySelector('img');
+    lbImage.classList.add('fading');
+    setTimeout(() => {
+      lbImage.src = img.src;
+      lbImage.alt = img.alt || '';
+      lbImage.classList.remove('fading');
+    }, 120);
+  }
+
+  galleryItems.forEach((item, idx) => {
+    item.addEventListener('click', () => {
+      visibleItems = galleryItems.filter(i => !i.classList.contains('hide'));
+      const vIdx = visibleItems.indexOf(item);
+      openLightbox(vIdx >= 0 ? vIdx : 0);
     });
   });
-
   if (lbClose) lbClose.addEventListener('click', closeLightbox);
-  if (lbPrev)  lbPrev.addEventListener('click', function () { openLightbox(currentIdx - 1); });
-  if (lbNext)  lbNext.addEventListener('click', function () { openLightbox(currentIdx + 1); });
-
+  if (lbPrev)  lbPrev.addEventListener('click', () => showAt(currentIdx - 1));
+  if (lbNext)  lbNext.addEventListener('click', () => showAt(currentIdx + 1));
   if (lightbox) {
-    lightbox.addEventListener('click', function (e) {
-      if (e.target === lightbox) closeLightbox();
-    });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
   }
-
-  document.addEventListener('keydown', function (e) {
-    if (!lightbox || !lightbox.classList.contains('open')) return;
-    if (e.key === 'Escape')     { e.preventDefault(); closeLightbox(); }
-    if (e.key === 'ArrowRight') { e.preventDefault(); openLightbox(currentIdx + 1); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); openLightbox(currentIdx - 1); }
-    // Simple focus trap: cycle between close/prev/next
-    if (e.key === 'Tab') {
-      var focusables = [lbClose, lbPrev, lbNext].filter(Boolean);
-      if (!focusables.length) return;
-      var idx = focusables.indexOf(document.activeElement);
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') showAt(currentIdx - 1);
+    else if (e.key === 'ArrowRight') showAt(currentIdx + 1);
+    else if (e.key === 'Tab') {
+      const focusables = [lbClose, lbPrev, lbNext];
+      const idx = focusables.indexOf(document.activeElement);
       e.preventDefault();
-      var next;
-      if (e.shiftKey) {
-        next = idx <= 0 ? focusables[focusables.length - 1] : focusables[idx - 1];
-      } else {
-        next = idx === focusables.length - 1 || idx === -1 ? focusables[0] : focusables[idx + 1];
-      }
-      next.focus();
+      const next = e.shiftKey
+        ? (idx <= 0 ? focusables.length - 1 : idx - 1)
+        : (idx === focusables.length - 1 ? 0 : idx + 1);
+      focusables[next].focus();
     }
   });
 
-  // ---------- Scroll-to-top button ----------
-  var scrollTop = document.getElementById('scrollTop');
-  if (scrollTop) {
-    var toggleScrollTop = function () {
-      var y = window.scrollY || window.pageYOffset;
-      scrollTop.classList.toggle('is-visible', y > 800);
-    };
-    toggleScrollTop();
-    window.addEventListener('scroll', toggleScrollTop, { passive: true });
-    scrollTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
-    });
-  }
-
-  // ---------- Inquiry form feedback (placeholder — no backend) ----------
-  var inquiryForm = document.getElementById('inquiryForm');
-  if (inquiryForm) {
-    inquiryForm.addEventListener('submit', function (e) {
-      // The form action still points to Web3Forms with a placeholder key,
-      // so we intercept for a clean "pretend success" UX until the real key lands.
-      e.preventDefault();
-
-      var submitBtn = inquiryForm.querySelector('button[type="submit"]');
-      if (submitBtn) submitBtn.classList.add('is-disabled');
-
-      var feedback = document.getElementById('formFeedback');
-      if (feedback) {
-        feedback.classList.add('is-visible');
-        feedback.classList.remove('is-error');
-        feedback.setAttribute('role', 'status');
-        feedback.innerHTML =
-          '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>' +
-          '<span>Your inquiry has been sent &mdash; we\'ll reply within 24h.</span>';
-        // Bring it into view if it renders below the fold
-        try { feedback.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' }); } catch (err) { /* noop */ }
+  /* ---------- Form submit (placeholder) ---------- */
+  const form = $('#inquiryForm');
+  const fb   = $('#formFeedback');
+  if (form && fb) {
+    form.addEventListener('submit', (e) => {
+      const key = form.querySelector('input[name="access_key"]').value;
+      if (key === 'FORM_ACCESS_KEY_PLACEHOLDER') {
+        e.preventDefault();
+        fb.textContent = 'Your inquiry has been sent — we\'ll reply within 24h!';
+        fb.classList.add('active');
+        form.reset();
+        if (!reduced) confettiBurst(form.querySelector('button[type="submit"]'));
+        setTimeout(() => { fb.textContent = ''; fb.classList.remove('active'); }, 5000);
       }
-
-      // Softly reset the form after the success message registers
-      setTimeout(function () {
-        try { inquiryForm.reset(); } catch (err) { /* noop */ }
-        if (submitBtn) submitBtn.classList.remove('is-disabled');
-      }, 600);
     });
   }
 
-  // ---------- Reveal animations (IntersectionObserver) ----------
-  var revealEls = document.querySelectorAll('.reveal');
+  /* =========================================================
+     ▒▒▒▒▒  SUPER SAIYAN V2 LAYER  ▒▒▒▒▒
+     Page splash · scroll progress · hero parallax ·
+     service-card tilt · cursor trail · mobile sticky CTA
+     ========================================================= */
 
-  // Reduced motion: just show everything and bail early.
-  if (reducedMotion) {
-    revealEls.forEach(function (el) { el.classList.add('is-revealed'); });
-    return;
+  /* ---------- Page splash dismiss ---------- */
+  const splash = $('#pageSplash');
+  if (splash) {
+    setTimeout(() => splash.remove(), 1700);
   }
 
-  // Above-the-fold reveal: anything already in view on load pops in immediately.
-  var vh = window.innerHeight || document.documentElement.clientHeight;
-  var aboveFold = [];
-  var offscreen = [];
-  revealEls.forEach(function (el) {
-    var rect = el.getBoundingClientRect();
-    if (rect.top < vh * 0.95) aboveFold.push(el);
-    else offscreen.push(el);
-  });
+  /* ---------- Scroll-progress tracker ---------- */
+  const trackFill    = $('#scrollTrackFill');
+  const trackBalloon = $('#scrollTrackBalloon');
+  const trackDots    = $$('.scroll-track-dots a');
+  function updateTrack() {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    if (trackFill)    trackFill.style.height = pct + '%';
+    if (trackBalloon) trackBalloon.style.top = pct + '%';
 
-  // Reveal above-the-fold with a tight stagger so hero feels intentional, not snap-in.
-  aboveFold.forEach(function (el, i) {
-    var delay = Math.min(i * 70, 350);
-    setTimeout(function () { el.classList.add('is-revealed'); }, delay);
-  });
-
-  // Hero polish — if GSAP is loaded, run a more deliberate intro timeline.
-  // This *replaces* the class-based reveal for hero-only elements, so no double animation.
-  function runHeroTimeline() {
-    if (!window.gsap) return false;
-    var heroReveals = document.querySelectorAll('.hero .reveal');
-    if (!heroReveals.length) return false;
-    // Pre-set with GSAP to avoid a flash while the class-based reveal already fired.
-    // We reset to the hidden state, then animate in smoothly.
-    gsap.set(heroReveals, { opacity: 0, y: 22 });
-    heroReveals.forEach(function (el) { el.classList.add('is-revealed'); }); // keep IO from re-touching
-    gsap.to(heroReveals, {
-      opacity: 1,
-      y: 0,
-      duration: 0.75,
-      ease: 'power3.out',
-      stagger: 0.08,
-      clearProps: 'transform,opacity'
-    });
-    return true;
+    // Active dot = dot nearest to the balloon position (unified visual).
+    // Dots are evenly spaced on the track, so dot i sits at (i / (n-1)) * 100%.
+    if (trackDots.length) {
+      const step = 100 / (trackDots.length - 1);
+      const activeIdx = Math.max(0, Math.min(trackDots.length - 1, Math.round(pct / step)));
+      trackDots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+    }
   }
+  window.addEventListener('scroll', updateTrack, { passive: true });
+  updateTrack();
 
-  // Try GSAP hero timeline once it's ready. If GSAP never loads, class-based reveal above is the fallback.
-  if (document.readyState === 'complete') {
-    runHeroTimeline();
-  } else {
-    window.addEventListener('load', runHeroTimeline);
-  }
-
-  // IntersectionObserver for offscreen reveals — fires once, no re-trigger on scroll-up.
-  if (offscreen.length) {
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            io.unobserve(entry.target);
-          }
-        });
-      }, {
-        rootMargin: '0px 0px -8% 0px',
-        threshold: 0.08
+  /* ---------- Hero mouse-parallax ---------- */
+  const heroVisual = document.querySelector('[data-tilt="hero"]');
+  const hero = document.querySelector('.hero');
+  if (heroVisual && hero && !reduced && window.matchMedia('(hover: hover)').matches) {
+    let raf;
+    hero.addEventListener('mousemove', (e) => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;   // -0.5 ↔ 0.5
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const tx = x * -16;
+        const ty = y * -10;
+        const rx = y * 4;
+        const ry = x * -6;
+        heroVisual.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotateX(${rx}deg) rotateY(${ry}deg)`;
       });
-      offscreen.forEach(function (el) { io.observe(el); });
-    } else {
-      // No IO support — just reveal everything.
-      offscreen.forEach(function (el) { el.classList.add('is-revealed'); });
-    }
+    });
+    hero.addEventListener('mouseleave', () => {
+      heroVisual.style.transform = '';
+    });
   }
 
-  // Safety net: after 2.5s, anything still not revealed gets forced visible.
-  setTimeout(function () {
-    revealEls.forEach(function (el) {
-      if (!el.classList.contains('is-revealed')) el.classList.add('is-revealed');
+  /* ---------- Service-card 3D tilt (subtle) ---------- */
+  if (!reduced && window.matchMedia('(hover: hover)').matches) {
+    $$('.service-card').forEach(card => {
+      let raf;
+      card.addEventListener('mouseenter', () => card.classList.add('tilt-active'));
+      card.addEventListener('mousemove', (e) => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform = `translateY(-6px) rotateX(${y * -5}deg) rotateY(${x * 6}deg)`;
+        });
+      });
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('tilt-active');
+        card.style.transform = '';
+      });
     });
-  }, 2500);
+  }
+
+  /* ---------- Cursor balloon trail (desktop only) ---------- */
+  const cursorTrail = $('#cursorTrail');
+  if (cursorTrail && !reduced && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let lastTrail = 0;
+    document.addEventListener('mousemove', (e) => {
+      const now = performance.now();
+      if (now - lastTrail < 60) return; // throttle
+      lastTrail = now;
+      const dot = document.createElement('span');
+      dot.className = 'cursor-trail-dot';
+      dot.style.left = e.clientX + 'px';
+      dot.style.top  = e.clientY + 'px';
+      const palette = ['#FF5FA2', '#FFE27A', '#A9E4C7', '#D7BEF2', '#FFB788'];
+      dot.style.background = palette[Math.floor(Math.random() * palette.length)];
+      cursorTrail.appendChild(dot);
+      setTimeout(() => dot.remove(), 800);
+    });
+  }
+
+  /* ---------- Form trigger: lazy-load iframe on first click ---------- */
+  const formCollapse = $('#formCollapse');
+  const formTrigger  = $('#formTrigger');
+  const formShell    = $('#formShell');
+  if (formCollapse && formTrigger && formShell) {
+    const iframe = formShell.querySelector('iframe');
+    formTrigger.addEventListener('click', () => {
+      if (formCollapse.dataset.state === 'open') return;
+      formCollapse.dataset.state = 'open';
+      formTrigger.setAttribute('aria-expanded', 'true');
+      formShell.hidden = false;
+      if (iframe && !iframe.src && iframe.dataset.src) {
+        iframe.src = iframe.dataset.src;
+      }
+      // Scroll the form into view so the user lands at the first field
+      setTimeout(() => {
+        formShell.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+      }, 60);
+    });
+    // Auto-open if user clicked any in-page link to #contact (intent already committed)
+    function maybeOpenFromHash() {
+      if (window.location.hash === '#contact' && formCollapse.dataset.state !== 'open') {
+        setTimeout(() => formTrigger.click(), 220);
+      }
+    }
+    maybeOpenFromHash();
+    window.addEventListener('hashchange', maybeOpenFromHash);
+    $$('a[href="#contact"]').forEach(a => {
+      a.addEventListener('click', () => {
+        if (formCollapse.dataset.state !== 'open') {
+          setTimeout(() => formTrigger.click(), 220);
+        }
+      });
+    });
+  }
+
+  /* ---------- Mobile sticky CTA bar (show after scroll past hero) ---------- */
+  const mobileBar = $('#mobileCtaBar');
+  if (mobileBar) {
+    const heroEl = document.querySelector('.hero');
+    function toggleMobileBar() {
+      const heroBottom = heroEl ? heroEl.getBoundingClientRect().bottom : 600;
+      mobileBar.classList.toggle('show', heroBottom < 0);
+    }
+    window.addEventListener('scroll', toggleMobileBar, { passive: true });
+    toggleMobileBar();
+  }
+
+  /* ---------- Confetti burst (tiny SVG rain, 2s) ---------- */
+  function confettiBurst(anchor) {
+    if (!anchor || reduced) return;
+    const colors = ['#FF5FA2', '#FFE27A', '#A9E4C7', '#D7BEF2', '#FFB788', '#A6D5F5'];
+    const rect = anchor.getBoundingClientRect();
+    const startX = rect.left + rect.width / 2;
+    const startY = rect.top + rect.height / 2;
+    const layer = document.createElement('div');
+    layer.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:2000;';
+    document.body.appendChild(layer);
+    for (let i = 0; i < 28; i++) {
+      const p = document.createElement('span');
+      const c = colors[i % colors.length];
+      const size = 6 + Math.random() * 7;
+      const dx = (Math.random() - 0.5) * 360;
+      const dy = -120 - Math.random() * 220;
+      p.style.cssText = `position:absolute;left:${startX}px;top:${startY}px;width:${size}px;height:${size}px;background:${c};border-radius:${Math.random()>.5?'50%':'2px'};transform:translate(-50%,-50%) rotate(${Math.random()*360}deg);transition:transform 1.6s cubic-bezier(.22,1,.36,1),opacity 1.6s ease;`;
+      layer.appendChild(p);
+      requestAnimationFrame(() => {
+        p.style.transform = `translate(${dx}px, ${dy + 300}px) rotate(${Math.random()*720}deg)`;
+        p.style.opacity = '0';
+      });
+    }
+    setTimeout(() => layer.remove(), 2000);
+  }
 })();
