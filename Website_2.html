@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inflatable Decorations | The Winnipeg Balloon Atelier</title>
+  <meta name="description" content="A Winnipeg balloon atelier composing color-matched arches, walk-throughs and installations for weddings, showers, birthdays and brand events. By appointment." />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Private preview gate -->
+  <script>if(sessionStorage.getItem('ifd.auth')!=='1')document.documentElement.classList.add('ifd-locked');</script>
+  <style>html.ifd-locked body > *:not(.ifd-gate){display:none!important}html.ifd-locked body{overflow:hidden}</style>
+  <script src="gate.js" defer></script>
+
+  <!-- Fonts: Fraunces (editorial serif) + Inter (body/eyebrow) + Caveat (script signature only) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" />
+
+  <link rel="icon" type="image/png" href="Assets/Brand/logo-512.png" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body id="top">
+
+  <!-- =====================================================
+       TOP INFO STRIP
+       ===================================================== -->
+  <div class="topbar" aria-label="Studio information">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>EST. 2022</span>
+        <span class="topbar-sep" aria-hidden="true">&bull;</span>
+        <span>WINNIPEG, MB</span>
+        <span class="topbar-sep" aria-hidden="true">&bull;</span>
+        <span>BY APPOINTMENT</span>
+      </div>
+      <div class="topbar-right">
+        <a href="https://instagram.com/inflatabledecorations" target="_blank" rel="noopener">@inflatabledecorations</a>
+        <span class="topbar-sep" aria-hidden="true">&bull;</span>
+        <!-- TODO: replace with real studio email -->
+        <a href="mailto:hello@inflatabledecorations.ca">hello@inflatabledecorations.ca</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       NAV
+       ===================================================== -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="#top" class="nav-logo" aria-label="Inflatable Decorations home">
+        <img src="Assets/Brand/logo-512.png" alt="Inflatable Decorations logo mark" />
+        <span class="nav-wordmark">Inflatable Decorations</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#top" class="nav-link" data-target="top">Home</a></li>
+        <li><a href="#services" class="nav-link" data-target="services">Services</a></li>
+        <li><a href="#gallery" class="nav-link" data-target="gallery">Gallery</a></li>
+        <li><a href="#about" class="nav-link" data-target="about">About</a></li>
+        <li><a href="#contact" class="nav-link" data-target="contact">Contact</a></li>
+        <li><a href="#contact" class="btn btn-outline btn-sm">Begin Inquiry</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="7"  x2="20" y2="7"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- =====================================================
+       HERO — No. 01, The Atelier
+       ===================================================== -->
+  <header class="hero" id="hero">
+    <div class="hero-swirl" aria-hidden="true"></div>
+    <span class="hero-numeral" aria-hidden="true">No. 01</span>
+
+    <div class="hero-inner">
+      <div class="hero-text reveal">
+        <p class="eyebrow">No. 01 &mdash; The Atelier</p>
+        <h1 class="hero-title">
+          Celebrations,<br/>
+          <em>carefully</em> composed.
+        </h1>
+        <p class="hero-sub">
+          A Winnipeg balloon atelier designing installations like editorial florists &mdash; color-matched, architecturally considered, made to be photographed.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-filled">Begin an Inquiry <span aria-hidden="true">&rarr;</span></a>
+          <a href="#gallery" class="btn btn-link">View the Portfolio</a>
+        </div>
+        <div class="hero-meta">
+          <span class="hero-meta-item"><strong>150+</strong> Events Styled</span>
+          <span class="hero-meta-dot" aria-hidden="true"></span>
+          <span class="hero-meta-item"><strong>4.9&#9733;</strong> Client Rating</span>
+          <span class="hero-meta-dot" aria-hidden="true"></span>
+          <span class="hero-meta-item"><strong>Winnipeg</strong> &amp; Area</span>
+        </div>
+      </div>
+
+      <div class="hero-photo reveal">
+        <div class="hero-photo-frame">
+          <img src="Assets/Gallery/Arches-and-Backdrops/669127862_846859224352057_8099983497208557162_n.jpg"
+               alt="Cream, sage and blush balloon arch installation with warm natural light"
+               class="hero-img" />
+        </div>
+        <div class="hero-photo-caption">
+          <span class="hero-caption-line" aria-hidden="true"></span>
+          <span class="hero-caption-text">A hand-assembled arch &mdash; Winnipeg, 2025</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       WAVY RIBBON STRIPE — squiggles pattern band
+       ===================================================== -->
+  <section class="ribbon-stripe" aria-label="Services summary">
+    <div class="ribbon-pattern" aria-hidden="true"></div>
+    <div class="ribbon-text">
+      <span><em>Balloon Decor</em></span>
+      <span class="ribbon-dot" aria-hidden="true"></span>
+      <span><em>Event Styling</em></span>
+      <span class="ribbon-dot" aria-hidden="true"></span>
+      <span><em>Custom Installations</em></span>
+      <span class="ribbon-dot" aria-hidden="true"></span>
+      <span><em>Winnipeg</em></span>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       MANIFESTO — a note from the studio
+       ===================================================== -->
+  <section class="manifesto">
+    <div class="manifesto-inner">
+      <div class="manifesto-hearts" aria-hidden="true"></div>
+      <p class="eyebrow center">A Note from the Studio</p>
+      <div class="pullquote reveal">
+        <div class="pullquote-bar" aria-hidden="true"></div>
+        <p>
+          We design balloon installations like editorial florists &mdash; <em>color-matched, architecturally considered, and made to be photographed.</em> Every garland is hand-assembled in our Winnipeg studio and installed on site with care.
+        </p>
+      </div>
+      <p class="manifesto-signoff">&mdash; The Studio</p>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SERVICES — Our Craft
+       ===================================================== -->
+  <section class="services" id="services">
+    <div class="services-intro reveal">
+      <p class="eyebrow">No. 02</p>
+      <h2 class="section-title">Our Craft</h2>
+      <p class="section-lede">Five signature services, each composed to suit your event, your palette, and your venue.</p>
+    </div>
+
+    <!-- Row 1 — Custom Arches -->
+    <article class="service-row reveal">
+      <div class="service-photo">
+        <img src="Assets/Gallery/Arches-and-Backdrops/672327749_983823527424541_1718555332188375524_n.jpg"
+             alt="Custom balloon arch in cream, blush and terracotta tones against a warm backdrop"
+             loading="lazy" />
+      </div>
+      <div class="service-copy">
+        <span class="service-numeral">No. 01</span>
+        <p class="eyebrow">Backdrops &amp; Arches</p>
+        <h3 class="service-title">Custom Arches &amp; Backdrops</h3>
+        <p class="service-desc">Color-matched organic garlands built around your theme, signage or florals &mdash; the photographed centerpiece of your celebration.</p>
+        <a href="#contact" class="link-underline">Learn more <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+
+    <!-- Row 2 — Walk-Through Arches (reversed) -->
+    <article class="service-row reverse reveal">
+      <div class="service-photo">
+        <img src="Assets/Gallery/Arch-Structures/676501756_3099204616944892_452892470748290199_n.jpg"
+             alt="Freestanding walk-through balloon arch structure in sage and cream"
+             loading="lazy" />
+      </div>
+      <div class="service-copy">
+        <span class="service-numeral">No. 02</span>
+        <p class="eyebrow">Structural Installs</p>
+        <h3 class="service-title">Walk-Through Arches</h3>
+        <p class="service-desc">Freestanding engineered arches for entryways, ceremony frames and photo moments &mdash; sized to your venue.</p>
+        <a href="#contact" class="link-underline">Learn more <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+
+    <!-- Row 3 — Columns -->
+    <article class="service-row reveal">
+      <div class="service-photo">
+        <img src="Assets/Gallery/Columns-and-Bouquets/670875226_1762491548062297_515533546259615042_n.jpg"
+             alt="Pair of balloon columns flanking a celebration entrance in warm neutral tones"
+             loading="lazy" />
+      </div>
+      <div class="service-copy">
+        <span class="service-numeral">No. 03</span>
+        <p class="eyebrow">Statement Accents</p>
+        <h3 class="service-title">Columns &amp; Bouquets</h3>
+        <p class="service-desc">Sculpted columns and oversized table bouquets to frame entrances, flank gift tables, and anchor your photo backdrop.</p>
+        <a href="#contact" class="link-underline">Learn more <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+
+    <!-- Row 4 — Numbers (reversed) -->
+    <article class="service-row reverse reveal">
+      <div class="service-photo">
+        <img src="Assets/Gallery/Numbers-and-Letters/669948883_1658809161828098_3217803169286187696_n.jpg"
+             alt="Giant mosaic balloon numbers in dusty rose and gold tones"
+             loading="lazy" />
+      </div>
+      <div class="service-copy">
+        <span class="service-numeral">No. 04</span>
+        <p class="eyebrow">Milestones</p>
+        <h3 class="service-title">Giant Numbers &amp; Letters</h3>
+        <p class="service-desc">Milestone numbers, names and monograms &mdash; mosaic-filled with balloons in your palette for bold photographic moments.</p>
+        <a href="#contact" class="link-underline">Learn more <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+
+    <!-- Row 5 — Themed -->
+    <article class="service-row reveal">
+      <div class="service-photo">
+        <img src="Assets/Gallery/Themed-Halloween/573112430_17885054589394428_4567060130519651861_n.jpg"
+             alt="Themed seasonal balloon installation with rich warm tones and decorative elements"
+             loading="lazy" />
+      </div>
+      <div class="service-copy">
+        <span class="service-numeral">No. 05</span>
+        <p class="eyebrow">Seasonal &amp; Themed</p>
+        <h3 class="service-title">Themed &amp; Seasonal Installs</h3>
+        <p class="service-desc">Halloween, holiday, brand launches, baby reveals &mdash; concept-led installations built around a tight visual story.</p>
+        <a href="#contact" class="link-underline">Learn more <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+  </section>
+
+  <!-- =====================================================
+       SCALLOPED VERTICAL DIVIDER BAR
+       ===================================================== -->
+  <div class="scallop-break" aria-hidden="true">
+    <div class="scallop-bar"></div>
+  </div>
+
+  <!-- =====================================================
+       ABOUT — The Artist
+       ===================================================== -->
+  <section class="about" id="about">
+    <div class="about-daisies" aria-hidden="true"></div>
+    <div class="about-inner">
+      <div class="about-photo reveal">
+        <div class="about-photo-frame">
+          <img src="Assets/Gallery/Arches-and-Backdrops/670005998_1455259142962962_2696119228042642517_n.jpg"
+               alt="Balloon artist's work in a warm, softly lit Winnipeg studio setting"
+               loading="lazy" />
+        </div>
+      </div>
+      <div class="about-copy reveal">
+        <p class="eyebrow">No. 03 &mdash; The Artist</p>
+        <h2 class="section-title">Behind the balloons.</h2>
+        <p class="about-para">
+          Inflatable Decorations was founded in Winnipeg in 2022 by a balloon artist who fell in love with the craft through wedding florals and editorial styling. What began as two garlands for a friend&rsquo;s bridal shower has grown into a small studio composing installations for weddings, showers, birthdays and brand events across the city.
+        </p>
+        <p class="about-para">
+          Every piece is color-matched in the studio, hand-tied by the owner, and installed personally on site &mdash; no subcontractors, no templates. If it can be photographed, it&rsquo;s worth getting right.
+        </p>
+        <p class="about-signature">&mdash; With love, <span>the Studio</span></p>
+        <!-- TODO: replace owner name / portrait / bio with real -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       GALLERY — The Portfolio
+       ===================================================== -->
+  <section class="gallery" id="gallery">
+    <div class="gallery-intro reveal">
+      <p class="eyebrow">No. 04</p>
+      <h2 class="section-title">The Portfolio</h2>
+      <p class="section-lede">A selection of recent installations &mdash; photographed at Winnipeg venues and private residences.</p>
+    </div>
+
+    <div class="gallery-filters" role="tablist" aria-label="Gallery filters">
+      <button class="filter-pill is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="filter-pill" data-filter="arches" role="tab" aria-selected="false">Arches</button>
+      <button class="filter-pill" data-filter="columns" role="tab" aria-selected="false">Columns</button>
+      <button class="filter-pill" data-filter="numbers" role="tab" aria-selected="false">Numbers</button>
+      <button class="filter-pill" data-filter="themed" role="tab" aria-selected="false">Themed</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <figure class="gallery-item span-tall" data-cat="arches">
+        <img src="Assets/Gallery/Arches-and-Backdrops/650769503_936219765896012_9149701824867390645_n.jpg"
+             alt="Warm-toned balloon arch with cream, blush and sage garland"
+             loading="lazy" />
+        <figcaption><em>Bridal shower</em> &middot; Spring 2025</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="arches">
+        <img src="Assets/Gallery/Arches-and-Backdrops/669052106_1272072794551867_4220339561367431587_n.jpg"
+             alt="Hand-assembled organic balloon arch in natural tones"
+             loading="lazy" />
+        <figcaption><em>Engagement</em> &middot; Winnipeg, 2025</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="columns">
+        <img src="Assets/Gallery/Columns-and-Bouquets/670284602_977586187954229_2642978746898367914_n.jpg"
+             alt="Balloon column in warm neutral tones at a celebration entrance"
+             loading="lazy" />
+        <figcaption><em>Private event</em> &middot; 2025</figcaption>
+      </figure>
+      <figure class="gallery-item span-wide" data-cat="arches">
+        <img src="Assets/Gallery/Arches-and-Backdrops/673899143_1313459560692718_7870876590060572930_n.jpg"
+             alt="Wide organic balloon installation with sage and cream accents"
+             loading="lazy" />
+        <figcaption><em>Wedding</em> &middot; Fort Garry, 2025</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="arches">
+        <img src="Assets/Gallery/Arches-and-Backdrops/675231729_1348202990470049_8928415785238356863_n.jpg"
+             alt="Romantic arched balloon backdrop with warm palette"
+             loading="lazy" />
+        <figcaption><em>Bridal shower</em> &middot; Summer 2025</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="arches">
+        <img src="Assets/Gallery/Arches-and-Backdrops/672591629_939134252329345_8189602209553055393_n.jpg"
+             alt="Garden-style balloon arch in dusty rose and sage"
+             loading="lazy" />
+        <figcaption><em>Garden party</em> &middot; 2025</figcaption>
+      </figure>
+      <figure class="gallery-item span-tall" data-cat="arches">
+        <img src="Assets/Gallery/Arches-and-Backdrops/670634089_982782094190488_8492864265366877024_n.jpg"
+             alt="Full-height balloon installation with warm editorial palette"
+             loading="lazy" />
+        <figcaption><em>Corporate launch</em> &middot; Winnipeg</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="columns">
+        <img src="Assets/Gallery/Columns-and-Bouquets/672577321_1667560844591766_4821286451582031915_n.jpg"
+             alt="Pair of balloon columns in warm tones framing an event"
+             loading="lazy" />
+        <figcaption><em>Baby shower</em> &middot; Spring 2025</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="arches">
+        <img src="Assets/Gallery/Arch-Structures/669645656_1320670943258849_1384620493611326440_n.jpg"
+             alt="Freestanding walk-through arch structure in warm neutrals"
+             loading="lazy" />
+        <figcaption><em>Ceremony arch</em> &middot; 2025</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="arches">
+        <img src="Assets/Gallery/Arch-Structures/672358270_1631439664642750_3306499537867830646_n.jpg"
+             alt="Structural walk-through balloon arch with editorial composition"
+             loading="lazy" />
+        <figcaption><em>Wedding entrance</em> &middot; 2025</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="numbers">
+        <img src="Assets/Gallery/Numbers-and-Letters/676984877_933561046118684_1749973930698617400_n.jpg"
+             alt="Giant balloon numbers styled in warm palette"
+             loading="lazy" />
+        <figcaption><em>Milestone birthday</em> &middot; 2025</figcaption>
+      </figure>
+      <figure class="gallery-item span-wide" data-cat="arches">
+        <img src="Assets/Gallery/Misc-Garlands/641614289_17898679857394428_734574716687260519_n.jpg"
+             alt="Draped balloon garland on a warm editorial backdrop"
+             loading="lazy" />
+        <figcaption><em>Draped garland</em> &middot; Winnipeg</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="themed">
+        <img src="Assets/Gallery/Themed-Halloween/672133208_1480953513471647_6374800797334428772_n.jpg"
+             alt="Themed seasonal balloon installation in moody warm tones"
+             loading="lazy" />
+        <figcaption><em>Themed install</em> &middot; Fall 2025</figcaption>
+      </figure>
+      <figure class="gallery-item" data-cat="columns">
+        <img src="Assets/Gallery/Columns-and-Bouquets/674551841_17907841386394428_350868520158873380_n.jpg"
+             alt="Warm-toned balloon column with modern editorial styling"
+             loading="lazy" />
+        <figcaption><em>Private celebration</em> &middot; 2025</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       PROCESS — The Approach (checker bg)
+       ===================================================== -->
+  <section class="process" id="process">
+    <div class="process-bg" aria-hidden="true"></div>
+    <div class="process-inner">
+      <div class="process-intro reveal">
+        <p class="eyebrow center">No. 05</p>
+        <h2 class="section-title center">The Approach</h2>
+        <p class="section-lede center">From first note to finished install &mdash; a considered three-step process.</p>
+      </div>
+
+      <div class="process-grid">
+        <article class="process-card reveal">
+          <span class="process-numeral">No. 01</span>
+          <h3 class="process-title">Consultation</h3>
+          <p>We discuss your event, venue, palette and the moment you want to create. No templates &mdash; every design starts from a conversation.</p>
+        </article>
+        <article class="process-card reveal">
+          <span class="process-numeral">No. 02</span>
+          <h3 class="process-title">Design</h3>
+          <p>You receive a color-matched concept, install scope and quote. We refine together until it feels unmistakably yours.</p>
+        </article>
+        <article class="process-card reveal">
+          <span class="process-numeral">No. 03</span>
+          <h3 class="process-title">Installation</h3>
+          <p>We hand-assemble everything in the Winnipeg studio and install personally on site &mdash; arriving early, leaving it photo-ready.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       TESTIMONIALS — Kind Words (rotator)
+       ===================================================== -->
+  <section class="testimonials" aria-label="Client testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-intro reveal">
+        <p class="eyebrow center">Kind Words</p>
+        <h2 class="section-title center">From the Clients.</h2>
+      </div>
+
+      <div class="testimonial-rotator" id="testimonialRotator">
+        <span class="testimonial-quote" aria-hidden="true">&ldquo;</span>
+
+        <!-- TODO: replace with real testimonials -->
+        <article class="testimonial is-active" data-idx="0">
+          <p class="testimonial-text"><em>The arch was the first thing every guest photographed. It set the tone for the whole evening &mdash; and matched our florals exactly.</em></p>
+          <p class="testimonial-name">&mdash; Alexandra M.</p>
+          <p class="testimonial-meta">Wedding, Fort Garry Hotel</p>
+        </article>
+
+        <article class="testimonial" data-idx="1">
+          <p class="testimonial-text"><em>Warm, professional, and genuinely artistic. Our bridal shower felt like it had been styled for a magazine spread.</em></p>
+          <p class="testimonial-name">&mdash; Priya D.</p>
+          <p class="testimonial-meta">Bridal shower, Winnipeg</p>
+        </article>
+
+        <article class="testimonial" data-idx="2">
+          <p class="testimonial-text"><em>From first DM to install day, the whole process was calm and considered. The installation itself was beyond what I pictured.</em></p>
+          <p class="testimonial-name">&mdash; Chloe R.</p>
+          <p class="testimonial-meta">Baby shower, Tuxedo</p>
+        </article>
+
+        <div class="testimonial-dots" role="tablist" aria-label="Testimonial navigation">
+          <button class="tdot is-active" data-idx="0" aria-label="Testimonial 1"></button>
+          <button class="tdot" data-idx="1" aria-label="Testimonial 2"></button>
+          <button class="tdot" data-idx="2" aria-label="Testimonial 3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       PRICING — Collections
+       ===================================================== -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-intro reveal">
+      <p class="eyebrow">No. 06</p>
+      <h2 class="section-title">Collections</h2>
+      <p class="section-lede">Three starting points &mdash; each fully customized to your palette, venue and moment.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Tier I -->
+      <article class="tier reveal">
+        <span class="tier-roman">I</span>
+        <h3 class="tier-name">The Accent</h3>
+        <p class="tier-price"><span class="tier-currency">$</span>95<span class="tier-unit">+</span></p>
+        <p class="tier-sub">Starting at</p>
+        <ul class="tier-list">
+          <li>Small garland or bouquet accent</li>
+          <li>Color-matched to your palette</li>
+          <li>Drop-off or pickup</li>
+          <li>Ideal for gift tables &amp; sweets bars</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline btn-block">Begin Inquiry</a>
+      </article>
+
+      <!-- Tier II (featured) -->
+      <article class="tier is-featured reveal">
+        <span class="tier-badge">Most Requested</span>
+        <span class="tier-roman">II</span>
+        <h3 class="tier-name">The Signature</h3>
+        <p class="tier-price"><span class="tier-currency">$</span>350<span class="tier-unit">+</span></p>
+        <p class="tier-sub">Starting at</p>
+        <ul class="tier-list">
+          <li>Custom arch or backdrop</li>
+          <li>Color-matched organic garland</li>
+          <li>Professional on-site install</li>
+          <li>Coordination with florist / venue</li>
+        </ul>
+        <a href="#contact" class="btn btn-filled btn-block">Begin Inquiry</a>
+      </article>
+
+      <!-- Tier III -->
+      <article class="tier reveal">
+        <span class="tier-roman">III</span>
+        <h3 class="tier-name">The Editorial</h3>
+        <p class="tier-price"><span class="tier-currency">$</span>750<span class="tier-unit">+</span></p>
+        <p class="tier-sub">Starting at</p>
+        <ul class="tier-list">
+          <li>Full-venue installation</li>
+          <li>Walk-through arch or feature wall</li>
+          <li>Columns, bouquets, signage accents</li>
+          <li>Concept development &amp; palette design</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline btn-block">Begin Inquiry</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       CONTACT — Begin an Inquiry
+       ===================================================== -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-form-col reveal">
+        <p class="eyebrow">No. 07</p>
+        <h2 class="section-title">Begin an Inquiry.</h2>
+        <p class="section-lede">Share a few details and we&rsquo;ll respond within 24 hours with next steps.</p>
+
+        <!-- TODO: replace access_key with real Web3Forms key -->
+        <form class="inquiry-form" id="inquiryForm" action="https://api.web3forms.com/submit" method="POST" novalidate data-access="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+          <input type="hidden" name="subject" value="New Inquiry — Inflatable Decorations" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="form-row">
+            <label class="field">
+              <span class="field-label">Name</span>
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+            <label class="field">
+              <span class="field-label">Email</span>
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="field">
+              <span class="field-label">Event Date</span>
+              <input type="date" name="event_date" />
+            </label>
+            <label class="field">
+              <span class="field-label">Event Type</span>
+              <select name="event_type" required>
+                <option value="">Please select&hellip;</option>
+                <option>Birthday</option>
+                <option>Bridal Shower</option>
+                <option>Baby Shower</option>
+                <option>Wedding</option>
+                <option>Corporate</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Budget Range</span>
+            <select name="budget">
+              <option value="">Please select&hellip;</option>
+              <option>Under $250</option>
+              <option>$250 &mdash; $500</option>
+              <option>$500 &mdash; $1,000</option>
+              <option>$1,000+</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Message</span>
+            <textarea name="message" rows="5" placeholder="Tell us about your event, palette, venue&hellip;"></textarea>
+          </label>
+
+          <button type="submit" class="btn btn-filled btn-block">Send Inquiry <span aria-hidden="true">&rarr;</span></button>
+
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <aside class="contact-info-col reveal">
+        <div class="contact-info-card">
+          <p class="eyebrow">The Studio</p>
+          <h3 class="contact-info-title"><em>By appointment,</em><br/>across Winnipeg.</h3>
+
+          <div class="contact-info-divider" aria-hidden="true"></div>
+
+          <div class="contact-info-block">
+            <p class="contact-info-label">Service Area</p>
+            <p class="contact-info-value">Winnipeg &amp; surrounding area, MB</p>
+          </div>
+
+          <div class="contact-info-divider" aria-hidden="true"></div>
+
+          <div class="contact-info-block">
+            <p class="contact-info-label">Instagram</p>
+            <p class="contact-info-value">
+              <a href="https://instagram.com/inflatabledecorations" target="_blank" rel="noopener">@inflatabledecorations</a>
+            </p>
+          </div>
+
+          <div class="contact-info-divider" aria-hidden="true"></div>
+
+          <div class="contact-info-block">
+            <p class="contact-info-label">Email</p>
+            <p class="contact-info-value">
+              <!-- TODO: replace with real studio email -->
+              <a href="mailto:hello@inflatabledecorations.ca">hello@inflatabledecorations.ca</a>
+            </p>
+          </div>
+
+          <div class="contact-info-divider" aria-hidden="true"></div>
+
+          <div class="contact-info-block">
+            <p class="contact-info-label">Hours</p>
+            <p class="contact-info-value">By appointment &mdash; replies within 24h</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="footer">
+    <div class="footer-accent" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="Assets/Brand/logo-512.png" alt="Inflatable Decorations logo" class="footer-logo" />
+        <p class="footer-tagline"><em>Celebrations, carefully composed.</em></p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 Inflatable Decorations &middot; Winnipeg, MB &middot; All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- =====================================================
+       SCROLL-TO-TOP
+       ===================================================== -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    <span>Top</span>
+  </button>
+
+  <!-- =====================================================
+       LIGHTBOX
+       ===================================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next image">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <figure class="lightbox-frame">
+      <img id="lightboxImg" alt="" />
+      <figcaption id="lightboxCap"></figcaption>
+    </figure>
+  </div>
+
+  <!-- =====================================================
+       VERSION BAR — restyled warm editorial
+       ===================================================== -->
+  <nav class="version-bar" aria-label="Design versions">
+    <a href="Website.html" class="version-bar-btn">&larr; Prev</a>
+    <span class="version-bar-label">Design 2 of 3</span>
+    <a href="Website_3.html" class="version-bar-btn">Next &rarr;</a>
+  </nav>
+
+  <script src="script2.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Node
+node_modules/
+
+# Local server / build artifacts
+.cache/
+dist/
+
+# Local-only
+_duplicates/
+Assets/Gallery/_duplicates/
+
+# Python build artifacts
+__pycache__/
+*.pyc

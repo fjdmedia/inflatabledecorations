@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Balloon-decor pattern preview</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #2a1a2a;
+      background: #fff;
+    }
+    .shell { max-width: 1200px; margin: 0 auto; padding: 24px; }
+    h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -0.01em; }
+    p.lead { margin: 0 0 24px; color: #666; font-size: 14px; }
+    h2 { font-size: 16px; margin: 0 0 8px; letter-spacing: 0.04em; text-transform: uppercase; color: #444; }
+    .swatch {
+      margin: 0 0 40px;
+    }
+    .swatch .meta {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 6px; font-size: 12px; color: #888;
+    }
+    .swatch .panel {
+      width: 100%;
+      height: 280px;
+      border-radius: 14px;
+      border: 1px solid #eee;
+      overflow: hidden;
+      position: relative;
+    }
+    .swatch .panel-tall { height: 340px; }
+    .swatch .panel-banner { height: 240px; background: #fff; }
+    .swatch .panel-banner img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    /* sample content over the pattern so you can judge low-opacity use */
+    .swatch .panel .sample {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .swatch .panel .sample .card {
+      background: rgba(255,255,255,0.88);
+      padding: 18px 28px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      max-width: 360px;
+    }
+    .swatch .panel .sample h3 { margin: 0 0 6px; font-size: 20px; }
+    .swatch .panel .sample p { margin: 0; font-size: 13px; color: #555; }
+
+    .bg-checker   { background-image: url(pattern-checker.png);    background-size: 400px 400px; }
+    .bg-scallops  { background-image: url(pattern-scallops.png);   background-size: 400px 400px; }
+    .bg-daisies   { background-image: url(pattern-daisies.png);    background-size: 500px 500px; background-color: #fff4f0; }
+    .bg-squiggles { background-image: url(pattern-squiggles.png);  background-size: 600px 300px; }
+    .bg-hearts    { background-image: url(pattern-hearts.png);     background-size: 400px 400px; background-color: #fffafc; }
+
+    /* low-opacity demo: render the same pattern but at 25% via a ::before overlay */
+    .panel-lowop { position: relative; background: linear-gradient(135deg,#fff 0%,#ffeef4 100%); }
+    .panel-lowop::before {
+      content: ""; position: absolute; inset: 0;
+      background-image: inherit;
+      background-size: inherit;
+      opacity: 0.28;
+      pointer-events: none;
+    }
+
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 800px) { .row2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <h1>Balloon-decor pattern preview</h1>
+    <p class="lead">Five tileable PNGs + one hero banner. Each tile is shown at full opacity (left) and at ~28% opacity over a soft gradient (right) so you can judge how it reads as a section background.</p>
+
+    <!-- 1 checker -->
+    <div class="swatch">
+      <div class="meta"><h2>1 / pattern-checker.png</h2><span>800x800 - warped pink checker</span></div>
+      <div class="row2">
+        <div class="panel bg-checker"></div>
+        <div class="panel panel-lowop bg-checker">
+          <div class="sample"><div class="card">
+            <h3>Twisted Pink Checker</h3>
+            <p>Low-opacity section background sample over soft gradient.</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 scallops -->
+    <div class="swatch">
+      <div class="meta"><h2>2 / pattern-scallops.png</h2><span>800x800 - fish-scale arches</span></div>
+      <div class="row2">
+        <div class="panel bg-scallops"></div>
+        <div class="panel panel-lowop bg-scallops">
+          <div class="sample"><div class="card">
+            <h3>Scalloped Fish Scale</h3>
+            <p>Pink gradient arches, classic Art Deco tile.</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 daisies -->
+    <div class="swatch">
+      <div class="meta"><h2>3 / pattern-daisies.png</h2><span>1000x1000 - scattered daisies on transparent</span></div>
+      <div class="row2">
+        <div class="panel bg-daisies"></div>
+        <div class="panel panel-lowop bg-daisies">
+          <div class="sample"><div class="card">
+            <h3>Scattered Daisies</h3>
+            <p>Transparent PNG lets you swap the base color behind it.</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 squiggles -->
+    <div class="swatch">
+      <div class="meta"><h2>4 / pattern-squiggles.png</h2><span>1200x600 - wavy horizontal bands</span></div>
+      <div class="row2">
+        <div class="panel panel-tall bg-squiggles"></div>
+        <div class="panel panel-tall panel-lowop bg-squiggles">
+          <div class="sample"><div class="card">
+            <h3>Squiggle Bands</h3>
+            <p>Cream / peach / hot-pink / orange. Tiles H and V.</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 hearts -->
+    <div class="swatch">
+      <div class="meta"><h2>5 / pattern-hearts.png</h2><span>800x800 - hearts + bows on transparent</span></div>
+      <div class="row2">
+        <div class="panel bg-hearts"></div>
+        <div class="panel panel-lowop bg-hearts">
+          <div class="sample"><div class="card">
+            <h3>Hearts + Tiny Bows</h3>
+            <p>Transparent background. Pinks with a few red accents.</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 banner -->
+    <div class="swatch">
+      <div class="meta"><h2>6 / banner-swirl.png</h2><span>2400x600 - full-width hero band (not a tile)</span></div>
+      <div class="panel panel-banner">
+        <img src="banner-swirl.png" alt="Swirl banner" />
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
