@@ -334,8 +334,9 @@
       formCollapse.dataset.state = 'open';
       formTrigger.setAttribute('aria-expanded', 'true');
       formShell.hidden = false;
-      if (iframe && !iframe.src && iframe.dataset.src) {
-        iframe.src = iframe.dataset.src;
+      if (iframe && !iframe.dataset.loaded && iframe.dataset.src) {
+        iframe.setAttribute('src', iframe.dataset.src);
+        iframe.dataset.loaded = '1';
       }
       // Scroll the form into view so the user lands at the first field
       setTimeout(() => {
