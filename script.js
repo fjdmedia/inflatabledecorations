@@ -323,21 +323,46 @@
     });
   }
 
-  /* ---------- Form trigger: lazy-load iframe on first click ---------- */
+  /* ---------- Form trigger: warm-load iframe before click for instant feel ---------- */
   const formCollapse = $('#formCollapse');
   const formTrigger  = $('#formTrigger');
   const formShell    = $('#formShell');
   if (formCollapse && formTrigger && formShell) {
     const iframe = formShell.querySelector('iframe');
+    function warmLoad() {
+      if (iframe && !iframe.dataset.loaded && iframe.dataset.src) {
+        iframe.setAttribute('src', iframe.dataset.src);
+        iframe.dataset.loaded = '1';
+      }
+    }
+    // 1) Warm-load when the contact section gets close to viewport (rootMargin 600px)
+    const contactEl = $('#contact');
+    if (contactEl && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some(e => e.isIntersecting)) {
+          warmLoad();
+          io.disconnect();
+        }
+      }, { rootMargin: '600px 0px 600px 0px' });
+      io.observe(contactEl);
+    }
+    // 2) Warm-load on hover/focus of the trigger (intent signal)
+    ['pointerenter', 'focus', 'touchstart'].forEach(ev => {
+      formTrigger.addEventListener(ev, warmLoad, { once: true, passive: true });
+    });
+    // 3) Fallback: warm-load on idle so it's ready even if user jumps straight to it
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(warmLoad, { timeout: 4000 });
+    } else {
+      setTimeout(warmLoad, 2500);
+    }
+
     formTrigger.addEventListener('click', () => {
       if (formCollapse.dataset.state === 'open') return;
       formCollapse.dataset.state = 'open';
       formTrigger.setAttribute('aria-expanded', 'true');
       formShell.hidden = false;
-      if (iframe && !iframe.dataset.loaded && iframe.dataset.src) {
-        iframe.setAttribute('src', iframe.dataset.src);
-        iframe.dataset.loaded = '1';
-      }
+      warmLoad();
       // Scroll the form into view so the user lands at the first field
       setTimeout(() => {
         formShell.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });

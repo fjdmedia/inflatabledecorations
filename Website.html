@@ -12,6 +12,12 @@
   <style>html.ifd-locked body > *:not(.ifd-gate){display:none!important}html.ifd-locked body{overflow:hidden}</style>
   <script src="gate.js" defer></script>
 
+  <!-- Warm up the JotForm + CDN connections so the iframe loads instantly on click -->
+  <link rel="preconnect" href="https://form.jotform.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jotform.com" crossorigin />
+  <link rel="preconnect" href="https://submit.jotform.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.jotform.com" />
+
   <!-- Fonts: Caprasimo (chunky display) + Caveat (script) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -860,25 +866,31 @@
 
   <script src="script.js" defer></script>
 
-  <!-- JotForm embed auto-resize handler — only attaches after the iframe is loaded on click -->
+  <!-- JotForm embed auto-resize handler — attaches the moment the iframe is given its src -->
   <script src="https://cdn.jotform.com/s/umd/latest/for-form-embed-handler.js"></script>
   <script>
     (function () {
-      var trigger = document.getElementById('formTrigger');
-      if (!trigger) return;
+      var iframe = document.getElementById('JotFormIFrame-251727255666061');
+      if (!iframe) return;
       var attached = false;
-      trigger.addEventListener('click', function () {
+      function attach() {
         if (attached) return;
+        if (!iframe.getAttribute('src')) return;
+        if (!window.jotformEmbedHandler) return;
         attached = true;
-        setTimeout(function () {
-          if (window.jotformEmbedHandler) {
-            window.jotformEmbedHandler(
-              "iframe[id='JotFormIFrame-251727255666061']",
-              "https://form.jotform.com"
-            );
-          }
-        }, 200);
-      }, { once: false });
+        window.jotformEmbedHandler(
+          "iframe[id='JotFormIFrame-251727255666061']",
+          "https://form.jotform.com"
+        );
+      }
+      // Watch for src being set (warm-load fires before click)
+      var mo = new MutationObserver(function () {
+        attach();
+        if (attached) mo.disconnect();
+      });
+      mo.observe(iframe, { attributes: true, attributeFilter: ['src'] });
+      // Also try on first interaction in case observer misses
+      attach();
     })();
   </script>
 </body>
