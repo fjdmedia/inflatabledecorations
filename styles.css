@@ -359,6 +359,19 @@ p { margin: 0 0 1em; }
   max-width: 1060px;
   margin-inline: auto;
 }
+/* 3-card variant: center the row instead of stretching to 4 columns */
+.flower-grid-3 {
+  grid-template-columns: repeat(3, minmax(180px, 220px));
+  justify-content: center;
+  gap: 48px;
+  max-width: 880px;
+}
+@media (max-width: 768px) {
+  .flower-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 100%; }
+}
+@media (max-width: 480px) {
+  .flower-grid-3 { grid-template-columns: 1fr; gap: 28px; max-width: 280px; }
+}
 .flower-badge {
   text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 12px;
