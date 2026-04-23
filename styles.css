@@ -568,6 +568,65 @@ p { margin: 0 0 1em; }
   background: var(--cream);
   position: relative;
 }
+
+/* ── Marquee gallery (Sugar & Shai pattern) ── */
+.gallery-marquee { padding: 100px 0; overflow: hidden; }
+.gallery-marquee .gallery-head { margin-bottom: 38px; }
+.marquee-row {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 14px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: ifd-marquee 80s linear infinite;
+}
+.marquee-row.reverse .marquee-track {
+  animation: ifd-marquee-reverse 90s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes ifd-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes ifd-marquee-reverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.g-tile {
+  width: 260px;
+  height: 260px;
+  border-radius: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--pink-baby-soft);
+  box-shadow: 0 10px 22px rgba(45,27,61,0.08);
+}
+.g-tile img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery-cta {
+  text-align: center;
+  margin-top: 36px;
+  padding: 0 24px;
+}
+@media (max-width: 768px) {
+  .g-tile { width: 180px; height: 180px; border-radius: 14px; }
+  .marquee-track { gap: 10px; }
+  .gallery-marquee { padding: 70px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .marquee-row.reverse .marquee-track { animation: none; }
+}
+
 .gallery-filters {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
   margin-bottom: 34px;
@@ -1731,4 +1790,22 @@ h1 em, h2 em {
 }
 @media (max-width: 560px) {
   .services-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ---------- Services grid: 5-card variant (with Grab & Go) ---------- */
+.services-grid-5 { grid-template-columns: repeat(5, 1fr); gap: 18px; }
+.services-grid-5 .service-card { padding: 16px 16px 20px; }
+.services-grid-5 .service-card h3 { font-size: clamp(1rem, 0.5vw + 0.9rem, 1.25rem); }
+.services-grid-5 .service-card p  { font-size: 13.5px; }
+@media (max-width: 1180px) {
+  .services-grid-5 { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .services-grid-5 .service-card { padding: 22px 22px 26px; }
+  .services-grid-5 .service-card h3 { font-size: clamp(1.2rem, 1vw + 0.8rem, 1.6rem); }
+  .services-grid-5 .service-card p  { font-size: 14.5px; }
+  /* Center the 5th card on its own row */
+  .services-grid-5 .service-card:nth-child(5) { grid-column: 1 / -1; max-width: calc(50% - 12px); margin: 0 auto; }
+}
+@media (max-width: 560px) {
+  .services-grid-5 { grid-template-columns: 1fr; }
+  .services-grid-5 .service-card:nth-child(5) { max-width: 100%; }
 }
