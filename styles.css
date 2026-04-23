@@ -1032,7 +1032,8 @@ footer ul a:hover { color: var(--pink-hot); }
 }
 .jotform-wrap iframe {
   width: 100%;
-  min-height: 1100px;
+  height: 640px;        /* fixed height — form scrolls inside */
+  max-height: 75vh;     /* don't exceed viewport on tall forms */
   border: 0;
   display: block;
   border-radius: 18px;
@@ -1119,7 +1120,7 @@ footer ul a:hover { color: var(--pink-hot); }
 }
 @media (max-width: 720px) {
   .jotform-wrap { padding: 4px; border-radius: 18px; }
-  .jotform-wrap iframe { border-radius: 14px; min-height: 1280px; }
+  .jotform-wrap iframe { border-radius: 14px; height: 560px; max-height: 75vh; }
 }
 
 /* =================================================================

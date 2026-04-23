@@ -745,7 +745,7 @@
                       allow="geolocation; microphone; camera; fullscreen"
                       data-src="https://form.jotform.com/251727255666061"
                       frameborder="0"
-                      scrolling="no"></iframe>
+                      scrolling="yes"></iframe>
               <span class="jotform-note">Form submissions go straight to Inflatable Decorations &mdash; we reply within 24 hours.</span>
             </div>
           </div>
@@ -866,31 +866,16 @@
 
   <script src="script.js" defer></script>
 
-  <!-- JotForm embed auto-resize handler — attaches the moment the iframe is given its src -->
-  <script src="https://cdn.jotform.com/s/umd/latest/for-form-embed-handler.js"></script>
+  <!-- JotForm auto-resize handler intentionally disabled — iframe uses fixed height + internal scroll -->
   <script>
     (function () {
       var iframe = document.getElementById('JotFormIFrame-251727255666061');
       if (!iframe) return;
-      var attached = false;
-      function attach() {
-        if (attached) return;
-        if (!iframe.getAttribute('src')) return;
-        if (!window.jotformEmbedHandler) return;
-        attached = true;
-        window.jotformEmbedHandler(
-          "iframe[id='JotFormIFrame-251727255666061']",
-          "https://form.jotform.com"
-        );
-      }
-      // Watch for src being set (warm-load fires before click)
-      var mo = new MutationObserver(function () {
-        attach();
-        if (attached) mo.disconnect();
-      });
-      mo.observe(iframe, { attributes: true, attributeFilter: ['src'] });
-      // Also try on first interaction in case observer misses
-      attach();
+      // Block any inline height JotForm tries to set via postMessage
+      window.addEventListener('message', function (e) {
+        if (typeof e.data !== 'string' || e.data.indexOf('setHeight') === -1) return;
+        if (iframe.style.height) iframe.style.height = '';
+      }, true);
     })();
   </script>
 </body>
