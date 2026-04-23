@@ -149,14 +149,8 @@
         gate.style.opacity = '0';
         setTimeout(function () {
           if (gate && gate.parentNode) gate.parentNode.removeChild(gate);
-          var formCollapse = document.getElementById('formCollapse');
-          var formTrigger  = document.getElementById('formTrigger');
-          var contact      = document.getElementById('contact');
-          if (formCollapse && formTrigger && formCollapse.dataset.state !== 'open') {
-            formTrigger.click();
-          } else if (contact) {
-            contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+          // Land on hero, not the form
+          window.scrollTo({ top: 0, behavior: 'auto' });
         }, 360);
       } else {
         err.textContent = 'Incorrect passphrase';

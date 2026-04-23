@@ -194,7 +194,7 @@
     lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
   }
   document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('open')) return;
+    if (!lightbox || !lightbox.classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
     else if (e.key === 'ArrowLeft') showAt(currentIdx - 1);
     else if (e.key === 'ArrowRight') showAt(currentIdx + 1);
