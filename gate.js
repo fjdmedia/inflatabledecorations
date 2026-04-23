@@ -147,7 +147,17 @@
         document.documentElement.classList.remove('ifd-locked');
         gate.style.transition = 'opacity .35s ease';
         gate.style.opacity = '0';
-        setTimeout(function () { if (gate && gate.parentNode) gate.parentNode.removeChild(gate); }, 360);
+        setTimeout(function () {
+          if (gate && gate.parentNode) gate.parentNode.removeChild(gate);
+          var formCollapse = document.getElementById('formCollapse');
+          var formTrigger  = document.getElementById('formTrigger');
+          var contact      = document.getElementById('contact');
+          if (formCollapse && formTrigger && formCollapse.dataset.state !== 'open') {
+            formTrigger.click();
+          } else if (contact) {
+            contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 360);
       } else {
         err.textContent = 'Incorrect passphrase';
         input.value = '';
