@@ -1,10 +1,897 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="robots" content="noindex,nofollow">
-  <meta http-equiv="refresh" content="0; url=Website.html">
-  <title>Inflatable Decorations</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inflatable Decorations | Confetti-Party Balloon Styling for Winnipeg Celebrations</title>
+  <meta name="description" content="Winnipeg's playful balloon atelier for birthdays, showers, weddings and corporate celebrations. Pastel-rainbow arches, garlands, giant numbers, custom color-matched and installed by us." />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Private preview gate -->
+  <script>if(sessionStorage.getItem('ifd.auth')!=='1')document.documentElement.classList.add('ifd-locked');</script>
+  <style>html.ifd-locked body > *:not(.ifd-gate){display:none!important}html.ifd-locked body{overflow:hidden}</style>
+  <script src="gate.js" defer></script>
+
+  <!-- Warm up the JotForm + CDN connections so the iframe loads instantly on click -->
+  <link rel="preconnect" href="https://form.jotform.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jotform.com" crossorigin />
+  <link rel="preconnect" href="https://submit.jotform.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.jotform.com" />
+
+  <!-- Fonts: Caprasimo (chunky display) + Caveat (script) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Caveat:wght@500;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" />
+
+  <link rel="icon" type="image/png" href="Assets/Brand/logo-512.png" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body><a href="Website.html">Click here if not redirected</a></body>
+<body>
+
+  <!-- =====================================================
+       PAGE-ENTER SPLASH (single balloon float-up)
+       ===================================================== -->
+  <div class="page-splash" id="pageSplash" aria-hidden="true">
+    <svg viewBox="0 0 60 80" fill="none" aria-hidden="true">
+      <ellipse cx="30" cy="32" rx="22" ry="26" fill="#FF5FA2"/>
+      <path d="M30 58 L26 64 L34 64 Z" fill="#FF5FA2"/>
+      <path d="M30 64 Q 28 70 30 76 Q 32 70 30 64" stroke="#2D1B3D" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <ellipse cx="22" cy="22" rx="6" ry="4" fill="rgba(255,255,255,0.45)"/>
+    </svg>
+  </div>
+
+  <!-- =====================================================
+       SCROLL-PROGRESS TRACKER (right edge — desktop only)
+       ===================================================== -->
+  <aside class="scroll-track" id="scrollTrack" aria-hidden="true">
+    <div class="scroll-track-line">
+      <div class="scroll-track-fill" id="scrollTrackFill"></div>
+      <svg class="scroll-track-balloon" id="scrollTrackBalloon" viewBox="0 0 24 32" aria-hidden="true">
+        <ellipse cx="12" cy="13" rx="9" ry="11" fill="#FF5FA2" stroke="#fff" stroke-width="2"/>
+        <path d="M12 24 L10 28 L14 28 Z" fill="#FF5FA2"/>
+      </svg>
+    </div>
+    <ul class="scroll-track-dots">
+      <li><a href="#top" data-track="top" class="active" aria-label="Top"></a></li>
+      <li><a href="#services" data-track="services" aria-label="Services"></a></li>
+      <li><a href="#about" data-track="about" aria-label="About"></a></li>
+      <li><a href="#gallery" data-track="gallery" aria-label="Gallery"></a></li>
+      <li><a href="#contact" data-track="contact" aria-label="Contact"></a></li>
+    </ul>
+  </aside>
+
+  <!-- =====================================================
+       NOISE GRAIN OVERLAY (full page, ultra-subtle)
+       ===================================================== -->
+  <div class="noise-grain" aria-hidden="true"></div>
+
+  <!-- =====================================================
+       TOP ANNOUNCEMENT STRIP
+       ===================================================== -->
+  <div class="topbar" aria-label="Announcements">
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF5FA2" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+      Now booking spring &amp; summer 2026 &mdash; custom installs from $250
+      <span class="sep" aria-hidden="true">&middot;</span>
+      DM <a href="https://instagram.com/inflatabledecorations" target="_blank" rel="noopener">@inflatabledecorations</a> to reserve
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF5FA2" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+    </span>
+  </div>
+
+  <!-- =====================================================
+       NAV
+       ===================================================== -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="#top" class="nav-logo" aria-label="Inflatable Decorations home">
+        <img src="Assets/Brand/logo-512.png" alt="Inflatable Decorations balloon logo" />
+        <span><span class="script-accent">Inflatable</span> Decorations</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="btn btn-primary btn-sm">Book Now</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+  <header class="hero" id="top">
+    <!-- Drifting balloon orbs (background) -->
+    <div class="hero-orbs" aria-hidden="true">
+      <span class="orb orb-pink"></span>
+      <span class="orb orb-mint"></span>
+      <span class="orb orb-yellow"></span>
+      <span class="orb orb-lilac"></span>
+      <span class="orb orb-peach"></span>
+    </div>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal hero-stagger" style="--d:0ms">Balloon Atelier &middot; Winnipeg, MB</span>
+        <h1 class="reveal hero-h1">
+          <span class="hero-stagger" style="--d:80ms">Make</span>
+          <span class="hero-stagger" style="--d:160ms">your</span>
+          <span class="hero-stagger" style="--d:240ms">party</span>
+          <span class="pop-word hero-stagger" style="--d:420ms">pop!</span>
+          <svg class="confetti hero-stagger" style="--d:520ms" viewBox="0 0 24 24" fill="#FFE27A" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        </h1>
+        <p class="lead reveal hero-stagger" style="--d:560ms">
+          Pastel-rainbow balloon arches, garlands and giant installs for birthdays, showers, weddings and grand openings &mdash; custom color-matched to your vibe and installed (then packed up) by us.
+        </p>
+        <div class="hero-ctas reveal hero-stagger" style="--d:680ms">
+          <a href="#contact" class="btn btn-primary btn-shimmer">
+            <span class="btn-shimmer-inner">Book Your Event
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+          <a href="#services" class="btn btn-ghost">Our Services</a>
+        </div>
+        <div class="hero-tags reveal hero-stagger" style="--d:800ms">
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Custom color-matched
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Install &amp; teardown included
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Fully insured
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal hero-stagger" style="--d:340ms" data-tilt="hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+
+        <!-- Confetti sparkles scattered in hero -->
+        <svg class="confetti-dot c1" viewBox="0 0 24 24" fill="#FF5FA2" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <svg class="confetti-dot c2" viewBox="0 0 24 24" fill="#FFE27A" aria-hidden="true"><circle cx="12" cy="12" r="6"/></svg>
+        <svg class="confetti-dot c3" viewBox="0 0 24 24" fill="#A9E4C7" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <svg class="confetti-dot c4" viewBox="0 0 24 24" fill="#D7BEF2" aria-hidden="true"><circle cx="12" cy="12" r="6"/></svg>
+        <svg class="confetti-dot c5" viewBox="0 0 24 24" fill="#FFB788" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+
+        <div class="hero-arch">
+          <img src="Assets/Gallery/Backdrop and Balloon Garland setup/Favorite.jpg"
+               alt="Custom color-matched balloon backdrop and garland setup by Inflatable Decorations"
+               fetchpriority="high" />
+        </div>
+
+        <!-- Sticker callout -->
+        <span class="sticker hero-sticker" aria-hidden="true">custom color-<br/>matched!</span>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       WAVY PINK RIBBON BANNER MARQUEE
+       ===================================================== -->
+  <div class="ribbon-banner" aria-hidden="true">
+    <div class="ribbon-wave">
+      <div class="ribbon-track">
+        <span>BALLOON DECOR</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>EVENT STYLING</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>CUSTOM ARCHES</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>GARLANDS</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>GIANT NUMBERS</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>BACKDROPS</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>ALL EVENTS WELCOME</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <!-- duplicate for seamless scroll -->
+        <span>BALLOON DECOR</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>EVENT STYLING</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>CUSTOM ARCHES</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>GARLANDS</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>GIANT NUMBERS</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>BACKDROPS</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+        <span>ALL EVENTS WELCOME</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       FLOWER BADGE TRUST BAR
+       ===================================================== -->
+  <section class="flower-bar" aria-label="Why choose us">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Always Included</span>
+        <h2>The <span class="underline-scribble">little things</span> matter</h2>
+        <p class="sub">party details done right</p>
+      </div>
+      <div class="flower-grid">
+        <div class="flower-badge reveal">
+          <div class="flower-shape">
+            <svg class="flower-bg" viewBox="-10 -10 140 140" aria-hidden="true">
+              <g transform="translate(60,60)">
+                <g fill="#FFC2D6">
+                  <ellipse cx="0" cy="-36" rx="26" ry="32"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(72)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(144)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(216)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(288)"/>
+                </g>
+                <circle r="22" fill="#FFF8F0"/>
+              </g>
+            </svg>
+            <svg class="flower-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF5FA2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <strong>Fully Insured</strong>
+          <small>Every install, indoor or out</small>
+        </div>
+
+        <div class="flower-badge reveal">
+          <div class="flower-shape">
+            <svg class="flower-bg" viewBox="-10 -10 140 140" aria-hidden="true">
+              <g transform="translate(60,60)">
+                <g fill="#A9E4C7">
+                  <ellipse cx="0" cy="-36" rx="26" ry="32"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(72)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(144)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(216)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(288)"/>
+                </g>
+                <circle r="22" fill="#FFF8F0"/>
+              </g>
+            </svg>
+            <svg class="flower-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2D1B3D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20a7 7 0 01-7-7 9 9 0 019-9c-2 4 4 6 4 10a6 6 0 01-6 6z"/></svg>
+          </div>
+          <strong>Biodegradable Latex</strong>
+          <small>Earth-friendly balloons</small>
+        </div>
+
+        <div class="flower-badge reveal">
+          <div class="flower-shape">
+            <svg class="flower-bg" viewBox="-10 -10 140 140" aria-hidden="true">
+              <g transform="translate(60,60)">
+                <g fill="#FFE27A">
+                  <ellipse cx="0" cy="-36" rx="26" ry="32"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(72)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(144)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(216)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(288)"/>
+                </g>
+                <circle r="22" fill="#FFF8F0"/>
+              </g>
+            </svg>
+            <svg class="flower-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2D1B3D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v4h-7"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="18.5" cy="18.5" r="2"/></svg>
+          </div>
+          <strong>Free Local Delivery</strong>
+          <small>Winnipeg + surrounding</small>
+        </div>
+
+        <div class="flower-badge reveal">
+          <div class="flower-shape">
+            <svg class="flower-bg" viewBox="-10 -10 140 140" aria-hidden="true">
+              <g transform="translate(60,60)">
+                <g fill="#D7BEF2">
+                  <ellipse cx="0" cy="-36" rx="26" ry="32"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(72)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(144)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(216)"/>
+                  <ellipse cx="0" cy="-36" rx="26" ry="32" transform="rotate(288)"/>
+                </g>
+                <circle r="22" fill="#FFF8F0"/>
+              </g>
+            </svg>
+            <svg class="flower-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2D1B3D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><circle cx="12" cy="15" r="3"/><circle cx="19" cy="15" r="3"/><circle cx="5" cy="15" r="3"/></svg>
+          </div>
+          <strong>Color-Matched</strong>
+          <small>Your exact palette</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SCALLOP DIVIDER (pink-to-cream descent)
+       ===================================================== -->
+  <div class="scallop-div pink-mint" aria-hidden="true"></div>
+
+  <!-- =====================================================
+       SERVICES
+       ===================================================== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Four Specialties</span>
+        <h2>Our <span class="underline-scribble">Services</span></h2>
+        <p class="sub">from pop-of-color to full-room magic</p>
+      </div>
+
+      <div class="services-grid services-grid-4">
+        <article class="service-card pink reveal">
+          <div class="img-arch">
+            <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672155829_1255830733259550_4346246369048823540_n.jpg" alt="Custom color-matched balloon backdrop and garland setup" />
+          </div>
+          <h3>Backdrops &amp; Balloon Garlands</h3>
+          <p>Lush color-matched garlands styled on chiara arches or your own backdrop &mdash; our most-booked install.</p>
+          <a href="#gallery" class="inquire" data-cat="backdrops">View 12 examples
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card yellow reveal">
+          <div class="img-arch">
+            <img loading="lazy" src="Assets/Gallery/Walkthrough Arches/672705268_2171063680385289_3198332207113035368_n.jpg" alt="Walk-through balloon arch entryway" />
+          </div>
+          <h3>Walk-Through Arches</h3>
+          <p>Showstopping entryways for grand openings, weddings and proms &mdash; built to stand all day.</p>
+          <a href="#gallery" class="inquire" data-cat="walkthrough">View 4 examples
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card lilac reveal">
+          <div class="img-arch">
+            <img loading="lazy" src="Assets/Gallery/Columns/676501756_3099204616944892_452892470748290199_n.jpg" alt="Standing balloon column" />
+          </div>
+          <h3>Columns</h3>
+          <p>Standing balloon columns to flank entrances, stages, gift tables and reception desks.</p>
+          <a href="#gallery" class="inquire" data-cat="columns">View 4 examples
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card peach reveal">
+          <div class="img-arch">
+            <img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/676984877_933561046118684_1749973930698617400_n.jpg" alt="Giant foil number stack with organic garland base" />
+          </div>
+          <h3>Bouquets &amp; Number Stacks</h3>
+          <p>Pre-made balloon bouquets and giant foil number stacks for milestone birthdays, baby showers and surprises.</p>
+          <a href="#gallery" class="inquire" data-cat="bouquets">View 5 examples
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lilac scallop divider into About -->
+  <div class="scallop-div lilac-cream flip" aria-hidden="true"></div>
+
+  <!-- =====================================================
+       OUR STORY
+       ===================================================== -->
+  <section class="about about-centered" id="about">
+    <div class="container">
+      <div class="about-copy about-copy-centered reveal">
+        <span class="script">Our story</span>
+        <h2>Born from a love of <span class="underline-scribble">celebrations</span>.</h2>
+        <p>
+          At Inflatable Decorations, what started as a love for celebrating life's special moments quickly grew into a passion for creating unforgettable event decor. Based in Winnipeg, we specialize in custom balloon designs that bring personality, style, and joy to every celebration &mdash; from birthdays and baby showers to grand openings and corporate events.
+        </p>
+        <p>
+          We believe every event deserves that &ldquo;wow&rdquo; moment, and we're passionate about turning your vision into something beautiful and memorable.
+        </p>
+        <span class="sticker tilt-l about-sticker" aria-hidden="true">made for<br/>your moment!</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cream divider into gallery -->
+  <div class="scallop-div cream-yellow" aria-hidden="true" style="background-color: var(--lilac-soft);"></div>
+
+  <!-- =====================================================
+       GALLERY
+       ===================================================== -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Recent Celebrations</span>
+        <h2>The <span class="underline-scribble">Gallery</span></h2>
+        <p class="sub">tap any photo to see it bigger</p>
+      </div>
+
+      <div class="gallery-filters reveal" role="tablist">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="backdrops" role="tab">Backdrops &amp; Garlands</button>
+        <button class="filter-btn" data-filter="walkthrough" role="tab">Walk-Through</button>
+        <button class="filter-btn" data-filter="columns" role="tab">Columns</button>
+        <button class="filter-btn" data-filter="bouquets" role="tab">Bouquets &amp; Numbers</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- BACKDROPS & GARLANDS (10) -->
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Favorite balloon backdrop setup">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Favorite.jpg" alt="Custom color-matched balloon backdrop and garland — favorite setup" />
+          <span class="gallery-overlay"><span>Favorite Setup</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/655320035_1478624020528770_3403384665709763277_n.jpg" alt="Custom balloon backdrop with organic garland" />
+          <span class="gallery-overlay"><span>Backdrop &amp; Garland</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/664883286_1675006023843568_4592194640332315545_n.jpg" alt="Color-matched balloon backdrop install" />
+          <span class="gallery-overlay"><span>Color-Matched</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/669127862_846859224352057_8099983497208557162_n.jpg" alt="Balloon backdrop and organic garland setup" />
+          <span class="gallery-overlay"><span>Custom Setup</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/670439079_4034309923367392_9196080599764451676_n.jpg" alt="Balloon backdrop with garland accents" />
+          <span class="gallery-overlay"><span>Backdrop &amp; Garland</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/671626407_2368958973629978_8791729836058276314_n.jpg" alt="Custom balloon backdrop install" />
+          <span class="gallery-overlay"><span>Custom Setup</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672155829_1255830733259550_4346246369048823540_n.jpg" alt="Lush balloon garland on chiara arch" />
+          <span class="gallery-overlay"><span>Chiara Arch</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672701291_1391318602753236_8484134399833125210_n.jpg" alt="Custom balloon backdrop and garland setup" />
+          <span class="gallery-overlay"><span>Backdrop &amp; Garland</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/673470098_1691672148927562_6211972443504005328_n.jpg" alt="Balloon backdrop with custom color palette" />
+          <span class="gallery-overlay"><span>Color-Matched</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/675550313_832502393225263_569436542305509635_n.jpg" alt="Custom balloon backdrop and garland" />
+          <span class="gallery-overlay"><span>Custom Setup</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Themed seasonal backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672176279_1640185133859884_6066715320209476203_n.jpg" alt="Seasonal themed balloon backdrop with garland" />
+          <span class="gallery-overlay"><span>Seasonal Setup</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="backdrops" aria-label="Open photo: Themed backdrop and garland">
+          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Backdropngarland1.jpg" alt="Themed balloon backdrop and garland setup" />
+          <span class="gallery-overlay"><span>Themed Backdrop</span></span>
+        </button>
+
+        <!-- WALK-THROUGH ARCHES (4) -->
+        <button class="gallery-item reveal" data-cat="walkthrough" aria-label="Open photo: Walk-through balloon arch">
+          <img loading="lazy" src="Assets/Gallery/Walkthrough Arches/672705268_2171063680385289_3198332207113035368_n.jpg" alt="Walk-through balloon arch entryway" />
+          <span class="gallery-overlay"><span>Walk-Through Arch</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="walkthrough" aria-label="Open photo: Walk-through balloon arch">
+          <img loading="lazy" src="Assets/Gallery/Walkthrough Arches/670780359_1316750920315655_1714856704636191444_n.jpg" alt="Walk-through balloon arch" />
+          <span class="gallery-overlay"><span>Walk-Through Arch</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="walkthrough" aria-label="Open photo: Walk-through balloon arch">
+          <img loading="lazy" src="Assets/Gallery/Walkthrough Arches/672358270_1631439664642750_3306499537867830646_n.jpg" alt="Walk-through balloon arch entryway" />
+          <span class="gallery-overlay"><span>Walk-Through Arch</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="walkthrough" aria-label="Open photo: Themed walk-through balloon arch">
+          <img loading="lazy" src="Assets/Gallery/Walkthrough Arches/Themed-WTA.jpg" alt="Themed walk-through balloon arch" />
+          <span class="gallery-overlay"><span>Themed Walk-Through</span></span>
+        </button>
+
+        <!-- COLUMNS (4) -->
+        <button class="gallery-item reveal" data-cat="columns" aria-label="Open photo: Balloon column">
+          <img loading="lazy" src="Assets/Gallery/Columns/669598196_784596854516659_4741304633711714289_n.jpg" alt="Standing balloon column" />
+          <span class="gallery-overlay"><span>Balloon Column</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="columns" aria-label="Open photo: Balloon column">
+          <img loading="lazy" src="Assets/Gallery/Columns/670314208_1455045216161617_4088750443734550869_n.jpg" alt="Standing balloon column" />
+          <span class="gallery-overlay"><span>Standing Column</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="columns" aria-label="Open photo: Balloon column">
+          <img loading="lazy" src="Assets/Gallery/Columns/672196176_964600419278025_5186114894174741111_n.jpg" alt="Balloon column setup" />
+          <span class="gallery-overlay"><span>Balloon Column</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="columns" aria-label="Open photo: Balloon column">
+          <img loading="lazy" src="Assets/Gallery/Columns/676501756_3099204616944892_452892470748290199_n.jpg" alt="Standing balloon column" />
+          <span class="gallery-overlay"><span>Standing Column</span></span>
+        </button>
+
+        <!-- BOUQUETS & NUMBER STACKS (5) -->
+        <button class="gallery-item reveal" data-cat="bouquets" aria-label="Open photo: Balloon bouquet">
+          <img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/661010358_1479121863915211_8930539252150607194_n.jpg" alt="Balloon bouquet" />
+          <span class="gallery-overlay"><span>Balloon Bouquet</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="bouquets" aria-label="Open photo: Balloon bouquet">
+          <img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/670949303_26453326074361773_3808112994526126323_n.jpg" alt="Custom balloon bouquet with personalized topper" />
+          <span class="gallery-overlay"><span>Custom Bouquet</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="bouquets" aria-label="Open photo: Balloon bouquet">
+          <img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/672577321_1667560844591766_4821286451582031915_n.jpg" alt="Balloon bouquet beside a gift" />
+          <span class="gallery-overlay"><span>Gift Bouquet</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="bouquets" aria-label="Open photo: Number stack">
+          <img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/676984877_933561046118684_1749973930698617400_n.jpg" alt="Giant foil number stack with organic garland base" />
+          <span class="gallery-overlay"><span>Number Stack</span></span>
+        </button>
+        <button class="gallery-item reveal" data-cat="bouquets" aria-label="Open photo: Balloon bouquet">
+          <img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/677200198_1874178870217536_4064233792141304234_n.jpg" alt="Custom balloon bouquet" />
+          <span class="gallery-overlay"><span>Custom Bouquet</span></span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer" aria-modal="true">
+      <button class="lb-close" id="lbClose" aria-label="Close">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+      </button>
+      <button class="lb-prev" id="lbPrev" aria-label="Previous photo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <img id="lbImage" src="" alt="" />
+      <button class="lb-next" id="lbNext" aria-label="Next photo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       WHY CHOOSE INFLATABLE DECORATIONS
+       ===================================================== -->
+  <section class="why-choose" id="why-choose" aria-label="Why choose Inflatable Decorations">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why Us</span>
+        <h2>Why choose <span class="underline-scribble">Inflatable Decorations</span></h2>
+      </div>
+      <div class="why-copy reveal">
+        <p>
+          At Inflatable Decorations, we believe decor should feel just as special as the moment you're celebrating! We use high quality, professional grade balloons that not only look polished and elevated, but are also <strong>100% biodegradable</strong>, so you can celebrate beautifully and responsibly.
+        </p>
+        <p>
+          Every design is thoughtfully customized to match your vision &mdash; whether it's a bold statement piece or something soft and subtle. From seamless delivery and set up to reliable, detail-focused service, we make the entire process easy and stress-free.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mint scallop into process -->
+  <div class="scallop-div mint-cream flip" aria-hidden="true"></div>
+
+  <!-- =====================================================
+       PROCESS (checker pattern full-bleed)
+       ===================================================== -->
+  <section class="process" aria-label="Our process">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">How It Works</span>
+        <h2>Easy as <span class="underline-scribble">1, 2, 3</span></h2>
+        <p class="sub">three steps to the good kind of chaos</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-card reveal">
+          <div class="process-step">01</div>
+          <h3>Tell Us the Vibe</h3>
+          <p>DM, text, or fill out the form. Share your theme, venue, colors &mdash; even a Pinterest board works.</p>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-step">02</div>
+          <h3>We Design &amp; Color-Match</h3>
+          <p>You'll get a custom mock-up, quote and palette within 48 hours. Tweak it until it's perfect.</p>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-step">03</div>
+          <h3>Deliver, Install, Pack Up</h3>
+          <p>We show up early, install on-site, then come back at end-of-event to pack everything away.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pink scallop into testimonials -->
+  <div class="scallop-div pink-mint" aria-hidden="true" style="background-color: var(--cream);"></div>
+
+  <!-- =====================================================
+       TESTIMONIALS
+       TODO: replace with real client reviews
+       ===================================================== -->
+  <section class="testimonials" aria-label="Client reviews">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Kind Words</span>
+        <h2>What Our <span class="underline-scribble">Clients Say</span></h2>
+        <p class="sub">real love from real celebrations</p>
+      </div>
+
+      <div class="t-grid">
+        <article class="t-card reveal">
+          <div class="t-stars" aria-label="5 out of 5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+          </div>
+          <p class="t-quote">&ldquo;Absolutely stunning! The backdrop was the highlight of our baby shower &mdash; guests couldn't stop taking photos. Communication was easy and everything was installed ahead of schedule.&rdquo;</p>
+          <div class="t-who">
+            Emily P.
+            <small>Baby Shower &mdash; Winnipeg</small>
+          </div>
+        </article>
+
+        <article class="t-card reveal">
+          <div class="t-stars" aria-label="5 out of 5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+          </div>
+          <p class="t-quote">&ldquo;Made our grand opening feel like a REAL event. The walk-through arch in our brand colours was exactly what I pictured &mdash; our foot traffic that day was the best we've ever had.&rdquo;</p>
+          <div class="t-who">
+            Morgan K.
+            <small>Grand Opening &mdash; East Kildonan</small>
+          </div>
+        </article>
+
+        <article class="t-card reveal">
+          <div class="t-stars" aria-label="5 out of 5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+          </div>
+          <p class="t-quote">&ldquo;I sent one inspo photo and a hex code and she NAILED it. Showed up early, installed quietly, came back at the end to pack up &mdash; hands-down the easiest vendor I've ever worked with.&rdquo;</p>
+          <div class="t-who">
+            Sarah L.
+            <small>50th Birthday &mdash; Winnipeg</small>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Yellow scallop into the prep section -->
+  <div class="scallop-div yellow-cream flip" aria-hidden="true" style="background-color: var(--pink-baby-soft);"></div>
+
+  <!-- =====================================================
+       INQUIRY PREP — pre-form expectation-setter
+       (filters tire-kickers, gives undecided people a structure)
+       ===================================================== -->
+  <section class="prep" id="prep" aria-label="How to come prepared">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Before you inquire</span>
+        <h2>Come prepared, <span class="underline-scribble">leave with a vision</span></h2>
+        <p class="sub">a quick three-step heads-up so the form takes &lt; 3 minutes</p>
+      </div>
+
+      <ol class="prep-grid">
+        <li class="prep-card reveal">
+          <span class="prep-num">01</span>
+          <h3>Have these handy</h3>
+          <p>Event date, venue, rough headcount, the colors you love &mdash; even one inspo photo or a Pinterest link. The more we know, the better we mock up.</p>
+          <span class="prep-tag">2 mins to gather</span>
+        </li>
+
+        <li class="prep-card reveal">
+          <span class="prep-num">02</span>
+          <h3>What you get back</h3>
+          <p>Within 48 hours we send a custom mock-up, a color palette, and a tailored quote &mdash; not a copy-paste. Tweak it until it's perfect, then we lock it in.</p>
+          <span class="prep-tag">48-hour turnaround</span>
+        </li>
+
+        <li class="prep-card reveal">
+          <span class="prep-num">03</span>
+          <h3>Book early</h3>
+          <p>Custom installs need at least 7&ndash;10 days to design and source. Weekends fill fast &mdash; we recommend reaching out 2&ndash;4 weeks ahead for best dates.</p>
+          <span class="prep-tag">2&ndash;4 weeks ideal</span>
+        </li>
+      </ol>
+
+      <p class="prep-cta-note reveal">
+        Not sure where to start? <a href="#contact">Just fill the form</a> &mdash; we'll guide you from there.
+      </p>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       CONTACT
+       ===================================================== -->
+  <div class="contact-wrap" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Step 3 &middot; Inquiry Form</span>
+        <h2>Tell us your <span class="underline-scribble">vibe</span></h2>
+        <p class="sub">the more detail you share, the better we can match it &mdash; replies within 24h</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="jotform-wrap reveal">
+          <div class="form-collapse" id="formCollapse" data-state="closed">
+            <button type="button" class="form-trigger" id="formTrigger" aria-expanded="false" aria-controls="formShell">
+              <span class="form-trigger-eyebrow">Inquiry Form</span>
+              <span class="form-trigger-title">Ready when you are.</span>
+              <span class="form-trigger-meta">
+                <span><strong>~3 mins</strong> to fill</span>
+                <span class="dot-sep" aria-hidden="true">&bull;</span>
+                <span>Reply within <strong>24h</strong></span>
+                <span class="dot-sep" aria-hidden="true">&bull;</span>
+                <span>Custom mockup in <strong>48h</strong></span>
+              </span>
+              <span class="form-trigger-cta">
+                Start the inquiry
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </span>
+            </button>
+            <div class="form-shell" id="formShell" hidden>
+              <iframe id="JotFormIFrame-251727255666061"
+                      title="Inflatable Decorations Inquiry Form"
+                      allowtransparency="true"
+                      allow="geolocation; microphone; camera; fullscreen"
+                      data-src="https://form.jotform.com/251727255666061"
+                      frameborder="0"
+                      scrolling="no"></iframe>
+              <span class="jotform-note">Form submissions go straight to Inflatable Decorations &mdash; we reply within 24 hours.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="info-card reveal">
+          <h3>Other ways to say hi</h3>
+
+          <div class="info-row">
+            <span class="info-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <p>
+              <strong>Instagram</strong>
+              <a href="https://instagram.com/inflatabledecorations" target="_blank" rel="noopener">@inflatabledecorations</a>
+            </p>
+          </div>
+
+          <div class="info-row">
+            <span class="info-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <p>
+              <strong>Email</strong>
+              <!-- TODO: replace with real client email -->
+              <a href="mailto:hello@inflatabledecorations.ca">hello@inflatabledecorations.ca</a>
+            </p>
+          </div>
+
+          <div class="info-row">
+            <span class="info-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <p>
+              <strong>Service Area</strong>
+              Winnipeg + surrounding areas
+            </p>
+          </div>
+
+          <div class="info-row">
+            <span class="info-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
+            <p>
+              <strong>Response time</strong>
+              Within 24 hours &mdash; book early for weekends!
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-row">
+            <img src="Assets/Brand/logo-512.png" alt="Inflatable Decorations logo" />
+            <span>Inflatable Decorations</span>
+          </div>
+          <p>Custom-designed balloon installs for Winnipeg weddings, showers, birthdays and everything in between. Let's make your day unforgettable.</p>
+        </div>
+
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Stay in the loop</h4>
+          <ul>
+            <li><a href="https://instagram.com/inflatabledecorations" target="_blank" rel="noopener">Instagram @inflatabledecorations</a></li>
+            <!-- TODO: add real email + phone once confirmed -->
+            <li><a href="mailto:hello@inflatabledecorations.ca">hello@inflatabledecorations.ca</a></li>
+            <li>Winnipeg, Manitoba</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="yr">2026</span> Inflatable Decorations. All rights reserved.</span>
+        <span>Site crafted by <a href="https://fjmedia.ca" target="_blank" rel="noopener">FJMedia</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA bar (shown only on small screens) -->
+  <div class="mobile-cta-bar" id="mobileCtaBar" aria-label="Quick contact">
+    <a href="#contact" class="mobile-cta-btn primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      Inquiry Form
+    </a>
+    <a href="https://instagram.com/inflatabledecorations" target="_blank" rel="noopener" class="mobile-cta-btn ghost" aria-label="DM us on Instagram">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      DM Us
+    </a>
+  </div>
+
+  <!-- Cursor balloon trail layer (desktop fine-pointer only) -->
+  <div class="cursor-trail" id="cursorTrail" aria-hidden="true"></div>
+
+  <!-- Scroll-to-top -->
+  <button type="button" class="scroll-top" id="scrollTop" aria-label="Scroll back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="12" y1="19" x2="12" y2="5"/>
+      <polyline points="5 12 12 5 19 12"/>
+    </svg>
+  </button>
+
+  <script src="script.js" defer></script>
+
+  <!-- JotForm embed auto-resize handler — attaches the moment the iframe is given its src -->
+  <script src="https://cdn.jotform.com/s/umd/latest/for-form-embed-handler.js"></script>
+  <script>
+    (function () {
+      var iframe = document.getElementById('JotFormIFrame-251727255666061');
+      if (!iframe) return;
+      var attached = false;
+      function attach() {
+        if (attached) return;
+        if (!iframe.getAttribute('src')) return;
+        if (!window.jotformEmbedHandler) return;
+        attached = true;
+        window.jotformEmbedHandler(
+          "iframe[id='JotFormIFrame-251727255666061']",
+          "https://form.jotform.com"
+        );
+      }
+      // Watch for src being set (warm-load fires before click)
+      var mo = new MutationObserver(function () {
+        attach();
+        if (attached) mo.disconnect();
+      });
+      mo.observe(iframe, { attributes: true, attributeFilter: ['src'] });
+      // Also try on first interaction in case observer misses
+      attach();
+    })();
+  </script>
+</body>
 </html>
