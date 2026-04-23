@@ -376,155 +376,115 @@
   <div class="scallop-div cream-yellow" aria-hidden="true" style="background-color: var(--lilac-soft);"></div>
 
   <!-- =====================================================
-       GALLERY — Polaroid Mosaic
+       GALLERY (continuous marquee)
        ===================================================== -->
-  <section class="gallery gallery-mosaic" id="gallery">
-    <!-- Floating decorative balloons -->
-    <span class="mosaic-orb orb-a" aria-hidden="true"></span>
-    <span class="mosaic-orb orb-b" aria-hidden="true"></span>
-    <span class="mosaic-orb orb-c" aria-hidden="true"></span>
-
-    <div class="container">
+  <section class="gallery gallery-marquee" id="gallery">
+    <div class="gallery-head container">
       <div class="section-head reveal">
         <span class="eyebrow">Recent Celebrations</span>
-        <h2>Pinned to our <span class="underline-scribble">moodboard</span></h2>
-        <p class="sub">A scrapbook of recent installs &mdash; tap any photo to see it bigger.</p>
-      </div>
-
-      <!-- Bento mosaic of polaroid tiles -->
-      <div class="mosaic" id="mosaic">
-        <button class="poly poly-xl tape-pink reveal" data-rot="-2" aria-label="Featured balloon backdrop install">
-          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Cover.jpg" alt="Custom color-matched balloon backdrop &mdash; signature install" />
-          <span class="poly-cap">Signature Backdrop</span>
-        </button>
-        <button class="poly poly-sm tape-yellow reveal" data-rot="3" aria-label="Walk-through arch">
-          <img loading="lazy" src="Assets/Gallery/Walkthrough Arches/Cover.jpg" alt="Walk-through balloon arch entryway" />
-          <span class="poly-cap">Walk-Through</span>
-        </button>
-        <button class="poly poly-sm tape-mint reveal" data-rot="-3" aria-label="Balloon bouquet">
-          <img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/Cover.jpg" alt="Custom balloon bouquet" />
-          <span class="poly-cap">Bouquet</span>
-        </button>
-        <button class="poly poly-md tape-lilac reveal" data-rot="2" aria-label="Standing balloon column">
-          <img loading="lazy" src="Assets/Gallery/Columns/Cover.jpg" alt="Standing balloon column" />
-          <span class="poly-cap">Columns</span>
-        </button>
-        <button class="poly poly-sm tape-pink reveal" data-rot="-1.5" aria-label="Backdrop and garland">
-          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Favorite.jpg" alt="Favorite balloon backdrop setup" />
-          <span class="poly-cap">Favorite Setup</span>
-        </button>
-        <button class="poly poly-md tape-mint reveal" data-rot="2.5" aria-label="Grab and Go garland">
-          <img loading="lazy" src="Assets/Gallery/Grab &amp; Go/Cover.jpg" alt="Grab &amp; Go pre-made balloon garland" />
-          <span class="poly-cap">Grab &amp; Go</span>
-        </button>
-        <button class="poly poly-sm tape-yellow reveal" data-rot="-2.5" aria-label="Walk-through arch themed">
-          <img loading="lazy" src="Assets/Gallery/Walkthrough Arches/Themed-WTA.jpg" alt="Themed walk-through balloon arch" />
-          <span class="poly-cap">Themed Arch</span>
-        </button>
-        <button class="poly poly-sm tape-pink reveal" data-rot="3" aria-label="Custom backdrop">
-          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/664883286_1675006023843568_4592194640332315545_n.jpg" alt="Color-matched balloon backdrop install" />
-          <span class="poly-cap">Color-Matched</span>
-        </button>
-        <button class="poly poly-md tape-lilac reveal" data-rot="-2" aria-label="Number stack">
-          <img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/676984877_933561046118684_1749973930698617400_n.jpg" alt="Giant foil number stack with organic garland base" />
-          <span class="poly-cap">Number Stack</span>
-        </button>
-        <button class="poly poly-sm tape-mint reveal" data-rot="2" aria-label="Lush garland">
-          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672155829_1255830733259550_4346246369048823540_n.jpg" alt="Lush balloon garland on chiara arch" />
-          <span class="poly-cap">Chiara Arch</span>
-        </button>
-        <button class="poly poly-sm tape-yellow reveal" data-rot="-3" aria-label="Backdrop and garland">
-          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672176279_1640185133859884_6066715320209476203_n.jpg" alt="Seasonal themed balloon backdrop" />
-          <span class="poly-cap">Seasonal Theme</span>
-        </button>
-        <button class="poly poly-sm tape-pink reveal" data-rot="2.5" aria-label="Backdrop and garland">
-          <img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Backdropngarland1.jpg" alt="Themed balloon backdrop and garland" />
-          <span class="poly-cap">Themed Setup</span>
-        </button>
-      </div>
-
-      <div class="gallery-cta reveal">
-        <p class="ig-tease">There's plenty more where that came from.</p>
-        <a href="https://www.instagram.com/inflatabledecorations/" target="_blank" rel="noopener" class="btn btn-primary btn-shimmer">
-          <span class="btn-shimmer-inner">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            See the rest on Instagram
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </span>
-        </a>
-        <span class="ig-handle">@inflatabledecorations</span>
+        <h2>The <span class="underline-scribble">Gallery</span></h2>
+        <p class="sub">a peek at recent installs &mdash; follow us on Instagram for more</p>
       </div>
     </div>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer" aria-modal="true">
-      <button class="lb-close" id="lbClose" aria-label="Close">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
-      </button>
-      <button class="lb-prev" id="lbPrev" aria-label="Previous photo">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <img id="lbImage" src="" alt="" />
-      <button class="lb-next" id="lbNext" aria-label="Next photo">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
+    <!-- Row 1: Backdrops & Garlands — scrolls left -->
+    <div class="marquee-row reveal">
+      <div class="marquee-track">
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Cover.jpg" alt="Custom color-matched balloon backdrop" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Favorite.jpg" alt="Favorite balloon backdrop setup" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/655320035_1478624020528770_3403384665709763277_n.jpg" alt="Backdrop and organic garland" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/664883286_1675006023843568_4592194640332315545_n.jpg" alt="Color-matched balloon backdrop" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/669127862_846859224352057_8099983497208557162_n.jpg" alt="Backdrop and organic garland" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/670439079_4034309923367392_9196080599764451676_n.jpg" alt="Backdrop with garland accents" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/671626407_2368958973629978_8791729836058276314_n.jpg" alt="Custom backdrop install" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672155829_1255830733259550_4346246369048823540_n.jpg" alt="Lush garland on chiara arch" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672176279_1640185133859884_6066715320209476203_n.jpg" alt="Seasonal themed backdrop" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672701291_1391318602753236_8484134399833125210_n.jpg" alt="Custom backdrop and garland" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/675001955_1339424151567848_97630896647164254_n.jpg" alt="Backdrop with custom palette" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/675550313_832502393225263_569436542305509635_n.jpg" alt="Custom balloon backdrop" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Backdropngarland1.jpg" alt="Themed balloon backdrop" /></div>
+        <!-- duplicate set for seamless loop -->
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Cover.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Favorite.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/655320035_1478624020528770_3403384665709763277_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/664883286_1675006023843568_4592194640332315545_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/669127862_846859224352057_8099983497208557162_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/670439079_4034309923367392_9196080599764451676_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/671626407_2368958973629978_8791729836058276314_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672155829_1255830733259550_4346246369048823540_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672176279_1640185133859884_6066715320209476203_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/672701291_1391318602753236_8484134399833125210_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/675001955_1339424151567848_97630896647164254_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/675550313_832502393225263_569436542305509635_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Backdrop and Balloon Garland setup/Backdropngarland1.jpg" alt="" /></div>
+      </div>
     </div>
+
+    <!-- Row 2: Arches + Columns + Bouquets + Grab & Go — scrolls right -->
+    <div class="marquee-row reverse reveal">
+      <div class="marquee-track">
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Walkthrough Arches/Cover.jpg" alt="Walk-through balloon arch" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Walkthrough Arches/Themed-WTA.jpg" alt="Themed walk-through arch" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Walkthrough Arches/670780359_1316750920315655_1714856704636191444_n.jpg" alt="Walk-through arch" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Walkthrough Arches/672358270_1631439664642750_3306499537867830646_n.jpg" alt="Walk-through arch" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Columns/Cover.jpg" alt="Standing balloon column" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Columns/669598196_784596854516659_4741304633711714289_n.jpg" alt="Balloon column" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Columns/670314208_1455045216161617_4088750443734550869_n.jpg" alt="Standing column" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Columns/672196176_964600419278025_5186114894174741111_n.jpg" alt="Balloon column" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/Cover.jpg" alt="Balloon bouquet" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/661010358_1479121863915211_8930539252150607194_n.jpg" alt="Balloon bouquet" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/670949303_26453326074361773_3808112994526126323_n.jpg" alt="Custom bouquet" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/676984877_933561046118684_1749973930698617400_n.jpg" alt="Number stack" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/677200198_1874178870217536_4064233792141304234_n.jpg" alt="Custom bouquet" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Grab &amp; Go/Cover.jpg" alt="Grab & Go pre-made garland" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Grab &amp; Go/670611478_3926052884357320_2655556587710275461_n.jpg" alt="Grab & Go garland" /></div>
+        <!-- duplicate set for seamless loop -->
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Walkthrough Arches/Cover.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Walkthrough Arches/Themed-WTA.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Walkthrough Arches/670780359_1316750920315655_1714856704636191444_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Walkthrough Arches/672358270_1631439664642750_3306499537867830646_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Columns/Cover.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Columns/669598196_784596854516659_4741304633711714289_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Columns/670314208_1455045216161617_4088750443734550869_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Columns/672196176_964600419278025_5186114894174741111_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/Cover.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/661010358_1479121863915211_8930539252150607194_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/670949303_26453326074361773_3808112994526126323_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/676984877_933561046118684_1749973930698617400_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Ballon Bouquets-Number Stacks/677200198_1874178870217536_4064233792141304234_n.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Grab &amp; Go/Cover.jpg" alt="" /></div>
+        <div class="g-tile"><img loading="lazy" src="Assets/Gallery/Grab &amp; Go/670611478_3926052884357320_2655556587710275461_n.jpg" alt="" /></div>
+      </div>
+    </div>
+
+    <div class="gallery-cta reveal">
+      <a href="https://www.instagram.com/inflatabledecorations/" target="_blank" rel="noopener" class="btn btn-primary btn-shimmer">
+        <span class="btn-shimmer-inner">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          See more on Instagram
+        </span>
+      </a>
+    </div>
+
   </section>
 
   <!-- =====================================================
        WHY CHOOSE INFLATABLE DECORATIONS
        ===================================================== -->
-  <section class="why-choose why-split" id="why-choose" aria-label="Why choose Inflatable Decorations">
-    <div class="container why-grid">
-      <div class="why-text reveal">
+  <section class="why-choose" id="why-choose" aria-label="Why choose Inflatable Decorations">
+    <div class="container">
+      <div class="section-head reveal">
         <span class="eyebrow">Why Us</span>
         <h2>Why choose <span class="underline-scribble">Inflatable Decorations</span></h2>
+      </div>
+      <div class="why-copy reveal">
         <p>
           At Inflatable Decorations, we believe decor should feel just as special as the moment you're celebrating!
         </p>
         <p>
           Every design is thoughtfully customized to match your vision &mdash; whether it's a bold statement piece or something soft and subtle. From seamless delivery and set up to reliable, detail-focused service, we make the entire process easy and stress-free.
         </p>
-        <span class="sticker tilt-r why-sticker" aria-hidden="true">made for<br/>your moment!</span>
       </div>
-      <ul class="why-marks reveal" aria-label="What sets us apart">
-        <li>
-          <span class="why-mark-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg>
-          </span>
-          <div>
-            <strong>Custom, not cookie-cutter</strong>
-            <span>Every concept built around your colours, theme &amp; venue.</span>
-          </div>
-        </li>
-        <li>
-          <span class="why-mark-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
-          </span>
-          <div>
-            <strong>Premium balloons, biodegradable latex</strong>
-            <span>Polished, photo-ready, earth-friendly.</span>
-          </div>
-        </li>
-        <li>
-          <span class="why-mark-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </span>
-          <div>
-            <strong>You don't lift a finger</strong>
-            <span>We deliver, set up on-site, then come back to pack it down.</span>
-          </div>
-        </li>
-        <li>
-          <span class="why-mark-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </span>
-          <div>
-            <strong>Detail-focused, stress-free</strong>
-            <span>Reliable timing, clean install, and the &ldquo;wow&rdquo; on arrival.</span>
-          </div>
-        </li>
-      </ul>
     </div>
   </section>
 
@@ -541,29 +501,17 @@
         <h2>Easy as <span class="underline-scribble">1, 2, 3</span></h2>
         <p class="sub">three steps to the good kind of chaos</p>
       </div>
-      <div class="process-grid process-grid-connected">
+      <div class="process-grid">
         <div class="process-card reveal">
           <div class="process-step">01</div>
           <h3>Inquiry &amp; Booking</h3>
           <p>Send us your event details and secure your date.</p>
         </div>
-        <span class="process-arrow reveal" aria-hidden="true">
-          <svg viewBox="0 0 80 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 12 Q 24 2, 40 12 T 76 12" stroke-dasharray="3 5" />
-            <path d="M68 6 L78 12 L68 18" />
-          </svg>
-        </span>
         <div class="process-card reveal">
           <div class="process-step">02</div>
           <h3>Custom Design</h3>
           <p>We create a personalized balloon decor concept in your colours and style.</p>
         </div>
-        <span class="process-arrow reveal" aria-hidden="true">
-          <svg viewBox="0 0 80 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 12 Q 24 22, 40 12 T 76 12" stroke-dasharray="3 5" />
-            <path d="M68 6 L78 12 L68 18" />
-          </svg>
-        </span>
         <div class="process-card reveal">
           <div class="process-step">03</div>
           <h3>Full Service Setup</h3>
