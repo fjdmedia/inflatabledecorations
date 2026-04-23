@@ -102,41 +102,8 @@
     toggleBtn();
   }
 
-  /* ---------- Gallery filter + random shuffle + cross-section routing ---------- */
-  const filterBtns = $$('.filter-btn');
-  const galleryItems = $$('.gallery-item');
-  const galleryGrid = $('#galleryGrid');
-
-  // Shuffle items on load so "All" feels fresh each visit
-  if (galleryGrid && galleryItems.length) {
-    const shuffled = galleryItems.slice().sort(() => Math.random() - 0.5);
-    shuffled.forEach(item => galleryGrid.appendChild(item));
-  }
-
-  function applyFilter(filter) {
-    filterBtns.forEach(b => {
-      const isActive = b.dataset.filter === filter;
-      b.classList.toggle('active', isActive);
-      b.setAttribute('aria-selected', isActive ? 'true' : 'false');
-    });
-    galleryItems.forEach(item => {
-      const cat = item.dataset.cat;
-      if (filter === 'all' || cat === filter) item.classList.remove('hide');
-      else item.classList.add('hide');
-    });
-  }
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
-  });
-
-  // Service-card → gallery routing: clicking "View N examples" filters the gallery
-  $$('a.inquire[data-cat]').forEach(link => {
-    link.addEventListener('click', () => {
-      const cat = link.dataset.cat;
-      if (cat) setTimeout(() => applyFilter(cat), 60);
-    });
-  });
+  /* ---------- Gallery (polaroid mosaic) ---------- */
+  const galleryItems = $$('.poly, .gallery-item');
 
   /* ---------- Lightbox ---------- */
   const lightbox = $('#lightbox');
