@@ -624,7 +624,6 @@ p { margin: 0 0 1em; }
 .marquee-row.reverse .marquee-track {
   animation: ifd-marquee-reverse 100s linear infinite;
 }
-.marquee-track:hover { animation-play-state: paused; }
 @keyframes ifd-marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
