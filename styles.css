@@ -839,7 +839,38 @@ p { margin: 0 0 1em; }
 .t-card:nth-child(2) { background: var(--mint-soft); }
 .t-card:nth-child(3) { background: var(--lilac-soft); }
 .t-stars { display: flex; gap: 3px; color: var(--pink-hot); }
-.t-quote { font-size: 16px; color: var(--plum); margin: 0; line-height: 1.55; }
+.t-quote {
+  font-size: 16px;
+  color: var(--plum);
+  margin: 0;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.t-card.expanded .t-quote {
+  -webkit-line-clamp: unset;
+  display: block;
+  overflow: visible;
+}
+.t-expand {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: -6px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pink-hot);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s ease;
+}
+.t-expand:hover { color: var(--plum); }
+.t-expand:focus-visible { outline: 2px solid var(--pink-hot); outline-offset: 3px; border-radius: 4px; }
 .t-who { margin-top: auto; font-weight: 700; color: var(--plum); }
 .t-who small { display: block; font-weight: 500; font-size: 12.5px; color: var(--plum-soft); font-family: var(--font-script); font-style: normal; font-size: 18px; margin-top: 2px; }
 

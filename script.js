@@ -75,23 +75,69 @@
   }
 
   /* ---------- Active nav link on scroll ---------- */
-  const sectionIds = ['top', 'services', 'gallery', 'about', 'contact'];
+  const sectionIds = ['top', 'services', 'about', 'gallery', 'contact'];
   const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
   const linkMap  = {};
   $$('#navLinks a:not(.btn)').forEach(a => {
     const href = a.getAttribute('href') || '';
     if (href.startsWith('#')) linkMap[href.slice(1)] = a;
   });
-  function updateActive() {
-    const y = window.scrollY + 140;
-    let activeId = sectionIds[0];
-    for (const s of sections) {
-      if (s.offsetTop <= y) activeId = s.id;
-    }
-    Object.keys(linkMap).forEach(k => linkMap[k].classList.toggle('active', k === activeId));
+  function setActive(id) {
+    Object.keys(linkMap).forEach(k => linkMap[k].classList.toggle('active', k === id));
   }
-  window.addEventListener('scroll', updateActive, { passive: true });
-  updateActive();
+  if ('IntersectionObserver' in window && sections.length) {
+    const visible = new Map();
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) visible.set(e.target.id, e.intersectionRatio);
+        else visible.delete(e.target.id);
+      });
+      if (window.scrollY < 80) { setActive(sectionIds[0]); return; }
+      if (!visible.size) return;
+      let top = sectionIds[0], best = -1;
+      for (const [id, ratio] of visible) {
+        if (ratio > best) { best = ratio; top = id; }
+      }
+      setActive(top);
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
+    sections.forEach(s => spy.observe(s));
+  } else {
+    const onScroll = () => {
+      const y = window.scrollY + window.innerHeight / 2;
+      let activeId = sectionIds[0];
+      for (const s of sections) if (s.offsetTop <= y) activeId = s.id;
+      setActive(activeId);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---------- Testimonial "Read more" expand (one-at-a-time accordion) ---------- */
+  const tCards = $$('.t-card');
+  const collapseCard = (card) => {
+    if (!card.classList.contains('expanded')) return;
+    card.classList.remove('expanded');
+    const b = card.querySelector('.t-expand');
+    if (b) { b.setAttribute('aria-expanded', 'false'); b.textContent = 'Read more'; }
+  };
+  tCards.forEach(card => {
+    const quote = card.querySelector('.t-quote');
+    const btn   = card.querySelector('.t-expand');
+    if (!quote || !btn) return;
+    const check = () => {
+      if (card.classList.contains('expanded')) return;
+      btn.hidden = quote.scrollHeight <= quote.clientHeight + 2;
+    };
+    check();
+    window.addEventListener('resize', check, { passive: true });
+    btn.addEventListener('click', () => {
+      const willExpand = !card.classList.contains('expanded');
+      if (willExpand) tCards.forEach(c => { if (c !== card) collapseCard(c); });
+      card.classList.toggle('expanded', willExpand);
+      btn.setAttribute('aria-expanded', willExpand ? 'true' : 'false');
+      btn.textContent = willExpand ? 'Read less' : 'Read more';
+    });
+  });
 
   /* ---------- Scroll-to-top ---------- */
   const scrollTop = $('#scrollTop');
