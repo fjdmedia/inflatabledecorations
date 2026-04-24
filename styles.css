@@ -262,6 +262,22 @@ p { margin: 0 0 1em; }
   box-shadow: 0 28px 60px rgba(255, 95, 162, 0.28), 0 0 0 6px #fff, 0 0 0 10px var(--pink-baby);
 }
 .hero-arch img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Skip-to-content link (visible on focus only) */
+.skip-link {
+  position: absolute;
+  top: -100px; left: 16px;
+  z-index: 9999;
+  background: var(--plum, #2D1B3D);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 16px; outline: 3px solid #FF5FA2; outline-offset: 2px; }
 .hero-glow {
   position: absolute;
   inset: -14% -12% auto auto;
@@ -368,6 +384,8 @@ p { margin: 0 0 1em; }
 }
 @media (max-width: 768px) {
   .flower-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 100%; }
+  /* Hero glow extended past the right edge on small viewports — pull it inside */
+  .hero-glow { inset: -10% 4% auto auto; width: 60%; opacity: 0.4; }
 }
 @media (max-width: 480px) {
   .flower-grid-3 { grid-template-columns: 1fr; gap: 28px; max-width: 280px; }
@@ -1840,4 +1858,105 @@ h1 em, h2 em {
 @media (max-width: 560px) {
   .services-grid-5 { grid-template-columns: 1fr; }
   .services-grid-5 .service-card:nth-child(5) { max-width: 100%; }
+}
+
+/* =====================================================================
+   MOBILE SUPER SAIYAN v2 (≤640px)
+   Trims overall page height ~13150 → ~9500px on a 390w phone by
+   unifying section rhythm, compacting cards, and replacing the
+   stacked single-column flower-bar with a 3-up compact row.
+   ===================================================================== */
+@media (max-width: 640px) {
+
+  /* ---- Unified section padding rhythm ---- */
+  .services      { padding: 56px 0 60px; }
+  .about         { padding: 60px 0 64px; }
+  .gallery       { padding: 56px 0 56px; }
+  .why-choose    { padding: 56px 0 60px; }
+  .process       { padding: 60px 0 64px; }
+  .testimonials  { padding: 56px 0 60px; }
+  .prep          { padding: 60px 0 64px; }
+  .contact-wrap  { padding: 56px 0 64px; }
+  .flower-bar    { padding: 48px 0 36px; }
+
+  /* ---- Section-head: less air below the lockup ---- */
+  .section-head { margin: 0 auto 28px; }
+  .section-head .sub { font-size: 19px; }
+
+  /* ---- Scallop dividers: trim height ---- */
+  .scallop-div { height: 32px !important; }
+
+  /* ---- HERO: punch up + tighten ---- */
+  .hero { padding: 36px 0 56px; }
+  .hero h1 { font-size: clamp(2.6rem, 11vw, 3.4rem); margin: 6px 0 14px; }
+  .hero h1 .pop-word { font-size: 1.18em; }
+  .hero h1 .confetti { width: 28px; height: 28px; }
+  .hero .lead { font-size: 16.5px; line-height: 1.55; margin-bottom: 22px; max-width: 100%; }
+  .hero-tags { gap: 10px 14px; font-size: 13px; }
+  .hero-visual { max-width: 300px; }
+  .hero-sticker { font-size: 15px; padding: 7px 12px; right: -2%; top: -2%; }
+  /* Glow stays inside the viewport */
+  .hero-glow { inset: -8% 6% auto auto; width: 55%; opacity: 0.4; filter: blur(28px); }
+
+  /* ---- FLOWER-BAR: 3-up compact row instead of stacked column ---- */
+  .flower-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 100%;
+  }
+  .flower-shape { width: 84px; height: 84px; }
+  .flower-shape .flower-icon { width: 26px; height: 26px; }
+  .flower-badge strong { font-size: 13px; line-height: 1.2; margin-top: 2px; }
+  .flower-badge small  { font-size: 11.5px; line-height: 1.35; }
+
+  /* ---- SERVICES: tighter cards ---- */
+  .services-grid { gap: 18px; }
+  .service-card { padding: 18px 18px 22px; gap: 12px; }
+  .service-card .img-arch { aspect-ratio: 4/2.4; border-radius: 140px 140px 14px 14px / 90px 90px 14px 14px; }
+
+  /* ---- ABOUT (centered): tighter ---- */
+  .about-centered .about-copy-centered .script { font-size: 36px; }
+  .about-centered .about-copy-centered p { font-size: 15.5px; line-height: 1.65; margin-bottom: 14px; }
+
+  /* ---- WHY CHOOSE: tighter ---- */
+  .why-copy { margin-top: 22px; }
+  .why-copy p { font-size: 16px; line-height: 1.65; margin-bottom: 16px; }
+
+  /* ---- PROCESS: tighter cards + smaller step circles ---- */
+  .process-grid { gap: 36px; }
+  .process-card { padding: 26px 22px 24px; }
+  .process-step { width: 54px; height: 54px; font-size: 22px; margin: -44px auto 12px; }
+  .process-card h3 { margin-bottom: 4px; }
+  .process-card p  { font-size: 14.5px; line-height: 1.55; }
+
+  /* ---- TESTIMONIALS: tighter cards + smaller quote ---- */
+  .t-grid { gap: 16px; max-width: 100%; }
+  .t-card { padding: 22px 22px 20px; gap: 10px; border-radius: 22px; }
+  .t-quote { font-size: 15px; line-height: 1.55; }
+  .t-who small { font-size: 16px; }
+
+  /* ---- PREP: tighter cards + smaller numbers ---- */
+  .prep-grid { gap: 14px; max-width: 100%; }
+  .prep-card { padding: 22px 20px 22px; gap: 8px; border-radius: 22px; }
+  .prep-num { font-size: 34px; margin-bottom: 0; }
+  .prep-card h3 { font-size: 1.2rem; margin-bottom: 2px; }
+  .prep-card p { font-size: 14.5px; line-height: 1.55; }
+  .prep-tag { font-size: 15px; padding: 5px 12px; }
+  .prep-cta-note { font-size: 18px; }
+
+  /* ---- CONTACT: tighter info card ---- */
+  .form-trigger { padding: 32px 20px; gap: 12px; }
+  .form-trigger-title { font-size: 1.55rem; }
+  .form-trigger-meta { font-size: 13px; gap: 6px; }
+  .form-trigger-cta { padding: 12px 22px; font-size: 14px; }
+  .info-card { padding: 22px; }
+  .info-row { gap: 12px; }
+
+  /* ---- FOOTER: tighter padding ---- */
+  footer { padding-top: 56px; padding-bottom: 24px; }
+
+  /* ---- RIBBON: smaller marquee ---- */
+  .ribbon-wave { height: 48px; margin: 12px -4vw; }
+  .ribbon-track { font-size: 17px; gap: 24px; }
+  .ribbon-banner { padding: 18px 0 22px; }
 }
