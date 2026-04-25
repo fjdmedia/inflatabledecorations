@@ -26,6 +26,9 @@ Assets/Docs/build_proposal_pdf.py
 Archive/
 delete/
 .qa/
+.qa-check/
+Test Run/*.png
+Test Run/node_modules/
 
 # Python build artifacts
 __pycache__/
