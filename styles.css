@@ -1521,8 +1521,10 @@ h1, h2 { text-wrap: balance; }
   gap: 10px;
 }
 
-/* ---------- Marquee pause on hover ---------- */
-.ribbon-banner:hover .ribbon-track { animation-play-state: paused; }
+/* ---------- Ribbon marquee: keep scrolling on hover ---------- */
+.ribbon-banner:hover .ribbon-track,
+.ribbon-wave:hover .ribbon-track,
+.ribbon-track:hover { animation-play-state: running !important; }
 
 /* ---------- Section overlap (subtle visual flow) ---------- */
 .scallop-div + section,
