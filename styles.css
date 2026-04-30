@@ -504,7 +504,9 @@ p { margin: 0 0 1em; }
   color: var(--pink-hot-dk);
   font-weight: 700;
   font-size: 14px;
-  padding-top: 8px;
+  padding: 12px 4px 8px;
+  margin-left: -4px;
+  min-height: 44px;
   transition: gap .2s;
 }
 .service-card .inquire:hover { gap: 14px; }
@@ -857,8 +859,9 @@ p { margin: 0 0 1em; }
   align-self: flex-start;
   background: none;
   border: none;
-  padding: 0;
-  margin-top: -6px;
+  padding: 11px 8px;
+  margin: -6px -8px 0;
+  min-height: 44px;
   font: inherit;
   font-size: 14px;
   font-weight: 600;

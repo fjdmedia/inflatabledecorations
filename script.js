@@ -431,13 +431,18 @@
     });
   }
 
-  /* ---------- Mobile sticky CTA bar (show after scroll past hero) ---------- */
+  /* ---------- Mobile sticky CTA bar (show after scroll past hero, hide near form) ---------- */
   const mobileBar = $('#mobileCtaBar');
   if (mobileBar) {
     const heroEl = document.querySelector('.hero');
+    const contactSection = document.querySelector('#contact');
     function toggleMobileBar() {
       const heroBottom = heroEl ? heroEl.getBoundingClientRect().bottom : 600;
-      mobileBar.classList.toggle('show', heroBottom < 0);
+      // Hide the bar once the contact section enters the viewport so it never
+      // covers the form's Submit button on mobile.
+      const cr = contactSection ? contactSection.getBoundingClientRect() : null;
+      const contactInView = cr && cr.top < window.innerHeight && cr.bottom > 0;
+      mobileBar.classList.toggle('show', heroBottom < 0 && !contactInView);
     }
     window.addEventListener('scroll', toggleMobileBar, { passive: true });
     toggleMobileBar();
