@@ -54,6 +54,7 @@
 
     if (f.type === 'radio' || f.type === 'checkbox') {
       var head = document.createElement('span'); head.className = 'fj-lbl'; head.textContent = f.label; wrap.appendChild(head);
+      if (f.hint) { var hint = document.createElement('p'); hint.className = 'fj-hint'; hint.textContent = f.hint; wrap.appendChild(hint); }
       var grp = document.createElement('div'); grp.className = f.type === 'checkbox' ? 'fj-check-grid' : 'fj-choices';
       (f.options || []).forEach(function (opt) {
         var lab = document.createElement('label'); lab.className = f.type === 'checkbox' ? 'fj-check-card' : 'fj-choice';
@@ -135,6 +136,22 @@
       var el = fieldEl(f.id); if (!el) return;
       el.addEventListener('blur', function () { touched[f.id] = 1; showErr(f, validateField(f, el.value)); });
       el.addEventListener('input', function () { if (touched[f.id]) showErr(f, validateField(f, el.value)); });
+    });
+
+    // Conditional enable: a field with requiresAnyOf stays locked until >=1 box in the source field is checked.
+    allFields.forEach(function (f) {
+      if (!f.requiresAnyOf) return;
+      var src = form.querySelectorAll('input[name="' + f.requiresAnyOf + '"]');
+      var dep = form.querySelectorAll('input[name="' + f.id + '"]');
+      function sync() {
+        var any = Array.prototype.some.call(src, function (i) { return i.checked; });
+        Array.prototype.forEach.call(dep, function (i) {
+          i.disabled = !any; if (!any) i.checked = false;
+          var card = i.closest('.fj-check-card'); if (card) card.classList.toggle('fj-disabled', !any);
+        });
+      }
+      Array.prototype.forEach.call(src, function (i) { i.addEventListener('change', sync); });
+      sync();
     });
 
     form.addEventListener('submit', function (e) {

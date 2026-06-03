@@ -84,6 +84,9 @@ select.fj-input { appearance: none; padding-right: 2rem; cursor: pointer; }
 .fj-check-card:has(input:focus-visible) { outline: 2px solid var(--fj-accent); outline-offset: 2px; }
 .fj-check-card input { accent-color: var(--fj-accent); width: 18px; height: 18px; margin-top: 2px; flex: none; }
 .fj-check-card span { font-size: 14px; line-height: 1.45; }
+.fj-check-card.fj-disabled { opacity: 0.5; cursor: not-allowed; }
+.fj-check-card.fj-disabled input { cursor: not-allowed; }
+.fj-hint { margin: -2px 0 12px; font-size: 13px; color: var(--fj-muted); }
 
 .fj-file-field input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .fj-file-label { display: flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: var(--fj-h); padding: 0.85rem 1rem; border: 1px dashed var(--fj-rule-2); border-radius: var(--fj-r); color: var(--fj-muted); cursor: pointer; text-align: center; transition: border-color var(--fj-dur-fast) var(--fj-ease-std), background-color var(--fj-dur-fast) var(--fj-ease-std); }
