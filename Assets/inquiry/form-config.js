@@ -2,7 +2,8 @@
    endpoint = the Apps Script /exec URL (set after backend deploy). */
 window.FJ_FORM_CONFIG = {
   clientId: "inflatable-decorations",
-  endpoint: "REPLACE_WITH_EXEC_URL",
+  endpoint: "https://script.google.com/macros/s/AKfycbwIgtrzNwVmjNlKZudijALNxSHJkqzzR623f9FCu_nRdZrh9Z5soQTNuTHSDEstdf0C/exec",
+  successRedirect: "thank-you.html",
   brand: {
     "--fj-paper": "#FFFFFF",
     "--fj-paper-2": "#FFF1E0",
@@ -31,10 +32,10 @@ window.FJ_FORM_CONFIG = {
     ]},
     { legend: "Your event", fields: [
       { id: "category", type: "select", label: "Event type", options: ["Bridal shower", "Engagement party", "Birthday", "Baby shower", "Gender reveal", "Grand opening", "Corporate event", "Graduation", "Other"] },
-      { id: "date", type: "date", label: "Event date", required: true },
+      { id: "date", type: "date", label: "Event date", required: true, notPast: true },
       { id: "start", type: "time", label: "Start time", required: true },
-      { id: "end", type: "time", label: "End time", required: true },
-      { id: "setup", type: "text", label: "How many hours for set up prior to event", required: true, placeholder: "e.g. 2" },
+      { id: "end", type: "time", label: "End time", required: true, after: "start" },
+      { id: "setup", type: "number", label: "How many hours for set up prior to event", required: true, placeholder: "e.g. 2" },
       { id: "address", type: "text", label: "Event address", required: true, autocomplete: "street-address" },
       { id: "setup_location", type: "select", label: "Setup location", options: ["Private residence — indoors", "Private residence — outdoors", "Indoor event space", "Outdoor event space"] },
       { id: "theme", type: "text", label: "Theme / colour scheme", placeholder: "e.g. sage green & cream" },

@@ -26,11 +26,6 @@
   <meta name="twitter:description" content="Custom color-matched balloon decor in Winnipeg for birthdays, showers, weddings and corporate events." />
   <meta name="twitter:image" content="https://inflatabledecorationswpg.ca/Assets/Brand/logo-social.png" />
 
-  <!-- Warm up the JotForm + CDN connections so the iframe loads instantly on click -->
-  <link rel="preconnect" href="https://form.jotform.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.jotform.com" crossorigin />
-  <link rel="preconnect" href="https://submit.jotform.com" crossorigin />
-  <link rel="dns-prefetch" href="https://www.jotform.com" />
 
   <!-- Fonts: Caprasimo (chunky display) + Caveat (script) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,6 +34,7 @@
 
   <link rel="icon" type="image/png" href="Assets/Brand/logo-512.png" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="Assets/inquiry/inquiry-form.css" />
 
   <!-- Structured data: tells Google this is a local Winnipeg business,
        powers map-pack eligibility + star-rating snippet in search results -->
@@ -745,14 +741,7 @@
               </span>
             </button>
             <div class="form-shell" id="formShell" hidden>
-              <iframe id="JotFormIFrame-251727255666061"
-                      title="Inflatable Decorations Inquiry Form"
-                      allowtransparency="true"
-                      allow="geolocation; microphone; camera; fullscreen"
-                      data-src="https://form.jotform.com/251727255666061"
-                      frameborder="0"
-                      scrolling="yes"></iframe>
-              <span class="jotform-note">Form submissions go straight to Inflatable Decorations &mdash; we reply within 24 hours.</span>
+              <div class="fj-inquiry" id="home-form-mount"></div>
             </div>
           </div>
         </div>
@@ -871,16 +860,17 @@
 
   <script src="script.js" defer></script>
 
-  <!-- JotForm auto-resize handler intentionally disabled — iframe uses fixed height + internal scroll -->
+  <!-- Inline custom inquiry form (replaces JotForm) -->
+  <script src="Assets/inquiry/form-config.js"></script>
+  <script src="Assets/inquiry/inquiry-form.js"></script>
   <script>
     (function () {
-      var iframe = document.getElementById('JotFormIFrame-251727255666061');
-      if (!iframe) return;
-      // Block any inline height JotForm tries to set via postMessage
-      window.addEventListener('message', function (e) {
-        if (typeof e.data !== 'string' || e.data.indexOf('setHeight') === -1) return;
-        if (iframe.style.height) iframe.style.height = '';
-      }, true);
+      var mount = document.getElementById('home-form-mount');
+      if (mount && window.FJInquiryForm && window.FJ_FORM_CONFIG) {
+        var cfg = Object.assign({}, window.FJ_FORM_CONFIG);
+        delete cfg.head;  // the #contact section already supplies a heading
+        FJInquiryForm.render(cfg, mount);
+      }
     })();
   </script>
 </body>

@@ -92,6 +92,17 @@ select.fj-input { appearance: none; padding-right: 2rem; cursor: pointer; }
 .fj-file-label { display: flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: var(--fj-h); padding: 0.85rem 1rem; border: 1px dashed var(--fj-rule-2); border-radius: var(--fj-r); color: var(--fj-muted); cursor: pointer; text-align: center; transition: border-color var(--fj-dur-fast) var(--fj-ease-std), background-color var(--fj-dur-fast) var(--fj-ease-std); }
 @media (hover: hover) { .fj-file-label:hover { background: var(--fj-paper-2); border-color: var(--fj-accent); color: var(--fj-ink); } }
 .fj-file-field input:focus-visible + .fj-file-label { outline: 2px solid var(--fj-accent); outline-offset: 2px; }
+.fj-file-field.fj-dragging .fj-file-label { background: var(--fj-paper-2); border-color: var(--fj-accent); border-style: solid; color: var(--fj-ink); }
+.fj-help.is-ok { color: var(--fj-success); font-weight: 600; }
+
+/* photo previews — confirms each image was added, with remove */
+.fj-file-previews { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.85rem; }
+.fj-file-previews:empty { margin-top: 0; }
+.fj-photo { position: relative; width: 88px; }
+.fj-photo img { width: 88px; height: 88px; object-fit: cover; border-radius: var(--fj-r); border: 1px solid var(--fj-rule); display: block; }
+.fj-photo-name { display: block; margin-top: 0.3rem; max-width: 88px; font-size: 11px; color: var(--fj-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fj-photo-rm { position: absolute; top: -7px; right: -7px; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; padding: 0; border: 2px solid var(--fj-paper); border-radius: 50%; background: var(--fj-ink); color: var(--fj-on-accent); font-size: 11px; line-height: 1; cursor: pointer; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25); transition: background-color var(--fj-dur-fast) var(--fj-ease-std), transform var(--fj-dur-fast) var(--fj-ease-std); }
+@media (hover: hover) { .fj-photo-rm:hover { background: var(--fj-accent); transform: scale(1.1); } }
 
 /* button — all 8 states, single-line, press tick, loading spinner */
 .fj-btn {

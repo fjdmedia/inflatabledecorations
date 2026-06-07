@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank you — we got your inquiry | Inflatable Decorations</title>
+  <meta name="description" content="Thanks for your balloon decor inquiry. We'll review your event details and reply within 24 hours." />
+  <!-- Confirmation page: not a landing page, keep it out of search but let link equity flow home -->
+  <meta name="robots" content="noindex,follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Caveat:wght@500;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" />
+
+  <link rel="icon" type="image/png" href="Assets/Brand/logo-512.png" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Thank-you confirmation — her pastel-rainbow brand, centered reassurance */
+    .ty-main {
+      min-height: calc(100vh - 220px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 130px 20px 70px;
+      background:
+        radial-gradient(40% 55% at 12% 8%, var(--pink-baby-soft) 0%, transparent 60%),
+        radial-gradient(38% 50% at 88% 4%, var(--sky-soft) 0%, transparent 60%),
+        radial-gradient(45% 55% at 80% 96%, var(--mint-soft) 0%, transparent 60%),
+        var(--cream);
+    }
+    .ty-card { max-width: 720px; text-align: center; }
+
+    .ty-badge {
+      width: 96px; height: 96px; margin: 0 auto 26px;
+      border-radius: 50%;
+      background: var(--pink-hot);
+      display: grid; place-items: center;
+      box-shadow: 0 8px 0 var(--pink-hot-dk), 0 18px 40px rgba(255, 95, 162, 0.4);
+      animation: ty-pop .6s var(--ease-bounce) both;
+    }
+    .ty-badge svg { width: 50px; height: 50px; }
+    .ty-badge svg path {
+      stroke-dasharray: 36; stroke-dashoffset: 36;
+      animation: ty-check .45s var(--ease) .35s forwards;
+    }
+    @keyframes ty-pop { 0% { transform: scale(0); } 70% { transform: scale(1.12); } 100% { transform: scale(1); } }
+    @keyframes ty-check { to { stroke-dashoffset: 0; } }
+
+    .ty-card h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw + 1rem, 3.4rem);
+      line-height: 1.04; color: var(--plum);
+      margin: 0 0 16px; text-wrap: balance;
+    }
+    .ty-card h1 .script-accent { font-family: var(--font-script); color: var(--pink-hot); display: inline-block; }
+    .ty-lead {
+      font-size: clamp(1.02rem, 1.2vw + 0.7rem, 1.2rem);
+      line-height: 1.6; color: var(--plum-soft);
+      max-width: 52ch; margin: 0 auto 40px;
+    }
+
+    .ty-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+      text-align: left; margin: 0 auto 42px; max-width: 680px;
+    }
+    .ty-step {
+      background: #fff; border-radius: 20px; padding: 22px 20px;
+      box-shadow: var(--sh-soft);
+      border: 2.5px solid var(--pink-baby-soft);
+    }
+    .ty-step:nth-child(2) { border-color: var(--mint-soft); }
+    .ty-step:nth-child(3) { border-color: var(--lilac-soft); }
+    .ty-step .ty-num {
+      display: inline-grid; place-items: center;
+      width: 34px; height: 34px; border-radius: 50%;
+      font-family: var(--font-body); font-weight: 800; font-size: 14px;
+      color: #fff; background: var(--pink-hot); margin-bottom: 12px;
+    }
+    .ty-step:nth-child(2) .ty-num { background: var(--sage); }
+    .ty-step:nth-child(3) .ty-num { background: var(--lilac); color: var(--plum); }
+    .ty-step h3 { font-family: var(--font-body); font-weight: 800; font-size: 15px; color: var(--plum); margin: 0 0 6px; }
+    .ty-step p { font-size: 13.5px; line-height: 1.5; color: var(--plum-soft); margin: 0; }
+
+    .ty-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+    @media (max-width: 640px) {
+      .ty-steps { grid-template-columns: 1fr; max-width: 360px; }
+      .ty-main { padding-top: 110px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV (mirrors the homepage) -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Inflatable Decorations home">
+        <img src="Assets/Brand/logo-512.png" alt="Inflatable Decorations balloon logo" />
+        <span><span class="script-accent">Inflatable</span> Decorations</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="inquiry.html">Inquiry</a></li>
+        <li><a href="inquiry.html" class="btn btn-primary btn-sm">Book Now</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="ty-main">
+    <div class="ty-card">
+      <div class="ty-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 13 l4 4 L19 7" />
+        </svg>
+      </div>
+      <p class="eyebrow">Inquiry received</p>
+      <h1>Thank you — your inquiry's <span class="script-accent">in.</span></h1>
+      <p class="ty-lead">We've got your event details<span id="ty-photos"> and inspiration photos</span>. We'll look everything over and get back to you within 24 hours — usually sooner. Keep an eye on your inbox (and your texts, if you picked that).</p>
+
+      <div class="ty-steps">
+        <div class="ty-step">
+          <span class="ty-num">1</span>
+          <h3>We review your event</h3>
+          <p>Your date, theme, services and the photos you sent.</p>
+        </div>
+        <div class="ty-step">
+          <span class="ty-num">2</span>
+          <h3>We reply within 24 hours</h3>
+          <p>With ideas and a quote shaped around your day.</p>
+        </div>
+        <div class="ty-step">
+          <span class="ty-num">3</span>
+          <h3>We lock your date</h3>
+          <p>Once you're happy, your spot is reserved.</p>
+        </div>
+      </div>
+
+      <div class="ty-ctas">
+        <a href="index.html" class="btn btn-primary">Back to home</a>
+        <a href="https://instagram.com/inflatabledecorations" target="_blank" rel="noopener" class="btn btn-ghost">See our work on Instagram</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER (mirrors homepage) -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-row">
+            <img src="Assets/Brand/logo-512.png" alt="Inflatable Decorations logo" />
+            <span>Inflatable Decorations</span>
+          </div>
+          <p>Custom-designed balloon installs for Winnipeg weddings, showers, birthdays and everything in between. Let's make your day unforgettable.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="inquiry.html">Inquiry</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Stay in the loop</h4>
+          <ul>
+            <li><a href="https://instagram.com/inflatabledecorations" target="_blank" rel="noopener">Instagram @inflatabledecorations</a></li>
+            <li><a href="mailto:jhma24@hotmail.com">jhma24@hotmail.com</a></li>
+            <li>Winnipeg, Manitoba</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="yr">2026</span> Inflatable Decorations. All rights reserved.</span>
+        <span>Site crafted by <a href="https://fjmedia.ca" target="_blank" rel="noopener">FJMedia</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var t = document.getElementById('navToggle'), links = document.getElementById('navLinks');
+      if (t && links) t.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      var yr = document.getElementById('yr'); if (yr) yr.textContent = new Date().getFullYear();
+      // Only keep the "and inspiration photos" phrase if at least one photo was submitted.
+      var photos = parseInt((new URLSearchParams(location.search)).get('photos'), 10) || 0;
+      if (photos < 1) { var ph = document.getElementById('ty-photos'); if (ph) ph.parentNode.removeChild(ph); }
+    })();
+  </script>
+</body>
+</html>
