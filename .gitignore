@@ -18,9 +18,11 @@ dist/
 _duplicates/
 Assets/Gallery/_duplicates/
 
-# Local-only docs (contain password / internal scripts — not for public deploy)
-Assets/Docs/Cover-Note-DM.md
-Assets/Docs/build_proposal_pdf.py
+# Internal client docs / pitch / test — NEVER publish on the public site.
+# (Moved out to "Desktop/FJMedia Client Docs/Inflatable Decorations" on 2026-06-06.)
+Assets/Docs/
+Pitch/
+Test Run/
 
 # Local-only working folders (super-saiyan archives + delete staging + QA artifacts)
 Archive/
