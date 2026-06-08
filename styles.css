@@ -876,59 +876,6 @@ p { margin: 0 0 1em; }
 .t-who { margin-top: auto; font-weight: 700; color: var(--plum); }
 .t-who small { display: block; font-weight: 500; font-size: 12.5px; color: var(--plum-soft); font-family: var(--font-script); font-style: normal; font-size: 18px; margin-top: 2px; }
 
-/* ---------- GOOGLE REVIEW BADGE + CTAs ---------- */
-.g-review {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  margin: 0 auto 40px;
-}
-.g-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: #fff;
-  border-radius: 999px;
-  padding: 12px 24px;
-  box-shadow: 0 12px 28px rgba(45,27,61,0.12);
-  text-decoration: none;
-  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
-}
-.g-badge:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 36px rgba(45,27,61,0.18);
-}
-.g-badge .g-logo { flex: none; }
-.g-score {
-  font-family: var(--font-display);
-  font-size: 26px;
-  line-height: 1;
-  color: var(--plum);
-  font-weight: 400;
-}
-.g-stars { display: inline-flex; gap: 2px; color: #FBBC05; }
-.g-stars svg { display: block; }
-.g-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--plum-soft);
-  border-left: 2px solid var(--pink-baby);
-  padding-left: 12px;
-}
-.g-cta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px;
-}
-@media (max-width: 540px) {
-  .g-badge { flex-wrap: wrap; justify-content: center; padding: 14px 22px; row-gap: 6px; }
-  .g-label { border-left: none; padding-left: 0; width: 100%; text-align: center; }
-  .g-cta { width: 100%; }
-  .g-cta .btn { flex: 1 1 auto; text-align: center; }
-}
-
 /* ---------- PRICING ---------- */
 .pricing {
   padding: 100px 0;
