@@ -112,30 +112,45 @@
     onScroll();
   }
 
-  /* ---------- Testimonial "Read more" expand (one-at-a-time accordion) ---------- */
+  /* ---------- Testimonial "Read more" expand (animated, one-at-a-time accordion) ---------- */
   const tCards = $$('.t-card');
-  const collapseCard = (card) => {
+  const collapseTCard = (card) => {
     if (!card.classList.contains('expanded')) return;
+    const quote = card.querySelector('.t-quote');
+    const btn   = card.querySelector('.t-expand');
+    quote.style.maxHeight = quote.scrollHeight + 'px';      // pin current (may be 'none' after expand)
+    requestAnimationFrame(() => { quote.style.maxHeight = (quote.dataset.collapsed || 0) + 'px'; });
     card.classList.remove('expanded');
-    const b = card.querySelector('.t-expand');
-    if (b) { b.setAttribute('aria-expanded', 'false'); b.textContent = 'Read more'; }
+    if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.textContent = 'Read more'; }
   };
   tCards.forEach(card => {
     const quote = card.querySelector('.t-quote');
     const btn   = card.querySelector('.t-expand');
     if (!quote || !btn) return;
-    const check = () => {
+    const measure = () => {
       if (card.classList.contains('expanded')) return;
-      btn.hidden = quote.scrollHeight <= quote.clientHeight + 2;
+      quote.style.maxHeight = '';                       // reset to CSS collapsed, then measure
+      const clamped = quote.scrollHeight > quote.clientHeight + 2;
+      card.classList.toggle('is-clamped', clamped);
+      btn.hidden = !clamped;
+      quote.dataset.collapsed = quote.clientHeight;
     };
-    check();
-    window.addEventListener('resize', check, { passive: true });
+    requestAnimationFrame(measure);
+    window.addEventListener('resize', () => requestAnimationFrame(measure), { passive: true });
     btn.addEventListener('click', () => {
       const willExpand = !card.classList.contains('expanded');
-      if (willExpand) tCards.forEach(c => { if (c !== card) collapseCard(c); });
-      card.classList.toggle('expanded', willExpand);
-      btn.setAttribute('aria-expanded', willExpand ? 'true' : 'false');
-      btn.textContent = willExpand ? 'Read less' : 'Read more';
+      if (willExpand) {
+        tCards.forEach(c => { if (c !== card) collapseTCard(c); });   // accordion: close the others
+        quote.style.maxHeight = quote.scrollHeight + 'px';            // animate open to full height
+        card.classList.add('expanded');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.textContent = 'Read less';
+      } else {
+        collapseTCard(card);
+      }
+    });
+    quote.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'max-height' && card.classList.contains('expanded')) quote.style.maxHeight = 'none';
     });
   });
 
