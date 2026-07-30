@@ -1,29 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://inflatabledecorationswpg.ca/</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/Cover.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Walkthrough%20Arches/Cover.jpg</image:loc>
+      <image:title>Arches balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/Cover.jpg</image:loc>
+      <image:title>Bouquets balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Columns/Cover.jpg</image:loc>
+      <image:title>Columns balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/Favorite.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Grab%20%26%20Go/Cover.jpg</image:loc>
+      <image:title>Grab &amp; Go balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/Backdropngarland1.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Walkthrough%20Arches/Themed-WTA.jpg</image:loc>
+      <image:title>Arches balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/655320035_1478624020528770_3403384665709763277_n.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/661010358_1479121863915211_8930539252150607194_n.jpg</image:loc>
+      <image:title>Bouquets balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Columns/669598196_784596854516659_4741304633711714289_n.jpg</image:loc>
+      <image:title>Columns balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/664883286_1675006023843568_4592194640332315545_n.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Walkthrough%20Arches/670780359_1316750920315655_1714856704636191444_n.jpg</image:loc>
+      <image:title>Arches balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/669127862_846859224352057_8099983497208557162_n.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/670949303_26453326074361773_3808112994526126323_n.jpg</image:loc>
+      <image:title>Bouquets balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Columns/670314208_1455045216161617_4088750443734550869_n.jpg</image:loc>
+      <image:title>Columns balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/670439079_4034309923367392_9196080599764451676_n.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Grab%20%26%20Go/670611478_3926052884357320_2655556587710275461_n.jpg</image:loc>
+      <image:title>Grab &amp; Go balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/671626407_2368958973629978_8791729836058276314_n.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Walkthrough%20Arches/672358270_1631439664642750_3306499537867830646_n.jpg</image:loc>
+      <image:title>Arches balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/672155829_1255830733259550_4346246369048823540_n.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/676984877_933561046118684_1749973930698617400_n.jpg</image:loc>
+      <image:title>Bouquets balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Columns/672196176_964600419278025_5186114894174741111_n.jpg</image:loc>
+      <image:title>Columns balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/672176279_1640185133859884_6066715320209476203_n.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/672701291_1391318602753236_8484134399833125210_n.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/677200198_1874178870217536_4064233792141304234_n.jpg</image:loc>
+      <image:title>Bouquets balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/675001955_1339424151567848_97630896647164254_n.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/675550313_832502393225263_569436542305509635_n.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Walkthrough%20Arches/Main.jpg</image:loc>
+      <image:title>Arches balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_3491.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/Main.jpg</image:loc>
+      <image:title>Bouquets balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Columns/Main.jpg</image:loc>
+      <image:title>Columns balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Walkthrough%20Arches/IMG_3333.jpg</image:loc>
+      <image:title>Arches balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_2136.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/IMG_2528.jpg</image:loc>
+      <image:title>Bouquets balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Columns/IMG_2820.jpg</image:loc>
+      <image:title>Columns balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Grab%20%26%20Go/Main.jpg</image:loc>
+      <image:title>Grab &amp; Go balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Walkthrough%20Arches/IMG_2589.jpg</image:loc>
+      <image:title>Arches balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_2409.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/IMG_2924.jpg</image:loc>
+      <image:title>Bouquets balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Columns/IMG_2906.jpg</image:loc>
+      <image:title>Columns balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Walkthrough%20Arches/IMG_3296.jpg</image:loc>
+      <image:title>Arches balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_2758.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/IMG_3392.jpg</image:loc>
+      <image:title>Bouquets balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Walkthrough%20Arches/IMG_3200.jpg</image:loc>
+      <image:title>Arches balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_3120.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_3567.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_3632.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_8247.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_3827.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_3963.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_4091.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_4226.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_4247.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_4328.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://inflatabledecorationswpg.ca/Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_4465.jpg</image:loc>
+      <image:title>Backdrops balloon decor by Inflatable Decorations, Winnipeg</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://inflatabledecorationswpg.ca/#services</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://inflatabledecorationswpg.ca/#about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://inflatabledecorationswpg.ca/#gallery</loc>
+    <loc>https://inflatabledecorationswpg.ca/inquiry.html</loc>
+    <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://inflatabledecorationswpg.ca/#contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
 </urlset>
