@@ -8,9 +8,12 @@
   <meta name="keywords" content="balloon decor winnipeg, winnipeg balloons, balloon arch winnipeg, balloon garland winnipeg, balloon artist winnipeg, event decor winnipeg, birthday balloons winnipeg, wedding balloons winnipeg" />
   <meta name="geo.region" content="CA-MB" />
   <meta name="geo.placename" content="Winnipeg" />
-  <!-- max-image-preview:large lets Google show full-size gallery photos in results + Discover;
-       max-snippet:-1 removes the description-length cap -->
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+  <!-- REVERTED 2026-08-01 to the exact pre-2026-07-30 value. max-image-preview:large was
+       added 2026-07-30; within 2 days the mobile SERP thumbnail went from 1 photo to none.
+       Not proven causal (Google also reprocesses after a robots change), but it was the only
+       image-affecting edit, its upside was marginal, and this restores known-good.
+       Do NOT re-add without watching the SERP for 2+ weeks afterward. -->
+  <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://inflatabledecorationswpg.ca/" />
 
   <!-- Open Graph / Facebook / LinkedIn / SMS preview -->
