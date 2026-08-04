@@ -1321,7 +1321,7 @@ footer::before {
 .footer-brand .logo-row img { width: 44px; height: 44px; }
 .footer-brand .logo-row span { font-family: var(--font-display); font-size: 22px; color: #fff; }
 .footer-brand p { color: rgba(255,248,240,0.7); font-size: 14px; max-width: 360px; }
-footer h4 { color: #fff; font-size: 18px; margin-bottom: 14px; }
+footer h3, footer h4 { color: #fff; font-size: 18px; margin-bottom: 14px; }
 footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 footer ul a { color: rgba(255,248,240,0.75); font-size: 14px; transition: color .15s; }
 footer ul a:hover { color: var(--pink-hot); }
@@ -2244,3 +2244,226 @@ h1 em, h2 em {
   .ribbon-track { font-size: 17px; gap: 24px; }
   .ribbon-banner { padding: 18px 0 22px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ░░░ SERVICE PAGES LAYER ░░░  (added 2026-08-04)
+
+   Six standalone service pages hang off the homepage. Multi-page coherence
+   rule: tokens, type stack, nav, footer, gutters, motion and hover language
+   are LOCKED to the homepage — nothing here redefines them. What flexes per
+   page is density, imagery weight, and the accent.
+
+   The accent rotation IS the signature detail in a rotating role: each page
+   inherits the colour its card already wears in the homepage services grid,
+   so a visitor arriving from a card lands on a page that matches it. One
+   accent per viewport, per the restraint catalog.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* --svc-accent-dk is the TEXT tone (eyebrow, breadcrumb link, quote attribution).
+   Every value below is measured >=4.5:1 against BOTH its own --svc-accent-soft
+   panel and the cream page background, so it clears WCAG AA at normal text size.
+   Note the default: it is NOT var(--pink-hot-dk). The brand pink (#E8488B) only
+   reaches 2.99:1 on its own soft panel, so it is overridden HERE, inside the
+   service layer, rather than changed globally — the global token is brand and
+   is used across the live homepage, so retoning it is James's call, not a
+   side effect of this build. */
+.svc-page {
+  --svc-accent:      var(--pink-hot);
+  --svc-accent-dk:   #C81962;
+  --svc-accent-soft: var(--pink-baby-soft);
+  --svc-accent-mid:  var(--pink-baby);
+}
+.svc-page.acc-yellow { --svc-accent: var(--yellow); --svc-accent-dk: #8A6800; --svc-accent-soft: var(--yellow-soft); --svc-accent-mid: var(--yellow); }
+.svc-page.acc-lilac  { --svc-accent: var(--lilac);  --svc-accent-dk: #6B45A0; --svc-accent-soft: var(--lilac-soft);  --svc-accent-mid: var(--lilac); }
+.svc-page.acc-peach  { --svc-accent: var(--peach);  --svc-accent-dk: #9E4C18; --svc-accent-soft: var(--peach-soft);  --svc-accent-mid: var(--peach); }
+.svc-page.acc-mint   { --svc-accent: var(--mint);   --svc-accent-dk: #2D7753; --svc-accent-soft: var(--mint-soft);   --svc-accent-mid: var(--mint); }
+.svc-page.acc-sky    { --svc-accent: var(--sky);    --svc-accent-dk: #1B6597; --svc-accent-soft: var(--sky-soft);    --svc-accent-mid: var(--sky); }
+
+/* ---- Page hero. Deliberately NOT the homepage hero: no orbs, no word-
+        stagger, no 100vh. Those belong to the front door. A service page is
+        the second room — it gets straight to the answer. ---- */
+.svc-hero {
+  position: relative;
+  padding: 132px 0 60px;
+  background: linear-gradient(180deg, var(--svc-accent-soft) 0%, var(--cream) 100%);
+}
+.svc-hero-grid {
+  display: grid;
+  grid-template-columns: 1.32fr 1fr;   /* asymmetric on purpose — a 1fr 1fr split reads as a wireframe */
+  gap: 48px;
+  align-items: center;
+}
+.svc-crumb {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--plum-soft);
+  margin-bottom: 18px;
+}
+.svc-crumb a { color: var(--svc-accent-dk); text-decoration: none; border-bottom: 1.5px solid transparent; transition: border-color .2s var(--ease); }
+.svc-crumb a:hover { border-bottom-color: var(--svc-accent-dk); }
+.svc-crumb a:focus-visible { outline: 3px solid var(--svc-accent-dk); outline-offset: 3px; border-radius: 3px; }
+
+.svc-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 5.1vw, 58px);
+  line-height: 1.04;
+  color: var(--plum);
+  margin: 0 0 18px;
+}
+.svc-hero .svc-lede {
+  font-size: 17.5px;
+  line-height: 1.62;
+  color: var(--plum-soft);
+  max-width: 54ch;
+  margin: 0 0 28px;
+}
+.svc-hero-photo {
+  aspect-ratio: 4/4.4;
+  overflow: hidden;
+  border-radius: 200px 200px 20px 20px / 140px 140px 20px 20px;  /* the arch silhouette — the product metaphor, carried from the service cards */
+  box-shadow: var(--sh-mid);
+  background: #fff;
+}
+.svc-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ---- Body prose ---- */
+.svc-body { padding: 68px 0 12px; background: var(--cream); }
+.svc-prose { max-width: 68ch; }
+.svc-prose h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.2vw, 36px);
+  color: var(--plum);
+  margin: 0 0 16px;
+}
+.svc-prose h3 {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--plum);
+  margin: 34px 0 10px;
+}
+.svc-prose p { font-size: 16.5px; line-height: 1.72; color: var(--plum-soft); margin: 0 0 16px; }
+
+.svc-includes { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 11px; }
+.svc-includes li {
+  position: relative;
+  padding-left: 30px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--plum-soft);
+}
+.svc-includes li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 15px; height: 15px;
+  border-radius: 50% 50% 50% 4px;   /* a balloon, not a bullet — it means something on this site */
+  background: var(--svc-accent);
+}
+
+/* ---- Use-case chips ---- */
+.svc-chips { display: flex; flex-wrap: wrap; gap: 9px; margin: 4px 0 0; padding: 0; list-style: none; }
+.svc-chips li {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--plum);
+  background: var(--svc-accent-soft);
+  border: 1.5px solid var(--svc-accent-mid);
+  border-radius: 999px;
+  padding: 7px 15px;
+}
+
+/* ---- Photo strip. Asymmetric 3-col with a tall lead image; collapses to a
+        2-col on tablet and a single column on phone. ---- */
+.svc-strip { padding: 54px 0 64px; background: var(--cream); }
+.svc-strip-grid {
+  display: grid;
+  /* Ratio + row height tuned together so the tall cell lands near-square:
+     her column photos are portrait, and a wide tall-cell crops the subject
+     out of frame. ~1.25fr at 200px rows keeps vertical subjects intact. */
+  grid-template-columns: 1.25fr 1fr 1fr;
+  grid-auto-rows: 200px;
+  gap: 14px;
+}
+.svc-shot { overflow: hidden; border-radius: 20px; background: #fff; box-shadow: 0 8px 20px rgba(45,27,61,0.08); }
+.svc-shot img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .5s var(--ease);
+}
+.svc-shot:hover img { transform: scale(1.045); }
+.svc-shot--tall { grid-row: span 2; }
+@media (prefers-reduced-motion: reduce) {
+  .svc-shot:hover img { transform: none; }
+}
+
+/* ---- Real-testimonial pull. Never a fabricated quote — every one of these
+        is a verbatim published review, attributed by name. ---- */
+.svc-quote {
+  position: relative;
+  max-width: 74ch;
+  margin: 0 auto;
+  padding: 34px 34px 30px;
+  background: var(--svc-accent-soft);
+  border-radius: 26px;
+  border: 2px solid var(--svc-accent-mid);
+}
+.svc-quote p {
+  font-size: 17px;
+  line-height: 1.68;
+  color: var(--plum);
+  margin: 0 0 16px;
+}
+.svc-quote cite {
+  display: block;
+  font-family: var(--font-script);
+  font-style: normal;
+  font-size: 23px;
+  color: var(--svc-accent-dk);
+}
+.svc-quote .svc-quote-src { display: block; font-family: var(--font-body); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--plum-soft); margin-top: 3px; }
+
+/* ---- Closing CTA band ---- */
+.svc-cta { padding: 62px 0 74px; background: var(--cream); text-align: center; }
+.svc-cta h2 { font-family: var(--font-display); font-size: clamp(26px, 3.4vw, 38px); color: var(--plum); margin: 0 0 12px; }
+.svc-cta p { font-size: 16.5px; color: var(--plum-soft); max-width: 46ch; margin: 0 auto 26px; }
+
+/* ---- Sibling-service links. Kills orphan pages and spreads link equity. ---- */
+.svc-siblings { padding: 8px 0 72px; background: var(--cream); }
+.svc-siblings h2 { font-family: var(--font-display); font-size: 25px; color: var(--plum); margin: 0 0 20px; text-align: center; }
+.svc-sib-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.svc-sib-grid a {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--plum);
+  background: #fff;
+  border: 2px solid var(--pink-baby-soft);
+  border-radius: 999px;
+  padding: 11px 20px;
+  text-decoration: none;
+  transition: transform .2s var(--ease-bounce), border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+.svc-sib-grid a:hover { transform: translateY(-2px); border-color: var(--svc-accent-mid); box-shadow: var(--sh-soft); }
+.svc-sib-grid a:focus-visible { outline: 3px solid var(--svc-accent-dk); outline-offset: 2px; }
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .svc-hero { padding: 112px 0 46px; }
+  .svc-hero-grid { grid-template-columns: 1fr; gap: 30px; }
+  .svc-hero-photo { aspect-ratio: 4/3.2; max-width: 460px; }
+  .svc-strip-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 156px; }
+}
+@media (max-width: 560px) {
+  .svc-hero h1 { font-size: clamp(29px, 8.4vw, 40px); }
+  .svc-hero .svc-lede { font-size: 16px; }
+  .svc-strip-grid { grid-template-columns: 1fr; grid-auto-rows: 210px; }
+  .svc-shot--tall { grid-row: span 1; }
+  .svc-quote { padding: 26px 22px 24px; }
+  .svc-body { padding: 52px 0 8px; }
+}
+
+/* Page accent wins the eyebrow on service pages — the global .eyebrow is
+   hard-coded to brand pink, which put two accents in one viewport. */
+.svc-hero .eyebrow { color: var(--svc-accent-dk); }
