@@ -26,30 +26,29 @@ const PAGES = [
     nav: 'Corporate',
     crumb: 'Corporate Events',
     title: 'Corporate Balloon Decor Winnipeg | Grand Openings & Offices',
-    desc: 'Balloon decor for Winnipeg businesses — grand openings, ribbon-cuttings, holiday parties and office installs. Colour-matched, set up and taken down for you.',
+    desc: 'Corporate balloon decor in Winnipeg for grand openings, anniversaries and office parties — brand colours matched, installed and cleared for you.',
     h1: 'Corporate Balloon Decor in Winnipeg',
     eyebrow: 'For Winnipeg Businesses',
-    lede: 'Grand openings, ribbon-cuttings, holiday parties, storefront displays and office installs — designed around your brand colours, built on site, and taken down when it is over.',
+    lede: 'Company events run on a different clock than birthdays — brand colours have to be exact, and nobody on your team should end up on a ladder taking it down after.',
     svcName: 'Corporate Balloon Decor',
     prose: [
-      { h: 'Balloon decor that works for a business, not just a party', p: [
-        'A company event has a different job than a birthday. It has to photograph well, hold up through a full day of foot traffic, and make the space feel deliberate the moment someone walks in. That is what these installs are built for.',
-        'Every design starts with your colours. If you have brand colours we match to them, and where the branding needs to read from across a room, balloons can be printed with your logo directly.'
+      { h: 'Built around the brand, not just the theme', p: [
+        'Every corporate install starts with your brand kit, not a colour wheel — the exact blues, the exact reds, matched from your palette instead of eyeballed off a swatch card. Where the branding needs to read from across a lobby, balloons get printed with your logo directly.',
+        'An engineering firm wanted their logo on the arch and a giant 40 in balloons beside it, marking the office entrance for their fortieth anniversary. That is the kind of brief this side of the business is built for. One specific ask, right the first time — there is no second day to redo it.'
       ]},
-      { h: 'Built to hold up', p: [
-        'The most common worry with balloon decor at a business is how long it lasts. A birthday setup only has to survive one afternoon. A lobby, a storefront window or a month-long promotion is a different ask entirely — and it is the thing clients bring up most often afterward.'
+      { h: 'Timed to the business day', p: [
+        'Schools call on this side of the business just as often as offices do. A first-day-of-school install one week, balloon columns marking a retiring teacher’s send-off the next. Every one of them goes up before the room fills and clears out on a timeline that never lands on your staff’s task list.'
       ]},
-      { h: 'Set up and taken down for you', p: [
-        'Installs happen on site, on your schedule, before doors open. When the event is finished we come back and clear it out, so nobody on your team is pulling balloons off a wall at the end of a long day.'
+      { h: 'Long enough to matter', p: [
+        'A birthday setup only has to survive one afternoon. A lobby, a storefront window or a month-long promotion is a longer ask — say so up front, and the design gets built to hold for the length of the run, not just the first hour.'
       ]}
     ],
     includes: [
-      'A design matched to your brand or event colours',
-      'Custom logo-printed balloons where you want the branding to read',
-      'On-site installation before your event starts',
-      'Teardown and removal after — you do not handle cleanup',
+      'Brand or event colours pulled straight from your palette, not a guess',
+      'Logo-printed balloons where the branding needs to read from across a room',
+      'Up before doors open, cleared before your team is back at their desks',
       'Arches, garlands, backdrops, columns and number displays',
-      'Setups sized for lobbies, storefronts, showrooms and offices'
+      'Sized for lobbies, storefronts, showrooms and offices'
     ],
     chipsHead: 'What we set up for businesses',
     chips: ['Grand openings', 'Ribbon-cuttings', 'Holiday office parties', 'Lobby & reception installs', 'Storefront & showroom displays', 'Product launches', 'Restaurants & hospitality', 'Schools & institutions', 'Staff appreciation & retirements', 'Company anniversaries'],
@@ -73,26 +72,26 @@ const PAGES = [
     nav: 'Balloon Arches',
     crumb: 'Balloon Arches',
     title: 'Balloon Arch Winnipeg | Walk-Through Arches & Entryways',
-    desc: 'Custom walk-through balloon arches in Winnipeg for entryways, ceremonies, grand openings and photo moments. Colour-matched to your theme, installed on site.',
+    desc: 'Walk-through balloon arches in Winnipeg, built to the width of your doorway or aisle. Colours set to your theme, up before your guests arrive.',
     h1: 'Balloon Arches in Winnipeg',
     eyebrow: 'Walk-Through Arches',
-    lede: 'A full walk-through arch turns a doorway into the first photo of the day. Built to your colours, installed on site, and sized for the space it is going in.',
+    lede: 'Guests do not just look at an arch. They walk through it — which is why it gets sized to the actual doorway or aisle before a single balloon is picked.',
     svcName: 'Walk-Through Balloon Arches',
     prose: [
-      { h: 'The entrance people walk through', p: [
-        'An arch does something no other balloon setup does — guests move through it. It marks the start of the event, frames every photo taken near it, and tells people they are in the right place before anyone says a word.',
-        'Each one is built for the opening it is going in. A ceremony aisle, a venue doorway, a storefront entrance and a backyard gate are all different shapes, and the arch gets designed around the actual space rather than dropped in at a standard size.'
+      { h: 'Built to the opening, not a standard size', p: [
+        'A ceremony aisle is not the same width as an office entrance, so the arch does not ship at one standard size — we measure the actual opening first and size the structure to it before a single balloon goes on.',
+        'One entertainment venue used its walk-through arch as the check-in point itself: guests filed through it to get scanned in, so it had to read as branded from across the room and hold up through a full night of foot traffic, not just one photo.'
       ]},
-      { h: 'Colour-matched, not close enough', p: [
-        'You bring the palette — a theme, an invitation, a brand colour, a dress. The arch is designed around it, and the balloon selection happens after the colours are settled, not before.'
+      { h: 'Your colours, without the guesswork', p: [
+        'Bring a theme, an invitation or a dress and the palette gets built around it — the actual shades get settled first, and the balloon colours get picked to match after, not swapped in from whatever is already inflated.'
       ]}
     ],
     includes: [
-      'A custom arch designed for your entryway or ceremony space',
-      'Colours matched to your theme, invitation or brand',
-      'On-site installation before guests arrive',
+      'An arch sized to your actual doorway or aisle',
+      'Colours built around your theme or invitation',
+      'Freestanding and steady enough to walk through for hours, not just one photo',
       'Optional florals, vinyl lettering and themed foil accents',
-      'Teardown after the event'
+      'Up before your guests arrive, gone after the last one leaves'
     ],
     chipsHead: 'Good for',
     chips: ['Wedding ceremonies', 'Grand openings', 'Ribbon-cuttings', 'Bridal & baby showers', 'Milestone birthdays', 'Graduations', 'Storefront entrances', 'Photo moments'],
@@ -115,26 +114,26 @@ const PAGES = [
     nav: 'Backdrops & Garlands',
     crumb: 'Backdrops & Garlands',
     title: 'Balloon Backdrop &amp; Garland Winnipeg | Custom Decor',
-    desc: 'Custom balloon backdrops and organic garlands in Winnipeg. Built around your colours for showers, birthdays and weddings. Installed and removed for you.',
+    desc: 'Balloon backdrops and hand-clustered organic garlands in Winnipeg for showers, birthdays and weddings — built around your colours, installed for you.',
     h1: 'Balloon Backdrops &amp; Garlands in Winnipeg',
     eyebrow: 'Backdrops & Balloon Garlands',
-    lede: 'The setup most people picture when they think of balloon decor — an organic garland running across a backdrop, colour-matched to your theme, built as the focal point of the room.',
+    lede: 'Every eye in the room lands on one spot first — the backdrop is built to be that spot, with balloons clustered in real clumps of different sizes instead of spaced out like a store-bought strip.',
     svcName: 'Balloon Backdrops and Garlands',
     prose: [
-      { h: 'The focal point of the room', p: [
-        'A backdrop with a balloon garland gives a space one clear centre. It is where the cake table goes, where people stand for photos, and where the eye lands when someone walks in — which is why it is the most requested setup.',
-        'Garlands are built in the organic style: clustered, varied in size, and asymmetric rather than evenly spaced. That is what keeps it looking designed instead of decorated.'
+      { h: 'One focal point, not a wall of balloons', p: [
+        'A backdrop and garland set gives a space a single centre — the spot every phone points at the moment someone walks in, before colour or shape enter the conversation.',
+        'Organic clustering means balloons of different sizes bunched in irregular groups instead of lined up at even intervals. Gaps get filled with smaller balloons rather than stretched wider, so the shape holds even at the ends.'
       ]},
-      { h: 'Your colours, your shape', p: [
-        'Backdrops come in different silhouettes — arched panels, circle and hoop frames, or a garland running straight across a wall. The shape gets picked to suit the room and the photos you want out of it.'
+      { h: 'The shape follows the wall', p: [
+        'Backdrops come as arched panels, circle or hoop frames, or a garland run straight along a wall. The shape gets picked around the room it is going into, then the palette gets layered on after.'
       ]}
     ],
     includes: [
-      'An organic balloon garland built in your colour palette',
-      'Backdrop panel, hoop or wall-mounted options',
+      'An organic garland clustered by hand, not spaced on a strip',
+      'Backdrop shape matched to the room, not one fixed design',
+      'Palette built around your theme or invitation',
       'Custom welcome signage and vinyl lettering available',
-      'Florals and themed foil accents as add-ons',
-      'Installed on site and removed afterward'
+      'Set in place before the event, cleared away once it wraps'
     ],
     chipsHead: 'Good for',
     chips: ['Baby showers', 'Bridal showers', 'Birthdays', 'Gender reveals', 'Weddings', 'Graduations', 'Corporate events', 'Photo backdrops'],
@@ -157,26 +156,26 @@ const PAGES = [
     nav: 'Balloon Columns',
     crumb: 'Balloon Columns',
     title: 'Balloon Columns Winnipeg | Entrances, Stages & Events',
-    desc: 'Custom balloon columns in Winnipeg for entrances, stages, photo areas, grand openings and school events. Built to your colours and installed on site.',
+    desc: 'Balloon columns in Winnipeg, from a single branded accent to a full sculptural shape, in your colours, for entrances, stages and storefronts.',
     h1: 'Balloon Columns in Winnipeg',
     eyebrow: 'Standing Balloon Columns',
-    lede: 'Freestanding columns that frame an entrance, flank a stage or mark a photo area — built to your colours and placed where the room needs structure.',
+    lede: 'A column does not need a wall to lean on or a doorway to fill — just a spot on the floor and a height in mind, which makes it the answer when nothing else in the room gives you a place to build.',
     svcName: 'Balloon Columns',
     prose: [
-      { h: 'Structure where a room needs it', p: [
-        'Columns do something a garland cannot: they stand on their own, at height, exactly where you put them. That makes them the answer when there is no wall to work against — an open ballroom floor, a stage edge, a set of double doors, the front of a store.',
-        'They work in pairs more often than not. A matched set either side of an entrance or a stage reads as intentional immediately, and gives photographers a natural frame.'
+      { h: 'From a single accent to a full shape', p: [
+        'A logo balloon column in a Winnipeg salon can be as simple as one column dressed in brand colours by the front door — small footprint, clear signal, done in the time it takes to set a chair.',
+        'A 1950s-style diner wanted something bigger: a column built into the shape of a milkshake, cherry and all, standing in for the signage most businesses order in vinyl instead. Columns can go either direction: quiet accent, or the thing people stop to photograph.'
       ]},
-      { h: 'Sized and coloured for the space', p: [
-        'Height and colour are both decisions, not defaults. A column flanking a school stage and one standing in a retail entrance are built differently, and the palette follows the theme or the brand.'
+      { h: 'Paired, sized and coloured for the spot', p: [
+        'Two columns either side of an entrance or a stage read as intentional the moment someone walks up, and height gets set to the space — a column flanking a school stage is not built the same as one standing at a retail entrance.'
       ]}
     ],
     includes: [
-      'Freestanding columns built to your colour palette',
+      'Freestanding columns, from a single branded accent to a full sculptural shape',
       'Single columns or matched pairs',
-      'Sized for entrances, stages, storefronts and photo areas',
+      'Height and colour set to the entrance, stage or spot you have in mind',
       'Themed foil toppers and accents available',
-      'Installed on site and removed afterward'
+      'Installed where you need it, removed once the event is done'
     ],
     chipsHead: 'Good for',
     chips: ['Entrances', 'Stages & podiums', 'Grand openings', 'School events', 'Corporate functions', 'Photo areas', 'Retail storefronts'],
@@ -199,25 +198,25 @@ const PAGES = [
     nav: 'Grab & Go',
     crumb: 'Grab & Go Garlands',
     title: 'Grab &amp; Go Balloon Garlands Winnipeg | Ready to Hang',
-    desc: 'Pre-assembled Grab &amp; Go balloon garlands in Winnipeg, ready for pickup and easy to hang yourself. A budget-friendly way to get a custom balloon display.',
+    desc: 'Grab &amp; Go balloon garlands in Winnipeg, hand-clustered and ready for pickup. Hang it yourself in minutes — the same look as a full install, no appointment.',
     h1: 'Grab &amp; Go Balloon Garlands in Winnipeg',
     eyebrow: 'Pre-Made &middot; Ready for Pickup',
-    lede: 'A custom balloon garland, pre-assembled and ready to collect. You pick it up, you hang it — no install appointment, no setup window to plan around.',
+    lede: 'The same garland we build for a full install, minus the appointment — pick it up finished and hang it yourself in whatever time you actually have.',
     svcName: 'Grab and Go Balloon Garlands',
     prose: [
-      { h: 'The same garland, without the install', p: [
-        'Grab &amp; Go garlands are built the same way as the ones we install — same organic clustering, same colour matching — but they are handed to you finished instead of mounted on site.',
-        'That makes them the practical option when the venue only gives you access an hour beforehand, when the space is small enough to handle yourself, or when a full install is more than the day calls for.'
+      { h: 'Built the same way, handed over finished', p: [
+        'Grab &amp; Go garlands go through the same process as an install, clustered by hand and built in your colours. The only difference is where the last step happens: instead of mounting it on your wall, we hand it to you already assembled.',
+        'That makes it the option when the venue only gives you access an hour beforehand, when the space is small enough to manage alone, or when a full install is more than the day actually calls for.'
       ]},
-      { h: 'Easy to put up', p: [
-        'Garlands arrive assembled in one piece. Hanging one is a matter of fixing it at a few points along a wall, a table edge or a doorway — no balloon experience required.'
+      { h: 'Up in minutes, no experience needed', p: [
+        'A finished garland goes up at a few fixed points on whatever surface you have — a wall or a doorway frame. If it can hold a picture frame, it can hold a garland.'
       ]}
     ],
     includes: [
-      'A pre-assembled garland in your chosen colours',
-      'Ready for pickup at an arranged time',
-      'Hangs at home, at a hall or at a venue',
-      'A budget-friendly alternative to a full install',
+      'The exact same garland we would install, handed to you instead of mounted',
+      'Ready for pickup at a time that works for you',
+      'Hangs anywhere from a home party to a rented hall',
+      'The lower-cost way to get the same look as a full install',
       'Themed foil accents available'
     ],
     chipsHead: 'Good for',
@@ -238,26 +237,26 @@ const PAGES = [
     nav: 'Number Stacks',
     crumb: 'Number Stacks & Bouquets',
     title: 'Balloon Number Stacks Winnipeg | Milestone Birthdays',
-    desc: 'Giant balloon number stacks and bouquets in Winnipeg for milestone birthdays and anniversaries. Custom colours, delivered and set up for your celebration.',
+    desc: 'Giant balloon number stacks in Winnipeg for milestone birthdays and anniversaries, built in your palette and sized to be the photo. Bouquets available.',
     h1: 'Balloon Number Stacks in Winnipeg',
     eyebrow: 'Number Stacks &amp; Bouquets',
-    lede: 'Giant numbers built out of balloons for the birthdays and anniversaries worth marking — matched to your colours and set up ready to photograph.',
+    lede: 'A first birthday, a fortieth, a golden anniversary — the number gets built big enough to be the photo itself, not a detail standing next to the cake.',
     svcName: 'Balloon Number Stacks and Bouquets',
     prose: [
-      { h: 'The number is the photo', p: [
-        'A first birthday, a fortieth, a fiftieth anniversary — the number is what the photos end up being about. A balloon stack makes it big enough to actually be the subject rather than a detail in the background.',
-        'Stacks are built in your colours, so the number sits inside the theme instead of arriving as a generic foil shape in whatever shade the store had.'
+      { h: 'The number is the photo, not a prop', p: [
+        'Store-bought foil numbers come in whatever shade the aisle had that week. A balloon number stack gets built in your actual palette, at a size that holds up as the main subject of every photo taken that day.',
+        'Big enough to see from across the room. Small enough to still fit through the door.'
       ]},
-      { h: 'Bouquets too', p: [
-        'Balloon bouquets work the same way at a smaller scale — clustered arrangements for tables, entryways and gift areas, in the same palette as the rest of the setup.'
+      { h: 'Bouquets, sized down', p: [
+        'The same palette works smaller for bouquets — clustered arrangements for the gift table and entryway, so the number is not the only thing carrying the theme.'
       ]}
     ],
     includes: [
-      'Giant number stacks in your colour palette',
-      'Balloon bouquets for tables and entryways',
-      'Matched to the rest of your decor',
+      'A giant number stack sized to be the photo, in your event colours',
+      'Balloon bouquets for the gift table and entryway',
+      'Matched to the rest of the room, not sold separately',
       'Themed foil and confetti accents available',
-      'Delivered and set up for the celebration'
+      'Delivered and set up ahead of the celebration'
     ],
     chipsHead: 'Good for',
     chips: ['First birthdays', 'Milestone birthdays', 'Anniversaries', 'Graduations', 'Retirement parties', 'Company anniversaries', 'Gift tables'],
