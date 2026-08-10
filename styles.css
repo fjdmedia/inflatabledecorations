@@ -2594,3 +2594,100 @@ h1 em, h2 em {
   .svc-sectors-grid, .svc-process-grid { grid-template-columns: 1fr; }
   .svc-faq summary { font-size: 15.5px; padding-right: 38px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ░░░ OFFER LADDER + BRAND BULLETS ░░░  (added 2026-08-10, from Jessica's copy)
+
+   She sent back her real offer structure: a starting package, then two tiers
+   of upsell (Customize Your Setup / Take It a Step Further). A single flat
+   "What's included" list cannot carry that — the ladder IS the sell, so the
+   layout now shows it as one.
+
+   Her other note: she likes the balloon bullets pink. She is right and it
+   overrides my accent rotation. A pink balloon bullet on every page is a
+   brand signature; one that changes colour per page is just decoration. The
+   accent still rotates on panels, eyebrows and the hero wash.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Brand-pink balloon bullet everywhere, regardless of page accent. */
+.svc-includes li::before,
+.svc-tier li::before { background: var(--pink-hot); }
+
+.svc-tiers { display: grid; gap: 26px; margin-top: 6px; }
+
+.svc-tier-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.svc-tier h3 {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--plum);
+  margin: 0;
+}
+.svc-price {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: .01em;
+  color: var(--pink-hot-dk);
+  background: var(--pink-baby-soft);
+  border: 1.5px solid var(--pink-baby);
+  border-radius: 999px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+
+.svc-tier ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 11px;
+}
+.svc-tier li {
+  position: relative;
+  padding-left: 30px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--plum-soft);
+}
+.svc-tier li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 15px; height: 15px;
+  border-radius: 50% 50% 50% 4px;   /* the balloon, same shape as .svc-includes */
+}
+
+/* The starting package sits in a panel so the ladder reads top-down at a
+   glance; the upsell tiers stay plain so they don't compete with it. */
+.svc-tier--lead {
+  background: var(--svc-accent-soft);
+  border: 2px solid var(--svc-accent-mid);
+  border-radius: 22px;
+  padding: 24px 26px 26px;
+}
+.svc-tier--lead h3 { font-size: 18px; }
+
+/* Her closing line — one sentence, italic, sits under the ladder. */
+.svc-tiers-note {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--plum-soft);
+  font-style: italic;
+  /* sits outside .svc-tiers so the grid gap does not apply - it was landing
+     hard against the last bullet and reading as a stray line */
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 2px solid var(--pink-baby-soft);
+}
+
+@media (max-width: 560px) {
+  .svc-tier--lead { padding: 20px 18px 22px; }
+  .svc-tier li, .svc-includes li { font-size: 15.5px; }
+}

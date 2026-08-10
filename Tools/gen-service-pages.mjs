@@ -95,15 +95,18 @@ const PAGES = [
     desc: 'Walk-through balloon arches in Winnipeg, built to the width of your doorway or aisle. Colours set to your theme, up before your guests arrive.',
     h1: 'Balloon Arches in Winnipeg',
     eyebrow: 'Walk-Through Arches',
-    lede: 'Guests do not just look at an arch. They walk through it — which is why it gets sized to the actual doorway or aisle before a single balloon is picked.',
+    lede: 'A full-size walk-through arch for an entryway or an event floor. Your colours, your choice of spiral or organic build, installed on site and cleared away afterward.',
     svcName: 'Walk-Through Balloon Arches',
     prose: [
-      { h: 'Built to the opening, not a standard size', p: [
-        'A ceremony aisle is not the same width as an office entrance, so the arch does not ship at one standard size — we measure the actual opening first and size the structure to it before a single balloon goes on.',
-        'One entertainment venue used its walk-through arch as the check-in point itself: guests filed through it to get scanned in, so it had to read as branded from across the room and hold up through a full night of foot traffic, not just one photo.'
+      { h: 'Ten feet across, and guests walk through it', p: [
+        'The arch spans 10ft wide by 8ft high, built to stand in a doorway or open across a room. Guests move through it rather than past it, which is why it ends up in more photographs than anything else on the floor.',
+        'It marks the start of the event before anyone has said a word, and it tells people they are in the right place.'
+      ]},
+      { h: 'Spiral or organic', p: [
+        'Two builds to pick from. A spiral winds the colours around the frame in an even repeating band. An organic build clusters them in mixed sizes for a looser, less uniform look. Same footprint, different character.'
       ]},
       { h: 'Your colours, without the guesswork', p: [
-        'Bring a theme, an invitation or a dress and the palette gets built around it — the actual shades get settled first, and the balloon colours get picked to match after, not swapped in from whatever is already inflated.'
+        'You bring the palette \u2014 a theme, an invitation, a company brand \u2014 and the balloons get chosen after the colours are settled, not before.'
       ]}
     ],
     includes: [
@@ -113,8 +116,24 @@ const PAGES = [
       'Optional florals, vinyl lettering and themed foil accents',
       'Up before your guests arrive, gone after the last one leaves'
     ],
+    tiers: {
+      groups: [
+        { h: 'What&rsquo;s included', items: [
+          'A 10ft &times; 8ft arch built for your entryway or event space',
+          'Your choice of build &mdash; spiral or organic',
+          'Colours matched to your theme or your brand',
+          'Installed on site before guests arrive',
+          'Teardown after the event'
+        ]},
+        { h: 'Add ons', items: [
+          'Vinyl lettering, names and logos',
+          'Florals worked into the arch',
+          'Themed foil accents'
+        ]}
+      ]
+    },
     chipsHead: 'Good for',
-    chips: ['Wedding ceremonies', 'Grand openings', 'Ribbon-cuttings', 'Bridal & baby showers', 'Milestone birthdays', 'Graduations', 'Storefront entrances', 'Photo moments'],
+    chips: ['Corporate events', 'Grand openings', 'Ribbon-cuttings', 'Marathons', 'Graduations', 'Storefront entrances', 'Weddings', 'Milestone birthdays'],
     photoDir: 'Assets/Gallery/Walkthrough Arches',
     photos: [
       { f: 'Main.jpg', a: 'Walk-through balloon arch at a Winnipeg event entrance', tall: true },
@@ -141,11 +160,11 @@ const PAGES = [
     svcName: 'Balloon Backdrops and Garlands',
     prose: [
       { h: 'One focal point, not a wall of balloons', p: [
-        'A backdrop and garland set gives a space a single centre — the spot every phone points at the moment someone walks in, before colour or shape enter the conversation.',
-        'Organic clustering means balloons of different sizes bunched in irregular groups instead of lined up at even intervals. Gaps get filled with smaller balloons rather than stretched wider, so the shape holds even at the ends.'
+        'A backdrop and garland set gives a room a single centre \u2014 the spot every phone points at the moment someone walks in. Guests gather there, the cake table goes there, and most of the photos come from there.',
+        'The garland itself is clustered by hand in mixed sizes rather than spaced evenly along a strip, which is the difference between a room that looks designed and one that looks decorated.'
       ]},
-      { h: 'The shape follows the wall', p: [
-        'Backdrops come as arched panels, circle or hoop frames, or a garland run straight along a wall. The shape gets picked around the room it is going into, then the palette gets layered on after.'
+      { h: 'Pick the panel, or skip it', p: [
+        'The backdrop is a wooden panel, and it comes in more than one silhouette: a classic arch, a wavy edge, a treat wall, or a metal hoop frame. If the wall is already the feature, the garland runs straight across it and skips the panel entirely.'
       ]}
     ],
     includes: [
@@ -155,6 +174,29 @@ const PAGES = [
       'Custom welcome signage and vinyl lettering available',
       'Set in place before the event, cleared away once it wraps'
     ],
+    tiers: {
+      groups: [
+        { h: 'Starting package', price: 'from $350', items: [
+          'One wooden backdrop, your pick from the available selection',
+          'An organic balloon garland built by hand',
+          'Balloon colours matched to your event palette',
+          'Delivery, installation, and takedown after the event'
+        ]},
+        { h: 'Customize your setup', items: [
+          'Custom vinyl decals &mdash; names, ages, sayings, logos and graphics',
+          'Additional backdrops for a wider focal area',
+          'Extra footage of balloons',
+          'Foil accents and specialty balloons'
+        ]},
+        { h: 'Take it a step further', items: [
+          'Custom character cutouts',
+          'Themed props and decorative elements',
+          'Specialty backdrop designs',
+          'A fully custom installation built around your theme'
+        ]}
+      ],
+      note: 'Every setup can be customized to fit your event, theme, space and vision.'
+    },
     chipsHead: 'Good for',
     chips: ['Baby showers', 'Bridal showers', 'Birthdays', 'Gender reveals', 'Weddings', 'Graduations', 'Corporate events', 'Photo backdrops'],
     photoDir: 'Assets/Gallery/Backdrop and Balloon Garland setup',
@@ -183,11 +225,11 @@ const PAGES = [
     svcName: 'Balloon Columns',
     prose: [
       { h: 'From a single accent to a full shape', p: [
-        'A logo balloon column in a Winnipeg salon can be as simple as one column dressed in brand colours by the front door — small footprint, clear signal, done in the time it takes to set a chair.',
-        'A 1950s-style diner wanted something bigger: a column built into the shape of a milkshake, cherry and all, standing in for the signage most businesses order in vinyl instead. Columns can go either direction: quiet accent, or the thing people stop to photograph.'
+        'A column needs no wall to lean on and no doorway to fill \u2014 just a spot on the floor and a height in mind. That makes it the answer when nothing else in the room gives you somewhere to build.',
+        'They land hardest in pairs. A matched set either side of an entrance, a stage or a registration desk frames the space instantly.'
       ]},
-      { h: 'Paired, sized and coloured for the spot', p: [
-        'Two columns either side of an entrance or a stage read as intentional the moment someone walks up, and height gets set to the space — a column flanking a school stage is not built the same as one standing at a retail entrance.'
+      { h: 'More than a spiral', p: [
+        'Classic spiral, helix, or an organic build. Or something that stops being a column altogether \u2014 a milkshake, an ice cream cone, a cactus. A Winnipeg diner got the milkshake, cherry on top, standing on the checkerboard floor beside the booths.'
       ]}
     ],
     includes: [
@@ -197,6 +239,20 @@ const PAGES = [
       'Themed foil toppers and accents available',
       'Installed where you need it, removed once the event is done'
     ],
+    tiers: {
+      groups: [
+        { h: 'What&rsquo;s included', price: 'from $140', items: [
+          'Freestanding columns built to your colour palette',
+          'Your choice of style and design',
+          'Single columns or matched pairs',
+          'Delivery and removal included'
+        ]},
+        { h: 'Available on request', items: [
+          'Themed foil toppers and custom accents',
+          'Company logos and branded details'
+        ]}
+      ]
+    },
     chipsHead: 'Good for',
     chips: ['Entrances', 'Stages & podiums', 'Grand openings', 'School events', 'Corporate functions', 'Photo areas', 'Retail storefronts'],
     photoDir: 'Assets/Gallery/Columns',
@@ -239,6 +295,16 @@ const PAGES = [
       'The lower-cost way to get the same look as a full install',
       'Themed foil accents available'
     ],
+    tiers: {
+      groups: [
+        { h: 'What&rsquo;s included', price: 'from $90', items: [
+          'A pre-assembled garland in your chosen colours',
+          'Ready for pickup at an arranged time',
+          'Hangs at home, at a hall or at a venue',
+          'Themed foil accents available'
+        ]}
+      ]
+    },
     chipsHead: 'Good for',
     chips: ['Home celebrations', 'Small venues', 'Tight setup windows', 'Office break rooms', 'Classroom parties', 'Budget-conscious events'],
     photoDir: 'Assets/Gallery/Grab & Go',
@@ -278,6 +344,17 @@ const PAGES = [
       'Themed foil and confetti accents available',
       'Delivered and set up ahead of the celebration'
     ],
+    tiers: {
+      groups: [
+        { h: 'What&rsquo;s included', price: 'from $70', items: [
+          'Giant number stacks in your colour palette',
+          'Balloon bouquets for tables and entryways',
+          'Matched to the rest of your decor',
+          'Themed foil and confetti accents available',
+          'Delivered and set up for the celebration'
+        ]}
+      ]
+    },
     chipsHead: 'Good for',
     chips: ['First birthdays', 'Milestone birthdays', 'Anniversaries', 'Graduations', 'Retirement parties', 'Company anniversaries', 'Gift tables'],
     photoDir: 'Assets/Gallery/Ballon Bouquets-Number Stacks',
@@ -364,6 +441,24 @@ ${d.faq.items.map(q => `        <details>
       </div>
     </div>
   </section>
+`;
+
+  /* Offer ladder. Jessica's own structure (starting package -> customize ->
+     take it further, 2026-08-10), so it renders as a ladder rather than one
+     flat list. Pages without `tiers` keep the plain includes list. */
+  const tiers = !d.tiers ? '' : `
+        <div class="svc-tiers">
+${d.tiers.groups.map((g, i) => `          <div class="svc-tier${i === 0 ? ' svc-tier--lead' : ''}">
+            <div class="svc-tier-head">
+              <h3>${g.h}</h3>${g.price ? `
+              <span class="svc-price">${g.price}</span>` : ''}
+            </div>
+            <ul>
+${g.items.map(it => `              <li>${it}</li>`).join('\n')}
+            </ul>
+          </div>`).join('\n')}
+        </div>${d.tiers.note ? `
+        <p class="svc-tiers-note">${d.tiers.note}</p>` : ''}
 `;
 
   const prose = d.prose.map(s =>
@@ -493,10 +588,10 @@ ${JSON.stringify(ldFaq, null, 2)}
 ${d.prose[0].p.map(t => `        <p>${t}</p>`).join('\n')}
 ${d.prose.slice(1).map(s => `        <h3>${s.h}</h3>\n${s.p.map(t => `        <p>${t}</p>`).join('\n')}`).join('\n')}
 
-        <h3>What&rsquo;s included</h3>
+${d.tiers ? tiers : `<h3>What&rsquo;s included</h3>
         <ul class="svc-includes">
 ${d.includes.map(i => `          <li>${i}</li>`).join('\n')}
-        </ul>
+        </ul>`}
 
         <h3>${d.chipsHead}</h3>
         <ul class="svc-chips">
