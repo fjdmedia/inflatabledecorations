@@ -160,11 +160,11 @@ const PAGES = [
     svcName: 'Balloon Backdrops and Garlands',
     prose: [
       { h: 'One focal point, not a wall of balloons', p: [
-        'A backdrop and garland set gives a room a single centre \u2014 the spot every phone points at the moment someone walks in. Guests gather there, the cake table goes there, and most of the photos come from there.',
-        'The garland itself is clustered by hand in mixed sizes rather than spaced evenly along a strip, which is the difference between a room that looks designed and one that looks decorated.'
+        'A backdrop and garland set gives a space a single centre — the spot every phone points at the moment someone walks in, before colour or shape enter the conversation.',
+        'Organic clustering means balloons of different sizes bunched in irregular groups instead of lined up at even intervals. Gaps get filled with smaller balloons rather than stretched wider, so the shape holds even at the ends.'
       ]},
-      { h: 'Pick the panel, or skip it', p: [
-        'The backdrop is a wooden panel, and it comes in more than one silhouette: a classic arch, a wavy edge, a treat wall, or a metal hoop frame. If the wall is already the feature, the garland runs straight across it and skips the panel entirely.'
+      { h: 'The shape follows the wall', p: [
+        'Backdrops come as arched panels, circle or hoop frames, or a garland run straight along a wall. The shape gets picked around the room it is going into, then the palette gets layered on after.'
       ]}
     ],
     includes: [
@@ -174,29 +174,6 @@ const PAGES = [
       'Custom welcome signage and vinyl lettering available',
       'Set in place before the event, cleared away once it wraps'
     ],
-    tiers: {
-      groups: [
-        { h: 'Starting package', price: 'from $350', items: [
-          'One wooden backdrop, your pick from the available selection',
-          'An organic balloon garland built by hand',
-          'Balloon colours matched to your event palette',
-          'Delivery, installation, and takedown after the event'
-        ]},
-        { h: 'Customize your setup', items: [
-          'Custom vinyl decals &mdash; names, ages, sayings, logos and graphics',
-          'Additional backdrops for a wider focal area',
-          'Extra footage of balloons',
-          'Foil accents and specialty balloons'
-        ]},
-        { h: 'Take it a step further', items: [
-          'Custom character cutouts',
-          'Themed props and decorative elements',
-          'Specialty backdrop designs',
-          'A fully custom installation built around your theme'
-        ]}
-      ],
-      note: 'Every setup can be customized to fit your event, theme, space and vision.'
-    },
     chipsHead: 'Good for',
     chips: ['Baby showers', 'Bridal showers', 'Birthdays', 'Gender reveals', 'Weddings', 'Graduations', 'Corporate events', 'Photo backdrops'],
     photoDir: 'Assets/Gallery/Backdrop and Balloon Garland setup',
