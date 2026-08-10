@@ -2467,3 +2467,130 @@ h1 em, h2 em {
 /* Page accent wins the eyebrow on service pages — the global .eyebrow is
    hard-coded to brand pink, which put two accents in one viewport. */
 .svc-hero .eyebrow { color: var(--svc-accent-dk); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ░░░ CORPORATE PAGE LAYER ░░░  (added 2026-08-09)
+
+   The corporate page stopped being a sibling of the five service pages. It
+   sells to a different buyer — someone choosing a vendor for their company,
+   not planning their own party — and that buyer asks questions a bride never
+   does. These three blocks exist because those questions exist, not for
+   visual variety.
+
+   Everything still inherits the locked system: same tokens, nav, footer,
+   gutters, motion. Only the macrostructure differs, which is exactly what
+   multi-page coherence permits to flex.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ---- Sectors. The honest stand-in for a client logo wall: real industries
+        she has installed for, described without naming the companies until
+        permission comes back. When it does, names slot into .svc-sector-name
+        without touching the layout. ---- */
+.svc-sectors { padding: 8px 0 64px; background: var(--cream); }
+.svc-sectors-grid {
+  display: grid;
+  /* Explicit counts, not auto-fit. There are FIVE sectors, and 5 items in a
+     2/3/4-column auto-fit grid always strand a lone card on the last row.
+     5-across on desktop keeps one clean row; 3-across mid-width gives 3+2,
+     which reads deliberate rather than orphaned. */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-top: 24px;
+}
+@media (max-width: 1080px) { .svc-sectors-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px)  { .svc-sectors-grid { grid-template-columns: repeat(2, 1fr); } }
+.svc-sector {
+  background: #fff;
+  border: 2px solid var(--svc-accent-soft);
+  border-radius: 20px;
+  padding: 22px 22px 20px;
+}
+.svc-sector-name {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--plum);
+  margin-bottom: 7px;
+}
+.svc-sector p { font-size: 14.5px; line-height: 1.6; color: var(--plum-soft); margin: 0; }
+
+/* ---- Process. Numbered, because a company wants to know the sequence and
+        who is on the hook at each step. ---- */
+.svc-process { padding: 8px 0 66px; background: var(--cream); }
+.svc-process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+  counter-reset: step;
+}
+.svc-step {
+  position: relative;
+  background: var(--svc-accent-soft);
+  border-radius: 20px;
+  padding: 26px 22px 22px;
+}
+.svc-step::before {
+  counter-increment: step;
+  content: "0" counter(step);
+  display: block;
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1;
+  color: var(--svc-accent-dk);
+  margin-bottom: 10px;
+}
+.svc-step h3 { font-family: var(--font-body); font-weight: 800; font-size: 16px; color: var(--plum); margin: 0 0 7px; }
+.svc-step p { font-size: 14.5px; line-height: 1.62; color: var(--plum-soft); margin: 0; }
+
+/* ---- FAQ. Native <details>/<summary>: keyboard accessible, works with zero
+        JS, and every answer stays in the DOM so crawlers and AI answer
+        engines can read it whether or not the disclosure is open. ---- */
+.svc-faq { padding: 8px 0 70px; background: var(--cream); }
+.svc-faq-list { max-width: 74ch; margin: 24px auto 0; }
+.svc-faq details {
+  border-bottom: 2px solid var(--pink-baby-soft);
+  padding: 0;
+}
+.svc-faq details:first-of-type { border-top: 2px solid var(--pink-baby-soft); }
+.svc-faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 19px 44px 19px 2px;
+  position: relative;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 16.5px;
+  color: var(--plum);
+  transition: color .2s var(--ease);
+}
+.svc-faq summary::-webkit-details-marker { display: none; }
+.svc-faq summary:hover { color: var(--svc-accent-dk); }
+.svc-faq summary:focus-visible { outline: 3px solid var(--svc-accent-dk); outline-offset: 3px; border-radius: 4px; }
+/* the +/- affordance: two bars, one rotates away when open */
+.svc-faq summary::before,
+.svc-faq summary::after {
+  content: "";
+  position: absolute;
+  right: 8px; top: 50%;
+  width: 15px; height: 2.5px;
+  border-radius: 2px;
+  background: var(--svc-accent-dk);
+  transform: translateY(-50%);
+  transition: transform .25s var(--ease);
+}
+.svc-faq summary::after { transform: translateY(-50%) rotate(90deg); }
+.svc-faq details[open] summary::after { transform: translateY(-50%) rotate(0deg); }
+.svc-faq-a { padding: 0 44px 21px 2px; }
+.svc-faq-a p { font-size: 16px; line-height: 1.7; color: var(--plum-soft); margin: 0 0 12px; }
+.svc-faq-a p:last-child { margin-bottom: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-faq summary::before, .svc-faq summary::after { transition: none; }
+}
+
+@media (max-width: 560px) {
+  .svc-sectors-grid, .svc-process-grid { grid-template-columns: 1fr; }
+  .svc-faq summary { font-size: 15.5px; padding-right: 38px; }
+}

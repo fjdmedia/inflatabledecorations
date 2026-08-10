@@ -61,6 +61,26 @@ const PAGES = [
       { f: 'IMG_2906.jpg', a: 'Retirement party balloon columns installed at a Winnipeg school' }
     ],
     heroPhoto: { d: 'Assets/Gallery/Walkthrough Arches', f: 'IMG_3333.jpg', a: 'Corporate anniversary balloon arch with custom logo balloons at a Winnipeg office entrance' },
+    sectors: {
+      head: 'Where these installs have gone',
+      intro: 'A lobby is not a dining room, and neither is a school hallway. Different rooms, different asks.',
+      items: [
+        { n: 'Offices &amp; professional services', p: 'Milestone anniversaries and entrance installs.' },
+        { n: 'Entertainment venues', p: 'A check-in point built as a branded arch and columns, in the venue&rsquo;s own blue, black and white.' },
+        { n: 'Restaurants &amp; hospitality', p: 'A milkshake the height of a person, cherry on top, standing on a diner&rsquo;s checkerboard floor.' },
+        { n: 'Salons &amp; storefronts', p: 'A column by the front desk, black and white, topped with a printed logo balloon.' },
+        { n: 'Schools', p: 'First days back, and send-offs for staff leaving.' }
+      ]
+    },
+    process: {
+      head: 'How a booking runs',
+      steps: [
+        { h: 'You send the details', p: 'Date, venue, your colours and any inspiration photos, through the inquiry form. A reply comes back within 24 hours.' },
+        { h: 'The design gets settled', p: 'Colours, sizes and what sits where, agreed with you before anything is built.' },
+        { h: 'We install', p: 'On site, on the schedule the event needs.' },
+        { h: 'We come back for it', p: 'Teardown and removal once it is over.' }
+      ]
+    },
     quotes: [
       { p: 'I&rsquo;ve used Inflatable Decorations multiple times now at my nail salon for both Christmas and Halloween, as well as for my own birthday, and every time I&rsquo;m blown away. The setups are always so creative and perfectly suited to the occasion. One thing that really stands out is the quality &mdash; the balloons last MONTHS! Which is amazing, especially for a business space where I want things to look good for as long as possible. My clients always compliment the decor and it really adds such a fun vibe to the salon!', c: 'Lisa', s: 'Repeat client &middot; nail salon' },
       { p: 'Jess killed it with the set up and take down. So effortless and easy to host when your vendors are 12/10. Everything was all set up for the time of our event and Jess came back after to take it all down so we did not have to lift a finger. She&rsquo;s your decor expert!', c: 'Emily Parker', s: 'Google review' }
@@ -294,6 +314,58 @@ function page(d) {
         <cite>${q.c}<span class="svc-quote-src">${q.s}</span></cite>
       </blockquote>`).join('\n');
 
+  /* Optional blocks — only the corporate page carries these. It sells to a
+     different buyer than the five service pages, and that buyer asks questions
+     a party planner never does. Sections exist because the questions exist. */
+  const sectors = !d.sectors ? '' : `
+  <section class="svc-sectors" aria-label="Winnipeg businesses we have built for">
+    <div class="container">
+      <div class="svc-prose">
+        <h2>${d.sectors.head}</h2>
+        <p>${d.sectors.intro}</p>
+      </div>
+      <div class="svc-sectors-grid">
+${d.sectors.items.map(i => `        <article class="svc-sector">
+          <span class="svc-sector-name">${i.n}</span>
+          <p>${i.p}</p>
+        </article>`).join('\n')}
+      </div>
+    </div>
+  </section>
+`;
+
+  const process = !d.process ? '' : `
+  <section class="svc-process" aria-label="How a corporate booking runs">
+    <div class="container">
+      <div class="svc-prose">
+        <h2>${d.process.head}</h2>
+      </div>
+      <div class="svc-process-grid">
+${d.process.steps.map(st => `        <article class="svc-step">
+          <h3>${st.h}</h3>
+          <p>${st.p}</p>
+        </article>`).join('\n')}
+      </div>
+    </div>
+  </section>
+`;
+
+  const faq = !d.faq ? '' : `
+  <section class="svc-faq" aria-label="Common questions">
+    <div class="container">
+      <div class="svc-prose">
+        <h2>${d.faq.head}</h2>
+      </div>
+      <div class="svc-faq-list">
+${d.faq.items.map(q => `        <details>
+          <summary>${q.q}</summary>
+          <div class="svc-faq-a">${q.a.map(t => `<p>${t}</p>`).join('')}</div>
+        </details>`).join('\n')}
+      </div>
+    </div>
+  </section>
+`;
+
   const prose = d.prose.map(s =>
     `        <h3>${s.h}</h3>\n${s.p.map(t => `        <p>${t}</p>`).join('\n')}`).join('\n');
 
@@ -308,6 +380,14 @@ function page(d) {
     provider: { '@type': 'LocalBusiness', '@id': `${ORIGIN}/#business`, name: 'Inflatable Decorations', url: `${ORIGIN}/` },
     areaServed: [{ '@type': 'City', name: 'Winnipeg' }, { '@type': 'AdministrativeArea', name: 'Manitoba' }],
     url
+  };
+  const ldFaq = !d.faq ? null : {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage', '@id': `${url}#faq`,
+    mainEntity: d.faq.items.map(q => ({
+      '@type': 'Question', name: strip(q.q),
+      acceptedAnswer: { '@type': 'Answer', text: strip(q.a.join(' ')) }
+    }))
   };
   const ldCrumb = {
     '@context': 'https://schema.org',
@@ -355,7 +435,10 @@ ${JSON.stringify(ldService, null, 2)}
   </script>
   <script type="application/ld+json">
 ${JSON.stringify(ldCrumb, null, 2)}
-  </script>
+  </script>${ldFaq ? `
+  <script type="application/ld+json">
+${JSON.stringify(ldFaq, null, 2)}
+  </script>` : ''}
 </head>
 <body class="${cls}">
 
@@ -430,14 +513,14 @@ ${shots}
       </div>
     </div>
   </section>
-${d.quotes.length ? `
+${sectors}${d.quotes.length ? `
   <section class="svc-body" aria-label="What clients say" style="padding-top:0">
     <div class="container">
 ${quotes}
     </div>
   </section>
 ` : ''}
-  <div class="scallop-div pink-mint" aria-hidden="true" style="background-color: var(--cream);"></div>
+${process}${faq}  <div class="scallop-div pink-mint" aria-hidden="true" style="background-color: var(--cream);"></div>
 
   <section class="svc-cta">
     <div class="container">
