@@ -33,14 +33,20 @@ const PAGES = [
     svcName: 'Corporate Balloon Decor',
     prose: [
       { h: 'Built around the brand, not just the theme', p: [
-        'Every corporate install starts with your brand kit, not a colour wheel — the exact blues, the exact reds, matched from your palette instead of eyeballed off a swatch card. Where the branding needs to read from across a lobby, balloons get printed with your logo directly.',
-        'An engineering firm wanted their logo on the arch and a giant 40 in balloons beside it, marking the office entrance for their fortieth anniversary. That is the kind of brief this side of the business is built for. One specific ask, right the first time — there is no second day to redo it.'
+        'Every corporate install starts with your brand kit, not a colour wheel &mdash; the exact blues, the exact reds, matched from your palette instead of eyeballed off a swatch card. Where the branding needs to read from across a lobby, balloons get printed with your logo directly.',
+        'An engineering firm wanted their logo on the arch and a giant 40 in balloons beside it, marking the office entrance for their fortieth anniversary. That is the kind of brief this side of the business is built for. One specific ask, right the first time &mdash; there is no second day to redo it.'
+      ]},
+      { h: 'Bring the brand to the details', p: [
+        'It does not have to stop at one large installation. Tabletop arrangements carry the same colours onto registration desks, food stations and employee tables, so the room reads as one thing rather than a decorated corner and a lot of empty space.'
+      ]},
+      { h: 'Build a package that fits the event', p: [
+        'The elements combine. A walk-through arch with branded columns either side, tabletop pieces through the room, a backdrop and custom details for a full branded run. One statement installation, or a bit of everything.'
       ]},
       { h: 'Timed to the business day', p: [
-        'Schools call on this side of the business just as often as offices do. A first-day-of-school install one week, balloon columns marking a retiring teacher’s send-off the next. Every one of them goes up before the room fills and clears out on a timeline that never lands on your staff’s task list.'
+        'Schools call on this side of the business just as often as offices do. A first-day-of-school install one week, balloon columns marking a retiring teacher&rsquo;s send-off the next. Every one of them goes up before the room fills and clears out on a timeline that never lands on your staff&rsquo;s task list.'
       ]},
       { h: 'Long enough to matter', p: [
-        'A birthday setup only has to survive one afternoon. A lobby, a storefront window or a month-long promotion is a longer ask — say so up front, and the design gets built to hold for the length of the run, not just the first hour.'
+        'A birthday setup only has to survive one afternoon. A lobby, a storefront window or a month-long promotion is a longer ask &mdash; say so up front, and the design gets built to hold for the length of the run, not just the first hour.'
       ]}
     ],
     includes: [
@@ -50,8 +56,20 @@ const PAGES = [
       'Arches, garlands, backdrops, columns and number displays',
       'Sized for lobbies, storefronts, showrooms and offices'
     ],
+    tiers: {
+      groups: [
+        { h: 'What a corporate booking can include', items: [
+          'Walk-through arches in your company colours',
+          'Branded columns for entrances, stages and registration areas',
+          'Tabletop arrangements for desks, food stations and employee tables',
+          'Backdrops and custom vinyl details',
+          'Balloons printed with your logo',
+          'Installed before doors open, cleared once the event is done'
+        ]}
+      ]
+    },
     chipsHead: 'What we set up for businesses',
-    chips: ['Grand openings', 'Ribbon-cuttings', 'Holiday office parties', 'Lobby & reception installs', 'Storefront & showroom displays', 'Product launches', 'Restaurants & hospitality', 'Schools & institutions', 'Staff appreciation & retirements', 'Company anniversaries'],
+    chips: ['Grand openings and launches', 'Staff appreciation days', 'Company anniversaries', 'Corporate holiday parties', 'Employee celebrations', 'Fundraisers and community events', 'Conferences and promotional events', 'Office parties and milestones'],
     photoDir: 'Assets/Gallery/Columns',
     photos: [
       { f: 'Main.jpg',   a: 'Custom logo-printed balloon column installed at a Winnipeg salon', tall: true },
@@ -277,15 +295,19 @@ const PAGES = [
     desc: 'Grab &amp; Go balloon garlands in Winnipeg, hand-clustered and ready for pickup. Hang it yourself in minutes — the same look as a full install, no appointment.',
     h1: 'Grab &amp; Go Balloon Garlands in Winnipeg',
     eyebrow: 'Pre-Made &middot; Ready for Pickup',
-    lede: 'The same garland we build for a full install, minus the appointment — pick it up finished and hang it yourself in whatever time you actually have.',
+    lede: 'A smaller amount of balloon decor, assembled in your colours and ready to collect. You handle the transport and the hanging, which is what keeps it the lighter option.',
     svcName: 'Grab and Go Balloon Garlands',
     prose: [
-      { h: 'Built the same way, handed over finished', p: [
-        'Grab &amp; Go garlands go through the same process as an install, clustered by hand and built in your colours. The only difference is where the last step happens: instead of mounting it on your wall, we hand it to you already assembled.',
-        'That makes it the option when the venue only gives you access an hour beforehand, when the space is small enough to manage alone, or when a full install is more than the day actually calls for.'
+      { h: 'A smaller, more flexible option', p: [
+        'Grab &amp; Go garlands suit birthdays, showers and celebrations that want a balloon focal point without a full installation \u2014 a smaller space, a simpler event, or a decor budget you would rather keep modest.',
+        'They are still professionally assembled. What changes is who carries it and who hangs it, and both of those are yours.'
       ]},
-      { h: 'Up in minutes, no experience needed', p: [
-        'A finished garland goes up at a few fixed points on whatever surface you have — a wall or a doorway frame. If it can hold a picture frame, it can hold a garland.'
+      { h: 'What to expect', p: [
+        'Each garland is made to order in your chosen colours and can be built to suit a theme. Themed foil balloons and other specialty accents can be added for an additional cost.',
+        'It will be finished and waiting at your scheduled pickup time. Bring a vehicle big enough to carry it safely \u2014 depending on the size of the garland that can mean a larger vehicle, or a cleared-out back seat.'
+      ]},
+      { h: 'If you would rather not handle it', p: [
+        'Delivery and professional installation come with the <a href="balloon-garlands.html">full-service garland setups</a> instead.'
       ]}
     ],
     includes: [
@@ -298,10 +320,10 @@ const PAGES = [
     tiers: {
       groups: [
         { h: 'What&rsquo;s included', price: 'from $90', items: [
-          'A pre-assembled garland in your chosen colours',
-          'Ready for pickup at an arranged time',
-          'Hangs at home, at a hall or at a venue',
-          'Themed foil accents available'
+          'A garland built in the colours you pick',
+          'Professionally assembled and finished',
+          'Ready at your scheduled pickup time',
+          'Themed foils and specialty accents available at additional cost'
         ]}
       ]
     },
@@ -326,15 +348,18 @@ const PAGES = [
     desc: 'Giant balloon number stacks in Winnipeg for milestone birthdays and anniversaries, built in your palette and sized to be the photo. Bouquets available.',
     h1: 'Balloon Number Stacks in Winnipeg',
     eyebrow: 'Number Stacks &amp; Bouquets',
-    lede: 'A first birthday, a fortieth, a golden anniversary — the number gets built big enough to be the photo itself, not a detail standing next to the cake.',
+    lede: 'Something for the birthday that does not need a full setup \u2014 a number built big enough to be the photo, without taking over the room.',
     svcName: 'Balloon Number Stacks and Bouquets',
     prose: [
-      { h: 'The number is the photo, not a prop', p: [
-        'Store-bought foil numbers come in whatever shade the aisle had that week. A balloon number stack gets built in your actual palette, at a size that holds up as the main subject of every photo taken that day.',
-        'Big enough to see from across the room. Small enough to still fit through the door.'
+      { h: 'Small setup, big impact', p: [
+        'Number stacks suit smaller birthdays, at-home celebrations and the parties that want decor landing in photographs without committing to a garland or a backdrop.',
+        'They stand roughly three and a half to five feet, depending on the size, the design and the details added. Tall enough to be the subject of the picture, contained enough to live in a normal room.'
       ]},
-      { h: 'Bouquets, sized down', p: [
-        'The same palette works smaller for bouquets — clustered arrangements for the gift table and entryway, so the number is not the only thing carrying the theme.'
+      { h: 'Built around the theme', p: [
+        'Soft and simple, or loud and fully themed. A stack can match the party colours, pick up the cake, or carry themed foils and accents that tie the rest of the decor together.'
+      ]},
+      { h: 'What to expect', p: [
+        'Every stack is made to order, so there is no one-size package. The final design and the price follow the number of foil balloons, the overall size, the level of detail, and any specialty add-ons.'
       ]}
     ],
     includes: [
@@ -346,17 +371,19 @@ const PAGES = [
     ],
     tiers: {
       groups: [
-        { h: 'What&rsquo;s included', price: 'from $70', items: [
-          'Giant number stacks in your colour palette',
-          'Balloon bouquets for tables and entryways',
-          'Matched to the rest of your decor',
-          'Themed foil and confetti accents available',
-          'Delivered and set up for the celebration'
+        { h: 'Customize your stack', price: 'from $70', items: [
+          'Your choice of colours and colour combinations',
+          'Themed foil balloons',
+          'Specialty 260 twisting balloons',
+          'Custom vinyl sayings and details',
+          'Florals or other decorative accents',
+          'Additional balloon clusters for extra height'
         ]}
-      ]
+      ],
+      note: 'Simple or fully themed, the stack gets built to fit the celebration, the space and the budget.'
     },
     chipsHead: 'Good for',
-    chips: ['First birthdays', 'Milestone birthdays', 'Anniversaries', 'Graduations', 'Retirement parties', 'Company anniversaries', 'Gift tables'],
+    chips: ['First birthdays', 'Milestone birthdays', 'At-home celebrations', 'Anniversaries', 'Graduations', 'Retirement parties', 'Gift and cake tables', 'Company milestones'],
     photoDir: 'Assets/Gallery/Ballon Bouquets-Number Stacks',
     photos: [
       { f: 'Main2.jpg', a: 'Giant balloon number stack for a Winnipeg birthday celebration', tall: true },
@@ -594,7 +621,7 @@ ${d.includes.map(i => `          <li>${i}</li>`).join('\n')}
         </ul>`}
 
         <h3>${d.chipsHead}</h3>
-        <ul class="svc-chips">
+        <ul class="svc-uses">
 ${d.chips.map(c => `          <li>${c}</li>`).join('\n')}
         </ul>
       </div>
