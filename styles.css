@@ -2493,7 +2493,7 @@ h1 em, h2 em {
      2/3/4-column auto-fit grid always strand a lone card on the last row.
      5-across on desktop keeps one clean row; 3-across mid-width gives 3+2,
      which reads deliberate rather than orphaned. */
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);   /* SIX sectors now - 3+3, no orphan */
   gap: 14px;
   margin-top: 24px;
 }

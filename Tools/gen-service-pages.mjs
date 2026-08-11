@@ -70,23 +70,24 @@ const PAGES = [
     },
     chipsHead: 'What we set up for businesses',
     chips: ['Grand openings and launches', 'Staff appreciation days', 'Company anniversaries', 'Corporate holiday parties', 'Employee celebrations', 'Fundraisers and community events', 'Conferences and promotional events', 'Office parties and milestones'],
-    photoDir: 'Assets/Gallery/Columns',
+    photoDir: 'Assets/Gallery/Corporate',
     photos: [
-      { f: 'Main.jpg',   a: 'Custom logo-printed balloon column installed at a Winnipeg salon', tall: true },
-      { d: 'Assets/Gallery/Walkthrough Arches', f: 'Cover.jpg', a: 'Brand-colour balloon arch with logo balloons at a Winnipeg entertainment venue' },
-      { f: 'IMG_2820.jpg', a: 'Milkshake-themed balloon column built for a Winnipeg diner' },
-      { d: 'Assets/Gallery/Walkthrough Arches', f: 'IMG_2589.jpg', a: 'Balloon arch marking a promotional event at a Winnipeg storefront' },
-      { f: 'IMG_2906.jpg', a: 'Retirement party balloon columns installed at a Winnipeg school' }
+      { f: 'IMG_3485.jpg', a: 'Matched balloon columns flanking a sponsor backdrop at a Special Olympics Manitoba Summer Games event in Winnipeg', tall: true },
+      { f: 'IMG_1377.jpg', a: 'Blue and silver balloon garland on a corporate holiday party backdrop in Winnipeg' },
+      { f: 'IMG_2606.jpg', a: 'Branded balloon arch with printed foil balloons at a Winnipeg car dealership charity event' },
+      { f: 'IMG_3180.jpg', a: 'Matched balloon columns with printed anniversary balloons at a Winnipeg fundraiser' },
+      { f: 'IMG_2591.jpg', a: 'Black and white balloon column at the entrance of a Winnipeg retail store' }
     ],
-    heroPhoto: { d: 'Assets/Gallery/Walkthrough Arches', f: 'IMG_3333.jpg', a: 'Corporate anniversary balloon arch with custom logo balloons at a Winnipeg office entrance' },
+    heroPhoto: { d: 'Assets/Gallery/Corporate', f: 'IMG_3383.jpg', a: 'Corporate anniversary balloon arch with printed logo balloons in a Winnipeg office reception' },
     sectors: {
       head: 'Where these installs have gone',
-      intro: 'A lobby is not a dining room, and neither is a school hallway. Different rooms, different asks.',
+      intro: 'A lobby is not a dining room, and neither is a school gym. Different rooms, different asks.',
       items: [
-        { n: 'Offices &amp; professional services', p: 'Milestone anniversaries and entrance installs.' },
-        { n: 'Entertainment venues', p: 'A check-in point built as a branded arch and columns, in the venue&rsquo;s own blue, black and white.' },
-        { n: 'Restaurants &amp; hospitality', p: 'A milkshake the height of a person, cherry on top, standing on a diner&rsquo;s checkerboard floor.' },
-        { n: 'Salons &amp; storefronts', p: 'A column by the front desk, black and white, topped with a printed logo balloon.' },
+        { n: 'Offices &amp; professional services', p: 'Milestone anniversaries, reception installs and holiday parties.' },
+        { n: 'Nonprofits &amp; fundraisers', p: 'Sponsor backdrops and matched columns for charity events and provincial games.' },
+        { n: 'Retail &amp; storefronts', p: 'Branded columns at the door, in the shop&rsquo;s own colours.' },
+        { n: 'Restaurants &amp; hospitality', p: 'A milkshake the height of a person, cherry on top, on a diner&rsquo;s checkerboard floor.' },
+        { n: 'Salons &amp; studios', p: 'A column by the front desk, topped with a printed logo balloon.' },
         { n: 'Schools', p: 'First days back, and send-offs for staff leaving.' }
       ]
     },
