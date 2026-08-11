@@ -194,7 +194,7 @@ const PAGES = [
     ],
     tiers: {
       groups: [
-        { h: 'Starting package', price: 'from $350', items: [
+        { h: 'Starting package', price: 'Starting at $350', items: [
           'One wooden backdrop, your pick from the available selection',
           'An organic balloon garland built by hand',
           'Balloon colours matched to your event palette',
@@ -202,6 +202,7 @@ const PAGES = [
         ]},
         { h: 'Customize your setup', items: [
           'Custom vinyl decals &mdash; names, ages, sayings, logos and graphics',
+          'Custom welcome sign and easel rental &mdash; starting at $90',
           'Additional backdrops for a wider focal area',
           'Extra footage of balloons',
           'Foil accents and specialty balloons'
@@ -259,7 +260,7 @@ const PAGES = [
     ],
     tiers: {
       groups: [
-        { h: 'What&rsquo;s included', price: 'from $140', items: [
+        { h: 'What&rsquo;s included', price: 'Starting at $140', items: [
           'Freestanding columns built to your colour palette',
           'Your choice of style and design',
           'Single columns or matched pairs',
@@ -319,7 +320,7 @@ const PAGES = [
     ],
     tiers: {
       groups: [
-        { h: 'What&rsquo;s included', price: 'from $90', items: [
+        { h: 'What&rsquo;s included', price: 'Starting at $90', items: [
           'A garland built in the colours you pick',
           'Professionally assembled and finished',
           'Ready at your scheduled pickup time',
@@ -371,7 +372,7 @@ const PAGES = [
     ],
     tiers: {
       groups: [
-        { h: 'Customize your stack', price: 'from $70', items: [
+        { h: 'Customize your stack', price: 'Starting at $70', items: [
           'Your choice of colours and colour combinations',
           'Themed foil balloons',
           'Specialty 260 twisting balloons',
