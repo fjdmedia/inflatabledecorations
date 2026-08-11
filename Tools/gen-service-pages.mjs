@@ -703,6 +703,23 @@ ${PAGES.map(s => `            <li><a href="${s.slug}.html">${s.nav}</a></li>`).j
 `;
 }
 
+/* Structural self-check. Editing this file with a non-greedy regex over
+   `key: [ ... ]` silently swallows sibling keys, because `chips` is a ONE-LINE
+   array while the others are multi-line - the over-match ate `photoDir` and
+   `photos` twice on 2026-08-11 and surfaced three steps later as an opaque
+   "Cannot read properties of undefined". Fail here instead, naming the page
+   and the key. Edit this file with bracket-balancing, not regex. */
+const REQUIRED_KEYS = ['slug','title','desc','h1','lede','svcName','prose',
+                       'includes','chips','photoDir','photos','heroPhoto','quotes'];
+for (const d of PAGES) {
+  const missing = REQUIRED_KEYS.filter(k => d[k] === undefined);
+  if (missing.length) {
+    console.error(`FATAL: page "${d.slug ?? '(unknown)'}" is missing: ${missing.join(', ')}`);
+    console.error('  A key was probably clobbered by an over-greedy edit. Check git diff.');
+    process.exit(1);
+  }
+}
+
 let fail = 0;
 for (const d of PAGES) {
   const html = page(d);
