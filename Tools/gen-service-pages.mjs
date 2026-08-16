@@ -114,18 +114,14 @@ const PAGES = [
     desc: 'Walk-through balloon arches in Winnipeg, built to the width of your doorway or aisle. Colours set to your theme, up before your guests arrive.',
     h1: 'Balloon Arches in Winnipeg',
     eyebrow: 'Walk-Through Arches',
-    lede: 'A full-size walk-through arch for an entryway or an event floor. Your colours, your choice of spiral or organic build, installed on site and cleared away afterward.',
+    lede: 'A full walk through arch turns a doorway into the first photo of the day. Built to your colours, installed on site, and sized for the space it is going in.',
     svcName: 'Walk-Through Balloon Arches',
     prose: [
-      { h: 'Ten feet across, and guests walk through it', p: [
-        'The arch spans 10ft wide by 8ft high, built to stand in a doorway or open across a room. Guests move through it rather than past it, which is why it ends up in more photographs than anything else on the floor.',
-        'It marks the start of the event before anyone has said a word, and it tells people they are in the right place.'
+      { h: 'Make a Grand Entrance', p: [
+        'Walk through balloon arches are the perfect way to make a grand first impression the moment your guests arrive. They create an eye catching entrance that instantly sets the tone for your event, while adding colour, excitement, and a memorable photo opportunity.'
       ]},
-      { h: 'Spiral or organic', p: [
-        'Two builds to pick from. A spiral winds the colours around the frame in an even repeating band. An organic build clusters them in mixed sizes for a looser, less uniform look. Same footprint, different character.'
-      ]},
-      { h: 'Your colours, without the guesswork', p: [
-        'You bring the palette \u2014 a theme, an invitation, a company brand \u2014 and the balloons get chosen after the colours are settled, not before.'
+      { h: 'Perfect for Corporate Events', p: [
+        'Walk through balloon arches are a great way to make grand openings, corporate parties, and special business events feel extra memorable. They can be customized using your company&rsquo;s colours, branding, and even custom vinyl logos or messaging, creating a polished and eye catching display that puts your business front and centre.'
       ]}
     ],
     includes: [
@@ -244,12 +240,15 @@ const PAGES = [
     lede: 'A column does not need a wall to lean on or a doorway to fill — just a spot on the floor and a height in mind, which makes it the answer when nothing else in the room gives you a place to build.',
     svcName: 'Balloon Columns',
     prose: [
-      { h: 'From a single accent to a full shape', p: [
-        'A column needs no wall to lean on and no doorway to fill \u2014 just a spot on the floor and a height in mind. That makes it the answer when nothing else in the room gives you somewhere to build.',
-        'They land hardest in pairs. A matched set either side of an entrance, a stage or a registration desk frames the space instantly.'
+      { h: 'From a Single Accent to a Full Shape', p: [
+        'A column needs no wall to lean on and no doorway to fill &mdash; just a spot on the floor and a height in mind. That makes it the answer when nothing else in the room gives you somewhere to build.',
+        'For corporate events, columns can be customized with company colours, branded details and business logos for a polished and professional look. For birthdays, grand openings, themed parties, and celebrations, they can be made colourful, playful, and completely customized to your theme.'
       ]},
-      { h: 'More than a spiral', p: [
-        'Classic spiral, helix, or an organic build. Or something that stops being a column altogether \u2014 a milkshake, an ice cream cone, a cactus. A Winnipeg diner got the milkshake, cherry on top, standing on the checkerboard floor beside the booths.'
+      { h: 'More Than a Spiral', p: [
+        'Classic spiral, helix, or an organic build. Or something that stops being a column altogether &mdash; a milkshake, an ice cream cone, a cactus. A Winnipeg diner got the milkshake, cherry on top, standing on the checkerboard floor beside the booths.'
+      ]},
+      { h: 'Sized &amp; Coloured for Your Event', p: [
+        'Every column is made to order, so the height, colours, style, and accents can be customized to fit your event. Whether you need something sleek and branded or bold and playful, your columns are designed specifically for your space.'
       ]}
     ],
     includes: [
@@ -261,15 +260,13 @@ const PAGES = [
     ],
     tiers: {
       groups: [
-        { h: 'What&rsquo;s included', price: 'Starting at $140', items: [
-          'Freestanding columns built to your colour palette',
-          'Your choice of style and design',
+        { h: 'What&rsquo;s Included', price: 'Starting at $140', items: [
+          'Freestanding balloon columns customized to your colour palette',
+          'Choice of column style and design',
           'Single columns or matched pairs',
+          'Themed foil toppers and custom accents available',
+          'Company logos and branded details available',
           'Delivery and removal included'
-        ]},
-        { h: 'Available on request', items: [
-          'Themed foil toppers and custom accents',
-          'Company logos and branded details'
         ]}
       ]
     },
@@ -350,18 +347,21 @@ const PAGES = [
     desc: 'Giant balloon number stacks in Winnipeg for milestone birthdays and anniversaries, built in your palette and sized to be the photo. Bouquets available.',
     h1: 'Balloon Number Stacks in Winnipeg',
     eyebrow: 'Number Stacks &amp; Bouquets',
-    lede: 'Something for the birthday that does not need a full setup \u2014 a number built big enough to be the photo, without taking over the room.',
+    lede: 'Want to add a little something special to a birthday without going all out with a full balloon setup? Balloon number stacks are the perfect way to add colour, personality and a wow factor without taking over the whole room.',
     svcName: 'Balloon Number Stacks and Bouquets',
     prose: [
-      { h: 'Small setup, big impact', p: [
-        'Number stacks suit smaller birthdays, at-home celebrations and the parties that want decor landing in photographs without committing to a garland or a backdrop.',
-        'They stand roughly three and a half to five feet, depending on the size, the design and the details added. Tall enough to be the subject of the picture, contained enough to live in a normal room.'
+      { h: 'Customized to Any Theme', p: [
+        'Whether you&rsquo;re celebrating a first birthday, 30th, 50th or anything in between, number stacks can be completely customized to match any theme, colour palette or celebration. Choose from simple and classic designs or add themed foils, specialty balloons, florals, confetti and other details to make it uniquely yours.'
       ]},
-      { h: 'Built around the theme', p: [
-        'Soft and simple, or loud and fully themed. A stack can match the party colours, pick up the cake, or carry themed foils and accents that tie the rest of the decor together.'
+      { h: 'Small Setup, Big Impact', p: [
+        'Number stacks are especially popular for smaller birthdays, at home celebrations and intimate parties where you want some eye catching decor without needing a full balloon garland or backdrop.',
+        'They typically stand approximately 3.5&ndash;5 feet tall, depending on the size, design and details added. They&rsquo;re large enough to make an impact in photos and give your celebration that extra special touch, while still being a manageable size for smaller spaces.'
       ]},
-      { h: 'What to expect', p: [
-        'Every stack is made to order, so there is no one-size package. The final design and the price follow the number of foil balloons, the overall size, the level of detail, and any specialty add-ons.'
+      { h: 'Made to Match Your Theme', p: [
+        'From soft and simple to fun and colourful, your number stack can be designed around virtually any theme. Match your party colours, coordinate with your cake and decorations, or add custom themed balloons and accents to really bring the design together.'
+      ]},
+      { h: 'What to Expect', p: [
+        'Because every number stack is made to order, there isn&rsquo;t a one size fits all package. Pricing and final design will depend on the number of foil balloons, overall size, level of detail and any specialty add ons you&rsquo;d like included.'
       ]}
     ],
     includes: [
@@ -373,16 +373,16 @@ const PAGES = [
     ],
     tiers: {
       groups: [
-        { h: 'Customize your stack', price: 'Starting at $70', items: [
+        { h: 'Your stack can be customized with options such as', price: 'Starting at $70', items: [
           'Your choice of colours and colour combinations',
           'Themed foil balloons',
           'Specialty 260 twisting balloons',
-          'Custom vinyl sayings and details',
+          'Custom vinyl sayings &amp; details',
           'Florals or other decorative accents',
-          'Additional balloon clusters for extra height'
+          'Additional balloon clusters and details for extra height'
         ]}
       ],
-      note: 'Simple or fully themed, the stack gets built to fit the celebration, the space and the budget.'
+      note: 'Whether you&rsquo;re looking for something simple or a more detailed themed design, we&rsquo;ll create a number stack that fits your celebration, your space and your budget.'
     },
     chipsHead: 'Good for',
     chips: ['First birthdays', 'Milestone birthdays', 'At-home celebrations', 'Anniversaries', 'Graduations', 'Retirement parties', 'Gift and cake tables', 'Company milestones'],
