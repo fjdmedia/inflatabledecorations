@@ -35,3 +35,10 @@ Test Run/node_modules/
 # Python build artifacts
 __pycache__/
 *.pyc
+
+# iPhone originals — converted to .jpg for the web and never committed.
+# They are 2-3MB each and no browser renders them. A `git add -A` swept 46 of
+# them into the index on 2026-08-16; this is the guard against a repeat.
+# Method: Memory/reference/heic_to_web_conversion.md
+*.HEIC
+*.heic

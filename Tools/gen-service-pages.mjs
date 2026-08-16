@@ -223,9 +223,9 @@ const PAGES = [
     photos: [
       { f: 'Cover.jpg', a: 'Balloon backdrop with organic garland at a Winnipeg celebration', tall: true },
       { f: 'Favorite.jpg', a: 'Pastel balloon garland and backdrop install in Winnipeg' },
-      { f: 'IMG_3827.jpg', a: 'Custom colour balloon backdrop set up in Winnipeg' },
-      { f: 'IMG_4091.jpg', a: 'Organic balloon garland across an event backdrop, Winnipeg' },
-      { f: 'IMG_4247.jpg', a: 'Balloon garland and backdrop styled for a Winnipeg event' }
+      { f: 'IMG_5117.jpg', a: 'Balloon garland on a wavy-edge backdrop panel at an outdoor Winnipeg party' },
+      { f: 'IMG_5149.jpg', a: 'Sage and cream balloon garland with two arched backdrop panels, Winnipeg' },
+      { f: 'e1fae4bd-9f50-4d12-823b-21afb1c054d2.jpg', a: 'Pastel butterfly-themed balloon garland and backdrop with a custom sign, Winnipeg' }
     ],
     heroPhoto: { d: 'Assets/Gallery/Backdrop and Balloon Garland setup', f: 'IMG_3963.jpg', a: 'Balloon backdrop with a custom organic garland by Inflatable Decorations, Winnipeg' },
     quotes: [
@@ -390,9 +390,9 @@ const PAGES = [
     photos: [
       { f: 'Main2.jpg', a: 'Giant balloon number stack for a Winnipeg birthday celebration', tall: true },
       { f: 'Cover.jpg', a: 'Balloon number stack in custom colours, Winnipeg' },
-      { f: 'Main.jpg', a: 'Balloon bouquet and number display by Inflatable Decorations, Winnipeg' },
-      { f: 'IMG_2924.jpg', a: 'Milestone birthday balloon number stack set up in Winnipeg' },
-      { f: 'IMG_3392.jpg', a: 'Balloon bouquet arrangement for a Winnipeg celebration' }
+      { f: 'IMG_5066.jpg', a: 'Golf-themed balloon number stack for a 30th birthday in Winnipeg' },
+      { f: 'IMG_4655.jpg', a: 'Purple balloon number stack with custom printed name balloons, Winnipeg' },
+      { f: 'IMG_4789.jpg', a: 'Sage green balloon number stack with floral accents, Winnipeg' }
     ],
     heroPhoto: { d: 'Assets/Gallery/Ballon Bouquets-Number Stacks', f: 'Cover.jpg', a: 'Giant balloon number stack built by Inflatable Decorations in Winnipeg' },
     quotes: [
