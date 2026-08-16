@@ -175,15 +175,16 @@ const PAGES = [
     desc: 'Balloon backdrops and hand-clustered organic garlands in Winnipeg for showers, birthdays and weddings — built around your colours, installed for you.',
     h1: 'Balloon Backdrops &amp; Garlands in Winnipeg',
     eyebrow: 'Backdrops & Balloon Garlands',
-    lede: 'Every eye in the room lands on one spot first — the backdrop is built to be that spot, with balloons clustered in real clumps of different sizes instead of spaced out like a store-bought strip.',
+    lede: 'The setup most people picture when they think of balloon decor &mdash; an organic balloon garland alongside a backdrop, colour matched to your theme, built as the focal point of the room.',
+
     svcName: 'Balloon Backdrops and Garlands',
     prose: [
-      { h: 'One focal point, not a wall of balloons', p: [
-        'A backdrop and garland set gives a room a single centre \u2014 the spot every phone points at the moment someone walks in. Guests gather there, the cake table goes there, and most of the photos come from there.',
-        'The garland itself is clustered by hand in mixed sizes rather than spaced evenly along a strip, which is the difference between a room that looks designed and one that looks decorated.'
+      { h: 'Why Backdrops &amp; Balloon Decor Make a Difference', p: [
+        'Backdrops and balloon decor can completely transform a space and become the main focal point of your event. They give the room a finished, intentional look while creating a designated area that naturally draws guests in.',
+        'Whether it&rsquo;s a birthday, baby shower, bridal shower, corporate event, or celebration, a well designed backdrop paired with balloons creates the perfect photo moment. It&rsquo;s where guests gather to take pictures, celebrate, and capture memories throughout the event.'
       ]},
-      { h: 'Pick the panel, or skip it', p: [
-        'The backdrop is a wooden panel, and it comes in more than one silhouette: a classic arch, a wavy edge, a treat wall, or a metal hoop frame. If the wall is already the feature, the garland runs straight across it and skips the panel entirely.'
+      { h: 'Your Colour Scheme &amp; Shape', p: [
+        'Our wooden backdrops come in different silhouettes &mdash; classic arched panels, wavy panel, treat wall panel, and our metal hoop frame, or a garland running straight across a wall with no backdrop. Paired with colours that complement your theme, venue, or personal style that bring your vision to life.'
       ]}
     ],
     includes: [
@@ -195,27 +196,26 @@ const PAGES = [
     ],
     tiers: {
       groups: [
-        { h: 'Starting package', price: 'Starting at $350', items: [
-          'One wooden backdrop, your pick from the available selection',
-          'An organic balloon garland built by hand',
-          'Balloon colours matched to your event palette',
-          'Delivery, installation, and takedown after the event'
+        { h: 'Starting Package Includes', price: 'Starting at $350', items: [
+          'One wooden backdrop of your choice from our available selection',
+          'Organic balloon garland',
+          'Balloon colours customized to your event&rsquo;s colour scheme',
+          'Delivery to your event location, installation, and takedown after your event'
         ]},
-        { h: 'Customize your setup', items: [
-          'Custom vinyl decals &mdash; names, ages, sayings, logos and graphics',
-          'Custom welcome sign and easel rental &mdash; starting at $90',
-          'Additional backdrops for a wider focal area',
-          'Extra footage of balloons',
-          'Foil accents and specialty balloons'
+        { h: 'Customize Your Setup', items: [
+          'Custom vinyl decals, names, ages, sayings, logos &amp; graphics',
+          'Additional backdrops to create a larger focal area',
+          'Additional footage of balloons',
+          'Foil accents &amp; specialty balloons'
         ]},
-        { h: 'Take it a step further', items: [
+        { h: 'Take It a Step Further', items: [
           'Custom character cutouts',
           'Themed props and decorative elements',
           'Specialty backdrop designs',
-          'A fully custom installation built around your theme'
+          'Fully custom installations designed around your theme'
         ]}
       ],
-      note: 'Every setup can be customized to fit your event, theme, space and vision.'
+      note: 'Every setup can be customized to fit your event, theme, space, and vision.'
     },
     chipsHead: 'Good for',
     chips: ['Baby showers', 'Bridal showers', 'Birthdays', 'Gender reveals', 'Weddings', 'Graduations', 'Corporate events', 'Photo backdrops'],
