@@ -59,6 +59,15 @@
 
   <!-- Structured data: tells Google this is a local Winnipeg business,
        powers map-pack eligibility + star-rating snippet in search results -->
+  
+  <!-- NO aggregateRating / Review markup here, deliberately. Google's review-snippet
+       guidelines (restated Dec 2025): "If the entity that's being reviewed controls the
+       reviews about itself, their pages that use LocalBusiness or any other type of
+       Organization structured data are ineligible for star review feature." The same page
+       says "Don't aggregate reviews or ratings from other websites" — these reviews come
+       from her Google listing. So the markup earned nothing and broke two guidelines.
+       Her stars still show in the map pack, natively from the GBP, with no markup at all.
+       The reviews stay VISIBLE on the page; only the markup is gone. Do not re-add. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -88,85 +97,53 @@
       "addressCountry": "CA"
     },
     "areaServed": [
-      { "@type": "City", "name": "Winnipeg" },
-      { "@type": "AdministrativeArea", "name": "Manitoba" }
+      {
+        "@type": "City",
+        "name": "Winnipeg"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Manitoba"
+      }
     ],
     "sameAs": [
       "https://instagram.com/inflatabledecorations"
     ],
     "makesOffer": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Balloon Backdrops & Garlands" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Walk-Through Balloon Arches" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Balloon Columns" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Balloon Bouquets & Number Stacks" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Grab & Go Garlands" } }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "bestRating": "5",
-      "reviewCount": "22"
-    },
-    "review": [
       {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Kerri Hiebert" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "We had the best experience from the quote to design to the day of set up. Our Baby Girl Shower had the extra wow we needed for making the room look better and for the best photo opportunities."
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Balloon Backdrops & Garlands"
+        }
       },
       {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "paige kibsey" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "I had the pleasure of working with this service to decorate for a baby shower! They provide quick communication while we planned and picked the colours for the arch, very professional service and they executed the vision we had perfectly! Would recommend this service to anyone in need for decorations."
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Walk-Through Balloon Arches"
+        }
       },
       {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Kristy Johnson" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Jess is the best! She did a beautiful setup for my baby shower and everything looked even better than I had imagined it would. We will be using her for all of our events in the future."
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Balloon Columns"
+        }
       },
       {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Alyssa Poganiatz" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Jessica was a dream to work with!! Her communication was great, pricing was very reasonable and she was on time to my social to set up! She was easy to talk to and offered so many varieties of balloons! 10/10 recommend if you need someone for balloons you won't be making a mistake choosing Inflatable Decorations!"
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Balloon Bouquets & Number Stacks"
+        }
       },
       {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Celeste Petrick" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Jess killed it with the set up and take down. So effortless and easy to host when your vendors are 12/10. Everything was all set up for the time of our event and Jess came back after to take it all down so we did not have to lift a finger. She's your decor expert!"
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Emily Parker" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "We came across this page on Instagram and decided to hire her for our baby shower decorations. She was so incredible at helping us build our dream baby shower and did such a beautiful job with the overall look. The balloons lasted a really long time too and we were able to use them for another event. I highly recommend her to anyone looking!!"
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "M McLeod" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "We had an amazing experience using Inflatable Decorations for my son's first birthday party. We live 20 minutes outside of Winnipeg and a few other businesses I tried first, refused to set up outside the city, then I luckily came across Jessica on Instagram and she had no problem coming to set up at our house the night before, as well as taking it down after the party. Her flexibility and communication made it so easy and convenient especially with having a young child, that we didn't even need to leave our house. The balloon arch and sign was gorgeous. We had so many compliments and questions about it during his party! I will definitely be working with Jessica again in the future for events as she was so professional, kind and talented"
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Sari Levi" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "We had a wonderful experience working with Jessica! She was incredibly helpful, easy to work with, and made the whole process stress-free from start to finish. She really enhanced the décor for my bridal shower — everyone was raving about how beautiful the ballon arch looked, and it made the perfect photo backdrop. Jessica handled all of the setup and takedown professionally, and the display looked amazing! She even shared photos of the finished setup afterward, which was such a thoughtful touch. Very friendly, reliable, and talented — I would definitely recommend her to anyone looking for beautiful event décor!"
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "alana signore" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Jessica has decorated several events for me and my family, including an engagement party, birthday parties, and bridal showers, and every experience has been amazing. Her communication is always excellent, the setup process is seamless, and she even returns afterward to take everything down, which makes hosting so much easier. Her balloon designs are beautiful, creative, and truly bring your vision to life. You can tell she puts so much care and attention into every detail. I would recommend her again and again for any event or celebration — she never disappoints!"
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Callie Antle" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Jessica at Inflatable Decorations has done multiple birthdays for my girls now and every single setup somehow tops the last. From our Berry First Birthday, Two the Moon theme, and Candy Land party, everything has always been beyond beautiful, creative, and so well put together. She pays attention to every detail and always brings the vision to life perfectly. Not only is her work amazing, but she's also so easy to work with, reliable, and genuinely cares about making each event feel special. We always get so many compliments on the decor and people constantly ask who did our balloons. I honestly wouldn't trust anyone else for our parties now! 10/10 amazing"
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Grab & Go Garlands"
+        }
       }
     ]
   }
