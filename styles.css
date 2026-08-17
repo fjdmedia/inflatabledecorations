@@ -202,7 +202,7 @@ p { margin: 0 0 1em; }
 .hero::before {
   content: "";
   position: absolute; inset: 0;
-  background: url("Assets/Patterns/banner-swirl.png") center/cover no-repeat;
+  background: url("Assets/Patterns/banner-swirl.jpg") center/cover no-repeat;
   opacity: 0.18;
   pointer-events: none;
 }
@@ -1214,7 +1214,7 @@ p { margin: 0 0 1em; }
 .contact-wrap::before {
   content: "";
   position: absolute; inset: 0;
-  background: url("Assets/Patterns/banner-swirl.png") center/cover no-repeat;
+  background: url("Assets/Patterns/banner-swirl.jpg") center/cover no-repeat;
   opacity: 0.3;
   pointer-events: none;
 }
