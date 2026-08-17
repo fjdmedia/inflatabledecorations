@@ -235,15 +235,16 @@ const PAGES = [
     desc: 'Balloon columns in Winnipeg, from a single branded accent to a full sculptural shape, in your colours, for entrances, stages and storefronts.',
     h1: 'Balloon Columns in Winnipeg',
     eyebrow: 'Standing Balloon Columns',
-    lede: 'A column does not need a wall to lean on or a doorway to fill — just a spot on the floor and a height in mind, which makes it the answer when nothing else in the room gives you a place to build.',
+    lede: 'Freestanding balloon columns that frame entrances, flank stages, highlight storefronts, or mark a photo area &mdash; completely customized to your colours, theme, and event.',
     svcName: 'Balloon Columns',
     prose: [
-      { h: 'From a Single Accent to a Full Shape', p: [
-        'A column needs no wall to lean on and no doorway to fill &mdash; just a spot on the floor and a height in mind. That makes it the answer when nothing else in the room gives you somewhere to build.',
-        'For corporate events, columns can be customized with company colours, branded details and business logos for a polished and professional look. For birthdays, grand openings, themed parties, and celebrations, they can be made colourful, playful, and completely customized to your theme.'
+      { h: 'Structure Where You Need It', p: [
+        'Balloon columns add height and structure without needing a wall or backdrop. They&rsquo;re perfect for open spaces, entrances, stages, storefronts, registration areas, and photo spots where you want your decor to make an impact.',
+        'Columns are especially striking in pairs. Placing a matched set on either side of an entrance, stage, or focal point creates an instant frame and gives the space a polished, intentional look.'
       ]},
-      { h: 'More Than a Spiral', p: [
-        'Classic spiral, helix, or an organic build. Or something that stops being a column altogether &mdash; a milkshake, an ice cream cone, a cactus. A Winnipeg diner got the milkshake, cherry on top, standing on the checkerboard floor beside the booths.'
+      { h: 'More Than Just a Spiral', p: [
+        'Your balloon columns can be designed in a variety of styles to suit the look you&rsquo;re going for. Choose from classic spiral columns, helix spirals, organic style columns, or take things in a completely different direction with fun custom shapes such as milkshakes, ice cream cones, cacti, and more.',
+        'For corporate events, columns can be customized with company colours, branded details and business logos for a polished and professional look. For birthdays, grand openings, themed parties, and celebrations, they can be made colourful, playful, and completely customized to your theme.'
       ]},
       { h: 'Sized &amp; Coloured for Your Event', p: [
         'Every column is made to order, so the height, colours, style, and accents can be customized to fit your event. Whether you need something sleek and branded or bold and playful, your columns are designed specifically for your space.'
