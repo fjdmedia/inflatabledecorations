@@ -33,11 +33,15 @@ const homeImgs = IMAGES.map(i => ({
   title: typeof i === 'string' ? 'Balloon decor by Inflatable Decorations, Winnipeg' : (i.alt || i.a || 'Balloon decor by Inflatable Decorations, Winnipeg')
 }));
 
-/* ---- service pages: images straight out of the markup ---- */
-const SERVICE_PAGES = [
-  'corporate-events.html', 'balloon-arches.html', 'balloon-garlands.html',
-  'balloon-columns.html', 'grab-and-go-garlands.html', 'balloon-number-stacks.html'
-];
+/* ---- service pages: images straight out of the markup ----
+   The slug list is READ from gen-service-pages.mjs rather than repeated here.
+   It used to be a hardcoded array and silently went stale the moment two pages
+   were added (2026-08-17) — the sitemap kept reporting 8 URLs while the site had
+   10. Same principle as the IMAGES array above: derive from the source of truth
+   so the sitemap cannot drift from what actually ships. */
+const genSrc = readFileSync('Tools/gen-service-pages.mjs', 'utf8');
+const SERVICE_PAGES = [...genSrc.matchAll(/^\s{4}slug: '([^']+)'/gm)].map(m => `${m[1]}.html`);
+if (!SERVICE_PAGES.length) { console.error('no slugs found in gen-service-pages.mjs'); process.exit(1); }
 const pageImgs = f => {
   const html = readFileSync(f, 'utf8');
   const out = [];

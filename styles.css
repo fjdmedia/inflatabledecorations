@@ -2278,6 +2278,11 @@ h1 em, h2 em {
 .svc-page.acc-peach  { --svc-accent: var(--peach);  --svc-accent-dk: #9E4C18; --svc-accent-soft: var(--peach-soft);  --svc-accent-mid: var(--peach); }
 .svc-page.acc-mint   { --svc-accent: var(--mint);   --svc-accent-dk: #2D7753; --svc-accent-soft: var(--mint-soft);   --svc-accent-mid: var(--mint); }
 .svc-page.acc-sky    { --svc-accent: var(--sky);    --svc-accent-dk: #1B6597; --svc-accent-soft: var(--sky-soft);    --svc-accent-mid: var(--sky); }
+/* Added 2026-08-17 for the showers + birthdays pages. --svc-accent-dk carries text,
+   so both darks were MEASURED, not eyeballed: #B02E62 = 6.15:1 on white / 5.84:1 on
+   cream; #456B55 = 6.02:1 / 5.72:1. Both clear 4.5:1 on either page background. */
+.svc-page.acc-blush  { --svc-accent: var(--pink-baby); --svc-accent-dk: #B02E62; --svc-accent-soft: var(--pink-baby-soft); --svc-accent-mid: var(--pink-baby); }
+.svc-page.acc-sage   { --svc-accent: var(--sage);      --svc-accent-dk: #456B55; --svc-accent-soft: #DCE9E1;              --svc-accent-mid: var(--sage); }
 
 /* ---- Page hero. Deliberately NOT the homepage hero: no orbs, no word-
         stagger, no 100vh. Those belong to the front door. A service page is
