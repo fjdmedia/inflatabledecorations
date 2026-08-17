@@ -100,9 +100,9 @@ const PAGES = [
     },
     quotes: [
       { p: 'I&rsquo;ve used Inflatable Decorations multiple times now at my nail salon for both Christmas and Halloween, as well as for my own birthday, and every time I&rsquo;m blown away. The setups are always so creative and perfectly suited to the occasion. One thing that really stands out is the quality &mdash; the balloons last MONTHS! Which is amazing, especially for a business space where I want things to look good for as long as possible. My clients always compliment the decor and it really adds such a fun vibe to the salon!', c: 'Lisa', s: 'Repeat client &middot; nail salon' },
-      { p: 'Jess killed it with the set up and take down. So effortless and easy to host when your vendors are 12/10. Everything was all set up for the time of our event and Jess came back after to take it all down so we did not have to lift a finger. She&rsquo;s your decor expert!', c: 'Celeste Petrick', s: 'Google review' },
-      { p: 'Our company hired Jessica to do the balloons for Employee Appreciation Day and she absolutely killed it! Jessica&rsquo;s communication and dedication was truly appreciated. She did great work and gave us exactly what we wanted and more. Highly recommend using Inflatable Decorations by Jessica for all your balloon needs, you won&rsquo;t regret it!', c: 'Sarah Bauer', s: 'Google review' },
-      { p: 'Our Pink Ribbon Ladies Golf Classic For Hope - Golf Tournament hired Inflatable Decorations to help make our 30th year milestone extra special. Jessica&rsquo;s balloon design left everyone in awe of our banquet&rsquo;s decor and not to mention the personalized logos was a nice touch. Highly recommend using Inflatable Decorations for all your events!', c: 'Madison Rosas-Abrenica', s: 'Google review' },
+      { p: 'Jess killed it with the set up and take down. So effortless and easy to host when your vendors are 12/10. Everything was all set up for the time of our event and Jess came back after to take it all down so we did not have to lift a finger. She&rsquo;s your decor expert!', c: 'Celeste Petrick', s: 'Google review', r: 'Thank you for the kind words! I&rsquo;m so glad I could help make your event special ☺️' },
+      { p: 'Our company hired Jessica to do the balloons for Employee Appreciation Day and she absolutely killed it! Jessica&rsquo;s communication and dedication was truly appreciated. She did great work and gave us exactly what we wanted and more. Highly recommend using Inflatable Decorations by Jessica for all your balloon needs, you won&rsquo;t regret it!', c: 'Sarah Bauer', s: 'Google review', r: 'Thank you so much for your kind words! It was a pleasure working with you and your team and being part of your employee appreciation event. We truly appreciate your support and look forward to creating something special for you again in the future!' },
+      { p: 'Our Pink Ribbon Ladies Golf Classic For Hope - Golf Tournament hired Inflatable Decorations to help make our 30th year milestone extra special. Jessica&rsquo;s balloon design left everyone in awe of our banquet&rsquo;s decor and not to mention the personalized logos was a nice touch. Highly recommend using Inflatable Decorations for all your events!', c: 'Madison Rosas-Abrenica', s: 'Google review', r: 'We really appreciate your wonderful review! Thank you for trusting Inflatable Decorations with your event. We loved creating your custom balloon decor and are grateful to have been part of such an amazing event!' },
     ],
   },
   {
@@ -159,8 +159,8 @@ const PAGES = [
     ],
     heroPhoto: { d: 'Assets/Gallery/Walkthrough Arches', f: 'IMG_3333.jpg', a: 'Custom walk-through balloon arch at a Winnipeg office entrance, built by Inflatable Decorations' },
     quotes: [
-      { p: 'I had the pleasure of working with this service to decorate for a baby shower! They provide quick communication while we planned and picked the colours for the arch, very professional service and they executed the vision we had perfectly! Would recommend this service to anyone in need for decorations!', c: 'paige kibsey', s: 'Google review' },
-      { p: 'I booked Jessica for my baby shower and she created an incredible balloon arch with custom decals for us! We received many compliments! I would highly recommend her services and I would definitely book her again for future events.', c: 'Alyssa', s: 'Google review' },
+      { p: 'I had the pleasure of working with this service to decorate for a baby shower! They provide quick communication while we planned and picked the colours for the arch, very professional service and they executed the vision we had perfectly! Would recommend this service to anyone in need for decorations!', c: 'paige kibsey', s: 'Google review', r: 'Thank you so much! I&rsquo;m so happy you loved the decor. It was a pleasure working with you, and I truly appreciate your support of Inflatable Decorations!' },
+      { p: 'I booked Jessica for my baby shower and she created an incredible balloon arch with custom decals for us! We received many compliments! I would highly recommend her services and I would definitely book her again for future events.', c: 'Alyssa', s: 'Google review', r: 'I truly appreciate your kind review! It was a pleasure creating your decor, and hearing that you had a great experience means the world to me. Thank you for your support!' },
     ],
   },
   {
@@ -226,8 +226,8 @@ const PAGES = [
     ],
     heroPhoto: { d: 'Assets/Gallery/Backdrop and Balloon Garland setup', f: 'IMG_3963.jpg', a: 'Balloon backdrop with a custom organic garland by Inflatable Decorations, Winnipeg' },
     quotes: [
-      { p: 'We had the best experience from the quote to design to the day of set up. Our Baby Girl Shower had the extra wow we needed for making the room look better and for the best photo opportunities.', c: 'Kerri Hiebert', s: 'Google review' },
-      { p: 'Jessica at Inflatable Decorations was excellent to work with. She did a balloon back drop for our high school safe grad and it was beautiful. Jessica was quick to respond to all communication, listened to what we wanted and came up with a beautiful design. She did all the set up and take down so it was extremely convenient and stress free for us. I would definitely use her again and would recommend her to anyone looking for balloon decorations.', c: 'Chloe Lawrence', s: 'Google review' },
+      { p: 'We had the best experience from the quote to design to the day of set up. Our Baby Girl Shower had the extra wow we needed for making the room look better and for the best photo opportunities.', c: 'Kerri Hiebert', s: 'Google review', r: 'Thank you for the wonderful review! I&rsquo;m so glad the balloon decor helped make your celebration even more special. It was a pleasure working with you, and I appreciate you trusting Inflatable Decorations to be part of your event.' },
+      { p: 'Jessica at Inflatable Decorations was excellent to work with. She did a balloon back drop for our high school safe grad and it was beautiful. Jessica was quick to respond to all communication, listened to what we wanted and came up with a beautiful design. She did all the set up and take down so it was extremely convenient and stress free for us. I would definitely use her again and would recommend her to anyone looking for balloon decorations.', c: 'Chloe Lawrence', s: 'Google review', r: 'Thank you for your wonderful review! We&rsquo;re so happy you had a great experience from start to finish. We strive to make the entire process as smooth and stress free as possible. We truly appreciate your support!' },
     ],
   },
   {
@@ -285,7 +285,7 @@ const PAGES = [
     ],
     heroPhoto: { d: 'Assets/Gallery/Columns', f: 'Main2.jpg', a: 'Balloon column installed in a Winnipeg commercial showroom by Inflatable Decorations' },
     quotes: [
-      { p: 'Jess killed it with the set up and take down. So effortless and easy to host when your vendors are 12/10. Everything was all set up for the time of our event and Jess came back after to take it all down so we did not have to lift a finger. She&rsquo;s your decor expert!', c: 'Celeste Petrick', s: 'Google review' }
+      { p: 'Jess killed it with the set up and take down. So effortless and easy to host when your vendors are 12/10. Everything was all set up for the time of our event and Jess came back after to take it all down so we did not have to lift a finger. She&rsquo;s your decor expert!', c: 'Celeste Petrick', s: 'Google review', r: 'Thank you for the kind words! I&rsquo;m so glad I could help make your event special ☺️' }
     ]
   },
   {
@@ -401,7 +401,7 @@ const PAGES = [
     ],
     heroPhoto: { d: 'Assets/Gallery/Ballon Bouquets-Number Stacks', f: 'Cover.jpg', a: 'Giant balloon number stack built by Inflatable Decorations in Winnipeg' },
     quotes: [
-      { p: 'We had an amazing experience using Inflatable Decorations for my son&rsquo;s first birthday party. We live 20 minutes outside of Winnipeg and a few other businesses I tried first, refused to set up outside the city, then I luckily came across Jessica on Instagram and she had no problem coming to set up at our house.', c: 'M McLeod', s: 'Google review' }
+      { p: 'We had an amazing experience using Inflatable Decorations for my son&rsquo;s first birthday party. We live 20 minutes outside of Winnipeg and a few other businesses I tried first, refused to set up outside the city, then I luckily came across Jessica on Instagram and she had no problem coming to set up at our house.', c: 'M McLeod', s: 'Google review', r: 'Thank you so much for the sweet review ☺️ It was such a pleasure working with you, and I&rsquo;d love to create more decor for your future events!' }
     ]
   },
   {
@@ -466,8 +466,8 @@ const PAGES = [
     },
     quotes: [
       { p: 'Jessica did an amazing job capturing the absolute vision I had for my best friend&rsquo;s baby shower &ldquo;she&rsquo;s ready to pop&rdquo;! she perfectly created the balloon and arch and went above and beyond to communicate and ensure the customization was absolutely perfect!', c: 'Cass Paige', s: 'Google review' },
-      { p: 'Jessica at Inflatable Decorations was absolutely incredible to work with for my bridal shower! From start to finish, she made the entire process so easy and stress free! She was professional, responsive, creative, and genuinely cared about bringing my vision to life!', c: 'Tori L', s: 'Google review' },
-      { p: 'I had her for our social and for my surprise bridal shower! Great communication, she did provide pictures during planning so I could have the right colour way. At the end of both events she came to take down and pop the balloons. We will definitely have her for more events!', c: 'Sara Landry', s: 'Google review' }
+      { p: 'Jessica at Inflatable Decorations was absolutely incredible to work with for my bridal shower! From start to finish, she made the entire process so easy and stress free! She was professional, responsive, creative, and genuinely cared about bringing my vision to life!', c: 'Tori L', s: 'Google review', r: 'Thank you for your support! I&rsquo;m thrilled to hear you had a great experience. Creating custom balloon decor for such special occasions is something I truly enjoy, and I&rsquo;m grateful to have been part of your celebration.' },
+      { p: 'I had her for our social and for my surprise bridal shower! Great communication, she did provide pictures during planning so I could have the right colour way. At the end of both events she came to take down and pop the balloons. We will definitely have her for more events!', c: 'Sara Landry', s: 'Google review', r: 'Thank you so much, Sara! It was a pleasure being part of both your social and your surprise bridal shower! 🎈 We&rsquo;re so glad you loved how everything came together and that the planning process was easy and enjoyable. Thank you for trusting us with your special events and for your continued support. We can&rsquo;t wait to celebrate with you again! ✨ - Jessica, Inflatable Decorations' }
     ],
     photoDir: 'Assets/Gallery/Backdrop and Balloon Garland setup',
     heroPhoto: { d: 'Assets/Gallery/Backdrop and Balloon Garland setup', f: '672701291_1391318602753236_8484134399833125210_n.jpg', a: 'Blush, gold and mauve balloon garland on a white arched backdrop with Bride to Be lettering at a Winnipeg bridal shower' },
@@ -540,8 +540,8 @@ const PAGES = [
       ]
     },
     quotes: [
-      { p: 'Jessica at Inflatable Decorations has done multiple birthdays for my girls now and every single setup somehow tops the last. From our Berry First Birthday, Two the Moon theme, and Candy Land party, everything has always been beyond beautiful, creative, and so well put together. She pays attention to every detail and always brings the vision to life perfectly.', c: 'Callie Antle', s: 'Google review' },
-      { p: 'We had an amazing experience using Inflatable Decorations for my son&rsquo;s first birthday party. We live 20 minutes outside of Winnipeg and a few other businesses I tried first, refused to set up outside the city, then I luckily came across Jessica on Instagram and she had no problem coming to set up at our house the night before, as well as taking it down after the party.', c: 'M McLeod', s: 'Google review' }
+      { p: 'Jessica at Inflatable Decorations has done multiple birthdays for my girls now and every single setup somehow tops the last. From our Berry First Birthday, Two the Moon theme, and Candy Land party, everything has always been beyond beautiful, creative, and so well put together. She pays attention to every detail and always brings the vision to life perfectly.', c: 'Callie Antle', s: 'Google review', r: 'Thank you for trusting Inflatable Decorations with all your events!' },
+      { p: 'We had an amazing experience using Inflatable Decorations for my son&rsquo;s first birthday party. We live 20 minutes outside of Winnipeg and a few other businesses I tried first, refused to set up outside the city, then I luckily came across Jessica on Instagram and she had no problem coming to set up at our house the night before, as well as taking it down after the party.', c: 'M McLeod', s: 'Google review', r: 'Thank you so much for the sweet review ☺️ It was such a pleasure working with you, and I&rsquo;d love to create more decor for your future events!' }
     ],
     photoDir: 'Assets/Gallery/Backdrop and Balloon Garland setup',
     heroPhoto: { d: 'Assets/Gallery/Backdrop and Balloon Garland setup', f: '669127862_846859224352057_8099983497208557162_n.jpg', a: 'Strawberry-themed pink and red balloon garland and backdrop built for a first birthday in Winnipeg' },
@@ -579,6 +579,7 @@ function page(d) {
     `      <blockquote class="svc-quote">
         <p>&ldquo;${q.p}&rdquo;</p>
         <cite>${q.c}<span class="svc-quote-src">${q.s}</span></cite>
+        ${q.r ? `<div class="svc-quote-reply"><span>Inflatable Decorations replied</span><p>${q.r}</p></div>` : ''}
       </blockquote>`).join('\n');
 
   /* Optional blocks — only the corporate page carries these. It sells to a
