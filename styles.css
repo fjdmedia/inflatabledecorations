@@ -2727,42 +2727,39 @@ h1 em, h2 em {
 @media (max-width: 560px) { .svc-uses { grid-template-columns: 1fr; } }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   ░░░ SERVICE-AREA MAP ░░░  (2026-08-17)
+   ░░░ SERVICE-AREA + GOOGLE LISTING CARD ░░░  (2026-08-17)
 
-   fjmedia-seo Launch Gate asks for a Google Maps embed on the homepage — it is
-   a map-pack signal and it answers "do you come to me?" for a visitor.
+   Replaces the Maps iframe. James's call: link the listing rather than embed
+   a map. The card still answers the question the map was there to answer —
+   "do you come to me?" — so swapping to a link does not lose that.
 
-   She is a SERVICE-AREA business with no published address, so this centres on
-   Winnipeg rather than dropping a pin. Publishing her home address would be
-   both wrong and unsafe.
-
-   loading="lazy" on the iframe is load-bearing: an eager Maps embed pulls
-   several hundred KB of third-party JS and would eat the LCP work from
-   2026-08-16. Unlike the marquee tiles, a normal-flow iframe DOES lazy-load
-   correctly — nothing is transforming it.
+   Tradeoff, recorded rather than hidden: an embed is the stronger map-pack
+   signal and is what fjmedia-seo's Launch Gate actually asks for. This is a
+   link. It also loses nothing in weight — the iframe was lazy-loaded and cost
+   0 bytes until scrolled to, so this is neutral on performance, not a win.
    ═══════════════════════════════════════════════════════════════════════ */
-.svc-area {
+.svc-area-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   margin-top: 28px;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 2px solid var(--pink-baby);
-  box-shadow: var(--sh-soft);
-  background: var(--pink-baby-soft);
-  line-height: 0;              /* kills the inline-frame descender gap */
-}
-.svc-area iframe {
-  display: block;
-  width: 100%;
-  height: 300px;
-  border: 0;
-}
-.svc-area-cap {
-  line-height: 1.5;
-  font-family: var(--font-body);
-  font-size: 13.5px;
-  color: var(--plum-soft);
-  text-align: center;
-  padding: 11px 16px 13px;
+  padding: 18px 20px;
   background: #fff;
+  border: 2px solid var(--pink-baby);
+  border-radius: 22px;
+  box-shadow: var(--sh-soft);
+  text-decoration: none;
+  transition: transform .2s var(--ease-bounce), box-shadow .2s var(--ease), border-color .2s var(--ease);
 }
-@media (max-width: 560px) { .svc-area iframe { height: 240px; } }
+.svc-area-card:hover { transform: translateY(-2px); border-color: var(--pink-hot); box-shadow: var(--sh-pop); }
+.svc-area-card:focus-visible { outline: 3px solid var(--pink-hot-dk); outline-offset: 3px; }
+.svc-area-mark { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--pink-baby-soft); }
+.svc-area-body { display: grid; gap: 3px; min-width: 0; }
+.svc-area-body strong { font-family: var(--font-body); font-weight: 800; font-size: 15.5px; color: var(--plum); line-height: 1.35; }
+.svc-area-body span { font-size: 14px; color: var(--plum-soft); line-height: 1.45; }
+.svc-area-go { flex: none; margin-left: auto; color: var(--pink-hot-dk); display: grid; place-items: center; }
+@media (max-width: 560px) {
+  .svc-area-card { gap: 13px; padding: 16px; }
+  .svc-area-body strong { font-size: 14.5px; }
+  .svc-area-go { display: none; }
+}
