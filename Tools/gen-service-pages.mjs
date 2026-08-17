@@ -410,13 +410,13 @@ const PAGES = [
     nav: 'Showers',
     crumb: 'Baby &amp; Bridal Showers',
     title: 'Baby &amp; Bridal Shower Balloon Decor Winnipeg | Backdrops',
-    desc: 'Baby and bridal shower balloon decor in Winnipeg. Backdrops, garlands and arches built in your colours, delivered and installed before your guests arrive.',
+    desc: 'Baby and bridal shower balloon decor in Winnipeg. Backdrops, garlands and arches built in your colours, brought in and set up before the first guest.',
     h1: 'Baby &amp; Bridal Shower Balloons in Winnipeg',
     eyebrow: 'Baby &amp; Bridal Showers',
     lede: 'A shower is usually the first time everyone sees the room. A backdrop and garland give it a focal point, a place for the photos, and colours pulled straight from your theme.',
     svcName: 'Baby and Bridal Shower Balloon Decor',
     prose: [
-      { h: 'Built Around Your Colours', p: [
+      { h: 'Your Colours, Your Theme', p: [
         'Send the invitation, the theme, or just the two or three colours you have in mind, and the decor gets built around them. Soft and neutral, bright and playful, or something closer to a colour story you already picked &mdash; it is made to order either way.',
         'Custom vinyl lettering can be added to a backdrop panel: a name, a date, or the line from the invitation.'
       ]},
@@ -435,7 +435,7 @@ const PAGES = [
       'A backdrop panel with an organic garland, built in your colours',
       'Custom vinyl lettering &mdash; a name, a date, or a line from the invitation',
       'Themed foil balloons and floral accents where they fit the theme',
-      'Delivery and setup before your guests arrive',
+      'Delivered and installed ahead of your first guest',
       'Teardown afterwards, so you are not dealing with it at the end of the day'
     ],
     tiers: {
@@ -460,7 +460,7 @@ const PAGES = [
       head: 'Common Questions',
       items: [
         { q: 'What does shower balloon decor usually cost?', a: ['A full backdrop-and-garland setup delivered and installed starts at $350. If you would rather hang it yourself, a Grab &amp; Go garland starts at $90. Final pricing depends on the size of the setup and the space it is going in, so send your details for a real quote.'] },
-        { q: 'Do you set it up and take it down?', a: ['Yes. Full-service setups are installed before your guests arrive and taken down afterwards. Grab &amp; Go garlands are the exception &mdash; those are assembled and ready for you to pick up and hang yourself.'] },
+        { q: 'Do you set it up and take it down?', a: ['Yes. Full-service setups go in ahead of time and get cleared once the day is done. Grab &amp; Go garlands are the exception &mdash; those are assembled and ready for you to pick up and hang yourself.'] },
         { q: 'Can you match a specific theme or colour?', a: ['Yes. Send the invitation, a photo, or the colours you have picked, and the decor is made to order around them. Custom vinyl lettering and themed foil accents can be added.'] }
       ]
     },
@@ -484,7 +484,7 @@ const PAGES = [
     nav: 'Birthdays',
     crumb: 'Birthday Balloons',
     title: 'Birthday Balloon Decor Winnipeg | Kids &amp; Milestones',
-    desc: 'Birthday balloon decor in Winnipeg for first birthdays, themed parties and milestones. Backdrops, garlands and number stacks, set up before your guests arrive.',
+    desc: 'Birthday balloon decor in Winnipeg for first birthdays, themed parties and milestones. Backdrops, garlands and number stacks, set up before the party starts.',
     h1: 'Birthday Balloon Decor in Winnipeg',
     eyebrow: 'Birthdays',
     lede: 'First birthdays, themed parties, and the milestone ones with a number in front of them. The decor gets built to whatever the theme is, and it is up before anyone walks in.',
@@ -503,7 +503,7 @@ const PAGES = [
         'Number stacks pair well with a garland or a backdrop panel if you want the whole corner done.'
       ]},
       { h: 'Set Up Before Anyone Arrives', p: [
-        'Setups are installed ahead of the party and taken down afterwards, so the day itself is not spent inflating balloons or climbing on a chair with tape.'
+        'Setups go in ahead of the party and get cleared once it is over, so the day itself is not spent inflating balloons or standing on a chair with a roll of tape.'
       ]}
     ],
     includes: [
@@ -518,7 +518,7 @@ const PAGES = [
         { h: 'Backdrop and Garland Setup', price: 'Starting at $350', items: [
           'A backdrop panel with an organic garland in your theme colours',
           'Custom lettering and themed foil accents available',
-          'Delivered, installed and taken down for you'
+          'Brought in, built on site and cleared afterwards'
         ]},
         { h: 'Balloon Number Stack', price: 'Starting at $70', items: [
           'The number itself as the centrepiece, in your palette',
@@ -534,7 +534,7 @@ const PAGES = [
     faq: {
       head: 'Common Questions',
       items: [
-        { q: 'What does birthday balloon decor usually cost?', a: ['A backdrop-and-garland setup delivered and installed starts at $350. A balloon number stack on its own starts at $70. What it lands at depends on the size of the setup and the space, so send your details for a real quote.'] },
+        { q: 'What does birthday balloon decor usually cost?', a: ['A backdrop-and-garland setup built on site starts at $350. A balloon number stack on its own starts at $70. What it lands at depends on the size of the setup and the space, so send your details for a real quote.'] },
         { q: 'Can you build a specific theme?', a: ['Yes. The theme drives the design &mdash; colours, foil shapes and custom panels are all made to order. Send the theme and any inspiration photos and the design gets built around them.'] },
         { q: 'Do you set up and take down?', a: ['Yes. Setups go in before the party starts and come down afterwards, so you are not dealing with it on the day or cleaning it up that night.'] }
       ]
