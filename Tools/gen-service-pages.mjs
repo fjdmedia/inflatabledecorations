@@ -29,24 +29,23 @@ const PAGES = [
     desc: 'Corporate balloon decor in Winnipeg for grand openings, anniversaries and office parties — brand colours matched, installed and cleared for you.',
     h1: 'Corporate Balloon Decor in Winnipeg',
     eyebrow: 'For Winnipeg Businesses',
-    lede: 'Company events run on a different clock than birthdays — brand colours have to be exact, and nobody on your team should end up on a ladder taking it down after.',
+    lede: 'Make your next company event feel like an event worth celebrating. From a grand opening to a staff appreciation day, corporate holiday party or milestone celebration, balloon decor can transform your space while keeping your company&rsquo;s branding front and centre.',
     svcName: 'Corporate Balloon Decor',
     prose: [
-      { h: 'Built around the brand, not just the theme', p: [
-        'Every corporate install starts with your brand kit, not a colour wheel &mdash; the exact blues, the exact reds, matched from your palette instead of eyeballed off a swatch card. Where the branding needs to read from across a lobby, balloons get printed with your logo directly.',
-        'An engineering firm wanted their logo on the arch and a giant 40 in balloons beside it, marking the office entrance for their fortieth anniversary. That is the kind of brief this side of the business is built for. One specific ask, right the first time &mdash; there is no second day to redo it.'
+      { h: 'Designed Around Your Brand', p: [
+        'Our corporate decor is designed around your company colours, logo and event goals, with options ranging from statement-making installations to smaller pieces that add a polished touch throughout your space.'
       ]},
-      { h: 'Bring the brand to the details', p: [
-        'It does not have to stop at one large installation. Tabletop arrangements carry the same colours onto registration desks, food stations and employee tables, so the room reads as one thing rather than a decorated corner and a lot of empty space.'
+      { h: 'Make an Entrance', p: [
+        'Create a memorable first impression with a walk-through balloon arch at your entrance, designed in your company colours and customized to suit your event. Add your logo, branded details or other elements to make the installation feel like it belongs to your business.',
+        'For grand openings, launches and milestone events, balloon columns are another great way to frame an entrance, highlight a space or draw attention to your business.'
       ]},
-      { h: 'Build a package that fits the event', p: [
-        'The elements combine. A walk-through arch with branded columns either side, tabletop pieces through the room, a backdrop and custom details for a full branded run. One statement installation, or a bit of everything.'
+      { h: 'Bring the Brand to the Details', p: [
+        'Corporate balloon decor doesn&rsquo;t have to stop at one large installation. Tabletop balloon arrangements can add branded colour and personality to registration tables, food stations, employee tables or throughout a larger event space.',
+        'From subtle and professional to fun and bold, your decor can be designed to fit the atmosphere you&rsquo;re creating while still incorporating your company branding.'
       ]},
-      { h: 'Timed to the business day', p: [
-        'Schools call on this side of the business just as often as offices do. A first-day-of-school install one week, balloon columns marking a retiring teacher&rsquo;s send-off the next. Every one of them goes up before the room fills and clears out on a timeline that never lands on your staff&rsquo;s task list.'
-      ]},
-      { h: 'Long enough to matter', p: [
-        'A birthday setup only has to survive one afternoon. A lobby, a storefront window or a month-long promotion is a longer ask &mdash; say so up front, and the design gets built to hold for the length of the run, not just the first hour.'
+      { h: 'Your Brand, Your Event, Your Look', p: [
+        'Every corporate event is different, so your decor is made to order around what you&rsquo;re celebrating and how you want your space to feel. Share your company colours, logo and vision with us, and we&rsquo;ll help turn it into balloon decor that gets noticed.',
+        'From the moment guests walk through the door to the details around the room, balloon decor is a fun and memorable way to make your next company event stand out.'
       ]}
     ],
     includes: [
@@ -58,18 +57,17 @@ const PAGES = [
     ],
     tiers: {
       groups: [
-        { h: 'What a corporate booking can include', items: [
-          'Walk-through arches in your company colours',
-          'Branded columns for entrances, stages and registration areas',
-          'Tabletop arrangements for desks, food stations and employee tables',
-          'Backdrops and custom vinyl details',
-          'Balloons printed with your logo',
-          'Installed before doors open, cleared once the event is done'
+        { h: 'Build a Package That Fits Your Event', items: [
+          'A walk-through balloon arch paired with branded columns',
+          'Tabletop balloon decor throughout the space',
+          'A backdrop and custom details for a complete branded experience'
         ]}
-      ]
+      ],
+      note: 'Whether you&rsquo;re looking for one statement installation or a little bit of everything, we&rsquo;ll help create a package that fits your space, event and budget.'
     },
-    chipsHead: 'What we set up for businesses',
-    chips: ['Grand openings and launches', 'Staff appreciation days', 'Company anniversaries', 'Corporate holiday parties', 'Employee celebrations', 'Fundraisers and community events', 'Conferences and promotional events', 'Office parties and milestones'],
+    chipsHead: 'Perfect for All Kinds of Company Events',
+    chips: ['Staff appreciation days', 'Grand openings and new business launches', 'Company anniversaries and milestones', 'Corporate holiday parties', 'Employee celebrations', 'Fundraisers and community events', 'Office parties and special events', 'Conferences, launches and promotional events'],
+    chipsIntro: 'Corporate balloon decor is a great way to celebrate and bring your team together for:',
     photoDir: 'Assets/Gallery/Corporate',
     photos: [
       { f: 'IMG_3485.jpg', a: 'Matched balloon columns flanking a sponsor backdrop at a Special Olympics Manitoba Summer Games event in Winnipeg', tall: true },
@@ -294,19 +292,21 @@ const PAGES = [
     desc: 'Grab &amp; Go balloon garlands in Winnipeg, hand-clustered and ready for pickup. Hang it yourself in minutes — the same look as a full install, no appointment.',
     h1: 'Grab &amp; Go Balloon Garlands in Winnipeg',
     eyebrow: 'Pre-Made &middot; Ready for Pickup',
-    lede: 'A smaller amount of balloon decor, assembled in your colours and ready to collect. You handle the transport and the hanging, which is what keeps it the lighter option.',
+    lede: 'Looking for a smaller amount of balloon decor or working with a tighter budget? Grab &amp; Go balloon garlands are a great option for smaller celebrations where a full delivery and installation may not be necessary.',
     svcName: 'Grab and Go Balloon Garlands',
     prose: [
-      { h: 'A smaller, more flexible option', p: [
-        'Grab &amp; Go garlands suit birthdays, showers and celebrations that want a balloon focal point without a full installation \u2014 a smaller space, a simpler event, or a decor budget you would rather keep modest.',
-        'They are still professionally assembled. What changes is who carries it and who hangs it, and both of those are yours.'
+      { h: 'Assembled and Ready for Pickup', p: [
+        'Your garland is fully assembled in your chosen colours and ready for pickup, allowing you to handle the transportation and setup yourself. It&rsquo;s a good fit for smaller spaces, simpler celebrations, or events where you have limited setup time and are comfortable installing the garland yourself.'
       ]},
-      { h: 'What to expect', p: [
-        'Each garland is made to order in your chosen colours and can be built to suit a theme. Themed foil balloons and other specialty accents can be added for an additional cost.',
-        'It will be finished and waiting at your scheduled pickup time. Bring a vehicle big enough to carry it safely \u2014 depending on the size of the garland that can mean a larger vehicle, or a cleared-out back seat.'
+      { h: 'A Smaller, More Flexible Option', p: [
+        'Grab &amp; Go garlands are ideal for birthdays, showers and other celebrations where you want a balloon focal point without a full balloon installation.',
+        'They can work especially well in smaller spaces or for those looking to keep their decor budget more modest. Keep in mind that Grab &amp; Go garlands are still professionally assembled, but you&rsquo;ll be responsible for transporting and hanging the garland once you pick it up.'
       ]},
-      { h: 'If you would rather not handle it', p: [
-        'Delivery and professional installation come with the <a href="balloon-garlands.html">full-service garland setups</a> instead.'
+      { h: 'What to Expect', p: [
+        'Each garland is made to order in your chosen colours and can be customized to suit your theme. Themed foil balloons and other specialty accents can be added for an additional cost.',
+        'Your finished garland will be fully assembled and ready for pickup at your scheduled pickup time.',
+        'Please make sure you have a vehicle large enough to safely transport your finished garland. Depending on the size of your garland, it may require a larger vehicle or additional space for transportation.',
+        'If you&rsquo;d prefer to have everything taken care of for you, delivery and professional installation are also available with our <a href="balloon-garlands.html">full service balloon garland setups</a>.'
       ]}
     ],
     includes: [
@@ -318,11 +318,11 @@ const PAGES = [
     ],
     tiers: {
       groups: [
-        { h: 'What&rsquo;s included', price: 'Starting at $90', items: [
-          'A garland built in the colours you pick',
-          'Professionally assembled and finished',
-          'Ready at your scheduled pickup time',
-          'Themed foils and specialty accents available at additional cost'
+        { h: 'What&rsquo;s Included', price: 'Starting at $90', items: [
+          'A garland made to order in your chosen colours',
+          'Customized to suit your theme',
+          'Fully assembled and ready at your scheduled pickup time',
+          'Themed foil balloons and specialty accents available for an additional cost'
         ]}
       ]
     },
@@ -634,7 +634,8 @@ ${d.tiers ? tiers : `<h3>What&rsquo;s included</h3>
 ${d.includes.map(i => `          <li>${i}</li>`).join('\n')}
         </ul>`}
 
-        <h3>${d.chipsHead}</h3>
+        <h3>${d.chipsHead}</h3>${d.chipsIntro ? `
+        <p>${d.chipsIntro}</p>` : ''}
         <ul class="svc-uses">
 ${d.chips.map(c => `          <li>${c}</li>`).join('\n')}
         </ul>
