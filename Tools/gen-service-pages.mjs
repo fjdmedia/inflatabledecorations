@@ -158,10 +158,7 @@ const PAGES = [
       { f: 'IMG_3200.jpg', a: 'Custom colour balloon arch set up for a Winnipeg event' }
     ],
     heroPhoto: { d: 'Assets/Gallery/Walkthrough Arches', f: 'IMG_3333.jpg', a: 'Custom walk-through balloon arch at a Winnipeg office entrance, built by Inflatable Decorations' },
-    quotes: [
-      { p: 'I had the pleasure of working with this service to decorate for a baby shower! They provide quick communication while we planned and picked the colours for the arch, very professional service and they executed the vision we had perfectly! Would recommend this service to anyone in need for decorations!', c: 'paige kibsey', s: 'Google review', r: 'Thank you so much! I&rsquo;m so happy you loved the decor. It was a pleasure working with you, and I truly appreciate your support of Inflatable Decorations!' },
-      { p: 'I booked Jessica for my baby shower and she created an incredible balloon arch with custom decals for us! We received many compliments! I would highly recommend her services and I would definitely book her again for future events.', c: 'Alyssa', s: 'Google review', r: 'I truly appreciate your kind review! It was a pleasure creating your decor, and hearing that you had a great experience means the world to me. Thank you for your support!' },
-    ],
+    quotes: [],
   },
   {
     slug: 'balloon-garlands',
@@ -225,10 +222,7 @@ const PAGES = [
       { f: 'e1fae4bd-9f50-4d12-823b-21afb1c054d2.jpg', a: 'Pastel butterfly-themed balloon garland and backdrop with a custom sign, Winnipeg' }
     ],
     heroPhoto: { d: 'Assets/Gallery/Backdrop and Balloon Garland setup', f: 'IMG_3963.jpg', a: 'Balloon backdrop with a custom organic garland by Inflatable Decorations, Winnipeg' },
-    quotes: [
-      { p: 'We had the best experience from the quote to design to the day of set up. Our Baby Girl Shower had the extra wow we needed for making the room look better and for the best photo opportunities.', c: 'Kerri Hiebert', s: 'Google review', r: 'Thank you for the wonderful review! I&rsquo;m so glad the balloon decor helped make your celebration even more special. It was a pleasure working with you, and I appreciate you trusting Inflatable Decorations to be part of your event.' },
-      { p: 'Jessica at Inflatable Decorations was excellent to work with. She did a balloon back drop for our high school safe grad and it was beautiful. Jessica was quick to respond to all communication, listened to what we wanted and came up with a beautiful design. She did all the set up and take down so it was extremely convenient and stress free for us. I would definitely use her again and would recommend her to anyone looking for balloon decorations.', c: 'Chloe Lawrence', s: 'Google review', r: 'Thank you for your wonderful review! We&rsquo;re so happy you had a great experience from start to finish. We strive to make the entire process as smooth and stress free as possible. We truly appreciate your support!' },
-    ],
+    quotes: [],
   },
   {
     slug: 'balloon-columns',
@@ -284,9 +278,7 @@ const PAGES = [
       { f: 'IMG_2906.jpg', a: 'Themed balloon columns for a retirement party at a Winnipeg school' }
     ],
     heroPhoto: { d: 'Assets/Gallery/Columns', f: 'Main2.jpg', a: 'Balloon column installed in a Winnipeg commercial showroom by Inflatable Decorations' },
-    quotes: [
-      { p: 'Jess killed it with the set up and take down. So effortless and easy to host when your vendors are 12/10. Everything was all set up for the time of our event and Jess came back after to take it all down so we did not have to lift a finger. She&rsquo;s your decor expert!', c: 'Celeste Petrick', s: 'Google review', r: 'Thank you for the kind words! I&rsquo;m so glad I could help make your event special ☺️' }
-    ]
+    quotes: []
   },
   {
     slug: 'grab-and-go-garlands',
@@ -335,10 +327,18 @@ const PAGES = [
     chips: ['Home celebrations', 'Small venues', 'Tight setup windows', 'Office break rooms', 'Classroom parties', 'Budget-conscious events'],
     photoDir: 'Assets/Gallery/Grab & Go',
     photos: [
-      { f: 'Main3.jpg', a: 'Lilac, blush and cream balloon garland on arched backdrop panels with A Lifetime of Butterflies lettering and a white shell chair, Winnipeg', tall: true },
+      /* Three photos, no tall cell, one clean row of three.
+         Why not four: slot 1 used to be Main3.jpg, the SAME FILE as this page's
+         heroPhoto — one photo shown twice under two crops, which only became
+         obvious once the lightbox opened both full-frame. Replacing it needed a
+         fourth distinct installation, and this folder does not have one: Cover,
+         Main and Main2 are all the same classroom job from three angles. Four
+         photos in the 3-col grid also left an orphan empty cell (G32b), so the
+         honest arrangement is three distinct jobs filling one row exactly.
+         ASK JESSICA for 1-2 more Grab & Go photos and this becomes two full rows. */
+      { f: 'Cover.jpg', a: 'Pastel rainbow balloon garland hung on a classroom wall above a table, Winnipeg' },
       { f: 'IMG_2953.jpg', a: 'Brown, cream and white balloon garland beside a rattan peacock chair in a Winnipeg living room' },
-      { f: '670611478_3926052884357320_2655556587710275461_n.jpg', a: 'Sage, pink and gold Grab and Go balloon garland with a Happy Birthday banner, Winnipeg' },
-      { f: 'Main.jpg', a: 'Assembled Grab and Go balloon garland by Inflatable Decorations, Winnipeg' }
+      { f: '670611478_3926052884357320_2655556587710275461_n.jpg', a: 'Sage, pink and gold Grab and Go balloon garland with a Happy Birthday banner, Winnipeg' }
     ],
     heroPhoto: { d: 'Assets/Gallery/Grab & Go', f: 'Main3.jpg', a: 'Lilac, blush and cream balloon garland with arched backdrop panels and a shell chair, Winnipeg' },
     quotes: []
@@ -394,15 +394,14 @@ const PAGES = [
     photoDir: 'Assets/Gallery/Ballon Bouquets-Number Stacks',
     photos: [
       { f: 'Main2.jpg', a: 'Giant balloon number stack for a Winnipeg birthday celebration', tall: true },
-      { f: 'Cover.jpg', a: 'Balloon number stack in custom colours, Winnipeg' },
+      // Was Cover.jpg — the SAME file as this page's heroPhoto (see the Grab & Go note).
+      { f: 'Main.jpg', a: 'Lilac number five balloon stack with a gold crown and character balloons, Winnipeg' },
       { f: 'IMG_5066.jpg', a: 'Golf-themed balloon number stack for a 30th birthday in Winnipeg' },
       { f: 'IMG_4655.jpg', a: 'Purple balloon number stack with custom printed name balloons, Winnipeg' },
       { f: 'IMG_4789.jpg', a: 'Sage green balloon number stack with floral accents, Winnipeg' }
     ],
     heroPhoto: { d: 'Assets/Gallery/Ballon Bouquets-Number Stacks', f: 'Cover.jpg', a: 'Giant balloon number stack built by Inflatable Decorations in Winnipeg' },
-    quotes: [
-      { p: 'We had an amazing experience using Inflatable Decorations for my son&rsquo;s first birthday party. We live 20 minutes outside of Winnipeg and a few other businesses I tried first, refused to set up outside the city, then I luckily came across Jessica on Instagram and she had no problem coming to set up at our house.', c: 'M McLeod', s: 'Google review', r: 'Thank you so much for the sweet review ☺️ It was such a pleasure working with you, and I&rsquo;d love to create more decor for your future events!' }
-    ]
+    quotes: []
   },
   {
     slug: 'birthday-shower-balloons',
@@ -472,15 +471,17 @@ const PAGES = [
         { q: 'Do you set up and take down?', a: ['Yes. Setups go in before your guests arrive and come down afterwards, so you are not dealing with it on the day.'] }
       ]
     },
-    quotes: [
-      { p: 'Jessica at Inflatable Decorations has done multiple birthdays for my girls now and every single setup somehow tops the last. From our Berry First Birthday, Two the Moon theme, and Candy Land party, everything has always been beyond beautiful, creative, and so well put together. She pays attention to every detail and always brings the vision to life perfectly.', c: 'Callie Antle', s: 'Google review', r: 'Thank you for trusting Inflatable Decorations with all your events!' },
-      { p: 'I had her for our social and for my surprise bridal shower! Great communication, she did provide pictures during planning so I could have the right colour way. At the end of both events she came to take down and pop the balloons. We will definitely have her for more events!', c: 'Sara Landry', s: 'Google review' },
-      { p: 'Jessica did an amazing job capturing the absolute vision I had for my best friend&rsquo;s baby shower &ldquo;she&rsquo;s ready to pop&rdquo;! she perfectly created the balloon and arch and went above and beyond to communicate and ensure the customization was absolutely perfect!', c: 'Cass Paige', s: 'Google review' }
-    ],
+    quotes: [],
     photoDir: 'Assets/Gallery/Birthdays and Showers',
     heroPhoto: { d: 'Assets/Gallery/Birthdays and Showers', f: 'Main.jpg', a: 'Pink and lilac balloon garland on arched backdrops with pool floats at an outdoor first birthday in Winnipeg' },
     photos: [
-      { f: 'IMG_4212.jpg', a: 'Red, blue and white balloon garland with a gingham panel and a She&rsquo;s Ready to Pop sign at a Winnipeg baby shower', tall: true },
+      /* No `tall` here, unlike the other service pages. The strip grid is 3 cols
+         (2 at <=900px) and a tall tile eats TWO cells, so a page fills its rows
+         exactly when tiles+tall is a multiple of 6. Every other page is 5 tiles +
+         tall = 6. This page has 6 tiles, so tall made 7 and left a 2-cell hole at
+         1440 and a 1-cell hole at 900. Six equal tiles = two clean rows of three.
+         The alternative was dropping one of her photos to get back to 5 + tall. */
+      { f: 'IMG_4212.jpg', a: 'Red, blue and white balloon garland with a gingham panel and a She&rsquo;s Ready to Pop sign at a Winnipeg baby shower' },
       { f: 'IMG_4466.jpg', a: 'Navy and silver balloon garland with greenery on a white arched backdrop beside a bridal shower welcome sign, Winnipeg' },
       { f: 'IMG_5300.jpg', a: 'Fruit-themed balloon garland with watermelon, strawberry and citrus balloons for a Tutti Frutti second birthday in Winnipeg' },
       { f: 'IMG_3103.jpg', a: 'Blue, tan and cream balloon garland on arched backdrops with a large teddy bear at a Winnipeg baby shower' },
@@ -825,6 +826,25 @@ for (const d of PAGES) {
   }
 }
 
+/* No page may show the same photo twice. Two pages shipped with heroPhoto and a
+   strip photo pointing at the same file (grab-and-go = Main3.jpg, number-stacks =
+   Cover.jpg). Nothing caught it because the two crops differ so much - the arch
+   hero and the grid tile look like different photos until the lightbox opens them
+   full-frame and "next" lands on an identical image. Fail loudly instead. */
+for (const d of PAGES) {
+  const seen = new Map();
+  const all = [[d.heroPhoto.d + '/' + d.heroPhoto.f, 'heroPhoto'],
+               ...d.photos.map((p, i) => [(p.d || d.photoDir) + '/' + p.f, `photos[${i}]`])];
+  for (const [path, where] of all) {
+    if (seen.has(path)) {
+      console.error(`FATAL: page "${d.slug}" uses ${path} twice — ${seen.get(path)} and ${where}.`);
+      console.error('  Pick a different photo; the same image under two crops still reads as a duplicate.');
+      process.exit(1);
+    }
+    seen.set(path, where);
+  }
+}
+
 let fail = 0;
 for (const d of PAGES) {
   const html = page(d);
@@ -834,4 +854,7 @@ for (const d of PAGES) {
   if (!tOk || !dOk) fail++;
   console.log(`${d.slug.padEnd(24)} title ${String(tLen).padStart(3)} ${tOk ? 'ok ' : 'BAD'}  desc ${String(dLen).padStart(3)} ${dOk ? 'ok ' : 'BAD'}`);
 }
-console.log(fail ? `\n${fail} page(s) outside spec` : '\nall 6 pages within title/meta spec');
+// Count comes from the data, never a literal — this line read "all 6 pages" while
+// actually generating 7, which is the same stale-hardcoded-list bug that let the
+// sitemap silently drop a page.
+console.log(fail ? `\n${fail} page(s) outside spec` : `\nall ${PAGES.length} pages within title/meta spec`);

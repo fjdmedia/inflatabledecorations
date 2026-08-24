@@ -606,45 +606,6 @@ p { margin: 0 0 1em; }
   position: relative;
 }
 
-/* ── Filterable mosaic gallery + lightbox ── */
-.gallery-mosaic {
-  padding: 100px 0 110px;
-  background: linear-gradient(180deg, var(--cream) 0%, var(--pink-baby-soft) 100%);
-}
-.gallery-mosaic .gallery-head { margin-bottom: 30px; }
-.g-chips {
-  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-  margin-bottom: 34px;
-}
-.g-chip {
-  border: 2px solid var(--pink-baby); background: #fff; color: var(--plum);
-  font: 700 13px/1 var(--font-body, "DM Sans"), sans-serif;
-  padding: 11px 18px; border-radius: 999px; cursor: pointer;
-  transition: background .2s var(--ease), color .2s var(--ease), box-shadow .2s var(--ease), transform .2s var(--ease);
-}
-.g-chip:hover { background: var(--pink-baby-soft); transform: translateY(-1px); }
-.g-chip.active { background: var(--pink-hot); color: #fff; border-color: var(--pink-hot); box-shadow: 0 4px 0 var(--pink-hot-dk); }
-.g-chip:focus-visible { outline: 3px solid var(--pink-hot); outline-offset: 3px; }
-.g-mosaic { column-count: 4; column-gap: 16px; }
-.g-mosaic figure {
-  margin: 0 0 16px; break-inside: avoid; border-radius: 18px; overflow: hidden;
-  cursor: pointer; position: relative; box-shadow: 0 10px 24px rgba(45,27,61,.10);
-  background: var(--pink-baby-soft);
-}
-.g-mosaic img { width: 100%; display: block; transition: transform .45s var(--ease); }
-.g-mosaic figure:hover img { transform: scale(1.06); }
-.g-mosaic figcaption {
-  position: absolute; inset: auto 0 0 0; padding: 26px 14px 12px; color: #fff;
-  font: 600 13px/1.2 var(--font-body, "DM Sans"), sans-serif;
-  background: linear-gradient(to top, rgba(45,27,61,.74), transparent);
-  opacity: 0; transform: translateY(8px); transition: opacity .3s var(--ease), transform .3s var(--ease);
-}
-.g-mosaic figure:hover figcaption,
-.g-mosaic figure:focus-within figcaption { opacity: 1; transform: none; }
-.g-mosaic figure.hide { display: none; }
-@media (max-width: 1000px) { .g-mosaic { column-count: 3; } }
-@media (max-width: 680px)  { .g-mosaic { column-count: 2; column-gap: 12px; } .g-mosaic figure { margin-bottom: 12px; } }
-
 /* lightbox */
 .g-lb { position: fixed; inset: 0; background: rgba(15,8,20,.985); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); display: none; place-items: center; z-index: 4000; }
 .g-lb.open { display: grid; }
@@ -758,90 +719,6 @@ p { margin: 0 0 1em; }
   .marquee-track,
   .marquee-row.reverse .marquee-track { animation: none; }
 }
-
-.gallery-filters {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
-  margin-bottom: 34px;
-}
-.filter-btn {
-  padding: 9px 20px;
-  border-radius: 999px;
-  background: #fff;
-  border: 2px solid var(--pink-baby);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--plum);
-  letter-spacing: 0.04em;
-  transition: background .15s, color .15s, border-color .15s, transform .1s;
-}
-.filter-btn:hover { background: var(--pink-baby-soft); transform: translateY(-1px); }
-.filter-btn.active { background: var(--pink-hot); color: #fff; border-color: var(--pink-hot); box-shadow: 0 4px 0 var(--pink-hot-dk); }
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  grid-auto-flow: dense;
-}
-.gallery-item {
-  position: relative;
-  aspect-ratio: 3/4;
-  border-radius: 160px 160px 14px 14px / 110px 110px 14px 14px;
-  overflow: hidden;
-  background: var(--pink-baby-soft);
-  box-shadow: 0 10px 22px rgba(45,27,61,0.08);
-  transition: transform .25s var(--ease-bounce), box-shadow .25s;
-  padding: 0;
-}
-.gallery-item:nth-child(3n) { background: var(--mint-soft); }
-.gallery-item:nth-child(4n) { background: var(--yellow-soft); }
-.gallery-item:nth-child(5n) { background: var(--lilac-soft); }
-.gallery-item:nth-child(6n) { background: var(--sky-soft); }
-.gallery-item:nth-child(7n) { background: var(--peach-soft); }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
-.gallery-item:hover { transform: translateY(-4px); box-shadow: 0 18px 32px rgba(45,27,61,0.14); }
-.gallery-item:hover img { transform: scale(1.05); }
-.gallery-overlay {
-  position: absolute; inset: auto 0 0 0;
-  padding: 14px;
-  background: linear-gradient(to top, rgba(45,27,61,0.7), transparent);
-  color: #fff;
-  opacity: 0; transition: opacity .25s;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.04em;
-}
-.gallery-item:hover .gallery-overlay,
-.gallery-item:focus-visible .gallery-overlay { opacity: 1; }
-.gallery-item.hide { display: none; }
-
-/* Lightbox */
-.lightbox {
-  position: fixed; inset: 0;
-  background: rgba(45, 27, 61, 0.92);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  display: none;
-  z-index: 1000;
-  align-items: center; justify-content: center;
-  padding: 40px 20px;
-}
-.lightbox.open { display: flex; }
-.lightbox img { max-width: min(92vw, 1100px); max-height: 88vh; border-radius: 16px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); transition: opacity .12s; }
-.lightbox img.fading { opacity: 0; }
-.lightbox button {
-  position: absolute;
-  background: #fff; color: var(--plum);
-  width: 48px; height: 48px;
-  border-radius: 999px;
-  display: grid; place-items: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: transform .15s var(--ease-bounce);
-}
-.lightbox button:hover { transform: scale(1.08); }
-.lightbox .lb-close { top: 24px; right: 24px; }
-.lightbox .lb-prev  { left: 24px; top: 50%; transform: translateY(-50%); }
-.lightbox .lb-next  { right: 24px; top: 50%; transform: translateY(-50%); }
-.lightbox .lb-prev:hover, .lightbox .lb-next:hover { transform: translateY(-50%) scale(1.08); }
 
 /* ---------- PROCESS (checker pattern full-bleed) ---------- */
 .process {
@@ -2535,6 +2412,20 @@ h1 em, h2 em {
   .svc-body { padding: 52px 0 8px; }
 }
 
+/* A strip with no tall tile and an odd tile count leaves its last photo alone on
+   the final row with a hole beside it (Grab & Go: 3 photos, 2 columns). Stretch
+   it across the row instead.
+   Bounded to the 2-column range on purpose: at <=560px the grid is ONE column,
+   and `span 2` there creates an implicit second column that breaks the stack.
+   Scoped by :not(:has(--tall)) because a tall tile occupies a second cell and
+   flips the parity on every other page; browsers without :has() ignore the whole
+   rule and keep today's behaviour. */
+@media (min-width: 561px) and (max-width: 900px) {
+  .svc-strip-grid:not(:has(.svc-shot--tall)) > .svc-shot:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+}
+
 /* Page accent wins the eyebrow on service pages — the global .eyebrow is
    hard-coded to brand pink, which put two accents in one viewport. */
 .svc-hero .eyebrow { color: var(--svc-accent-dk); }
@@ -2854,3 +2745,109 @@ h1 em, h2 em {
 }
 .inquiry-head p { font-size: 16.5px; line-height: 1.6; color: var(--plum-soft); margin: 0; max-width: 56ch; }
 @media (max-width: 560px) { .inquiry-head h1 { font-size: clamp(27px, 8vw, 38px); } }
+
+
+/* ── Photo viewer (lightbox) ──────────────────────────────────────────────
+   Shared by every page; the DOM is created by script.js, not written into any
+   HTML file. Base skin (.g-lb / .g-lb-img / .g-lb-nav / .g-lb-close /
+   .g-lb-count) is declared above with the gallery — these rules add the parts
+   the marquee-only version never needed: the caption, the loading state, real
+   focus + active states on the controls, and the click affordance on the
+   thumbnails themselves.
+
+   The whole point of the viewer is that it does NOT crop. Every thumbnail on
+   the site is object-fit:cover, so a tile shows a slice; here the image is
+   bounded by max-width/max-height and letterboxes instead. ────────────────── */
+
+/* Clickable photo — cursor + a zoom badge so the affordance is visible, not guessed. */
+.fj-zoom { position: relative; }
+.fj-zoom img[role="button"] { cursor: zoom-in; }
+.fj-zoom::after {
+  content: '';
+  position: absolute; right: 12px; bottom: 12px;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232D1B3D' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.6-3.6M11 8.4v5.2M8.4 11h5.2'/%3E%3C/svg%3E")
+    center / 17px 17px no-repeat;
+  box-shadow: 0 4px 12px rgba(45, 27, 61, 0.22);
+  opacity: 0; transform: scale(0.86) translateY(4px);
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+  pointer-events: none;
+}
+.fj-zoom:hover::after,
+.fj-zoom:focus-within::after { opacity: 1; transform: none; }
+/* Touch has no hover, so the affordance would never appear — pin it on instead. */
+@media (hover: none) { .fj-zoom::after { opacity: 0.92; transform: none; } }
+.fj-zoom img[role="button"]:focus-visible {
+  outline: 3px solid var(--pink-hot);
+  outline-offset: 3px;
+}
+
+/* Scroll lock while the viewer is open. */
+body.fj-lb-lock { overflow: hidden; }
+
+/* Figure wrapper: photo + caption as one centred column. */
+.fj-lb-fig {
+  margin: 0; padding: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  max-width: 92vw;
+}
+.fj-lb .g-lb-img {
+  max-width: 92vw;
+  max-height: 78vh;          /* leaves room for the caption + counter without either overlapping the photo */
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.04);
+}
+.fj-lb-cap {
+  max-width: min(68ch, 92vw);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.86);   /* measured 14.19:1 on the backdrop; counter 12.32:1 */
+  font: 400 14px/1.5 var(--font-body, "DM Sans"), sans-serif;
+}
+.fj-lb-cap[hidden] { display: none; }
+
+/* Loading: the cached thumbnail is already painted, so this is a soften-and-settle,
+   never a blank frame or a spinner over nothing. */
+.fj-lb.is-loading .g-lb-img { filter: blur(6px); transform: scale(1.01); }
+.fj-lb .g-lb-img { transition: filter 0.35s var(--ease), transform 0.35s var(--ease); }
+
+/* Controls: the marquee version styled :hover only. Focus and active were missing,
+   which made the viewer unusable by keyboard and unresponsive to touch.
+
+   The background is DARK, not the inherited rgba(255,255,255,.16). The arrows sit
+   at the vertical middle and overlap the photo, so a light button under a white
+   chevron measured 1.16:1 over a bright photo area — effectively invisible. At
+   0.62 alpha the glyph reads 5.47:1 over a pure-white photo and 19.5:1 over the
+   backdrop. Hover uses --pink-text (6.15:1) rather than --pink-hot, which is only
+   2.83:1 against white and fails everywhere it carries white text. */
+.fj-lb .g-lb-nav,
+.fj-lb .g-lb-close {
+  background: rgba(20, 10, 26, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  transition: background 0.2s var(--ease), transform 0.15s var(--ease);
+}
+.fj-lb .g-lb-nav:hover,
+.fj-lb .g-lb-close:hover { background: var(--pink-text); }
+.fj-lb .g-lb-nav:focus-visible,
+.fj-lb .g-lb-close:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  background: var(--pink-text);
+}
+.fj-lb .g-lb-close:active { transform: scale(0.92); }
+.fj-lb .g-lb-nav:active   { transform: translateY(-50%) scale(0.92); }
+.fj-lb .g-lb-nav[hidden],
+.fj-lb .g-lb-close[hidden] { display: none; }
+
+@media (max-width: 560px) {
+  .fj-lb .g-lb-img { max-height: 68vh; }
+  .fj-lb-fig { max-width: 94vw; }
+  .fj-zoom::after { width: 30px; height: 30px; right: 9px; bottom: 9px; background-size: 15px 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fj-zoom::after,
+  .fj-lb .g-lb-img,
+  .fj-lb .g-lb-nav,
+  .fj-lb .g-lb-close { transition: none; }
+  .fj-lb.is-loading .g-lb-img { filter: none; transform: none; }
+}

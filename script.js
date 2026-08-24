@@ -3,7 +3,8 @@
    - IntersectionObserver reveals (single source of truth)
    - Sticky nav scrolled state + active link highlight
    - Mobile nav toggle
-   - Gallery filter + lightbox (focus trap, keyboard nav)
+   - Photo viewer / lightbox, shared by every page (focus trap, keyboard nav,
+     swipe, full-resolution swap; window.FJLightbox is its public API)
    - Scroll-to-top
    - Form submit stub with confetti burst
    - Reduced-motion friendly
@@ -163,112 +164,164 @@
     toggleBtn();
   }
 
-  /* ---------- Gallery filter + random shuffle + cross-section routing ---------- */
-  const filterBtns = $$('.filter-btn');
-  const galleryItems = $$('.gallery-item');
-  const galleryGrid = $('#galleryGrid');
+  /* ---------- Photo viewer (lightbox) — shared by every page ----------
+     Every photo on this site is cropped by object-fit:cover, so a tile only ever
+     shows a SLICE of the frame. This opens the whole picture, letterboxed.
 
-  // Shuffle items on load so "All" feels fresh each visit
-  if (galleryGrid && galleryItems.length) {
-    const shuffled = galleryItems.slice().sort(() => Math.random() - 0.5);
-    shuffled.forEach(item => galleryGrid.appendChild(item));
-  }
+     Three things worth knowing before editing:
+       1. Full-resolution swap. Gallery thumbs are served at -800; the originals
+          are 1290-1800px wide and every -800 file has one. The viewer paints the
+          already-cached thumb FIRST so the frame never opens blank, then swaps in
+          the original once it decodes. A token guards the swap so a slow original
+          landing after the visitor has moved on cannot overwrite the newer photo.
+       2. Progressive markup. role/tabindex/aria-label are attached HERE, at
+          runtime — never in the HTML. Crawlers that do not run JS (which is most
+          AI crawlers) still see a plain <img alt="...">, so this costs nothing
+          in SEO or GEO.
+       3. window.FJLightbox is the public API. index.html's marquee gallery has
+          its own image list (66 photos, its own order) and calls .open() rather
+          than shipping a second viewer — one implementation, one skin, one set
+          of keyboard bindings. Replaced the dead #lightbox/.gallery-item viewer,
+          which targeted markup that no page has carried since the marquee landed.
+  */
+  const PHOTO_SEL = '.hero-arch img, .service-card .img-arch img, .svc-hero-photo img, .svc-shot img';
 
-  function applyFilter(filter) {
-    filterBtns.forEach(b => {
-      const isActive = b.dataset.filter === filter;
-      b.classList.toggle('active', isActive);
-      b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  // Assets/.../Cover-800.jpg -> Assets/.../Cover.jpg   (verified: all 86 thumbs have a full-size twin)
+  const fullSrc = (s) => s.replace(/-800(\.[a-z0-9]+)(\?.*)?$/i, '$1$2');
+
+  let lb, lbImg, lbCap, lbCount, lbClose, lbPrev, lbNext;
+  let lbItems = [], lbIdx = 0, lbLast = null, lbToken = 0;
+
+  function lbBuild() {
+    if (lb) return;
+    lb = document.createElement('div');
+    lb.className = 'g-lb fj-lb';
+    lb.setAttribute('role', 'dialog');
+    lb.setAttribute('aria-modal', 'true');
+    lb.setAttribute('aria-label', 'Photo viewer');
+    lb.setAttribute('aria-hidden', 'true');
+    lb.innerHTML =
+      '<button class="g-lb-close" type="button" aria-label="Close photo viewer">&times;</button>' +
+      '<button class="g-lb-nav g-lb-prev" type="button" aria-label="Previous photo">&#8249;</button>' +
+      '<figure class="fj-lb-fig">' +
+        '<img class="g-lb-img" alt="" />' +
+        '<figcaption class="fj-lb-cap"></figcaption>' +
+      '</figure>' +
+      '<button class="g-lb-nav g-lb-next" type="button" aria-label="Next photo">&#8250;</button>' +
+      '<div class="g-lb-count" aria-live="polite"></div>';
+    document.body.appendChild(lb);
+
+    lbImg   = lb.querySelector('.g-lb-img');
+    lbCap   = lb.querySelector('.fj-lb-cap');
+    lbCount = lb.querySelector('.g-lb-count');
+    lbClose = lb.querySelector('.g-lb-close');
+    lbPrev  = lb.querySelector('.g-lb-prev');
+    lbNext  = lb.querySelector('.g-lb-next');
+
+    lbClose.addEventListener('click', lbShut);
+    lbPrev.addEventListener('click', () => lbShow(lbIdx - 1));
+    lbNext.addEventListener('click', () => lbShow(lbIdx + 1));
+    // Backdrop and the letterbox margin around the photo both dismiss; the caption does not.
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb || e.target.classList.contains('fj-lb-fig')) lbShut();
     });
-    galleryItems.forEach(item => {
-      const cat = item.dataset.cat;
-      if (filter === 'all' || cat === filter) item.classList.remove('hide');
-      else item.classList.add('hide');
+
+    let sx = 0, sy = 0;
+    lb.addEventListener('touchstart', (e) => {
+      sx = e.changedTouches[0].clientX; sy = e.changedTouches[0].clientY;
+    }, { passive: true });
+    lb.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      if (lbItems.length > 1 && Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) lbShow(lbIdx + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); lbShut(); }
+      else if (e.key === 'ArrowRight' && lbItems.length > 1) lbShow(lbIdx + 1);
+      else if (e.key === 'ArrowLeft'  && lbItems.length > 1) lbShow(lbIdx - 1);
+      else if (e.key === 'Tab') {
+        // Focus stays inside the dialog — the page behind it is unreachable while open.
+        const f = [lbClose, lbPrev, lbNext].filter(b => !b.hidden);
+        const at = f.indexOf(document.activeElement);
+        e.preventDefault();
+        f[(at + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+      }
     });
   }
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
-  });
+  function lbShow(i) {
+    const n = lbItems.length;
+    if (!n) return;
+    lbIdx = (i + n) % n;
+    const it = lbItems[lbIdx];
+    const token = ++lbToken;
+    const start = it.thumb || it.full;
 
-  // Service-card → gallery routing: clicking "View N examples" filters the gallery
-  $$('a.inquire[data-cat]').forEach(link => {
-    link.addEventListener('click', () => {
-      const cat = link.dataset.cat;
-      if (cat) setTimeout(() => applyFilter(cat), 60);
-    });
-  });
+    lb.classList.add('is-loading');
+    lbImg.src = start;
+    lbImg.alt = it.alt || '';
+    lbCap.textContent = it.alt || '';
+    lbCap.hidden = !it.alt;
+    lbCount.textContent = n > 1 ? (lbIdx + 1) + ' / ' + n : '';
 
-  /* ---------- Lightbox ---------- */
-  const lightbox = $('#lightbox');
-  const lbImage  = $('#lbImage');
-  const lbClose  = $('#lbClose');
-  const lbPrev   = $('#lbPrev');
-  const lbNext   = $('#lbNext');
-  let currentIdx = 0;
-  let visibleItems = [];
-  let lastFocused = null;
-
-  function openLightbox(idx) {
-    visibleItems = galleryItems.filter(i => !i.classList.contains('hide'));
-    if (!visibleItems.length) return;
-    currentIdx = Math.max(0, Math.min(idx, visibleItems.length - 1));
-    const img = visibleItems[currentIdx].querySelector('img');
-    lbImage.src = img.src;
-    lbImage.alt = img.alt || '';
-    lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    lastFocused = document.activeElement;
-    lbClose.focus();
-  }
-
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-    lbImage.src = '';
-    if (lastFocused) lastFocused.focus();
-  }
-
-  function showAt(idx) {
-    if (!visibleItems.length) return;
-    currentIdx = (idx + visibleItems.length) % visibleItems.length;
-    const img = visibleItems[currentIdx].querySelector('img');
-    lbImage.classList.add('fading');
-    setTimeout(() => {
-      lbImage.src = img.src;
-      lbImage.alt = img.alt || '';
-      lbImage.classList.remove('fading');
-    }, 120);
-  }
-
-  galleryItems.forEach((item, idx) => {
-    item.addEventListener('click', () => {
-      visibleItems = galleryItems.filter(i => !i.classList.contains('hide'));
-      const vIdx = visibleItems.indexOf(item);
-      openLightbox(vIdx >= 0 ? vIdx : 0);
-    });
-  });
-  if (lbClose) lbClose.addEventListener('click', closeLightbox);
-  if (lbPrev)  lbPrev.addEventListener('click', () => showAt(currentIdx - 1));
-  if (lbNext)  lbNext.addEventListener('click', () => showAt(currentIdx + 1));
-  if (lightbox) {
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-  }
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox || !lightbox.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    else if (e.key === 'ArrowLeft') showAt(currentIdx - 1);
-    else if (e.key === 'ArrowRight') showAt(currentIdx + 1);
-    else if (e.key === 'Tab') {
-      const focusables = [lbClose, lbPrev, lbNext];
-      const idx = focusables.indexOf(document.activeElement);
-      e.preventDefault();
-      const next = e.shiftKey
-        ? (idx <= 0 ? focusables.length - 1 : idx - 1)
-        : (idx === focusables.length - 1 ? 0 : idx + 1);
-      focusables[next].focus();
+    if (it.full && it.full !== start) {
+      const hi = new Image();
+      hi.onload  = () => { if (token === lbToken) { lbImg.src = it.full; lb.classList.remove('is-loading'); } };
+      hi.onerror = () => { if (token === lbToken) lb.classList.remove('is-loading'); };  // full-size missing: keep the thumb, never blank the frame
+      hi.src = it.full;
+    } else {
+      lb.classList.remove('is-loading');
     }
-  });
+  }
+
+  function lbOpen(items, i) {
+    if (!items || !items.length) return;
+    lbBuild();
+    lbItems = items;
+    lbLast = document.activeElement;
+    const multi = items.length > 1;
+    lbPrev.hidden = lbNext.hidden = !multi;   // a single photo gets no dead prev/next buttons
+    lbShow(i || 0);
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('fj-lb-lock');
+    lbClose.focus();
+    document.dispatchEvent(new CustomEvent('fj-lightbox:open'));
+  }
+
+  function lbShut() {
+    if (!lb || !lb.classList.contains('open')) return;
+    lbToken++;                                   // cancel any full-size load still in flight
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('fj-lb-lock');
+    lbImg.removeAttribute('src');
+    if (lbLast && lbLast.focus) lbLast.focus();  // return focus to the photo that opened it
+    // index.html's marquee listens for this to resume gliding.
+    document.dispatchEvent(new CustomEvent('fj-lightbox:close'));
+  }
+
+  window.FJLightbox = { open: lbOpen };
+
+  const photoNodes = $$(PHOTO_SEL);
+  if (photoNodes.length) {
+    const items = photoNodes.map(img => {
+      const raw = img.getAttribute('src') || img.getAttribute('data-src') || '';
+      return { thumb: raw, full: fullSrc(raw), alt: img.getAttribute('alt') || '' };
+    });
+    photoNodes.forEach((img, i) => {
+      const host = img.closest('figure, .hero-arch, .img-arch, .svc-hero-photo') || img;
+      host.classList.add('fj-zoom');
+      img.setAttribute('role', 'button');
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('aria-label', 'View full photo' + (img.alt ? ': ' + img.alt : ''));
+      img.addEventListener('click', () => lbOpen(items, i));
+      img.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); lbOpen(items, i); }
+      });
+    });
+  }
 
   /* ---------- Form submit (placeholder) ---------- */
   const form = $('#inquiryForm');
