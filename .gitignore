@@ -42,3 +42,7 @@ __pycache__/
 # Method: Memory/reference/heic_to_web_conversion.md
 *.HEIC
 *.heic
+
+# IndexNow: the KEY FILE (<key>.txt) is public by design and IS committed.
+# This local copy is just a convenience for the submit script.
+.indexnow-key
