@@ -335,12 +335,12 @@ const PAGES = [
     chips: ['Home celebrations', 'Small venues', 'Tight setup windows', 'Office break rooms', 'Classroom parties', 'Budget-conscious events'],
     photoDir: 'Assets/Gallery/Grab & Go',
     photos: [
-      { f: 'Main2.jpg', a: 'Pre-made Grab and Go balloon garland ready for pickup in Winnipeg', tall: true },
-      { f: 'Cover.jpg', a: 'Grab and Go balloon garland in custom colours, Winnipeg' },
-      { f: 'Main.jpg', a: 'Assembled Grab and Go balloon garland by Inflatable Decorations, Winnipeg' },
-      { f: '670611478_3926052884357320_2655556587710275461_n.jpg', a: 'Pastel Grab and Go balloon garland made in Winnipeg' }
+      { f: 'Main3.jpg', a: 'Lilac, blush and cream balloon garland on arched backdrop panels with A Lifetime of Butterflies lettering and a white shell chair, Winnipeg', tall: true },
+      { f: 'IMG_2953.jpg', a: 'Brown, cream and white balloon garland beside a rattan peacock chair in a Winnipeg living room' },
+      { f: '670611478_3926052884357320_2655556587710275461_n.jpg', a: 'Sage, pink and gold Grab and Go balloon garland with a Happy Birthday banner, Winnipeg' },
+      { f: 'Main.jpg', a: 'Assembled Grab and Go balloon garland by Inflatable Decorations, Winnipeg' }
     ],
-    heroPhoto: { d: 'Assets/Gallery/Grab & Go', f: 'Cover.jpg', a: 'Pre-assembled Grab and Go balloon garland from Inflatable Decorations, Winnipeg' },
+    heroPhoto: { d: 'Assets/Gallery/Grab & Go', f: 'Main3.jpg', a: 'Lilac, blush and cream balloon garland with arched backdrop panels and a shell chair, Winnipeg' },
     quotes: []
   },
   {
@@ -403,153 +403,89 @@ const PAGES = [
     quotes: [
       { p: 'We had an amazing experience using Inflatable Decorations for my son&rsquo;s first birthday party. We live 20 minutes outside of Winnipeg and a few other businesses I tried first, refused to set up outside the city, then I luckily came across Jessica on Instagram and she had no problem coming to set up at our house.', c: 'M McLeod', s: 'Google review', r: 'Thank you so much for the sweet review ☺️ It was such a pleasure working with you, and I&rsquo;d love to create more decor for your future events!' }
     ]
-  },
-  {
-    slug: 'baby-bridal-shower-balloons',
-    acc: 'acc-blush',
-    nav: 'Showers',
-    crumb: 'Baby &amp; Bridal Showers',
-    title: 'Baby &amp; Bridal Shower Balloon Decor Winnipeg | Backdrops',
-    desc: 'Baby and bridal shower balloon decor in Winnipeg. Backdrops, garlands and arches built in your colours, brought in and set up before the first guest.',
-    h1: 'Baby &amp; Bridal Shower Balloons in Winnipeg',
-    eyebrow: 'Baby &amp; Bridal Showers',
-    lede: 'A shower is usually the first time everyone sees the room. A backdrop and garland give it a focal point, a place for the photos, and colours pulled straight from your theme.',
-    svcName: 'Baby and Bridal Shower Balloon Decor',
-    prose: [
-      { h: 'Your Colours, Your Theme', p: [
-        'Send the invitation, the theme, or just the two or three colours you have in mind, and the decor gets built around them. Soft and neutral, bright and playful, or something closer to a colour story you already picked &mdash; it is made to order either way.',
-        'Custom vinyl lettering can be added to a backdrop panel: a name, a date, or the line from the invitation.'
-      ]},
-      { h: 'The Corner Everyone Photographs', p: [
-        'Almost every shower ends up with one spot where the photos happen. A backdrop panel with an organic garland around it is built for exactly that &mdash; it gives guests somewhere to stand, and it frames the gift table, the cake, or the guest of honour.',
-        'Themed foil balloons and florals can be worked in where they suit the theme.'
-      ]},
-      { h: 'Baby Showers', p: [
-        'Baby showers are the most common setup here. Sage and cream, blush and gold, or a full colour theme &mdash; the backdrop and garland get built to match, with room for a custom name or a &ldquo;oh baby&rdquo; panel if you want one.'
-      ]},
-      { h: 'Bridal Showers', p: [
-        'For bridal showers the same setup runs a little more formal: an arched backdrop, a garland in your palette, and lettering for the bride&rsquo;s name or the date. It works as the photo wall for the afternoon and then comes down the same day.'
-      ]}
-    ],
-    includes: [
-      'A backdrop panel with an organic garland, built in your colours',
-      'Custom vinyl lettering &mdash; a name, a date, or a line from the invitation',
-      'Themed foil balloons and floral accents where they fit the theme',
-      'Delivered and installed ahead of your first guest',
-      'Teardown afterwards, so you are not dealing with it at the end of the day'
-    ],
-    tiers: {
-      groups: [
-        { h: 'Full Setup, Delivered and Installed', price: 'Starting at $350', items: [
-          'Backdrop panel and organic garland in your colours',
-          'Custom lettering and themed accents available',
-          'Set up before guests arrive and taken down afterwards'
-        ]},
-        { h: 'Grab &amp; Go, If You Are Hanging It Yourself', price: 'Starting at $90', items: [
-          'A garland assembled in your colours, ready for pickup',
-          'A good fit for a smaller shower or a tighter budget',
-          'You handle transport and hanging &mdash; see our <a href="grab-and-go-garlands.html">Grab &amp; Go garlands</a>'
-        ]}
-      ],
-      note: 'Every setup is quoted on the space and the size, so send the details and you will get a real number back rather than a guess.'
-    },
-    chipsHead: 'Showers We Build For',
-    chipsIntro: 'The same setup covers most shower styles:',
-    chips: ['Baby showers', 'Bridal showers', 'Gender reveals', 'Sip and see afternoons', 'Baby sprinkles', 'Engagement parties'],
-    faq: {
-      head: 'Common Questions',
-      items: [
-        { q: 'What does shower balloon decor usually cost?', a: ['A full backdrop-and-garland setup delivered and installed starts at $350. If you would rather hang it yourself, a Grab &amp; Go garland starts at $90. Final pricing depends on the size of the setup and the space it is going in, so send your details for a real quote.'] },
-        { q: 'Do you set it up and take it down?', a: ['Yes. Full-service setups go in ahead of time and get cleared once the day is done. Grab &amp; Go garlands are the exception &mdash; those are assembled and ready for you to pick up and hang yourself.'] },
-        { q: 'Can you match a specific theme or colour?', a: ['Yes. Send the invitation, a photo, or the colours you have picked, and the decor is made to order around them. Custom vinyl lettering and themed foil accents can be added.'] }
-      ]
-    },
-    quotes: [
-      { p: 'Jessica did an amazing job capturing the absolute vision I had for my best friend&rsquo;s baby shower &ldquo;she&rsquo;s ready to pop&rdquo;! she perfectly created the balloon and arch and went above and beyond to communicate and ensure the customization was absolutely perfect!', c: 'Cass Paige', s: 'Google review' },
-      { p: 'Jessica at Inflatable Decorations was absolutely incredible to work with for my bridal shower! From start to finish, she made the entire process so easy and stress free! She was professional, responsive, creative, and genuinely cared about bringing my vision to life!', c: 'Tori L', s: 'Google review', r: 'Thank you for your support! I&rsquo;m thrilled to hear you had a great experience. Creating custom balloon decor for such special occasions is something I truly enjoy, and I&rsquo;m grateful to have been part of your celebration.' },
-      { p: 'I had her for our social and for my surprise bridal shower! Great communication, she did provide pictures during planning so I could have the right colour way. At the end of both events she came to take down and pop the balloons. We will definitely have her for more events!', c: 'Sara Landry', s: 'Google review', r: 'Thank you so much, Sara! It was a pleasure being part of both your social and your surprise bridal shower! 🎈 We&rsquo;re so glad you loved how everything came together and that the planning process was easy and enjoyable. Thank you for trusting us with your special events and for your continued support. We can&rsquo;t wait to celebrate with you again! ✨ - Jessica, Inflatable Decorations' }
-    ],
-    photoDir: 'Assets/Gallery/Backdrop and Balloon Garland setup',
-    heroPhoto: { d: 'Assets/Gallery/Backdrop and Balloon Garland setup', f: '672701291_1391318602753236_8484134399833125210_n.jpg', a: 'Blush, gold and mauve balloon garland on a white arched backdrop with Bride to Be lettering at a Winnipeg bridal shower' },
-    photos: [
-      { f: 'Favorite.jpg', a: 'Sage and cream balloon garland across two arched backdrop panels with oh baby lettering, Winnipeg baby shower', tall: true },
-      { f: '655320035_1478624020528770_3403384665709763277_n.jpg', a: 'Cream, taupe and black balloon garland on a wavy-edge backdrop panel set up outdoors in Winnipeg' },
-      { f: '675550313_832502393225263_569436542305509635_n.jpg', a: 'Cream, blush and gold balloon garland framing an arched backdrop and welcome sign at a Winnipeg shower' },
-      { f: '670439079_4034309923367392_9196080599764451676_n.jpg', a: 'Pink, cream and brown balloon garland on a white arched backdrop in Winnipeg' }
-    ]
   },
   {
-    slug: 'birthday-balloons',
-    acc: 'acc-sage',
-    nav: 'Birthdays',
-    crumb: 'Birthday Balloons',
-    title: 'Birthday Balloon Decor Winnipeg | Kids &amp; Milestones',
-    desc: 'Birthday balloon decor in Winnipeg for first birthdays, themed parties and milestones. Backdrops, garlands and number stacks, set up before the party starts.',
-    h1: 'Birthday Balloon Decor in Winnipeg',
-    eyebrow: 'Birthdays',
-    lede: 'First birthdays, themed parties, and the milestone ones with a number in front of them. The decor gets built to whatever the theme is, and it is up before anyone walks in.',
-    svcName: 'Birthday Balloon Decor',
+    slug: 'birthday-shower-balloons',
+    acc: 'acc-blush',
+    nav: 'Birthdays &amp; Showers',
+    crumb: 'Birthdays &amp; Showers',
+    title: 'Birthday &amp; Shower Balloon Decor Winnipeg | Backdrops',
+    desc: 'Birthday and shower balloon decor in Winnipeg. Backdrops, garlands and number stacks built around your theme and colours, set up before your guests arrive.',
+    h1: 'Birthdays &amp; Showers Balloon Decor in Winnipeg',
+    eyebrow: 'Birthdays &amp; Showers',
+    lede: 'Make their celebration one to remember. From colourful birthday parties and fun themed celebrations to elegant bridal showers and sweet baby showers, balloon decor can transform your space and create the perfect backdrop for celebrating, taking photos and making memories.',
+    svcName: 'Birthday and Shower Balloon Decor',
     prose: [
-      { h: 'First Birthdays', p: [
-        'First birthdays get photographed more than almost any other party, so they are usually built around one strong focal point &mdash; a backdrop panel with a garland, sized for the cake table or the corner where the photos will happen.',
-        'Custom lettering can carry the name and the theme, whether that is a golf cart and a &ldquo;hole in ONE&rdquo; sign or something else entirely.'
+      { h: 'Birthdays Made Fun', p: [
+        'Birthday decor is all about personality. Whether you&rsquo;re planning a colourful kids&rsquo; birthday, a fun themed celebration or a milestone birthday, balloon decor can be customized to bring your vision to life.',
+        'Choose from fun colour combinations, playful themes and personalized details to create a setup that feels completely unique to the celebration.'
       ]},
-      { h: 'Themed Parties', p: [
-        'The theme drives the build. A strawberry first birthday, a space theme, a candy land party, a diner setup with burgers and a checkered floor &mdash; the colours, the foil shapes and the custom panels all get made to match whatever your kid picked.',
-        'Send the theme and any inspiration photos you have. The design comes back built around them rather than pulled off a shelf.'
+      { h: 'Make a Statement', p: [
+        'Create a photo worthy focal point with a backdrop and balloon garland setup designed around your theme and colours. From bold and colourful to playful and whimsical, balloon decor can turn an ordinary space into something guests will want to take photos in front of.',
+        'Add a custom vinyl decal with a name, age or special message to make the setup even more personal.'
       ]},
-      { h: 'Milestone Birthdays', p: [
-        'For the birthdays with a number attached, a <a href="balloon-number-stacks.html">balloon number stack</a> gives you the number itself as the centrepiece, in your colours, sized to be the photo.',
-        'Number stacks pair well with a garland or a backdrop panel if you want the whole corner done.'
+      { h: 'Something Smaller to Celebrate', p: [
+        'Not every celebration needs a large installation. For smaller or more intimate birthday parties, number stacks are a fun way to add balloons without taking over the space.',
+        'Personalized with their age and designed in your choice of colours, number stacks are perfect for adding a special touch to your party space.'
       ]},
-      { h: 'Set Up Before Anyone Arrives', p: [
-        'Setups go in ahead of the party and get cleared once it is over, so the day itself is not spent inflating balloons or standing on a chair with a roll of tape.'
+      { h: 'Showers With Style', p: [
+        'From elegant bridal showers to sweet baby showers, create a celebration that feels just as special as the occasion. Choose from soft and pretty colour palettes, elegant details, florals and fun themes to create a setup that reflects your style.'
+      ]},
+      { h: 'Beautiful Backdrops, Made for the Moment', p: [
+        'A backdrop and balloon garland setup creates the perfect focal point for your shower and a beautiful space for photos with family and friends.',
+        'Whether you&rsquo;re envisioning something soft and elegant, cute and playful or completely on-theme, your balloons can be customized around your colours, theme and overall vision.'
+      ]},
+      { h: 'Add a Personal Touch', p: [
+        'Complete your setup with a custom welcome sign featuring the guest of honour&rsquo;s name, event details or a special message. Paired with balloons and your chosen backdrop, these personalized details help bring the entire look together.'
       ]}
     ],
     includes: [
-      'A backdrop and garland built to the theme, in your colours',
-      'Custom vinyl lettering for the name, age or theme',
-      'Themed foil shapes worked into the design',
-      'Balloon number stacks for milestone years',
-      'Setup before the party and teardown afterwards'
+      'A backdrop and balloon garland setup designed around your theme and colours',
+      'A custom vinyl decal with a name, age or special message',
+      'A custom welcome sign with the guest of honour&rsquo;s name or event details',
+      'Number stacks personalized with their age, for smaller celebrations',
+      'Florals, themed accents and specialty balloons where they suit the theme'
     ],
     tiers: {
       groups: [
-        { h: 'Backdrop and Garland Setup', price: 'Starting at $350', items: [
-          'A backdrop panel with an organic garland in your theme colours',
-          'Custom lettering and themed foil accents available',
-          'Brought in, built on site and cleared afterwards'
+        { h: 'Backdrop &amp; Garland Setup', price: 'Starting at $350', items: [
+          'Designed around your theme and colours',
+          'Custom vinyl decal and welcome sign available',
+          'Delivered, installed and taken down for you'
         ]},
-        { h: 'Balloon Number Stack', price: 'Starting at $70', items: [
-          'The number itself as the centrepiece, in your palette',
-          'Sized to be the photo, on its own or beside a garland',
+        { h: 'Number Stack', price: 'Starting at $70', items: [
+          'Personalized with their age, in your choice of colours',
+          'A fun option for smaller or more intimate parties',
           'More options on the <a href="balloon-number-stacks.html">number stacks page</a>'
         ]}
       ],
-      note: 'Themes vary a lot in what they need, so send what you are planning and you will get a quote built on the actual setup.'
+      note: 'Every setup is quoted on the space and the size, so send your details and you will get a real number back rather than a guess.'
     },
-    chipsHead: 'Birthdays We Build For',
-    chipsIntro: 'From the first one to the ones with a big number on them:',
-    chips: ['First birthdays', 'Kids&rsquo; themed parties', 'Milestone birthdays', 'Adult birthdays', 'Surprise parties', 'Backyard and park parties'],
+    chipsHead: 'Celebrations We Build For',
+    chipsIntro: 'The same setup covers birthdays and showers alike:',
+    chips: ['Kids&rsquo; birthdays', 'Milestone birthdays', 'Themed celebrations', 'Bridal showers', 'Baby showers', 'Gender reveals'],
     faq: {
       head: 'Common Questions',
       items: [
-        { q: 'What does birthday balloon decor usually cost?', a: ['A backdrop-and-garland setup built on site starts at $350. A balloon number stack on its own starts at $70. What it lands at depends on the size of the setup and the space, so send your details for a real quote.'] },
-        { q: 'Can you build a specific theme?', a: ['Yes. The theme drives the design &mdash; colours, foil shapes and custom panels are all made to order. Send the theme and any inspiration photos and the design gets built around them.'] },
-        { q: 'Do you set up and take down?', a: ['Yes. Setups go in before the party starts and come down afterwards, so you are not dealing with it on the day or cleaning it up that night.'] }
+        { q: 'What does birthday or shower balloon decor usually cost?', a: ['A backdrop-and-garland setup delivered and installed starts at $350. A number stack on its own starts at $70. What it lands at depends on the size of the setup and the space, so send your details for a real quote.'] },
+        { q: 'Can you build a specific theme?', a: ['Yes. Colours, themed accents and custom panels are all made to order. Send the theme, the invitation or any inspiration photos and the design gets built around them.'] },
+        { q: 'Do you set up and take down?', a: ['Yes. Setups go in before your guests arrive and come down afterwards, so you are not dealing with it on the day.'] }
       ]
     },
     quotes: [
       { p: 'Jessica at Inflatable Decorations has done multiple birthdays for my girls now and every single setup somehow tops the last. From our Berry First Birthday, Two the Moon theme, and Candy Land party, everything has always been beyond beautiful, creative, and so well put together. She pays attention to every detail and always brings the vision to life perfectly.', c: 'Callie Antle', s: 'Google review', r: 'Thank you for trusting Inflatable Decorations with all your events!' },
-      { p: 'We had an amazing experience using Inflatable Decorations for my son&rsquo;s first birthday party. We live 20 minutes outside of Winnipeg and a few other businesses I tried first, refused to set up outside the city, then I luckily came across Jessica on Instagram and she had no problem coming to set up at our house the night before, as well as taking it down after the party.', c: 'M McLeod', s: 'Google review', r: 'Thank you so much for the sweet review ☺️ It was such a pleasure working with you, and I&rsquo;d love to create more decor for your future events!' }
+      { p: 'I had her for our social and for my surprise bridal shower! Great communication, she did provide pictures during planning so I could have the right colour way. At the end of both events she came to take down and pop the balloons. We will definitely have her for more events!', c: 'Sara Landry', s: 'Google review' },
+      { p: 'Jessica did an amazing job capturing the absolute vision I had for my best friend&rsquo;s baby shower &ldquo;she&rsquo;s ready to pop&rdquo;! she perfectly created the balloon and arch and went above and beyond to communicate and ensure the customization was absolutely perfect!', c: 'Cass Paige', s: 'Google review' }
     ],
-    photoDir: 'Assets/Gallery/Backdrop and Balloon Garland setup',
-    heroPhoto: { d: 'Assets/Gallery/Backdrop and Balloon Garland setup', f: '669127862_846859224352057_8099983497208557162_n.jpg', a: 'Strawberry-themed pink and red balloon garland and backdrop built for a first birthday in Winnipeg' },
+    photoDir: 'Assets/Gallery/Birthdays and Showers',
+    heroPhoto: { d: 'Assets/Gallery/Birthdays and Showers', f: 'Main.jpg', a: 'Pink and lilac balloon garland on arched backdrops with pool floats at an outdoor first birthday in Winnipeg' },
     photos: [
-      { f: '672155829_1255830733259550_4346246369048823540_n.jpg', a: 'Golf-themed balloon garland with a golf cart panel and hole in ONE lettering for a Winnipeg first birthday', tall: true },
-      { f: 'IMG_2409.jpg', a: 'Bright primary-colour balloon garland with a gingham backdrop panel and ONE lettering, Winnipeg first birthday' },
-      { f: 'IMG_2136.jpg', a: 'Colourful balloon garland across arched backdrop panels for a third birthday party in Winnipeg' },
-      { f: '664883286_1675006023843568_4592194640332315545_n.jpg', a: 'Diner-themed balloon garland with burger and hot dog foil balloons over a red checkered table, Winnipeg birthday' }
+      { f: 'IMG_4212.jpg', a: 'Red, blue and white balloon garland with a gingham panel and a She&rsquo;s Ready to Pop sign at a Winnipeg baby shower', tall: true },
+      { f: 'IMG_4466.jpg', a: 'Navy and silver balloon garland with greenery on a white arched backdrop beside a bridal shower welcome sign, Winnipeg' },
+      { f: 'IMG_5300.jpg', a: 'Fruit-themed balloon garland with watermelon, strawberry and citrus balloons for a Tutti Frutti second birthday in Winnipeg' },
+      { f: 'IMG_3103.jpg', a: 'Blue, tan and cream balloon garland on arched backdrops with a large teddy bear at a Winnipeg baby shower' },
+      { f: 'IMG_8811.jpg', a: 'Strawberry-themed red, white and green balloon garland on an arched backdrop in Winnipeg' },
+      { f: 'IMG_2528.jpg', a: 'Giant 55 balloon number stack with fishing-themed accents for a milestone birthday in Winnipeg' }
     ]
   },
 ];
