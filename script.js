@@ -3,8 +3,9 @@
    - IntersectionObserver reveals (single source of truth)
    - Sticky nav scrolled state + active link highlight
    - Mobile nav toggle
-   - Photo viewer / lightbox, shared by every page (focus trap, keyboard nav,
-     swipe, full-resolution swap; window.FJLightbox is its public API)
+   - Photo viewer / lightbox on the SERVICE + CORPORATE pages (focus trap,
+     keyboard nav, swipe, full-resolution swap). The homepage gallery keeps its
+     own separate viewer inline in index.html.
    - Scroll-to-top
    - Form submit stub with confetti burst
    - Reduced-motion friendly
@@ -164,13 +165,19 @@
     toggleBtn();
   }
 
-  /* ---------- Photo viewer (lightbox) — shared by every page ----------
-     Every photo on this site is cropped by object-fit:cover, so a tile only ever
-     shows a SLICE of the frame. This opens the whole picture, letterboxed.
+  /* ---------- Photo viewer (lightbox) — SERVICE + CORPORATE PAGES ONLY ----------
+     Scope is deliberate (James, 2026-08-23): the service pages and the corporate
+     page get clickable photos; the HOMEPAGE DOES NOT. index.html's marquee gallery
+     keeps its own self-contained viewer (#galLb, inline in that file) and the
+     homepage hero and service-card photos stay non-clickable. Do not widen
+     PHOTO_SEL to homepage selectors without asking — that was tried and reverted.
 
-     Three things worth knowing before editing:
-       1. Full-resolution swap. Gallery thumbs are served at -800; the originals
-          are 1290-1800px wide and every -800 file has one. The viewer paints the
+     Those photos are cropped by object-fit:cover, so a tile only ever shows a
+     SLICE of the frame. This opens the whole picture, letterboxed.
+
+     Two things worth knowing before editing:
+       1. Full-resolution swap. Thumbs can be served at -800; the originals are
+          1290-1800px wide and every -800 file has one. The viewer paints the
           already-cached thumb FIRST so the frame never opens blank, then swaps in
           the original once it decodes. A token guards the swap so a slow original
           landing after the visitor has moved on cannot overwrite the newer photo.
@@ -178,13 +185,8 @@
           runtime — never in the HTML. Crawlers that do not run JS (which is most
           AI crawlers) still see a plain <img alt="...">, so this costs nothing
           in SEO or GEO.
-       3. window.FJLightbox is the public API. index.html's marquee gallery has
-          its own image list (66 photos, its own order) and calls .open() rather
-          than shipping a second viewer — one implementation, one skin, one set
-          of keyboard bindings. Replaced the dead #lightbox/.gallery-item viewer,
-          which targeted markup that no page has carried since the marquee landed.
   */
-  const PHOTO_SEL = '.hero-arch img, .service-card .img-arch img, .svc-hero-photo img, .svc-shot img';
+  const PHOTO_SEL = '.svc-hero-photo img, .svc-shot img';
 
   // Assets/.../Cover-800.jpg -> Assets/.../Cover.jpg   (verified: all 86 thumbs have a full-size twin)
   const fullSrc = (s) => s.replace(/-800(\.[a-z0-9]+)(\?.*)?$/i, '$1$2');
@@ -287,7 +289,6 @@
     lb.setAttribute('aria-hidden', 'false');
     document.body.classList.add('fj-lb-lock');
     lbClose.focus();
-    document.dispatchEvent(new CustomEvent('fj-lightbox:open'));
   }
 
   function lbShut() {
@@ -298,11 +299,8 @@
     document.body.classList.remove('fj-lb-lock');
     lbImg.removeAttribute('src');
     if (lbLast && lbLast.focus) lbLast.focus();  // return focus to the photo that opened it
-    // index.html's marquee listens for this to resume gliding.
-    document.dispatchEvent(new CustomEvent('fj-lightbox:close'));
   }
 
-  window.FJLightbox = { open: lbOpen };
 
   const photoNodes = $$(PHOTO_SEL);
   if (photoNodes.length) {

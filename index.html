@@ -597,9 +597,14 @@
       </div>
     </div>
 
-    <!-- The photo viewer is NOT declared here. script.js owns one shared viewer for
-         every page and builds its own DOM (window.FJLightbox); this gallery just
-         hands it a list and an index. -->
+    <!-- Lightbox -->
+    <div class="g-lb" id="galLb" aria-hidden="true">
+      <button class="g-lb-close" id="galLbClose" aria-label="Close gallery viewer">&times;</button>
+      <button class="g-lb-nav g-lb-prev" id="galLbPrev" aria-label="Previous photo">&#8249;</button>
+      <img class="g-lb-img" id="galLbImg" alt="" />
+      <button class="g-lb-nav g-lb-next" id="galLbNext" aria-label="Next photo">&#8250;</button>
+      <div class="g-lb-count" id="galLbCount"></div>
+    </div>
 
     <script>
     /* Cinematic marquee gallery + lightbox. Tiles are NOT lazy (transform-moved tiles never
@@ -607,7 +612,8 @@
     (function(){
       var IMAGES = [{s:"Assets/Gallery/Backdrop and Balloon Garland setup/Cover.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Walkthrough Arches/Cover.jpg",a:"Arches balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Ballon Bouquets-Number Stacks/Cover.jpg",a:"Bouquets balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Columns/Cover.jpg",a:"Columns balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/Favorite.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Grab & Go/Cover.jpg",a:"Grab & Go balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/Backdropngarland1.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Walkthrough Arches/Themed-WTA.jpg",a:"Arches balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/655320035_1478624020528770_3403384665709763277_n.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Ballon Bouquets-Number Stacks/661010358_1479121863915211_8930539252150607194_n.jpg",a:"Bouquets balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Columns/669598196_784596854516659_4741304633711714289_n.jpg",a:"Columns balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/664883286_1675006023843568_4592194640332315545_n.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Walkthrough Arches/670780359_1316750920315655_1714856704636191444_n.jpg",a:"Arches balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/669127862_846859224352057_8099983497208557162_n.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Ballon Bouquets-Number Stacks/670949303_26453326074361773_3808112994526126323_n.jpg",a:"Bouquets balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Columns/670314208_1455045216161617_4088750443734550869_n.jpg",a:"Columns balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/670439079_4034309923367392_9196080599764451676_n.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Grab & Go/670611478_3926052884357320_2655556587710275461_n.jpg",a:"Grab & Go balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/671626407_2368958973629978_8791729836058276314_n.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Walkthrough Arches/672358270_1631439664642750_3306499537867830646_n.jpg",a:"Arches balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/672155829_1255830733259550_4346246369048823540_n.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Ballon Bouquets-Number Stacks/676984877_933561046118684_1749973930698617400_n.jpg",a:"Bouquets balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Columns/672196176_964600419278025_5186114894174741111_n.jpg",a:"Columns balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/672176279_1640185133859884_6066715320209476203_n.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/672701291_1391318602753236_8484134399833125210_n.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Ballon Bouquets-Number Stacks/677200198_1874178870217536_4064233792141304234_n.jpg",a:"Bouquets balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/675001955_1339424151567848_97630896647164254_n.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/675550313_832502393225263_569436542305509635_n.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Walkthrough Arches/Main.jpg",a:"Arches balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_3491.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Ballon Bouquets-Number Stacks/Main.jpg",a:"Bouquets balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Columns/Main.jpg",a:"Columns balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Walkthrough Arches/IMG_3333.jpg",a:"Arches balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_2136.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Ballon Bouquets-Number Stacks/IMG_2528.jpg",a:"Bouquets balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Columns/IMG_2820.jpg",a:"Columns balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Grab & Go/Main.jpg",a:"Grab & Go balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Walkthrough Arches/IMG_2589.jpg",a:"Arches balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_2409.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Ballon Bouquets-Number Stacks/IMG_2924.jpg",a:"Bouquets balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Columns/IMG_2906.jpg",a:"Columns balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Walkthrough Arches/IMG_3296.jpg",a:"Arches balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_2758.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Ballon Bouquets-Number Stacks/IMG_3392.jpg",a:"Bouquets balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Walkthrough Arches/IMG_3200.jpg",a:"Arches balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_3120.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_3567.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_3632.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_8247.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_3827.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_3963.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_4091.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_4226.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_4247.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_4328.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop and Balloon Garland setup/IMG_4465.jpg",a:"Backdrops balloon decor by Inflatable Decorations, Winnipeg"},{s:"Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_5149.jpg",a:"Sage and cream balloon garland with arched backdrop panels, Winnipeg"},{s:"Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/IMG_5066.jpg",a:"Golf-themed balloon number stack for a 30th birthday in Winnipeg"},{s:"Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_5117.jpg",a:"Balloon garland on a wavy-edge backdrop panel at an outdoor Winnipeg party"},{s:"Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/IMG_4655.jpg",a:"Purple balloon number stack with custom name balloons, Winnipeg"},{s:"Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/e1fae4bd-9f50-4d12-823b-21afb1c054d2.jpg",a:"Pastel butterfly-themed balloon garland and backdrop in Winnipeg"},{s:"Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/IMG_4789.jpg",a:"Sage green balloon number stack with floral accents, Winnipeg"},{s:"Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_2953.jpg",a:"Neutral balloon garland beside a rattan chair at a Winnipeg celebration"},{s:"Assets/Gallery/Ballon%20Bouquets-Number%20Stacks/IMG_5176.jpg",a:"Golf-themed number stack and matching balloon column, Winnipeg"},{s:"Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_6635.jpg",a:"Pastel balloon garland on a cream arch panel at an outdoor Winnipeg party"},{s:"Assets/Gallery/Backdrop%20and%20Balloon%20Garland%20setup/IMG_5129.jpg",a:"Football-themed balloon garland on an outdoor backdrop panel, Winnipeg"}];
       var wall = document.querySelector('#gallery .gm-wall');
-      if(!wall) return;
+      var lb = document.getElementById('galLb'), lbImg = document.getElementById('galLbImg'), lbCount = document.getElementById('galLbCount');
+      if(!wall || !lb) return;
 
       /* Deferred gallery load. loading="lazy" CANNOT be used here: the tiles are
          moved by transform, so their layout box never enters the viewport and the
@@ -632,6 +638,7 @@
         }, { rootMargin: '800px 0px' });
         io.observe(sec);
       })();
+      document.body.appendChild(lb);   // lift out of #gallery so it sits above the nav / sticky CTA bar (stacking-context fix)
       function fill(row){ if(!row._u) row._u = row.innerHTML; row.innerHTML = row._u; var g = 0;
         while(row.scrollWidth < window.innerWidth && g < 8){ row.innerHTML += row._u; g++; }
         row.innerHTML = row.innerHTML + row.innerHTML;
@@ -642,25 +649,20 @@
         build(); var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(build, 200); });
       }
       function pause(p){ wall.querySelectorAll('.gm-row').forEach(function(r){ r.style.animationPlayState = p ? 'paused' : ''; }); }
-      /* One viewer serves the whole site — script.js owns it and exposes
-         window.FJLightbox. This gallery only supplies its own 66-photo list and
-         the tile that was clicked; keyboard nav, focus trap, swipe and the
-         full-resolution swap all live there. IMAGES already holds the ORIGINAL
-         paths, so the thumb is derived back the other way (-800) purely so the
-         viewer can paint the cached tile before the original decodes. */
-      var ITEMS = IMAGES.map(function(o){
-        return { full: o.s, thumb: o.s.replace(/(\.[a-z0-9]+)$/i, '-800$1'), alt: o.a };
-      });
-      wall.addEventListener('click', function(e){
-        var t = e.target.closest('.gm-tile');
-        if(!t || !window.FJLightbox) return;
-        window.FJLightbox.open(ITEMS, +t.getAttribute('data-k'));
-      });
-      /* Never resume while the viewer is still open — the body lock class is the tell. */
-      var pz = function(){ pause(true); };
-      var rz = function(){ if(!document.body.classList.contains('fj-lb-lock')) pause(false); };
-      document.addEventListener('fj-lightbox:open', pz);
-      document.addEventListener('fj-lightbox:close', rz);
+      var idx = 0;
+      function show(){ var o = IMAGES[idx]; lbImg.src = o.s; lbImg.alt = o.a; lbCount.textContent = (idx + 1) + ' / ' + IMAGES.length; }
+      function open(k){ idx = k; show(); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; pause(true); }
+      function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; pause(false); }
+      function move(d){ idx = (idx + d + IMAGES.length) % IMAGES.length; show(); }
+      wall.addEventListener('click', function(e){ var t = e.target.closest('.gm-tile'); if(!t) return; open(+t.getAttribute('data-k')); });
+      document.getElementById('galLbClose').addEventListener('click', close);
+      document.getElementById('galLbPrev').addEventListener('click', function(){ move(-1); });
+      document.getElementById('galLbNext').addEventListener('click', function(){ move(1); });
+      lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+      document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open')) return;
+        if(e.key === 'Escape') close(); else if(e.key === 'ArrowRight') move(1); else if(e.key === 'ArrowLeft') move(-1); });
+      var pz = function(){ wall.querySelectorAll('.gm-row').forEach(function(r){ r.style.animationPlayState = 'paused'; }); };
+      var rz = function(){ if(!lb.classList.contains('open')) wall.querySelectorAll('.gm-row').forEach(function(r){ r.style.animationPlayState = ''; }); };
       wall.addEventListener('pointerenter', pz); wall.addEventListener('pointerdown', pz); wall.addEventListener('pointerleave', rz);
     })();
     </script>
