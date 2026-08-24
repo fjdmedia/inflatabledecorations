@@ -17,11 +17,10 @@ window.FJ_FORM_CONFIG = {
     "--fj-font-display": '"Caprasimo", "Fraunces", Georgia, serif',
     "--fj-font-body": '"DM Sans", system-ui, sans-serif'
   },
-  head: {
-    eyebrow: "Inquiry & Booking",
-    title: "Tell us about your event",
-    intro: "Share the details and a few inspiration photos — the more you tell us, the better we can match your vibe. We reply within 24 hours."
-  },
+    // Rendered as STATIC HTML in inquiry.html instead of injected here, so the page
+  // has a real h1 and real copy without JavaScript. Blank on purpose — leaving a
+  // title here would emit a second h1 at runtime.
+  head: { eyebrow: "", title: "", intro: "" },
   groups: [
     { legend: "Your details", fields: [
       { id: "name", type: "text", label: "Name", required: true, autocomplete: "name" },

@@ -161,7 +161,7 @@
       mount.appendChild(h);
     }
     var form = document.createElement('form'); form.noValidate = true;
-    var hp = document.createElement('input'); hp.type = 'text'; hp.name = 'company_url'; hp.tabIndex = -1; hp.autocomplete = 'off';
+    var hp = document.createElement('input'); hp.type = 'text'; hp.name = 'company_url'; hp.tabIndex = -1; hp.autocomplete = 'off'; hp.setAttribute('aria-hidden', 'true'); /* spam trap: keep it out of the a11y tree too */
     hp.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0'; form.appendChild(hp);
     (config.groups || []).forEach(function (g) {
       var fs = document.createElement('fieldset'); var lg = document.createElement('legend'); lg.textContent = g.legend; fs.appendChild(lg);
