@@ -2137,22 +2137,29 @@ h1 em, h2 em {
   .services-grid-4 { grid-template-columns: 1fr; }
 }
 
-/* ---------- Services grid: 5-card variant (with Grab & Go) ---------- */
-.services-grid-5 { grid-template-columns: repeat(5, 1fr); gap: 18px; }
-.services-grid-5 .service-card { padding: 16px 16px 20px; }
-.services-grid-5 .service-card h3 { font-size: clamp(1rem, 0.5vw + 0.9rem, 1.25rem); }
-.services-grid-5 .service-card p  { font-size: 13.5px; }
+/* ---------- Services grid: 7-card variant (the full service set) ----------
+   12 columns so BOTH rows fill completely: 4 cards x span 3 = 12, then
+   3 cards x span 4 = 12. No orphan, no ragged right edge at any width.
+   (Replaced the 5-card variant when Birthdays & Showers and Corporate were
+   added to the homepage - they were the only two services with no card.) */
+.services-grid-7 { grid-template-columns: repeat(12, 1fr); gap: 18px; }
+.services-grid-7 .service-card { grid-column: span 3; padding: 16px 16px 20px; }
+.services-grid-7 .service-card:nth-child(n+5) { grid-column: span 4; }
+.services-grid-7 .service-card h3 { font-size: clamp(1rem, 0.5vw + 0.9rem, 1.25rem); }
+.services-grid-7 .service-card p  { font-size: 13.5px; }
 @media (max-width: 1180px) {
-  .services-grid-5 { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .services-grid-5 .service-card { padding: 22px 22px 26px; }
-  .services-grid-5 .service-card h3 { font-size: clamp(1.2rem, 1vw + 0.8rem, 1.6rem); }
-  .services-grid-5 .service-card p  { font-size: 14.5px; }
-  /* Center the 5th card on its own row */
-  .services-grid-5 .service-card:nth-child(5) { grid-column: 1 / -1; max-width: calc(50% - 12px); margin: 0 auto; }
+  .services-grid-7 { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .services-grid-7 .service-card,
+  .services-grid-7 .service-card:nth-child(n+5) { grid-column: auto; }
+  .services-grid-7 .service-card { padding: 22px 22px 26px; }
+  .services-grid-7 .service-card h3 { font-size: clamp(1.2rem, 1vw + 0.8rem, 1.6rem); }
+  .services-grid-7 .service-card p  { font-size: 14.5px; }
+  /* 7 cards in a 2-col grid leaves one over - centre it rather than orphan it */
+  .services-grid-7 .service-card:nth-child(7) { grid-column: 1 / -1; max-width: calc(50% - 12px); margin: 0 auto; }
 }
 @media (max-width: 560px) {
-  .services-grid-5 { grid-template-columns: 1fr; }
-  .services-grid-5 .service-card:nth-child(5) { max-width: 100%; }
+  .services-grid-7 { grid-template-columns: 1fr; }
+  .services-grid-7 .service-card:nth-child(7) { max-width: 100%; }
 }
 
 /* =====================================================================
