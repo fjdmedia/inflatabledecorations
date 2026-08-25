@@ -689,7 +689,6 @@ ${JSON.stringify(ldFaq, null, 2)}
             <li><a href="corporate-events.html">Corporate Events</a></li>
           </ul>
         </li>
-        <li><a href="corporate-events.html">Corporate</a></li>
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#gallery">Gallery</a></li>
         <li><a href="inquiry.html">Inquiry</a></li>
@@ -856,6 +855,30 @@ for (const d of PAGES) {
       process.exit(1);
     }
     seen.set(path, where);
+  }
+}
+
+/* G32h - no navigation offers the same destination twice. The nav bar and the
+   menu it opens are ONE surface. A destination promoted to top level AND listed
+   inside the dropdown is the same link twice; the second has no job.
+   Exempt: a text link plus a styled CTA button to the same place (Inquiry +
+   Book Now) - different weight, different intent, deliberate.
+   Shipped 2026-08-24: a Services dropdown was added with all 7 service pages
+   while "Corporate" stayed top-level, putting corporate-events.html in the nav
+   twice on all 10 pages. Noticed during the build and kept anyway. */
+{
+  const navHtml = (page(PAGES[0]).match(/<ul class="nav-links"[\s\S]*?<\/ul>/) || [''])[0];
+  const seen = new Map();
+  for (const m of navHtml.matchAll(/<a\s+href="([^"]+)"([^>]*)>/g)) {
+    if (/class="[^"]*btn/.test(m[2])) continue;      // the CTA button is exempt
+    seen.set(m[1], (seen.get(m[1]) || 0) + 1);
+  }
+  const dupes = [...seen].filter(([, n]) => n > 1);
+  if (dupes.length) {
+    console.error('FATAL: nav offers the same destination twice - ' +
+      dupes.map(([h, n]) => `${h} x${n}`).join(', '));
+    console.error('  One nav surface, one entry per destination. Cut the redundant one.');
+    process.exit(1);
   }
 }
 
