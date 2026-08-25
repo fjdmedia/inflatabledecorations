@@ -103,7 +103,8 @@ const PAGES = [
           'Jessica is an absolute dream to work with! Her communication, professionalism, and attention to detail were exceptional from start to finish. She truly took the time to understand the heart and vision behind our event. Going above and beyond to bring it to life!',
           'What she created was a visual masterpiece! Truly stunning! The smiles, photos and reactions from all the shoppers at our event, proved that Jessica nailed it.',
           'I can&rsquo;t recommend Jessica enough. If you&rsquo;re looking for someone who is creative, talented, professional, and genuinely cares about bringing your vision to life, she is your girl! We absolutely loved working with her and would work with her again in a heartbeat.'
-        ], c: 'Chandra Kremski', s: 'Founder &amp; CEO, Third + Bird Markets' },
+        ], c: 'Chandra Kremski', s: 'Founder &amp; CEO, Third + Bird Markets',
+        img: { f: 'Assets/Testimonials/chandra-kremski-email.jpg', label: 'See the original email' } },
       { p: 'I&rsquo;ve used Inflatable Decorations multiple times now at my nail salon for both Christmas and Halloween, as well as for my own birthday, and every time I&rsquo;m blown away. The setups are always so creative and perfectly suited to the occasion. One thing that really stands out is the quality &mdash; the balloons last MONTHS! Which is amazing, especially for a business space where I want things to look good for as long as possible. My clients always compliment the decor and it really adds such a fun vibe to the salon!', c: 'Lisa', s: 'Repeat client &middot; nail salon' },
       { p: 'Jess killed it with the set up and take down. So effortless and easy to host when your vendors are 12/10. Everything was all set up for the time of our event and Jess came back after to take it all down so we did not have to lift a finger. She&rsquo;s your decor expert!', c: 'Celeste Petrick', s: 'Google review', r: 'Thank you for the kind words! I&rsquo;m so glad I could help make your event special ☺️' },
       { p: 'Our company hired Jessica to do the balloons for Employee Appreciation Day and she absolutely killed it! Jessica&rsquo;s communication and dedication was truly appreciated. She did great work and gave us exactly what we wanted and more. Highly recommend using Inflatable Decorations by Jessica for all your balloon needs, you won&rsquo;t regret it!', c: 'Sarah Bauer', s: 'Google review', r: 'Thank you so much for your kind words! It was a pleasure working with you and your team and being part of your employee appreciation event. We truly appreciate your support and look forward to creating something special for you again in the future!' },
@@ -530,7 +531,7 @@ function page(d) {
     return `      <blockquote class="svc-quote">
 ${paras}
         <cite>${q.c}<span class="svc-quote-src">${q.s}</span></cite>${q.img ? `
-        <a class="svc-quote-proof" href="${q.img.f}" data-quote-proof>${q.img.label}</a>` : ''}
+        <a class="svc-quote-proof" href="${q.img.f}" data-quote-proof="${strip(q.c)}">${q.img.label}</a>` : ''}
         ${q.r ? `<div class="svc-quote-reply"><span>Inflatable Decorations replied</span><p>${q.r}</p></div>` : ''}
       </blockquote>`;
   }).join('\n');

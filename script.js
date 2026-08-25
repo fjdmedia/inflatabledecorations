@@ -367,6 +367,19 @@
     });
   }
 
+  /* A testimonial that arrived as a written letter can carry its original as
+     proof. One quiet link, opened in the same viewer as the photos - no second
+     mechanism, and nothing shouted at anyone who does not care. */
+  $$('[data-quote-proof]').forEach(a => {
+    const src = a.getAttribute('href');
+    const who = a.getAttribute('data-quote-proof') || '';
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      lbOpen([{ thumb: src, full: src,
+                alt: who ? 'Email testimonial from ' + who : 'Email testimonial' }], 0);
+    });
+  });
+
   /* ---------- Form submit (placeholder) ---------- */
   const form = $('#inquiryForm');
   const fb   = $('#formFeedback');

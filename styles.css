@@ -13,6 +13,8 @@
      body sizes, but it is also used for button drop-shadows, so it cannot simply be
      darkened. This token is text-only: #B02E62 = 5.84:1 on cream, 5.54:1 on cream-soft. */
   --pink-text: #B02E62;
+  /* envelope glyph for the testimonial proof link */
+  --fj-mail-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m2 7 10 6 10-6'/%3E%3C/svg%3E");
   --pink-baby: #FFC2D6;
   --pink-baby-soft: #FFE0EC;
   --yellow: #FFE27A;
@@ -818,6 +820,35 @@ p { margin: 0 0 1em; }
   .marquee-track,
   .marquee-row.reverse .marquee-track { animation: none; }
 }
+
+
+/* Proof link under a testimonial that arrived as a written letter. Deliberately
+   quiet: a small underlined line, not a button. The words are the testimonial;
+   this is only for the reader who wants to see it landed in a real inbox. */
+.svc-quote-proof {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 14px;
+  /* line-height 1 collapsed this to a 15px click target on desktop. */
+  padding: 7px 2px;
+  font: 600 13px/1.5 var(--font-body, "DM Sans"), sans-serif;
+  color: var(--plum-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(74, 47, 97, 0.35);
+  cursor: zoom-in;
+  transition: color .15s, text-decoration-color .15s;
+}
+.svc-quote-proof::before {
+  content: '';
+  width: 15px; height: 15px; flex: none;
+  background: currentColor;
+  -webkit-mask: var(--fj-mail-icon) center/contain no-repeat;
+          mask: var(--fj-mail-icon) center/contain no-repeat;
+}
+.svc-quote-proof:hover { color: var(--pink-text); text-decoration-color: currentColor; }
+.svc-quote-proof:focus-visible { outline: 3px solid var(--pink-hot); outline-offset: 3px; border-radius: 4px; }
+@media (max-width: 560px) { .svc-quote-proof { min-height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .svc-quote-proof { transition: none; } }
 
 /* ---------- PROCESS (checker pattern full-bleed) ---------- */
 .process {
