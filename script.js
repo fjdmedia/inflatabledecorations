@@ -2,7 +2,7 @@
    Inflatable Decorations — Website_3 "Confetti Party" JS
    - IntersectionObserver reveals (single source of truth)
    - Sticky nav scrolled state + active link highlight
-   - Mobile nav toggle
+   - Mobile nav toggle + Services dropdown (keyboard, Escape, click-outside)
    - Photo viewer / lightbox on the SERVICE + CORPORATE pages (focus trap,
      keyboard nav, swipe, full-resolution swap). The homepage gallery keeps its
      own separate viewer inline in index.html.
@@ -73,6 +73,52 @@
         navLinks.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
       });
+    });
+  }
+
+  /* ---------- Services dropdown ----------
+     The caret is a real <button> next to the "Services" link, not a wrapper
+     around it, so the link keeps its destination and the menu is still reachable
+     without a mouse. CSS opens it on hover/focus-within for pointers; this only
+     has to handle click, keyboard and the mobile drawer, where :hover never fires.
+  */
+  const subToggle = $('.nav-sub-toggle');
+  const subMenu   = $('#navServices');
+  if (subToggle && subMenu) {
+    const setSub = (open) => subToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    const isOpen = () => subToggle.getAttribute('aria-expanded') === 'true';
+
+    subToggle.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); setSub(!isOpen()); });
+
+    // Escape closes and returns focus to the control that opened it.
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen()) { setSub(false); subToggle.focus(); }
+    });
+    // Down-arrow from the caret drops into the first service.
+    subToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); setSub(true); const a = subMenu.querySelector('a'); if (a) a.focus(); }
+    });
+    // Arrow through the list; Escape from inside closes it.
+    subMenu.addEventListener('keydown', (e) => {
+      const links = $$('a', subMenu);
+      const at = links.indexOf(document.activeElement);
+      if (at < 0) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); links[(at + 1) % links.length].focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); links[(at - 1 + links.length) % links.length].focus(); }
+    });
+    // Clicking anywhere else closes it.
+    document.addEventListener('click', (e) => {
+      if (isOpen() && !e.target.closest('.nav-has-sub')) setSub(false);
+    });
+    // Closing the mobile drawer must not leave the submenu stuck open behind it.
+    if (navToggle) navToggle.addEventListener('click', () => setSub(false));
+
+    /* Mark the page you are already on. Compares filenames so it works whether
+       the URL carries the .html or not, and whichever way the host serves it. */
+    const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    $$('a', subMenu).forEach(a => {
+      const target = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+      if (target && target === here) a.setAttribute('aria-current', 'page');
     });
   }
 
