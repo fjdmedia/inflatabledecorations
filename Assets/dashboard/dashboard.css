@@ -1,0 +1,31 @@
+/* dashboard.css — token-driven module styles. Brand comes from each client's
+   dashboard-config.js tokens; these are neutral fallbacks only.
+   Doctrine: full-width, page-level scroll only, no inner scrollbars, big at-a-glance numbers. */
+:root {
+  --dash-bg: #fff; --dash-ink: #1c1b1f; --dash-accent: #e91e63;
+  --dash-card: #faf7f9; --dash-muted: #6b6570; --dash-radius: 16px;
+}
+.dash-wrap { max-width: none; padding: clamp(16px, 4vw, 48px); background: var(--dash-bg);
+  color: var(--dash-ink); font-family: var(--dash-font, system-ui, sans-serif); }
+.dash-month { font-size: 1.1rem; color: var(--dash-muted); text-transform: uppercase;
+  letter-spacing: .08em; margin: 0 0 4px; }
+.dash-card { background: var(--dash-card); border-radius: var(--dash-radius);
+  padding: clamp(16px, 3vw, 32px); margin-block: 16px; overflow: hidden; }
+.dash-card-title { margin: 0 0 .5em; font-size: 1.15rem; color: var(--dash-accent); }
+.dash-big { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; margin: 0; line-height: 1; }
+.dash-sentence { font-size: 1.15rem; margin: .35em 0 0; }
+.dash-prev { color: var(--dash-muted); margin: .25em 0 0; }
+.dash-row { display: flex; justify-content: space-between; gap: 16px; padding: .5em 0;
+  border-top: 1px solid color-mix(in srgb, var(--dash-ink) 10%, transparent); margin-top: .5em; }
+.dash-row-value { font-weight: 700; white-space: nowrap; }
+.dash-gate { display: grid; gap: 12px; max-width: 420px; margin: 15vh auto 0; }
+.dash-gate-input { display: block; width: 100%; margin-top: 8px; padding: 12px;
+  font-size: 1.1rem; border: 2px solid var(--dash-accent); border-radius: 8px; box-sizing: border-box; }
+.dash-gate-btn { padding: 12px; font-size: 1.05rem; font-weight: 700; border: 0;
+  border-radius: 8px; background: var(--dash-accent); color: #fff; cursor: pointer; }
+.dash-gate-msg, .dash-state, .dash-loading { color: var(--dash-muted); }
+@media (min-width: 900px) {
+  #dash { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .dash-month { grid-column: 1 / -1; }
+  .dash-gate, .dash-loading { grid-column: 1 / -1; }
+}
