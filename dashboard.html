@@ -11,7 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Assets/dashboard/dashboard.css">
   <style>
-    :root { color-scheme: light only; }
+    :root { color-scheme: light only;
+      /* Brand tokens set statically so first paint matches (JS re-applies the same values
+         from dashboard-config.js — keep both in sync when re-skinning): */
+      --dash-accent: #FF5FA2; --dash-bg: #FFF9F5; --dash-ink: #3A2E39;
+      --dash-card: #FFFFFF; --dash-font: "DM Sans", system-ui, sans-serif; }
     body { margin: 0; background: var(--dash-bg, #FFF9F5); }
     .dash-header { padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 48px) 0;
       font-family: "DM Sans", system-ui, sans-serif; color: #3A2E39; }

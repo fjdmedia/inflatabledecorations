@@ -17,7 +17,10 @@
 .dash-prev { color: var(--dash-muted); margin: .25em 0 0; }
 .dash-row { display: flex; justify-content: space-between; gap: 16px; padding: .5em 0;
   border-top: 1px solid color-mix(in srgb, var(--dash-ink) 10%, transparent); margin-top: .5em; }
-.dash-row-value { font-weight: 700; white-space: nowrap; }
+.dash-row-label { flex: 0 0 auto; max-width: 40%; }
+/* Long service strings must WRAP, never clip — nowrap was built for short numbers,
+   but leads rows carry sentences (caught by the 2026-08-31 sweep eye-test). */
+.dash-row-value { font-weight: 700; text-align: right; min-width: 0; overflow-wrap: anywhere; }
 .dash-gate { display: grid; gap: 12px; max-width: 420px; margin: 15vh auto 0; }
 .dash-gate-input { display: block; width: 100%; margin-top: 8px; padding: 12px;
   font-size: 1.1rem; border: 2px solid var(--dash-accent); border-radius: 8px; box-sizing: border-box; }
