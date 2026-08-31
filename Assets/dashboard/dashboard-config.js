@@ -2,7 +2,7 @@
 // Lint-scanned: no analytics jargon anywhere in this file.
 window.DASH_CONFIG = {
   clientId: 'inflatable-decorations',
-  endpoint: 'PASTE-DASHBOARD-EXEC-URL',   // filled at provisioning (plan Task 8), before staging
+  endpoint: 'https://script.google.com/macros/s/AKfycbxbtk-0SIPpl9_6yHPWvejubKffUtR2whJzwZpl_t9xr4kLnC4VgHa4T10naYcK6Xk/exec',
   blockOrder: ['leads', 'traffic'],       // her money block first — the site's job is filtered inquiries
   blockTitles: { leads: 'People who reached out', traffic: 'Visits to your site' },
   // Page display names live SERVER-SIDE in her DASH_TENANTS entry (the payload arrives
