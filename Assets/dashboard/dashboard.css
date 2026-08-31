@@ -21,6 +21,22 @@
 /* Long service strings must WRAP, never clip — nowrap was built for short numbers,
    but leads rows carry sentences (caught by the 2026-08-31 sweep eye-test). */
 .dash-row-value { font-weight: 700; text-align: right; min-width: 0; overflow-wrap: anywhere; }
+/* Charts — single-series, brand accent on marks, ink on text (never colored text). */
+.dash-cols { display: flex; align-items: flex-end; gap: 16px; height: 160px; margin-top: 14px; }
+.dash-col { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center;
+  justify-content: flex-end; gap: 6px; }
+.dash-col-val { font-weight: 700; }
+.dash-col-bar { width: 100%; max-width: 56px; background: var(--dash-accent);
+  border-radius: 4px 4px 0 0; min-height: 4px; }
+.dash-col-lab { color: var(--dash-muted); font-size: .9rem; }
+.dash-bars { margin-top: 6px; }
+.dash-bar-row { margin-top: 12px; }
+.dash-bar-lab { margin: 0 0 4px; }
+.dash-bar-line { display: flex; align-items: center; gap: 10px; }
+.dash-bar-track { flex: 1; height: 12px; border-radius: 4px;
+  background: color-mix(in srgb, var(--dash-accent) 14%, transparent); }
+.dash-bar-fill { height: 100%; background: var(--dash-accent); border-radius: 4px; }
+.dash-bar-val { font-weight: 700; min-width: 2ch; text-align: right; }
 .dash-gate { display: grid; gap: 12px; max-width: 420px; margin: 15vh auto 0; }
 .dash-gate-input { display: block; width: 100%; margin-top: 8px; padding: 12px;
   font-size: 1.1rem; border: 2px solid var(--dash-accent); border-radius: 8px; box-sizing: border-box; }

@@ -10,7 +10,9 @@
     loading: 'Getting your numbers…',
     pending: 'We\'re still hooking this up.',
     blockError: 'We couldn\'t load this right now — try a refresh.',
-    offline: 'We couldn\'t reach your numbers — check your connection and refresh.'
+    offline: 'We couldn\'t reach your numbers — check your connection and refresh.',
+    monthsTitle: 'Month by month',
+    mixTitle: 'What people ask about most'
   };
   /* STRINGS-END */
 
@@ -63,6 +65,51 @@
     }).catch(function () { showGate(STRINGS.offline); });
   }
 
+  // Column chart (time trend) — single series, values direct-labeled, 4px data-end radius.
+  function colsChart(chart) {
+    var wrap = el('div', 'dash-cols');
+    var max = Math.max.apply(null, chart.points.map(function (p) { return p.value; })) || 1;
+    chart.points.forEach(function (p) {
+      var col = el('div', 'dash-col');
+      col.appendChild(el('span', 'dash-col-val', String(p.value)));
+      var bar = el('div', 'dash-col-bar');
+      bar.style.height = Math.max(4, Math.round(p.value / max * 110)) + 'px';
+      col.appendChild(bar);
+      col.appendChild(el('span', 'dash-col-lab', p.label));
+      wrap.appendChild(col);
+    });
+    return wrap;
+  }
+
+  // Horizontal bars (category mix) — sorted by the server, values at the end.
+  function barsChart(chart) {
+    var wrap = el('div', 'dash-bars');
+    var max = Math.max.apply(null, chart.points.map(function (p) { return p.value; })) || 1;
+    chart.points.forEach(function (p) {
+      var row = el('div', 'dash-bar-row');
+      row.appendChild(el('p', 'dash-bar-lab', p.label));
+      var line = el('div', 'dash-bar-line');
+      var track = el('div', 'dash-bar-track');
+      var fill = el('div', 'dash-bar-fill');
+      fill.style.width = Math.max(4, Math.round(p.value / max * 100)) + '%';
+      track.appendChild(fill);
+      line.appendChild(track);
+      line.appendChild(el('span', 'dash-bar-val', String(p.value)));
+      row.appendChild(line);
+      wrap.appendChild(row);
+    });
+    return wrap;
+  }
+
+  function chartCard(titleKey, chart, builder) {
+    var card = el('section', 'dash-card dash-chart');
+    card.appendChild(el('h2', 'dash-card-title',
+      (cfg.blockTitles || {})[titleKey] || STRINGS[titleKey + 'Title']));
+    if (chart.sentence) card.appendChild(el('p', 'dash-sentence', chart.sentence));
+    card.appendChild(builder(chart));
+    return card;
+  }
+
   function render(data) {
     root.replaceChildren();
     root.appendChild(el('p', 'dash-month', data.monthLabel));
@@ -89,6 +136,10 @@
         });
       }
       root.appendChild(card);
+      if (name === 'leads') {
+        if (b.months) root.appendChild(chartCard('months', b.months, colsChart));
+        if (b.mix) root.appendChild(chartCard('mix', b.mix, barsChart));
+      }
     });
   }
 

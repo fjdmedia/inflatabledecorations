@@ -11,6 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Assets/dashboard/dashboard.css">
   <style>
+    /* FJMedia · lane: redesign (rung 2-3) · page: client dashboard
+     * charts: single-series columns (months) + horizontal bars (service mix) — dataviz-skill spec:
+     *   one hue (brand pink), values direct-labeled in ink, 4px data-end radius, fold bucket last
+     * decoration: scallop edge only (playful budget: 1) · motion: none (data page, arrives present)
+     * gates: token/contrast/typography/layout/copy families pass · GI: charts non-interactive (N/A)
+     */
     :root { color-scheme: light only;
       /* Brand tokens set statically so first paint matches (JS re-applies the same values
          from dashboard-config.js — keep both in sync when re-skinning): */
@@ -22,12 +28,17 @@
     .dash-header h1 { font-family: "Caprasimo", "DM Sans", serif; font-size: clamp(1.8rem, 5vw, 2.6rem);
       margin: 0; color: #FF5FA2; }
     .dash-header p { margin: 6px 0 0; color: #6b6570; }
+    /* Her signature scallop edge (site-wide brand pattern), soft pink, one strip only */
+    .dash-scallop { height: 10px; margin-top: 18px;
+      background: radial-gradient(circle 8px at 8px 0, rgba(255, 95, 162, .28) 7px, transparent 8px);
+      background-size: 16px 10px; background-repeat: repeat-x; }
   </style>
 </head>
 <body>
   <header class="dash-header">
     <h1>Your numbers</h1>
     <p>Inflatable Decorations — what your website is doing for you this month.</p>
+    <div class="dash-scallop" aria-hidden="true"></div>
   </header>
   <main id="dash" class="dash-wrap"></main>
   <script src="Assets/dashboard/dashboard-config.js"></script>
