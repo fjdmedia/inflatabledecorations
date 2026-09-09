@@ -399,37 +399,10 @@
 
   /* =========================================================
      ▒▒▒▒▒  SUPER SAIYAN V2 LAYER  ▒▒▒▒▒
-     Page splash · scroll progress · hero parallax ·
-     service-card tilt · cursor trail · mobile sticky CTA
+     hero parallax · service-card tilt · mobile sticky CTA
+     (splash / scroll-tracker / cursor-trail cut 2026-09-08 —
+      restraint pass, see the stamp in styles.css)
      ========================================================= */
-
-  /* ---------- Page splash dismiss ---------- */
-  const splash = $('#pageSplash');
-  if (splash) {
-    setTimeout(() => splash.remove(), 1700);
-  }
-
-  /* ---------- Scroll-progress tracker ---------- */
-  const trackFill    = $('#scrollTrackFill');
-  const trackBalloon = $('#scrollTrackBalloon');
-  const trackDots    = $$('.scroll-track-dots a');
-  function updateTrack() {
-    const h = document.documentElement;
-    const max = h.scrollHeight - h.clientHeight;
-    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-    if (trackFill)    trackFill.style.height = pct + '%';
-    if (trackBalloon) trackBalloon.style.top = pct + '%';
-
-    // Active dot = dot nearest to the balloon position (unified visual).
-    // Dots are evenly spaced on the track, so dot i sits at (i / (n-1)) * 100%.
-    if (trackDots.length) {
-      const step = 100 / (trackDots.length - 1);
-      const activeIdx = Math.max(0, Math.min(trackDots.length - 1, Math.round(pct / step)));
-      trackDots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
-    }
-  }
-  window.addEventListener('scroll', updateTrack, { passive: true });
-  updateTrack();
 
   /* ---------- Hero mouse-parallax ---------- */
   const heroVisual = document.querySelector('[data-tilt="hero"]');
@@ -472,25 +445,6 @@
         card.classList.remove('tilt-active');
         card.style.transform = '';
       });
-    });
-  }
-
-  /* ---------- Cursor balloon trail (desktop only) ---------- */
-  const cursorTrail = $('#cursorTrail');
-  if (cursorTrail && !reduced && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    let lastTrail = 0;
-    document.addEventListener('mousemove', (e) => {
-      const now = performance.now();
-      if (now - lastTrail < 60) return; // throttle
-      lastTrail = now;
-      const dot = document.createElement('span');
-      dot.className = 'cursor-trail-dot';
-      dot.style.left = e.clientX + 'px';
-      dot.style.top  = e.clientY + 'px';
-      const palette = ['#FF5FA2', '#FFE27A', '#A9E4C7', '#D7BEF2', '#FFB788'];
-      dot.style.background = palette[Math.floor(Math.random() * palette.length)];
-      cursorTrail.appendChild(dot);
-      setTimeout(() => dot.remove(), 800);
     });
   }
 
