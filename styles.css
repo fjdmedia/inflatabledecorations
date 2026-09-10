@@ -2920,22 +2920,53 @@ body.fj-lb-lock { overflow: hidden; }
     margin-inline: auto;
   }
 }
-@media (max-width: 1180px) {
+/* Orphan-row fix for .flower-grid — CORRECTED 2026-09-10 (mobile sweep).
+   This rule centres a lone last card so it does not hang off one edge. That is
+   right only while the grid is 2-up. Below 641px the "3-up compact row" rule
+   makes it 3 columns, where three cards already fill one row and NO orphan
+   exists — but `:last-child:nth-child(odd)` still matched, forcing card 3 to
+   span, dropping it to row 2 and leaving column 3 empty. Measured at 390px:
+   row 1 ran 24..249 inside a 24..366 grid, stranding 117px. The orphan fix was
+   manufacturing the orphan. Lower-bounded to the 2-up range only.
+   (The old `max-width:560px` companion below it is deleted, not kept: it only
+   softened the span rule, which no longer applies at that width at all.)
+   Upper bound is 1080px, not the original 1180px: measured column counts are
+   3-up at <=640, 2-up at 641..1080, and 3-up again at 1081+ (the base
+   `.flower-grid-3` track). The rule belongs to the 2-up band ONLY, so the old
+   1180px ceiling reproduced the identical empty-third-column defect at 1081..1180
+   on desktop — same bug, different width, and pre-existing rather than new. */
+@media (max-width: 1080px) and (min-width: 641px) {
   .flower-grid > *:last-child:nth-child(odd) {
     grid-column: 1 / -1;
     max-width: calc(50% - 12px);
     margin-inline: auto;
   }
 }
-@media (max-width: 560px) {
-  .flower-grid > *:last-child:nth-child(odd) { max-width: 100%; }
-}
 
 /* ---------- Tap-target floor (GI/G31) — restraint pass 2026-09-08 ----------
    Measured at 390px: the nav logo sat at 42px and the footer agency credit at
-   16px. Everything else under 44px is an inline prose link, where the floor
-   does not apply. Two real targets, two fixes. */
+   16px. Two real targets, two fixes.
+   CORRECTED 2026-09-10 (mobile sweep): this block used to claim "everything
+   else under 44px is an inline prose link, where the floor does not apply."
+   That was wrong. Re-measured at 320/375/390/414/768: the seven footer service
+   links are `footer ul a` — a stacked <ul> of navigation links, not prose —
+   rendering display:inline with padding:0, so the 18px text box WAS the whole
+   tap target, separated by 16px of dead gap. Inline boxes ignore vertical
+   padding for layout, so the fix must also change the display type. */
 .nav-logo { min-height: 44px; display: inline-flex; align-items: center; }
 .footer-credit a, .site-credit a, footer a[href*="fjmedia"] {
   min-height: 44px; display: inline-flex; align-items: center;
+}
+
+/* Touch devices only — `hover: none` is the correct query for a tap-target
+   floor (a width breakpoint would miss touch laptops and hit desktop mice).
+   Gap goes to 0 because the 44px rows now supply their own separation, so the
+   dead space between links becomes tappable instead of the column growing by
+   the full 7 x 26px. Desktop pointer rendering is untouched at every width. */
+@media (hover: none) {
+  footer ul { gap: 0; }
+  footer ul a {
+    display: flex; align-items: center;
+    min-height: 44px;
+  }
 }
