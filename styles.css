@@ -1354,6 +1354,9 @@ p { margin: 0 0 1em; }
 .info-row p { margin: 0; font-size: 14.5px; color: var(--plum-soft); }
 .info-row p strong { display: block; color: var(--plum); margin-bottom: 2px; }
 .info-row a { color: var(--pink-text); font-weight: 700; }
+/* Secondary contact link sits on its own line so neither line reaches the right
+   gutter, where the fixed .scroll-top button (z-90) would sit on top of it. */
+.info-row a.info-alt { display: block; font-weight: 600; font-size: 13px; margin-top: 2px; }
 
 /* ---------- FOOTER ---------- */
 footer {

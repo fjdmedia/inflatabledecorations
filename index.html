@@ -989,11 +989,17 @@
                  shows a call button regardless, so hiding the number would only
                  confuse; a number that is reachable but not led-with is the honest
                  middle. -->
+            <!-- Stacked, not inline with a separator. Inline ran the second link to
+                 x=343 at 390px, and the fixed .scroll-top button sits at x=332 z-90 —
+                 elementFromPoint returned the BUTTON at the link's end, so the last
+                 characters were both hidden and untappable. Nothing measured caught it
+                 (no page overflow, no console error, the text fit its own <p>); only
+                 the screenshot did. Keep each line short enough to clear the right
+                 gutter where that button lives. -->
             <p>
               <strong>Text or call</strong>
               <a href="sms:+12042234866">Text (204) 223-4866</a>
-              <span aria-hidden="true"> &middot; </span>
-              <a href="tel:+12042234866">call instead</a>
+              <a class="info-alt" href="tel:+12042234866">or tap to call</a>
             </p>
           </div>
 
