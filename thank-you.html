@@ -69,22 +69,67 @@
     }
     .ty-step:nth-child(2) { border-color: var(--mint-soft); }
     .ty-step:nth-child(3) { border-color: var(--lilac-soft); }
+    /* Pale tint + plum numeral on all three, following her own `.process-step`
+       precedent (styles.css:934). Was white-on-saturated: #fff on --pink-hot is
+       2.8:1 and #fff on --sage is 2.8:1, both failing WCAG AA (14px bold is not
+       "large text", and 2.8:1 misses even the 3:1 large-text floor). Badge 3 was
+       already pale+plum, so this makes the set consistent rather than two
+       saturated and one odd one out. Each badge now echoes its card's border. */
     .ty-step .ty-num {
       display: inline-grid; place-items: center;
       width: 34px; height: 34px; border-radius: 50%;
-      font-family: var(--font-body); font-weight: 800; font-size: 14px;
-      color: #fff; background: var(--pink-hot); margin-bottom: 12px;
+      font-family: var(--font-body); font-weight: 800; font-size: 15px;
+      color: var(--plum); background: var(--pink-baby); margin-bottom: 12px;
     }
-    .ty-step:nth-child(2) .ty-num { background: var(--sage); }
-    .ty-step:nth-child(3) .ty-num { background: var(--lilac); color: var(--plum); }
-    .ty-step h3 { font-family: var(--font-body); font-weight: 800; font-size: 15px; color: var(--plum); margin: 0 0 6px; }
+    .ty-step:nth-child(2) .ty-num { background: var(--mint); }
+    .ty-step:nth-child(3) .ty-num { background: var(--lilac); }
+    /* Tag-list, not a single tag, and deliberately so. On 2026-08-17 an a11y fix
+       promoted these headings h3 -> h2 for heading order and this selector stayed
+       on h3, so all three cards fell through to the global
+       `h2 { font-size: clamp(2rem, 3vw + 1rem, 3.4rem) }` — 54px display type in a
+       200px column, one word per line. It shipped inside an accessibility commit
+       and stayed live 38 days. Same defence the footer rule already used
+       (`footer h2, footer h3, footer h4`). Never target a lone heading tag here. */
+    .ty-step h2, .ty-step h3, .ty-step h4 {
+      font-family: var(--font-body); font-weight: 800; font-size: 15px;
+      line-height: 1.35; letter-spacing: 0; color: var(--plum); margin: 0 0 6px;
+    }
     .ty-step p { font-size: 13.5px; line-height: 1.5; color: var(--plum-soft); margin: 0; }
 
+    /* 24h fallback (James, 2026-09-24). Also the ONLY tel:/sms: on this page —
+       without it, a customer whose inquiry silently failed has no route back to
+       her from the very page that told them to sit and wait. */
+    .ty-fallback {
+      max-width: 680px; margin: 0 auto 34px; padding: 20px 24px;
+      background: var(--cream-soft); border-radius: 18px;
+      border: 2.5px dashed var(--pink-baby);
+      font-size: 14.5px; line-height: 1.6; color: var(--plum-soft); text-align: center;
+    }
+    .ty-fallback strong { color: var(--plum); font-weight: 800; }
+    .ty-fallback-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
+    .ty-fallback-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 44px; padding: 0 18px; border-radius: 999px;
+      background: #fff; border: 2px solid var(--pink-baby);
+      color: var(--pink-text); font-weight: 800; font-size: 14px; text-decoration: none;
+      transition: border-color .15s var(--ease), transform .15s var(--ease);
+    }
+    @media (hover: hover) { .ty-fallback-num:hover { border-color: var(--pink-hot); transform: translateY(-2px); } }
+    .ty-fallback-num:active { transform: translateY(0); }
+
     .ty-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+    @media (min-width: 641px) {
+      /* Reserve two lines so all three body paragraphs start on the same baseline.
+         Only card 2's heading ("We reply within 24 hours") wraps at the 3-up
+         widths; without this its copy sits a line lower than its neighbours. */
+      .ty-step h2, .ty-step h3, .ty-step h4 { min-height: 2.7em; }
+    }
 
     @media (max-width: 640px) {
       .ty-steps { grid-template-columns: 1fr; max-width: 360px; }
       .ty-main { padding-top: 110px; }
+      .ty-fallback { padding: 18px 18px; font-size: 14px; }
     }
   </style>
 </head>
@@ -155,6 +200,15 @@
           <p>Once you're happy, your spot is reserved.</p>
         </div>
       </div>
+
+      <p class="ty-fallback">
+        <strong>Haven't heard back within 24 hours?</strong> Don't assume we passed &mdash; inquiries
+        do occasionally land in spam, and we'd rather hear from you twice than miss your date.
+        <span class="ty-fallback-actions">
+          <a class="ty-fallback-num" href="tel:+12042234866">Call (204) 223-4866</a>
+          <a class="ty-fallback-num" href="sms:+12042234866">Text us</a>
+        </span>
+      </p>
 
       <div class="ty-ctas">
         <a href="index.html" class="btn btn-primary">Back to home</a>
