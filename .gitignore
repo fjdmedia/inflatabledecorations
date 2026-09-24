@@ -46,3 +46,6 @@ __pycache__/
 # IndexNow: the KEY FILE (<key>.txt) is public by design and IS committed.
 # This local copy is just a convenience for the submit script.
 .indexnow-key
+
+# QA/design tooling config - never belongs on her public GitHub Pages repo
+.impeccable/
