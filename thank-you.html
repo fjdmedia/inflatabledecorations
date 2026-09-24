@@ -96,9 +96,11 @@
     }
     .ty-step p { font-size: 13.5px; line-height: 1.5; color: var(--plum-soft); margin: 0; }
 
-    /* 24h fallback (James, 2026-09-24). Also the ONLY tel:/sms: on this page —
-       without it, a customer whose inquiry silently failed has no route back to
-       her from the very page that told them to sit and wait. */
+    /* 24h fallback (James, 2026-09-24). The failure this exists for is specific:
+       HER REPLIES land in customers' junk (James confirmed) — so the first
+       instruction is "check your own junk", not "chase us". Text + email only;
+       no tel: by James's explicit call. Without this block a customer who never
+       saw her reply has no route back from the page telling them to sit tight. */
     .ty-fallback {
       max-width: 680px; margin: 0 auto 34px; padding: 20px 24px;
       background: var(--cream-soft); border-radius: 18px;
@@ -107,15 +109,15 @@
     }
     .ty-fallback strong { color: var(--plum); font-weight: 800; }
     .ty-fallback-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
-    .ty-fallback-num {
+    .ty-fallback-btn {
       display: inline-flex; align-items: center; justify-content: center;
       min-height: 44px; padding: 0 18px; border-radius: 999px;
       background: #fff; border: 2px solid var(--pink-baby);
       color: var(--pink-text); font-weight: 800; font-size: 14px; text-decoration: none;
       transition: border-color .15s var(--ease), transform .15s var(--ease);
     }
-    @media (hover: hover) { .ty-fallback-num:hover { border-color: var(--pink-hot); transform: translateY(-2px); } }
-    .ty-fallback-num:active { transform: translateY(0); }
+    @media (hover: hover) { .ty-fallback-btn:hover { border-color: var(--pink-hot); transform: translateY(-2px); } }
+    .ty-fallback-btn:active { transform: translateY(0); }
 
     .ty-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
@@ -202,11 +204,12 @@
       </div>
 
       <p class="ty-fallback">
-        <strong>Haven't heard back within 24 hours?</strong> Don't assume we passed &mdash; inquiries
-        do occasionally land in spam, and we'd rather hear from you twice than miss your date.
+        <strong>Haven't heard back within 24 hours?</strong> Check your junk or spam folder first &mdash;
+        our replies land there more often than we'd like. Still nothing? We'd rather hear from you
+        twice than miss your date.
         <span class="ty-fallback-actions">
-          <a class="ty-fallback-num" href="tel:+12042234866">Call (204) 223-4866</a>
-          <a class="ty-fallback-num" href="sms:+12042234866">Text us</a>
+          <a class="ty-fallback-btn" href="sms:+12042234866">Text (204) 223-4866</a>
+          <a class="ty-fallback-btn" href="mailto:jhma24@hotmail.com">Email us</a>
         </span>
       </p>
 
