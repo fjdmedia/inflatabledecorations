@@ -52,6 +52,10 @@
      body sizes, but it is also used for button drop-shadows, so it cannot simply be
      darkened. This token is text-only: #B02E62 = 5.84:1 on cream, 5.54:1 on cream-soft. */
   --pink-text: #B02E62;
+  /* CTA surface — the one pink that holds white text, so it must clear 4.5:1.
+     #C9356F = 4.97:1 on white. --pink-hot stays #FF5FA2 for everything decorative. */
+  --pink-cta: #C9356F;
+  --pink-cta-dk: #A32A59;
   /* envelope glyph for the testimonial proof link */
   --fj-mail-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m2 7 10 6 10-6'/%3E%3C/svg%3E");
   --pink-baby: #FFC2D6;
@@ -154,17 +158,24 @@ p { margin: 0 0 1em; }
   border: 2.5px solid transparent;
 }
 .btn svg { flex-shrink: 0; }
+/* CTA pink is its OWN token, deliberately not --pink-hot (2026-09-24).
+   White on --pink-hot #FF5FA2 measures 2.83:1 and fails WCAG AA 4.5:1 — on the
+   primary button, on every page. --pink-cta #C9356F measures 4.97:1 white.
+   Scoped to the button instead of retuning --pink-hot, because --pink-hot also
+   paints scallops, orbs, script accents and the check badge, where it carries no
+   text and is a brand decision rather than an accessibility one. Decorative pink
+   is unchanged; only the surface that holds white type moved. */
 .btn-primary {
-  background: var(--pink-hot);
+  background: var(--pink-cta);
   color: #fff;
-  box-shadow: 0 6px 0 var(--pink-hot-dk), 0 12px 24px rgba(255, 95, 162, 0.35);
+  box-shadow: 0 6px 0 var(--pink-cta-dk), 0 12px 24px rgba(201, 53, 111, 0.35);
 }
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 9px 0 var(--pink-hot-dk), 0 18px 32px rgba(255, 95, 162, 0.45);
-  background: var(--pink-hot);
+  box-shadow: 0 9px 0 var(--pink-cta-dk), 0 18px 32px rgba(201, 53, 111, 0.45);
+  background: var(--pink-cta);
 }
-.btn-primary:active { transform: translateY(-1px); box-shadow: 0 4px 0 var(--pink-hot-dk); }
+.btn-primary:active { transform: translateY(-1px); box-shadow: 0 4px 0 var(--pink-cta-dk); }
 .btn-ghost {
   background: #fff;
   color: var(--plum);
