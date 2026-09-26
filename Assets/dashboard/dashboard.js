@@ -13,6 +13,8 @@
     offline: 'We couldn\'t reach your numbers — check your connection and refresh.',
     monthsTitle: 'Month by month',
     mixTitle: 'What people ask about most',
+    sourcesTitle: 'How people found you',
+    eventsTitle: 'What kind of events',
     totalLabel: 'Inquiries since ',
     reviewsLabel: 'Your Google rating',
     reviewsFrom: ' from ',
@@ -67,7 +69,14 @@
       }
       if (res.token) { try { sessionStorage.setItem('dashToken', res.token); } catch (e) {} }
       render(res.data);
-    }).catch(function () { showGate(STRINGS.offline); });
+    }).catch(function (err) {
+      /* This catch sits downstream of render(), so a CODE error here was being
+         reported to the client as "check your connection" -- sending her to reboot
+         her router while the page was broken. The message she sees stays friendly;
+         the cause now reaches the console so it is diagnosable at all. */
+      if (window.console && console.error) console.error('dashboard failed:', err);
+      showGate(STRINGS.offline);
+    });
   }
 
   // Column chart (time trend) — single series, values direct-labeled, 4px data-end radius.
@@ -194,6 +203,14 @@
       root.appendChild(card);
       if (name === 'leads') {
         if (b.months) root.appendChild(chartCard('months', b.months, colsChart));
+        /* how + events are OPTIONAL in the payload and stay absent until the backend
+           sends them -- an older deploy simply renders what it always did. They sit
+           above 'mix' because "where did they come from" and "what kind of job" are
+           the two she can act on; "which service" is detail under them. */
+        /* NOT named 'how' -- that key is already consumed as an ARRAY by the list
+           loop above, and an object there throws .forEach and blanks the whole page. */
+        if (b.sources) root.appendChild(chartCard('sources', b.sources, barsChart));
+        if (b.events) root.appendChild(chartCard('events', b.events, barsChart));
         if (b.mix) root.appendChild(chartCard('mix', b.mix, barsChart));
       }
     });

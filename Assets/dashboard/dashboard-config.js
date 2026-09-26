@@ -3,9 +3,13 @@
 window.DASH_CONFIG = {
   clientId: 'inflatable-decorations',
   endpoint: 'https://script.google.com/macros/s/AKfycbxbtk-0SIPpl9_6yHPWvejubKffUtR2whJzwZpl_t9xr4kLnC4VgHa4T10naYcK6Xk/exec',
-  blockOrder: ['leads', 'traffic'],       // her money block first — the site's job is filtered inquiries
+  // 'traffic' is REMOVED from the order until GA4 has data. It rendered "We're still
+  // hooking this up" every time she opened the page, which advertises a half-built
+  // product on every visit. Put it back the day the property collects.
+  blockOrder: ['leads'],
   blockTitles: { leads: 'People who reached out', traffic: 'Visits to your site',
-    months: 'Inquiries month by month', mix: 'What people ask about most' },
+    months: 'Inquiries month by month', mix: 'What people ask about most',
+    sources: 'How people found you', events: 'What kind of events' },
   // Page display names live SERVER-SIDE in her DASH_TENANTS entry (the payload arrives
   // with final labels) — never duplicate them here.
   // MEASURED MONTHLY, not live — Google exposes no rating API we can read, so this is
