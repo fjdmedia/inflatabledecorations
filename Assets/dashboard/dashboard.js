@@ -13,7 +13,7 @@
     offline: 'We couldn\'t reach your numbers — check your connection and refresh.',
     monthsTitle: 'Month by month',
     mixTitle: 'What people ask about most',
-    totalLabel: 'People who reached out since ',
+    totalLabel: 'Inquiries since ',
     reviewsLabel: 'Your Google rating',
     reviewsFrom: ' from ',
     reviewsCount: ' reviews',
@@ -172,7 +172,13 @@
           b.status === 'pending' ? STRINGS.pending : STRINGS.blockError));
       } else {
         if (b.headline) {
-          card.appendChild(el('p', 'dash-big', b.headline.value));
+          /* The server sends value "8" and sentence "8 new inquiries so far in September".
+             Rendering both printed the same number twice, with the largest type on the
+             page carrying no information the sentence did not already give. When the
+             sentence already opens with the value, the sentence wins. */
+          var dup = b.headline.sentence &&
+                    String(b.headline.sentence).indexOf(String(b.headline.value)) === 0;
+          if (!dup) card.appendChild(el('p', 'dash-big', b.headline.value));
           card.appendChild(el('p', 'dash-sentence', b.headline.sentence));
           if (b.headline.prev) card.appendChild(el('p', 'dash-prev', b.headline.prev));
         }

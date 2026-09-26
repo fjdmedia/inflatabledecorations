@@ -11,16 +11,19 @@
   letter-spacing: .08em; margin: 0 0 4px; }
 .dash-card { background: var(--dash-card); border-radius: var(--dash-radius);
   padding: clamp(16px, 3vw, 32px); margin-block: 16px; overflow: hidden; }
-.dash-card-title { margin: 0 0 .5em; font-size: 1.15rem; color: var(--dash-accent); }
-.dash-big { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; margin: 0; line-height: 1; }
+.dash-card-title { margin: 0 0 .5em; font-size: 1.2rem; color: var(--dash-accent);
+  font-family: var(--dash-display, var(--dash-font)); font-weight: 400; letter-spacing: .01em; }
+.dash-big { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; line-height: 1;
+  font-family: var(--dash-display, var(--dash-font)); font-weight: 400; color: var(--dash-accent); }
 .dash-sentence { font-size: 1.15rem; margin: .35em 0 0; }
 .dash-prev { color: var(--dash-muted); margin: .25em 0 0; }
-.dash-row { display: flex; justify-content: space-between; gap: 16px; padding: .5em 0;
+.dash-row { display: block; padding: .7em 0;
   border-top: 1px solid color-mix(in srgb, var(--dash-ink) 10%, transparent); margin-top: .5em; }
-.dash-row-label { flex: 0 0 auto; max-width: 40%; }
+.dash-row-label { display: block; font-weight: 700; font-size: 1.02rem; color: var(--dash-ink); }
 /* Long service strings must WRAP, never clip — nowrap was built for short numbers,
    but leads rows carry sentences (caught by the 2026-08-31 sweep eye-test). */
-.dash-row-value { font-weight: 700; text-align: right; min-width: 0; overflow-wrap: anywhere; }
+.dash-row-value { display: block; margin-top: 2px; font-weight: 400; font-size: .92rem;
+  color: var(--dash-ink); opacity: .7; overflow-wrap: anywhere; }
 /* Charts — single-series, brand accent on marks, ink on text (never colored text). */
 .dash-cols { display: flex; align-items: flex-end; gap: 16px; height: 160px; margin-top: 14px; }
 .dash-col { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center;
@@ -67,3 +70,18 @@
 }
 /* the as-of line — quiet, but never absent */
 .dash-tile-sub { margin: 4px 0 0; font-size: 12px; line-height: 1.45; color: var(--dash-ink); opacity: .65; }
+
+/* ---- signature detail: her scallop, in a rotating role ----
+   fjmedia-design's coherence rule — pick ONE detail and repeat it in a different
+   role on every surface. The header already wears it as a divider; here it caps
+   each card. Driven by --dash-motif so a tenant without a motif gets a plain
+   card and never inherits her balloons. */
+.dash-card { position: relative; }
+.dash-card::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 8px;
+  background: var(--dash-motif, none);
+  background-size: 16px 8px; background-repeat: repeat-x;
+}
+/* the headline tiles read as the answer, the cards as the working */
+.dash-tile { border: 2px solid color-mix(in srgb, var(--dash-accent) 22%, transparent); box-shadow: none; }
+.dash-tile-big { font-family: var(--dash-display, var(--dash-font)); font-weight: 400; }

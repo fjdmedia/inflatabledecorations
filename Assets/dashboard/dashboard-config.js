@@ -17,6 +17,10 @@ window.DASH_CONFIG = {
   },
   tokens: {
     '--dash-accent': '#FF5FA2', '--dash-bg': '#FFF9F5', '--dash-ink': '#3A2E39',
-    '--dash-card': '#FFFFFF', '--dash-font': '"DM Sans", system-ui, sans-serif'
+    '--dash-card': '#FFFFFF', '--dash-font': '"DM Sans", system-ui, sans-serif',
+    // Personality, per tenant. A client without these gets the plain house style and
+    // never inherits her balloons -- that is the point of keeping them in config.
+    '--dash-display': '"Caprasimo", "DM Sans", serif',
+    '--dash-motif': 'radial-gradient(circle 8px at 8px 0, rgba(255,95,162,.30) 7px, transparent 8px)'
   }
 };
