@@ -49,3 +49,7 @@ __pycache__/
 
 # QA/design tooling config - never belongs on her public GitHub Pages repo
 .impeccable/
+
+# Client work-log sources (retainer PDFs + render scripts) - never publish; this
+# repo is public and serves GitHub Pages. Delivered PDFs live in FJDMedia/Reports/.
+Reports/
