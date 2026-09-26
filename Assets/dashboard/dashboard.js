@@ -12,7 +12,12 @@
     blockError: 'We couldn\'t load this right now — try a refresh.',
     offline: 'We couldn\'t reach your numbers — check your connection and refresh.',
     monthsTitle: 'Month by month',
-    mixTitle: 'What people ask about most'
+    mixTitle: 'What people ask about most',
+    totalLabel: 'People who reached out since ',
+    reviewsLabel: 'Your Google rating',
+    reviewsFrom: ' from ',
+    reviewsCount: ' reviews',
+    checkedOn: 'Checked '
   };
   /* STRINGS-END */
 
@@ -110,9 +115,54 @@
     return card;
   }
 
+  /* The headline strip. Two numbers, chosen because they are the two a business owner
+     actually feels: how many people have asked her for work, and what strangers see
+     when they look her up. Everything below this is the detail behind them.
+
+     Both are derived, never re-entered: the total is summed from the same months the
+     chart draws, so the strip can never disagree with the chart under it. The rating
+     comes from cfg.snapshot and is a MEASURED MONTHLY READ, not a live feed — Google
+     exposes no rating API we can use — so it renders with the date it was taken.
+     A static number on a client-facing page without its as-of date rots invisibly:
+     her site badge sat 40 days stale at 22 reviews while the real count reached 30. */
+  function tile(big, label, sub) {
+    var t = el('div', 'dash-tile');
+    t.appendChild(el('p', 'dash-tile-big', big));
+    t.appendChild(el('p', 'dash-tile-label', label));
+    if (sub) t.appendChild(el('p', 'dash-tile-sub', sub));
+    return t;
+  }
+
+  function summaryStrip(data) {
+    var strip = el('div', 'dash-strip'), any = false;
+
+    var leads = (data.blocks || {}).leads;
+    var pts = leads && leads.status === 'live' && leads.months && leads.months.points;
+    if (pts && pts.length) {
+      var total = pts.reduce(function (n, p) { return n + (Number(p.value) || 0); }, 0);
+      strip.appendChild(tile(String(total), STRINGS.totalLabel + pts[0].label));
+      any = true;
+    }
+
+    var s = cfg.snapshot && cfg.snapshot.reviews;
+    if (s && s.count) {
+      strip.appendChild(tile(
+        String(s.rating),
+        STRINGS.reviewsLabel,
+        // no rating here — the big number already said it
+        STRINGS.reviewsFrom.replace(/^ /, '') + s.count + STRINGS.reviewsCount +
+          (s.asOf ? ' · ' + STRINGS.checkedOn + s.asOf : '')
+      ));
+      any = true;
+    }
+    return any ? strip : null;
+  }
+
   function render(data) {
     root.replaceChildren();
     root.appendChild(el('p', 'dash-month', data.monthLabel));
+    var strip = summaryStrip(data);
+    if (strip) root.appendChild(strip);
     (cfg.blockOrder || []).forEach(function (name) {
       var b = data.blocks[name]; if (!b) return;
       var card = el('section', 'dash-card dash-' + name);

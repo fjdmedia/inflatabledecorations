@@ -48,3 +48,22 @@
   .dash-month { grid-column: 1 / -1; }
   .dash-gate, .dash-loading { grid-column: 1 / -1; }
 }
+
+/* ---- headline strip: the two numbers she actually feels ---- */
+.dash-strip {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px; margin: 0 0 18px;
+}
+.dash-tile {
+  background: var(--dash-card); border-radius: 16px; padding: 18px 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.05);
+}
+.dash-tile-big {
+  margin: 0; font-size: 40px; line-height: 1.05; font-weight: 800;
+  color: var(--dash-accent); letter-spacing: -.02em;
+}
+.dash-tile-label {
+  margin: 6px 0 0; font-size: 14px; font-weight: 600; color: var(--dash-ink);
+}
+/* the as-of line — quiet, but never absent */
+.dash-tile-sub { margin: 4px 0 0; font-size: 12px; line-height: 1.45; color: var(--dash-ink); opacity: .65; }
