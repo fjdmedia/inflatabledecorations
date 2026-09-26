@@ -27,7 +27,7 @@ window.FJ_FORM_CONFIG = {
       { id: "email", type: "email", label: "Email", placeholder: "you@example.com" },
       { id: "phone", type: "phone", label: "Phone number", required: true, placeholder: "(204) 000-0000" },
       { id: "contact_method", type: "radio", label: "Preferred contact method", options: ["Email", "Text message"] },
-      { id: "referral", type: "select", label: "How did you hear about us?", options: ["Instagram", "Facebook", "Google search", "Website", "Word of mouth / referral", "Saw balloons at an event", "Local business / community group", "Other"] }
+      { id: "referral", type: "select", label: "How did you hear about us?", required: true, options: ["Instagram", "Facebook", "Google search", "Website", "Word of mouth / referral", "Saw balloons at an event", "Local business / community group", "Other"] }
     ]},
     { legend: "Your event", fields: [
       /* Order is deliberate (2026-08-04): corporate intents lead. She pivoted to
