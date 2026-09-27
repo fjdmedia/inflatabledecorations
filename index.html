@@ -4,28 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Google Search Console ownership verification (added 2026-08-03).
-       DO NOT REMOVE — deleting this un-verifies the property and we lose all
-       Search Console access. Inert for ranking; it is an ownership token only. -->
+  <!-- Search Console ownership verification. DO NOT REMOVE - deleting it
+       un-verifies the property and the Search Console history goes with it. -->
   <meta name="google-site-verification" content="fPOKTaYeFVxFAxhSIDNjCfsGqtuNqjQNs54651mPL8k" />
 
-  <!-- Title trimmed 2026-08-04: the previous version was 83 rendered chars and truncated
-       in the SERP, cutting the brand off the end anyway. Exact primary phrase "Balloon
-       Decor Winnipeg" still leads; the three service nouns use the remaining space on
-       terms people actually type. Brand dropped from the title on purpose — it's carried
-       by the domain, the OG title, the schema name and the H1 block, and Google appends
-       the site name on brand searches regardless. -->
   <title>Balloon Decorations Winnipeg | Arches, Garlands, We Set Up</title>
   <meta name="description" content="Custom balloon decorations in Winnipeg — arches, garlands, columns and number stacks for birthdays, showers and corporate events. We set up and take it down." />
   <meta name="keywords" content="balloon decor winnipeg, winnipeg balloons, balloon arch winnipeg, balloon garland winnipeg, balloon artist winnipeg, event decor winnipeg, birthday balloons winnipeg" />
   <meta name="geo.region" content="CA-MB" />
   <meta name="geo.placename" content="Winnipeg" />
-  <!-- REVERTED 2026-08-01 to the exact pre-2026-07-30 value. An image-preview directive was
-       added 2026-07-30 (commit 461a7c2); within 2 days the mobile SERP thumbnail went from
-       1 photo to none. Not proven causal (Google also reprocesses after any robots change),
-       but it was the only image-affecting edit and its upside was marginal, so this restores
-       known-good. See commit 8147f92. Do NOT re-add without watching the mobile SERP for
-       2+ weeks afterward. -->
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://inflatabledecorationswpg.ca/" />
 
@@ -67,14 +54,9 @@
   <!-- Structured data: tells Google this is a local Winnipeg business,
        powers map-pack eligibility + star-rating snippet in search results -->
   
-  <!-- NO aggregateRating / Review markup here, deliberately. Google's review-snippet
-       guidelines (restated Dec 2025): "If the entity that's being reviewed controls the
-       reviews about itself, their pages that use LocalBusiness or any other type of
-       Organization structured data are ineligible for star review feature." The same page
-       says "Don't aggregate reviews or ratings from other websites" — these reviews come
-       from her Google listing. So the markup earned nothing and broke two guidelines.
-       Her stars still show in the map pack, natively from the GBP, with no markup at all.
-       The reviews stay VISIBLE on the page; only the markup is gone. Do not re-add. -->
+  <!-- No aggregateRating/Review markup here, deliberately - it would be
+       ineligible for stars and breaks two of Google's guidelines.
+       Reasoning in MAINTENANCE.md. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -184,10 +166,6 @@
         <span><span class="script-accent">Inflatable</span> Decorations</span>
       </a>
 
-      <!-- Nav is LOCKED across all 7 pages (multi-page coherence, 2026-08-04).
-           "Corporate" added for the pivot; standalone "Contact" dropped because
-           Inquiry and Book Now already lead to the same conversion — item count
-           is unchanged at 7 so nothing reflows. -->
       <ul class="nav-links" id="navLinks">
         <li><a href="#top">Home</a></li>
         <li class="nav-has-sub">
@@ -745,15 +723,6 @@
   <!-- Pink scallop into testimonials -->
   <div class="scallop-div pink-mint" aria-hidden="true" style="background-color: var(--cream);"></div>
 
-  <!-- =====================================================
-       TESTIMONIALS — 10 verbatim Google reviews.
-
-       Every quote and every name here was re-verified character-for-character
-       against her live Google listing on 2026-08-17 (all 22 reviews pulled and
-       diffed). All 10 correct. Count in the badge updated 22 -> 30 on 2026-09-26 from a headless render of the live Maps listing (CID 11631670469507197025), confirmed against the capture; the QUOTES were not re-diffed that day. If you edit a quote, re-run that check — the
-       service-page generator had five reviews credited to the WRONG customer
-       for two weeks because nobody diffed them against the source.
-       ===================================================== -->
   <section class="testimonials" aria-label="Client reviews">
     <div class="container">
       <div class="section-head reveal">
@@ -908,10 +877,6 @@
   <!-- Yellow scallop into the prep section -->
   <div class="scallop-div yellow-cream flip" aria-hidden="true" style="background-color: var(--pink-baby-soft);"></div>
 
-  <!-- =====================================================
-       INQUIRY PREP — pre-form expectation-setter
-       (filters tire-kickers, gives undecided people a structure)
-       ===================================================== -->
   <section class="prep" id="prep" aria-label="How to come prepared">
     <div class="container">
       <div class="section-head reveal">
@@ -991,18 +956,8 @@
             <span class="info-icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </span>
-            <!-- Text leads, call stays reachable (James, 2026-09-24). The site used to
-                 say "Phone" here and "text or email" on the thank-you page. Her GBP
-                 shows a call button regardless, so hiding the number would only
-                 confuse; a number that is reachable but not led-with is the honest
-                 middle. -->
-            <!-- Stacked, not inline with a separator. Inline ran the second link to
-                 x=343 at 390px, and the fixed .scroll-top button sits at x=332 z-90 —
-                 elementFromPoint returned the BUTTON at the link's end, so the last
-                 characters were both hidden and untappable. Nothing measured caught it
-                 (no page overflow, no console error, the text fit its own <p>); only
-                 the screenshot did. Keep each line short enough to clear the right
-                 gutter where that button lives. -->
+            <!-- Stacked deliberately: inline, the scroll-top button overlaps the second
+       link at 390px. See MAINTENANCE.md before changing this. -->
             <p>
               <strong>Text or call</strong>
               <a href="sms:+12042234866">Text (204) 223-4866</a>
