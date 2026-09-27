@@ -90,24 +90,25 @@
     }
     .ty-step:nth-child(2) .ty-num { background: var(--mint); }
     .ty-step:nth-child(3) .ty-num { background: var(--lilac); }
-    /* Tag-list, not a single tag, and deliberately so. On 2026-08-17 an a11y fix
-       promoted these headings h3 -> h2 for heading order and this selector stayed
-       on h3, so all three cards fell through to the global
-       `h2 { font-size: clamp(2rem, 3vw + 1rem, 3.4rem) }` — 54px display type in a
-       200px column, one word per line. It shipped inside an accessibility commit
-       and stayed live 38 days. Same defence the footer rule already used
-       (`footer h2, footer h3, footer h4`). Never target a lone heading tag here. */
+    /* Matches a LIST of heading tags on purpose, not one of them. If a heading in
+       these cards is ever changed to a different level for heading-order reasons,
+       a single-tag selector stops matching and the card silently falls through to
+       the global `h2 { font-size: clamp(2rem, 3vw + 1rem, 3.4rem) }` — 54px display
+       type in a 200px column, one word per line, with nothing to warn you. The
+       footer rule guards itself the same way (`footer h2, footer h3, footer h4`).
+       Never narrow this to a single heading tag. */
     .ty-step h2, .ty-step h3, .ty-step h4 {
       font-family: var(--font-body); font-weight: 800; font-size: 15px;
       line-height: 1.35; letter-spacing: 0; color: var(--plum); margin: 0 0 6px;
     }
     .ty-step p { font-size: 13.5px; line-height: 1.5; color: var(--plum-soft); margin: 0; }
 
-    /* 24h fallback (James, 2026-09-24). The failure this exists for is specific:
-       HER REPLIES land in customers' junk (James confirmed) — so the first
-       instruction is "check your own junk", not "chase us". Text + email only;
-       no tel: by James's explicit call. Without this block a customer who never
-       saw her reply has no route back from the page telling them to sit tight. */
+    /* The 24-hour fallback. It exists for one specific failure: a reply was sent
+       and the customer never saw it, because replies to a first-time sender often
+       land in junk or promotions. That is why the first instruction here is to
+       check your own junk folder rather than to chase us. Text and email only, no
+       tel: link. Without this block, someone still waiting after a day has no
+       route back from a page that told them to sit tight. */
     .ty-fallback {
       max-width: 680px; margin: 0 auto 34px; padding: 20px 24px;
       background: var(--cream-soft); border-radius: 18px;
