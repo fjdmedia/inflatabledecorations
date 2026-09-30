@@ -39,6 +39,10 @@ const PAGES = [
         'Create a memorable first impression with a walk-through balloon arch at your entrance, designed in your company colours and customized to suit your event. Add your logo, branded details or other elements to make the installation feel like it belongs to your business.',
         'For grand openings, launches and milestone events, balloon columns are another great way to frame an entrance, highlight a space or draw attention to your business.'
       ]},
+      { h: 'Grand Openings', p: [
+        'Opening week is permits, staff schedules, signage that isn&rsquo;t up yet, and a dozen small fires burning at once. The storefront itself is usually the last thing anyone gets to, right when it needs to be the first thing people notice. A walk-through balloon arch at the entrance, in your own colours, tells the street something is happening here today.',
+        'It goes up before your doors open. It&rsquo;s already there when the first customers walk up with their phones out, and we come back afterward to take it down &mdash; one less thing on a week that already has too many.'
+      ]},
       { h: 'Bring the Brand to the Details', p: [
         'Corporate balloon decor doesn&rsquo;t have to stop at one large installation. Tabletop balloon arrangements can add branded colour and personality to registration tables, food stations, employee tables or throughout a larger event space.',
         'From subtle and professional to fun and bold, your decor can be designed to fit the atmosphere you&rsquo;re creating while still incorporating your company branding.'
@@ -153,7 +157,7 @@ const PAGES = [
       ]
     },
     chipsHead: 'Good for',
-    chips: ['Corporate events', 'Grand openings', 'Ribbon-cuttings', 'Marathons', 'Graduations', 'Storefront entrances', 'Weddings', 'Milestone birthdays'],
+    chips: ['Corporate events', 'Grand openings', 'Ribbon-cuttings', 'Marathons', 'Graduations', 'Storefront entrances', 'Milestone birthdays'],
     photoDir: 'Assets/Gallery/Walkthrough Arches',
     photos: [
       { f: 'Main.jpg', a: 'Walk-through balloon arch at a Winnipeg event entrance', tall: true },
@@ -163,7 +167,9 @@ const PAGES = [
       { f: 'IMG_3200.jpg', a: 'Custom colour balloon arch set up for a Winnipeg event' }
     ],
     heroPhoto: { d: 'Assets/Gallery/Walkthrough Arches', f: 'IMG_3333.jpg', a: 'Custom walk-through balloon arch at a Winnipeg office entrance, built by Inflatable Decorations' },
-    quotes: [],
+    quotes: [
+      { p: 'I had the pleasure of working with this service to decorate for a baby shower! They provide quick communication while we planned and picked the colours for the arch, very professional service and they executed the vision we had perfectly! Would recommend this service to anyone in need for decorations.', c: 'paige kibsey', s: 'Google review', r: 'Thank you so much! I&rsquo;m so happy you loved the decor. It was a pleasure working with you, and I truly appreciate your support of Inflatable Decorations!' },
+    ],
   },
   {
     slug: 'balloon-garlands',
@@ -171,7 +177,7 @@ const PAGES = [
     nav: 'Backdrops & Garlands',
     crumb: 'Backdrops & Garlands',
     title: 'Balloon Backdrop &amp; Garland Winnipeg | Custom Decor',
-    desc: 'Balloon backdrops and hand-clustered organic garlands in Winnipeg for showers, birthdays and weddings — built around your colours, installed for you.',
+    desc: 'Balloon backdrops and hand-clustered organic garlands in Winnipeg for showers, birthdays and celebrations — built around your colours, installed for you.',
     h1: 'Balloon Backdrops &amp; Garlands in Winnipeg',
     eyebrow: 'Backdrops & Balloon Garlands',
     lede: 'The setup most people picture when they think of balloon decor &mdash; an organic balloon garland alongside a backdrop, colour matched to your theme, built as the focal point of the room.',
@@ -217,7 +223,7 @@ const PAGES = [
       note: 'Every setup can be customized to fit your event, theme, space, and vision.'
     },
     chipsHead: 'Good for',
-    chips: ['Baby showers', 'Bridal showers', 'Birthdays', 'Gender reveals', 'Weddings', 'Graduations', 'Corporate events', 'Photo backdrops'],
+    chips: ['Baby showers', 'Bridal showers', 'Birthdays', 'Gender reveals', 'Graduations', 'Corporate events', 'Photo backdrops'],
     photoDir: 'Assets/Gallery/Backdrop and Balloon Garland setup',
     photos: [
       { f: 'Cover.jpg', a: 'Balloon backdrop with organic garland at a Winnipeg celebration', tall: true },
@@ -406,7 +412,9 @@ const PAGES = [
       { f: 'IMG_4789.jpg', a: 'Sage green balloon number stack with floral accents, Winnipeg' }
     ],
     heroPhoto: { d: 'Assets/Gallery/Ballon Bouquets-Number Stacks', f: 'Cover.jpg', a: 'Giant balloon number stack built by Inflatable Decorations in Winnipeg' },
-    quotes: []
+    quotes: [
+      { p: 'Jessica at Inflatable Decorations has done multiple birthdays for my girls now and every single setup somehow tops the last. From our Berry First Birthday, Two the Moon theme, and Candy Land party, everything has always been beyond beautiful, creative, and so well put together. She pays attention to every detail and always brings the vision to life perfectly.<br><br>Not only is her work amazing, but she&rsquo;s also so easy to work with, reliable, and genuinely cares about making each event feel special. We always get so many compliments on the decor and people constantly ask who did our balloons. I honestly wouldn&rsquo;t trust anyone else for our parties now! 10/10 amazing', c: 'Callie Antle', s: 'Google review', r: 'Thank you for trusting Inflatable Decorations with all your events!' },
+    ]
   },
   {
     slug: 'birthday-shower-balloons',
@@ -476,7 +484,9 @@ const PAGES = [
         { q: 'Do you set up and take down?', a: ['Yes. Setups go in before your guests arrive and come down afterwards, so you are not dealing with it on the day.'] }
       ]
     },
-    quotes: [],
+    quotes: [
+      { p: 'We had the best experience from the quote to design to the day of set up. Our Baby Girl Shower had the extra wow we needed for making the room look better and for the best photo opportunities.', c: 'Kerri Hiebert', s: 'Google review', r: 'Thank you for the wonderful review! I&rsquo;m so glad the balloon decor helped make your celebration even more special. It was a pleasure working with you, and I appreciate you trusting Inflatable Decorations to be part of your event.' },
+    ],
     photoDir: 'Assets/Gallery/Birthdays and Showers',
     heroPhoto: { d: 'Assets/Gallery/Birthdays and Showers', f: 'Main.jpg', a: 'Pink and lilac balloon garland on arched backdrops with pool floats at an outdoor first birthday in Winnipeg' },
     photos: [
@@ -667,6 +677,13 @@ ${g.items.map(it => `              <li>${it}</li>`).join('\n')}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Caveat:wght@500;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" />
 
   <link rel="icon" type="image/png" href="Assets/Brand/logo-512.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GXEH3QDMEV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GXEH3QDMEV');
+  </script>
   <link rel="stylesheet" href="styles.css" />
 
   <script type="application/ld+json">
@@ -805,7 +822,7 @@ ${sibs.map(s => `        <a href="${s.slug}.html">${s.nav}</a>`).join('\n')}
             <img src="Assets/Brand/logo-512.png" alt="Inflatable Decorations logo" />
             <span>Inflatable Decorations</span>
           </div>
-          <p>Custom-designed balloon installs for Winnipeg weddings, showers, birthdays and everything in between. Let's make your day unforgettable.</p>
+          <p>Custom-designed balloon installs for Winnipeg showers, birthdays and everything in between. Let's make your day unforgettable.</p>
         </div>
 
         <div>
