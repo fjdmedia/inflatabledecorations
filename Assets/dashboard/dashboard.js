@@ -19,7 +19,14 @@
     reviewsLabel: 'Your Google rating',
     reviewsFrom: ' from ',
     reviewsCount: ' reviews',
-    checkedOn: 'Checked '
+    checkedOn: 'Checked ',
+    busierHead: 'Busier than before',
+    busierBody: '{recent} inquiries came in over the last 3 months, up from {prior} in the 3 months before that.',
+    steadyHead: 'Steady as usual',
+    steadyBody: '{recent} inquiries came in over the last 3 months. Right where they usually are.',
+    quieterHead: 'A quieter stretch',
+    quieterBody: '{recent} inquiries came in over the last 3 months, down from {prior} in the 3 months before that. It happens for every business.',
+    reviewsGained: '{added} new reviews rolled in, bringing your total to {total}.'
   };
   /* STRINGS-END */
 
@@ -132,14 +139,68 @@
      chart draws, so the strip can never disagree with the chart under it. The rating
      comes from cfg.snapshot and is a MEASURED MONTHLY READ, not a live feed — Google
      exposes no rating API we can use — so it renders with the date it was taken.
-     A static number on a client-facing page without its as-of date rots invisibly:
-     her site badge sat 40 days stale at 22 reviews while the real count reached 30. */
+     A static number shown without its as-of date rots invisibly, so the date ships
+     beside it and the reader can judge the number's age themselves. */
   function tile(big, label, sub) {
     var t = el('div', 'dash-tile');
     t.appendChild(el('p', 'dash-tile-big', big));
     t.appendChild(el('p', 'dash-tile-label', label));
     if (sub) t.appendChild(el('p', 'dash-tile-sub', sub));
     return t;
+  }
+
+  /* The status line. One plain sentence saying whether things are busier, steady or
+     quieter than THIS client's own recent past — never against a target, because
+     there is no honest absolute number to compare a small business to.
+
+     Three decisions hold this together, and all three exist because the volume is
+     low. This client averages about 9 or 10 inquiries a month, where a month of 6
+     and a month of 13 are both completely ordinary:
+
+     1. THREE-MONTH WINDOWS, never month over month. One slow month is noise. A slow
+        quarter is information. Month-over-month on these numbers would swing the
+        state constantly and teach the reader to ignore the whole page.
+     2. The band is max(3, 20% of the prior window). Roughly a standard deviation
+        at this volume, and the absolute floor of 3 stops a tiny client flipping
+        state on a single extra inquiry.
+     3. STEADY IS A GOOD STATE and is styled calm, not as a warning. It is where
+        most quarters land, and a dashboard whose normal reading looks like an
+        alarm is one nobody opens twice.
+
+     Needs 6 months of history to say anything at all; with less it renders nothing
+     rather than a verdict built on four data points. Colour is never the only
+     signal — the sentence says it, the dot only decorates. */
+  function statusLine(data) {
+    var leads = (data.blocks || {}).leads;
+    var pts = leads && leads.status === 'live' && leads.months && leads.months.points;
+    if (!pts || pts.length < 6) return null;
+
+    var n = function (p) { return Number(p.value) || 0; };
+    var sum = function (a) { return a.reduce(function (t, p) { return t + n(p); }, 0); };
+    var recent = sum(pts.slice(-3));
+    var prior = sum(pts.slice(-6, -3));
+    var band = Math.max(3, prior * 0.2);
+    var diff = recent - prior;
+    var state = diff > band ? 'busier' : (diff < -band ? 'quieter' : 'steady');
+
+    var fill = function (s) {
+      return s.replace('{recent}', recent).replace('{prior}', prior);
+    };
+    var box = el('div', 'dash-status dash-status--' + state);
+    box.appendChild(el('span', 'dash-status-dot'))
+      .setAttribute('aria-hidden', 'true');
+    box.appendChild(el('p', 'dash-status-head', STRINGS[state + 'Head']));
+    box.appendChild(el('p', 'dash-status-body', fill(STRINGS[state + 'Body'])));
+
+    /* Reviews only go up, so this is the one unambiguous signal on the page. It
+       needs a previous count to subtract from; without `prev` in the snapshot it
+       stays silent rather than guessing at a delta. */
+    var s = cfg.snapshot && cfg.snapshot.reviews;
+    if (s && s.count && s.prev && s.count > s.prev) {
+      box.appendChild(el('p', 'dash-status-review',
+        STRINGS.reviewsGained.replace('{added}', s.count - s.prev).replace('{total}', s.count)));
+    }
+    return box;
   }
 
   function summaryStrip(data) {
@@ -170,6 +231,8 @@
   function render(data) {
     root.replaceChildren();
     root.appendChild(el('p', 'dash-month', data.monthLabel));
+    var status = statusLine(data);
+    if (status) root.appendChild(status);
     var strip = summaryStrip(data);
     if (strip) root.appendChild(strip);
     (cfg.blockOrder || []).forEach(function (name) {

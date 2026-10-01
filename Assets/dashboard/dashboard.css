@@ -85,3 +85,52 @@
 /* the headline tiles read as the answer, the cards as the working */
 .dash-tile { border: 2px solid color-mix(in srgb, var(--dash-accent) 22%, transparent); box-shadow: none; }
 .dash-tile-big { font-family: var(--dash-display, var(--dash-font)); font-weight: 400; }
+
+/* ---------- Status line ----------
+   Says in one sentence whether things are busier, steady or quieter than this
+   client's own recent past. Sits above the number tiles because it is the thing
+   a reader wants first; the tiles are the detail behind it.
+
+   Colour is NEVER the only signal. The sentence states the answer and the dot is
+   decorative (aria-hidden), so the line reads identically to someone who cannot
+   distinguish the three hues. Text always uses --dash-ink, so no state can push
+   contrast below the floor no matter what a tenant sets its accent to.
+
+   Three state colours, deliberately calm: a green, the muted grey, and a warm
+   amber. No red exists here. The worst state this can honestly report is a
+   quieter quarter, which is information, not an alarm -- and "steady" is where
+   most quarters land, so it must never look like a warning. */
+.dash-status {
+  position: relative;
+  background: var(--dash-card);
+  border-radius: var(--dash-radius);
+  padding: 1em 1.2em 1em 2.4em;
+  margin: 0 0 1em;
+  /* An inset shadow, not border-left: a left border fights the 16px radius and
+     leaves a hooked arc at the two left corners. This follows the curve. */
+  box-shadow: inset 4px 0 0 var(--dash-state, var(--dash-muted));
+}
+.dash-status-dot {
+  position: absolute; left: 1.1em; top: 1.45em;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--dash-state, var(--dash-muted));
+}
+.dash-status-head {
+  margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--dash-ink);
+  font-family: var(--dash-display, var(--dash-font));
+}
+.dash-status-body,
+.dash-status-review {
+  margin: .3em 0 0; color: var(--dash-ink); opacity: .78; line-height: 1.45;
+}
+.dash-status-review {
+  padding-top: .5em; margin-top: .55em;
+  border-top: 1px solid color-mix(in srgb, var(--dash-ink) 10%, transparent);
+}
+.dash-status--busier  { --dash-state: #1E7F4F; }
+.dash-status--steady  { --dash-state: var(--dash-muted); }
+.dash-status--quieter { --dash-state: #B5701A; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .dash-status { transition: box-shadow 200ms ease; }
+}

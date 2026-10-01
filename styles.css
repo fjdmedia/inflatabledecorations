@@ -1,42 +1,3 @@
-/* FJMedia · lane: redesign · rung: re-skin + decoration cull (structure & copy kept)
- * genre: playful-local-service · niche: event/balloon decor, Winnipeg
- * ---------------------------------------------------------------------------
- * DIAGNOSIS (2026-09-08): the site was in the OVER-decorated ditch, not the
- * under-decorated one. It carried 8 section grounds (cream, cream-soft,
- * lilac-soft, mint-soft+checker tile, pink-baby-soft+hearts tile, two
- * gradients, sky-soft) and 6 simultaneous motion systems (splash, cursor
- * trail, scroll-tracker, grain, orbs, confetti). Six half-personalities.
- *
- * RESEARCH: two premium studios in this exact niche (LA, Baltimore/DC) both
- * run 3-5 surfaces, a light cool ground, photography-dominant layout and
- * near-zero decoration — "let the work speak; the brand is restraint itself".
- * Her OWN Offerings graphic already does this: one cream field, one blue
- * band, white cards, photography carrying the colour. The revamp recovers
- * her discipline rather than importing a foreign aesthetic — she is a
- * Winnipeg parent's balloon decorator, not an LA brand studio, so the
- * playful VOCABULARY stays and only the DISCIPLINE is borrowed.
- *
- * surfaces: 8 -> 3   (--surface cream · --surface-card white · --surface-cool
- *                     sky, used exactly twice: her story + the form)
- * colour:   moved OFF the grounds and INTO the 7 pastel service cards + photos
- * cut:      page splash · cursor trail · scroll-tracker · grain overlay
- *           · hero banner-swirl overlay (the muddy pink/green wash)
- *           · mint checkerboard tile · hearts tile · ALL 5 hero orbs
- *           (E3 judge: orbs + confetti are two systems doing one job, and
- *            with both marquees the page ran 4 against G61's cap of 3)
- * kept:     gallery marquee · scallop wave · flower badges · scribble
- *           underline · Caprasimo/DM Sans/Caveat · mobile CTA bar
- *           (each carries brand meaning — the decoration-meaning test)
- * proof:    10 testimonial cards -> 4 in a 2x2 (3 orphaned in the 2-col grid;
- *           computed cols is 2, NOT the 3 the CSS declares — measured, not assumed)
- *           + the existing "Read all on Google" link for the other 19
- *
- * COPY: 100%% client-supplied, VERBATIM. Gates G37 (do-not-write words) and
- * G38 (no exclamation marks) are DELIBERATELY WAIVED — "beautiful",
- * "seamless" and her exclamation marks are Jessica's own words from the
- * copy she sent. House voice does not overwrite client voice.
- * ---------------------------------------------------------------------------
- */
 /* =================================================================
    Inflatable Decorations — Website_3 "Confetti Party-Stylist"
    Pastel rainbow · chunky playful · scalloped clouds · wavy ribbon
@@ -2215,7 +2176,7 @@ h1 em, h2 em {
    Note the default: it is NOT var(--pink-hot-dk). The brand pink (#E8488B) only
    reaches 2.99:1 on its own soft panel, so it is overridden HERE, inside the
    service layer, rather than changed globally — the global token is brand and
-   is used across the live homepage, so retoning it is James's call, not a
+   is used across the live homepage, so retoning it is a brand-level decision, not a
    side effect of this build. */
 .svc-page {
   --svc-accent:      var(--pink-hot);
@@ -2726,9 +2687,9 @@ h1 em, h2 em {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   ░░░ USE-CASE LIST ░░░  (2026-08-11, replaces the pill chips)
+   ░░░ USE-CASE LIST ░░░  (replaces the pill chips)
 
-   James's brief: professional yet simple. A row of bordered pills reads as a
+   Professional yet simple. A row of bordered pills reads as a
    tag cloud and competes with the offer ladder above it. Jessica writes these
    as plain bullets in her own copy, so the page now does the same — two quiet
    columns, same balloon bullet as everywhere else. Less ink, same information.
@@ -2762,7 +2723,7 @@ h1 em, h2 em {
 /* ═══════════════════════════════════════════════════════════════════════
    ░░░ SERVICE-AREA + GOOGLE LISTING CARD ░░░  (2026-08-17)
 
-   Replaces the Maps iframe. James's call: link the listing rather than embed
+   Replaces the Maps iframe. Deliberate: link the listing rather than embed
    a map. The card still answers the question the map was there to answer —
    "do you come to me?" — so swapping to a link does not lose that.
 
@@ -2922,7 +2883,7 @@ body.fj-lb-lock { overflow: hidden; }
   .fj-lb .g-lb-close { transition: none; }
   .fj-lb.is-loading .g-lb-img { filter: none; transform: none; }
 }
-/* ---------- Orphan-row fix (G32b) — restraint pass 2026-09-08 ----------
+/* ---------- Orphan-row fix ----------
    Both grids drop to 2 columns on tablet and hold an ODD number of items, so
    the last one was pinned hard-left with ~450-500px of dead space beside it.
    Centre it instead: a short last row is fine, a lopsided one is not.
@@ -2957,7 +2918,7 @@ body.fj-lb-lock { overflow: hidden; }
   }
 }
 
-/* ---------- Tap-target floor (GI/G31) — restraint pass 2026-09-08 ----------
+/* ---------- Tap-target floor ----------
    Measured at 390px: the nav logo sat at 42px and the footer agency credit at
    16px. Two real targets, two fixes.
    CORRECTED 2026-09-10 (mobile sweep): this block used to claim "everything

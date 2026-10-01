@@ -44,8 +44,8 @@ window.FJ_FORM_CONFIG = {
       { id: "theme", type: "text", label: "Theme / colour scheme", placeholder: "e.g. sage green & cream" },
       { id: "services", type: "checkbox", label: "Services you're looking for", options: ["Single arch backdrop with balloon garland (Starting at $350)", "Multiple backdrops with balloon garlands", "Custom welcome sign & easel rental (from $90)", "Circle / hoop backdrop with balloon garland", "Walkthrough balloon arch", "Grab & go balloon garland (from $90, pickup)", "Balloon number stack / bouquet (from $70)", "Balloon columns (from $140)", "Other"] },
       { id: "addons", type: "checkbox", label: "Additional add-ons", hint: "Add-ons pair with a setup — select a service above first.", requiresAnyOf: "services", options: ["Custom vinyl decal writing / logos", "Floral additions to balloon garland", "Character cut-out rentals", "Themed foil balloons"] },
-      /* The old top band was "$1000+" — it anchored her as a sub-$1k shop and dumped
-         every corporate lead into the same bucket as a $400 birthday. Split into three
+      /* The old top band was "$1000+", which collapsed every larger enquiry into one
+         bucket alongside a small birthday order. Split into three
          (2026-08-04). First four labels left VERBATIM so historical submissions stay
          comparable; only the old top band was replaced. */
       { id: "budget", type: "select", label: "Budget range", required: true, options: ["$355–$500", "$500–$650", "$650–$800", "$800–$1000", "$1000–$2000", "$2000–$5000", "$5000+", "Other"] },

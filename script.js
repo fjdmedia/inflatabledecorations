@@ -212,7 +212,7 @@
   }
 
   /* ---------- Photo viewer (lightbox) — SERVICE + CORPORATE PAGES ONLY ----------
-     Scope is deliberate (James, 2026-08-23): the service pages and the corporate
+     Scope is deliberate: the service pages and the corporate
      page get clickable photos; the HOMEPAGE DOES NOT. index.html's marquee gallery
      keeps its own self-contained viewer (#galLb, inline in that file) and the
      homepage hero and service-card photos stay non-clickable. Do not widen
