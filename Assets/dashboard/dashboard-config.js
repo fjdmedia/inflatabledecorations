@@ -20,7 +20,7 @@ window.DASH_CONFIG = {
     // `prev` is the count at the PREVIOUS cycle's read. The status line subtracts
     // it to say how many arrived since; without it that line stays silent rather
     // than guessing a delta. Roll it forward every cycle: prev <- old count.
-    reviews: { rating: '5.0', count: 30, prev: 22, asOf: 'Oct 1' }
+    reviews: { rating: '5.0', count: 32, prev: 30, asOf: 'Oct 8' }
   },
   tokens: {
     '--dash-accent': '#FF5FA2', '--dash-bg': '#FFF9F5', '--dash-ink': '#3A2E39',
