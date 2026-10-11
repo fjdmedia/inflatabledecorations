@@ -6,6 +6,7 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="color-scheme" content="light">
   <title>Your numbers · Inflatable Decorations</title>
+  <link rel="icon" type="image/png" href="Assets/Brand/logo-512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet">
@@ -19,13 +20,14 @@
       --dash-accent-solid-dk: #A32A59; --dash-accent-soft: #FFE0EC;
       --dash-font: "DM Sans", system-ui, sans-serif; --dash-display: "Caprasimo", "DM Sans", serif; }
     body { margin: 0; background: var(--dash-bg); }
-    .dash-header { padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 48px) 0;
+    .dash-header { padding: clamp(var(--dash-s5), 5vw, var(--dash-s7)) var(--dash-gutter) 0;
       font-family: var(--dash-font); color: var(--dash-ink); }
-    .dash-brand { margin: 0 0 6px; font-size: .8125rem; font-weight: 700; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--dash-accent-ink); }
-    .dash-header h1 { font-family: var(--dash-display); font-weight: 400; font-size: clamp(2rem, 5.2vw, 3rem);
-      line-height: 1.05; margin: 0; color: var(--dash-ink); }
-    .dash-sub { margin: 10px 0 0; font-size: 1.0625rem; line-height: 1.45; color: var(--dash-muted); max-width: 46ch; }
+    /* the brand line is quiet: the answer card's eyebrow is the one pink label on screen */
+    .dash-brand { margin: 0 0 var(--dash-s1); font-size: var(--dash-fs-meta); font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--dash-muted); }
+    .dash-header h1 { font-family: var(--dash-display); font-weight: 400; font-size: var(--dash-fs-h1);
+      line-height: var(--dash-lh-display); margin: 0; color: var(--dash-ink); text-wrap: balance; }
+    .dash-sub { margin: var(--dash-s2) 0 0; font-size: var(--dash-fs-body); line-height: var(--dash-lh-snug); color: var(--dash-muted); max-width: 46ch; }
   </style>
 </head>
 <body>
@@ -34,7 +36,7 @@
     <h1>Your numbers</h1>
     <p class="dash-sub">Every inquiry from your website, counted as it comes in.</p>
   </header>
-  <main id="dash" class="dash-wrap" aria-live="polite"></main>
+  <main id="dash" class="dash-wrap"></main>
   <script src="Assets/dashboard/dashboard-config.js"></script>
   <script src="Assets/dashboard/dashboard.js"></script>
 </body>

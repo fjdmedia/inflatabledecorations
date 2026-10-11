@@ -22,6 +22,8 @@ window.DASH_CONFIG = {
     // than guessing a delta. Roll it forward every cycle: prev <- old count.
     reviews: { rating: '5.0', count: 32, prev: 30, asOf: 'Oct 8' }
   },
+  // dashboard.html repeats these tokens in its inline :root so the first paint matches:
+  // change both together.
   tokens: {
     // Her site's own tokens. The bright pink is decoration only; text and marks use the
     // two deeper pinks her site already defines for contrast (6.15:1 text, 4.97:1 white-on).

@@ -20,11 +20,11 @@
     windowLabelOne: 'inquiry from {Month} to now',
     factsLabel: 'Running total and Google rating',
     ratingLabel: 'Google rating',
-    ratingSub: '{count} reviews · checked {date}',
-    ratingSubOne: '1 review · checked {date}',
+    ratingSub: '{count} reviews\u00a0· checked {date}',
+    ratingSubOne: '1 review\u00a0· checked {date}',
     monthsTitle: 'Month by month',
     partialMonth: 'so far',
-    earlyNote: 'Too early to tell if things are picking up or slowing down. That takes six full months. It\'ll show here once we have them.',
+    earlyNote: 'Too early to tell if things are picking up or slowing down. That takes six full months.',
     mixTitle: 'What people ask about most',
     latestTitle: 'Latest inquiries',
     sourcesTitle: 'How people found you',
@@ -98,6 +98,9 @@
         input.setAttribute('aria-invalid', 'true'); input.setAttribute('aria-describedby', 'dash-gate-msg');
         input.focus(); return;
       }
+      var old = form.querySelector('.dash-gate-msg');
+      if (old) old.remove();
+      input.removeAttribute('aria-invalid'); input.removeAttribute('aria-describedby');
       btn.disabled = true; btn.textContent = STRINGS.gateChecking;
       load({ password: input.value }, true);
     });
@@ -156,37 +159,47 @@
     return wrap;
   }
 
+  // Each drawn month needs about 40px before its label runs into the next one. The cap
+  // comes from the plot's measured width, so it holds in every layout and for any length
+  // of history; the latest months are drawn and the hidden table lists every month.
+  var MIN_COL = 40;
   function colsChart(chart, partial, caption) {
-    var fig = el('figure', 'dash-chart');
-    // The chart card holds about seven columns before the labels collide: on a phone, and
-    // between 900 and 1279px where it is the narrow card of its row. A long series draws its
-    // latest seven there; the hidden table below always lists every month.
-    var all = chart.points;
-    var narrow = window.matchMedia && window.matchMedia('(max-width: 599px), (min-width: 900px) and (max-width: 1279px)').matches;
-    var shown = narrow && all.length > 7 ? all.slice(-7) : all;
+    var fig = el('figure', 'dash-chart dash-chart--cols');
     var vis = el('div', 'dash-cols'); vis.setAttribute('aria-hidden', 'true');
     var labs = el('div', 'dash-col-labs'); labs.setAttribute('aria-hidden', 'true');
-    var max = Math.max.apply(null, shown.map(function (p) { return Number(p.value) || 0; })) || 1;
-    shown.forEach(function (p, i) {
-      var isPartial = partial && i === shown.length - 1;
-      var col = el('div', 'dash-col' + (isPartial ? ' dash-col--partial' : ''));
-      col.appendChild(el('span', 'dash-col-val', String(p.value)));
-      var bar = el('div', 'dash-col-bar');
-      // 150px is the tallest mark; the value label and gap ride above it inside the 200px plot
-      bar.style.height = Math.max(3, Math.round((Number(p.value) || 0) / max * 150)) + 'px';
-      col.appendChild(bar);
-      vis.appendChild(col);
-      var lab = el('p', 'dash-col-lab', p.label);
-      if (isPartial) lab.appendChild(el('span', null, STRINGS.partialMonth));
-      labs.appendChild(lab);
-    });
+    var all = chart.points;
     var rows = all.map(function (p, i) {
       var last = partial && i === all.length - 1;
       return [(MONTHS[p.label] || p.label) + (last ? ' (' + STRINGS.partialMonth + ')' : ''), p.value];
     });
     fig.append(vis, labs, srTable(caption, rows));
+    fig._draw = function () {
+      var room = vis.clientWidth ? Math.max(1, Math.floor(vis.clientWidth / MIN_COL)) : all.length;
+      var shown = all.length > room ? all.slice(-room) : all;
+      var max = Math.max.apply(null, shown.map(function (p) { return Number(p.value) || 0; })) || 1;
+      vis.replaceChildren(); labs.replaceChildren();
+      shown.forEach(function (p, i) {
+        var isPartial = partial && i === shown.length - 1;
+        var col = el('div', 'dash-col' + (isPartial ? ' dash-col--partial' : ''));
+        col.appendChild(el('span', 'dash-col-val', String(p.value)));
+        var bar = el('div', 'dash-col-bar');
+        // 150px is the tallest mark; the value label and gap ride above it inside the 200px plot
+        bar.style.height = Math.max(3, Math.round((Number(p.value) || 0) / max * 150)) + 'px';
+        col.appendChild(bar);
+        vis.appendChild(col);
+        var lab = el('p', 'dash-col-lab', p.label);
+        if (isPartial) lab.appendChild(el('span', null, STRINGS.partialMonth));
+        labs.appendChild(lab);
+      });
+    };
+    fig._draw();
     return fig;
   }
+  function fitCharts() {
+    root.querySelectorAll('.dash-chart--cols').forEach(function (f) { if (f._draw) f._draw(); });
+  }
+  var fitTimer = null;
+  window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(fitCharts, 150); });
 
   function barsChart(chart, caption) {
     var fig = el('figure', 'dash-chart');
@@ -265,7 +278,6 @@
   function heroCard(data, leads) {
     var card = el('section', 'dash-card dash-hero dash-c-hero dash-span-all');
     card.setAttribute('aria-labelledby', 'dash-hero-eyebrow');
-    var body = el('div', 'dash-hero-body');
     var main = el('div', 'dash-hero-main');
     var month = data.monthLabel || '';
     var eyebrow = el('h2', 'dash-eyebrow', fill(STRINGS.heroEyebrow, { Month: month }));
@@ -294,18 +306,25 @@
     }
     if (h.prev) ctx.appendChild(el('li', 'dash-chip', h.prev));
     if (ctx.childNodes.length) main.appendChild(ctx);
-    body.appendChild(main);
-    card.appendChild(body);
+    card.appendChild(main);
 
     var status = statusLine(data);
     if (status) card.appendChild(status);
 
     var facts = el('section', 'dash-card dash-facts dash-c-facts dash-span-5');
-    facts.setAttribute('aria-label', STRINGS.factsLabel);
+    var fh = el('h2', 'dash-sr', STRINGS.factsLabel);
+    fh.id = 'dash-facts-title';
+    facts.appendChild(fh);
+    facts.setAttribute('aria-labelledby', 'dash-facts-title');
     if (pts && pts.length) {
       var total = sumPts(pts);
+      // the series is consecutive months ending this month, so its first month's year is
+      // known; the year is named once the window reaches back into an earlier year
+      var now = new Date(), back = pts.length - 1;
+      var startYear = new Date(now.getFullYear(), now.getMonth() - back, 1).getFullYear();
+      var startName = (MONTHS[pts[0].label] || pts[0].label) + (startYear !== now.getFullYear() ? ' ' + startYear : '');
       facts.appendChild(stat(String(total),
-        fill(total === 1 ? STRINGS.windowLabelOne : STRINGS.windowLabel, { Month: MONTHS[pts[0].label] || pts[0].label })));
+        fill(total === 1 ? STRINGS.windowLabelOne : STRINGS.windowLabel, { Month: startName })));
     }
     var s = cfg.snapshot && cfg.snapshot.reviews;
     if (s && s.count) {
@@ -313,7 +332,7 @@
         fill(Number(s.count) === 1 ? STRINGS.ratingSubOne : STRINGS.ratingSub, { count: s.count, date: String(s.asOf || '').replace(/ /g, ' ') })
           .replace(/ · $/, '')));
     }
-    if (!facts.childNodes.length) facts = null;
+    if (!facts.querySelector('.dash-stat')) facts = null;
     else card.classList.replace('dash-span-all', 'dash-span-7');
     return { card: card, facts: facts, hasStatus: !!status };
   }
@@ -389,6 +408,7 @@
       if (b.list && b.list.length) grid.appendChild(latestCard(b.list));
     });
     root.appendChild(grid);
+    fitCharts();
   }
 
   var token = null;

@@ -1,8 +1,9 @@
 /* dashboard.css — token-driven styles for the client numbers page.
-   Brand comes from each client's dashboard-config.js tokens; the values below are
-   neutral fallbacks so a tenant without a skin still renders cleanly.
-   Layout rules: full width, page-level scroll only, no inner scrollbars, one big
-   answer at the top and the detail behind it. */
+   Shared with other client dashboards: when changing behaviour here, carry the change
+   to the shared copy too. Brand comes from each client's dashboard-config.js tokens;
+   the values below are neutral fallbacks so a tenant without a skin still renders.
+   Layout rules: full width, page-level scroll only, no inner scrollbars, one answer at
+   the top and the detail behind it. Every value below :root comes from a token. */
 
 :root {
   /* colour — the decorative accent never carries text; text pinks are separate tokens */
@@ -11,96 +12,109 @@
   --dash-ink: #1c1b1f;
   --dash-muted: #5f5a63;
   --dash-accent: #e91e63;          /* decoration only: motif, tints */
-  --dash-accent-ink: #b0174f;      /* pink that may carry text (>= 4.5:1 on card + bg) */
+  --dash-accent-ink: #b0174f;      /* pink that may carry text (>= 4.5:1 on card and bg) */
   --dash-accent-solid: #c2185b;    /* marks and button surfaces (holds white text) */
   --dash-accent-solid-dk: #9c1349; /* button hover */
   --dash-accent-soft: #fde4ee;     /* bar tracks, a lighter step of the same ramp */
+  --dash-on-accent: #ffffff;       /* text on the solid accent */
   --dash-line: color-mix(in srgb, var(--dash-ink) 11%, transparent);
+  --dash-chip-bg: color-mix(in srgb, var(--dash-ink) 5%, var(--dash-card));
+  --dash-ring: color-mix(in srgb, var(--dash-accent-solid) 22%, transparent);
+  /* status states: calm, never alarming; there is no red state */
+  --dash-state-busier: #1E7F4F;
+  --dash-state-quieter: #B5701A;
 
   /* type */
   --dash-fs-hero: clamp(4.5rem, 12vw, 10rem);
   --dash-fs-h1: clamp(2rem, 5.2vw, 3rem);
-  --dash-fs-title: 1.3rem;
   --dash-fs-stat: 2.25rem;
+  --dash-fs-label: clamp(1.25rem, 2.2vw, 1.6rem);
+  --dash-fs-title: 1.3rem;
   --dash-fs-body: 1.0625rem;
   --dash-fs-meta: .875rem;
-  --dash-fs-eyebrow: .8125rem;
+  --dash-lh-figure: .86;
+  --dash-lh-display: 1.05;
+  --dash-lh-heading: 1.2;
+  --dash-lh-snug: 1.4;
+  --dash-lh-body: 1.5;
 
   /* space (4px base) */
   --dash-s1: 4px; --dash-s2: 8px; --dash-s3: 12px; --dash-s4: 16px;
   --dash-s5: 24px; --dash-s6: 32px; --dash-s7: 48px;
-  --dash-gutter: clamp(16px, 4vw, 48px);
+  --dash-gutter: clamp(var(--dash-s4), 4vw, var(--dash-s7));
+  --dash-pad: clamp(var(--dash-s4), 3vw, var(--dash-s6));
+  --dash-control-h: 48px;
+  --dash-col-w: 24px;     /* thin marks: the band's leftover is air */
+  --dash-plot-h: 200px;
 
-  /* shape */
+  /* shape and depth */
   --dash-radius: 22px;
   --dash-radius-sm: 12px;
-  --dash-shadow: 0 1px 0 color-mix(in srgb, var(--dash-ink) 5%, transparent),
-                 0 18px 40px -26px color-mix(in srgb, var(--dash-ink) 32%, transparent);
+  --dash-radius-mark: 4px;
+  --dash-radius-pill: 999px;
+  --dash-hairline: 0 0 0 1px var(--dash-line);
+  --dash-shadow: 0 18px 40px -26px color-mix(in srgb, var(--dash-ink) 32%, transparent);
 
   /* motion — affordance only, nothing moves on load */
   --dash-dur: 180ms;
-  --dash-ease-std: cubic-bezier(.4, 0, .2, 1);    /* colour, border, shadow */
+  --dash-ease-std: cubic-bezier(.4, 0, .2, 1);    /* colour, border */
   --dash-ease-emph: cubic-bezier(.76, 0, .24, 1); /* the one spatial move: the button press */
 }
+
+html, body { overflow-x: clip; }
+::selection { background: var(--dash-accent-solid); color: var(--dash-on-accent); }
 
 /* ---------- frame ---------- */
 .dash-wrap {
   max-width: none;
-  padding: var(--dash-s5) var(--dash-gutter) var(--dash-s7);
+  padding: var(--dash-s6) var(--dash-gutter) var(--dash-s7);
   background: var(--dash-bg);
   color: var(--dash-ink);
   font-family: var(--dash-font, system-ui, sans-serif);
   font-size: var(--dash-fs-body);
-  line-height: 1.5;
+  line-height: var(--dash-lh-body);
 }
 .dash-grid { display: grid; gap: var(--dash-s4); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 900px) {
-  .dash-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 20px; }
+  .dash-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--dash-s5); }
   .dash-span-all { grid-column: 1 / -1; }
   .dash-span-5 { grid-column: span 5; }
   .dash-span-7 { grid-column: span 7; }
-  .dash-wrap { padding-top: var(--dash-s6); }
 }
-/* Very wide screens: the 7/5 rows spread a name and its date ~1,900px apart, so the
-   answer, the facts and the chart share one row and the two lists sit side by side. */
+/* Very wide screens: the answer row keeps its 7/5 split, and the three detail cards share
+   one row instead of stretching, so no line runs the width of the monitor. */
 @media (min-width: 1800px) {
-  .dash-c-hero { grid-column: span 4; }
-  .dash-c-facts { grid-column: span 3; }
-  .dash-c-months { grid-column: span 5; }
-  .dash-c-mix { grid-column: span 6; }
-  .dash-c-latest { grid-column: span 6; }
-  .dash-c-latest .dash-item { grid-template-columns: minmax(0, 1fr) auto; }
-  .dash-c-latest .dash-item-what { grid-column: 1 / -1; grid-row: 2; }
-  .dash-c-latest .dash-item-when { grid-column: 2; grid-row: 1; }
+  .dash-c-months, .dash-c-mix, .dash-c-latest { grid-column: span 4; }
 }
 
+/* depth by role: every card is a hairline, only the answer (and the password card before
+   it) lifts, so "one answer, then the detail" reads before a word does */
 .dash-card {
   position: relative;
   background: var(--dash-card);
   border-radius: var(--dash-radius);
-  padding: clamp(20px, 3vw, 32px);
-  /* depth by role: every card is a hairline, only the answer (and the password card
-     before it) lifts, so "one answer, then the detail" reads before a word does */
-  box-shadow: 0 0 0 1px var(--dash-line);
+  padding: var(--dash-pad);
+  box-shadow: var(--dash-hairline);
   min-width: 0;
 }
-.dash-hero { box-shadow: 0 0 0 1px var(--dash-line), var(--dash-shadow); }
 .dash-card-title {
   margin: 0;
   font-family: var(--dash-display, var(--dash-font));
   font-weight: 400;
   font-size: var(--dash-fs-title);
-  line-height: 1.2;
+  line-height: var(--dash-lh-heading);
   color: var(--dash-ink);
+  text-wrap: balance;
 }
 .dash-sentence { margin: var(--dash-s2) 0 0; color: var(--dash-ink); }   /* the card's finding, not marginalia */
 .dash-eyebrow {
   margin: 0;
-  font-size: var(--dash-fs-eyebrow);
+  font-size: var(--dash-fs-meta);
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--dash-accent-ink);
+  text-wrap: balance;
 }
 .dash-sr {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -108,128 +122,137 @@
 }
 
 /* ---------- the answer: this month ---------- */
-/* The signature scallop: it caps the one card that answers the question, and the
-   password card before it. Driven by --dash-motif, so a tenant without a motif gets
-   a plain card. */
-.dash-hero { padding-top: clamp(28px, 3.6vw, 40px); }
+/* The signature scallop caps the one card that answers the question, and the password
+   card before it. Driven by --dash-motif, so a tenant without a motif gets a plain card. */
+.dash-hero {
+  display: flex; flex-direction: column;
+  padding-top: clamp(var(--dash-s5), 3.6vw, var(--dash-s7));
+  box-shadow: var(--dash-hairline), var(--dash-shadow);
+}
 .dash-hero::before, .dash-gate::before {
   content: ""; position: absolute; inset: 0 var(--dash-radius) auto var(--dash-radius); height: 9px;
   background: var(--dash-motif, none); background-size: 16px 9px; background-repeat: repeat-x;
 }
-.dash-hero { display: flex; flex-direction: column; }
-.dash-hero-body, .dash-hero-main { flex: 1; display: flex; flex-direction: column; }
-.dash-hero .dash-context { margin-top: auto; padding-top: var(--dash-s5); }
-/* wide: the context sits in a right-aligned column beside the figure, so the answer
-   card is a composition across its width instead of a number with air beside it */
-@media (min-width: 900px) {
-  .dash-hero .dash-hero-main { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: var(--dash-s6); align-items: end; }
-  .dash-hero .dash-eyebrow { grid-column: 1 / -1; align-self: start; }
-  .dash-hero .dash-figure-row { grid-column: 1; }
-  .dash-hero .dash-context { grid-column: 2; justify-self: end; flex-direction: column; align-items: flex-end; margin: 0; padding: 0 0 6px; }
-}
+.dash-hero-main { flex: 1; display: flex; flex-direction: column; }
 .dash-figure-row { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: var(--dash-s3); row-gap: var(--dash-s1); margin-top: var(--dash-s4); }
-/* The hero figure stays in the body face with proportional digits: a display face
-   on the number reads as decoration, and tabular digits look loose this large. */
+/* The hero figure stays in the body face with proportional digits: a display face on the
+   number reads as decoration, and tabular digits look loose this large. */
 .dash-figure {
   margin: 0;
   font-family: var(--dash-font, system-ui, sans-serif);
   font-weight: 800;
   font-size: var(--dash-fs-hero);
-  line-height: .86;
+  line-height: var(--dash-lh-figure);
   letter-spacing: -.045em;
   color: var(--dash-ink);
 }
-.dash-figure-label { margin: 0; font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 700; line-height: 1.2; max-width: 14ch; }
-.dash-context { display: flex; flex-wrap: wrap; gap: var(--dash-s2); margin: 0; padding: var(--dash-s4) 0 0; list-style: none; }
+.dash-figure-label { margin: 0; font-size: var(--dash-fs-label); font-weight: 700; line-height: var(--dash-lh-heading); max-width: 14ch; }
+.dash-context { display: flex; flex-wrap: wrap; gap: var(--dash-s2); margin: auto 0 0; padding: var(--dash-s5) 0 0; list-style: none; }
 .dash-chip {
   font-size: var(--dash-fs-meta);
-  line-height: 1.3;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--dash-ink) 5%, var(--dash-card));
+  line-height: var(--dash-lh-snug);
+  padding: var(--dash-s1) var(--dash-s3);
+  border-radius: var(--dash-radius-pill);
+  background: var(--dash-chip-bg);
   color: var(--dash-ink);
 }
+/* wide: the context sits in a right-aligned column beside the figure, so the answer card
+   is a composition across its width instead of a number with air beside it */
+@media (min-width: 900px) {
+  .dash-hero-main { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: var(--dash-s6); }
+  .dash-eyebrow { grid-column: 1 / -1; }
+  .dash-figure-row { grid-column: 1; align-self: end; }
+  .dash-context { grid-column: 2; align-self: end; justify-self: end; flex-direction: column; align-items: flex-end; margin: 0; padding: 0 0 var(--dash-s2); }
+}
 
-/* the two facts beside the answer: side by side on a phone, stacked beside the
-   answer on a wide screen, split by one hairline either way */
-.dash-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--dash-s5); align-content: center;
-  padding: clamp(16px, 2.4vw, 24px) clamp(20px, 3vw, 32px); }   /* support card: tighter than the answer */
-.dash-facts > .dash-stat + .dash-stat { border-left: 1px solid var(--dash-line); padding-left: var(--dash-s5); }
+/* the two facts beside the answer: side by side on a phone, stacked beside the answer on
+   a wide screen, split by one hairline either way; a single column on the narrowest phones */
+.dash-facts {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--dash-s5); align-content: center;
+  padding: clamp(var(--dash-s4), 2.4vw, var(--dash-s5)) var(--dash-pad);   /* support card: tighter than the answer */
+}
+.dash-stat + .dash-stat { border-left: 1px solid var(--dash-line); padding-left: var(--dash-s5); }
+@media (max-width: 379px) {
+  .dash-facts { grid-template-columns: minmax(0, 1fr); gap: var(--dash-s4); }
+  .dash-stat + .dash-stat { border-left: 0; padding-left: 0; border-top: 1px solid var(--dash-line); padding-top: var(--dash-s4); }
+}
 @media (min-width: 900px) {
   .dash-facts { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .dash-facts > .dash-stat { padding: var(--dash-s5) 0; }
-  .dash-facts > .dash-stat:first-child { padding-top: 0; }
-  .dash-facts > .dash-stat:last-child { padding-bottom: 0; }
-  .dash-facts > .dash-stat + .dash-stat { border-left: 0; padding-left: 0; border-top: 1px solid var(--dash-line); }
+  .dash-stat { padding: var(--dash-s5) 0; }
+  .dash-stat:first-of-type { padding-top: 0; }
+  .dash-stat:last-of-type { padding-bottom: 0; }
+  .dash-stat + .dash-stat { border-left: 0; padding-left: 0; border-top: 1px solid var(--dash-line); }
 }
-.dash-stat-big { margin: 0; font-weight: 700; font-size: var(--dash-fs-stat); line-height: 1; letter-spacing: -.025em; }
-.dash-stat-label { margin: var(--dash-s1) 0 0; font-weight: 700; line-height: 1.3; }
-.dash-stat-sub { margin: 2px 0 0; font-size: var(--dash-fs-meta); color: var(--dash-muted); line-height: 1.4; }
+/* stat values are standalone figures: proportional digits, like the hero */
+.dash-stat-big { margin: 0; font-weight: 700; font-size: var(--dash-fs-stat); line-height: var(--dash-lh-display); letter-spacing: -.025em; }
+.dash-stat-label { margin: var(--dash-s1) 0 0; font-weight: 700; line-height: var(--dash-lh-heading); }
+.dash-stat-sub { margin: var(--dash-s1) 0 0; font-size: var(--dash-fs-meta); color: var(--dash-muted); line-height: var(--dash-lh-snug); }
 
 /* ---------- status line (needs six complete months) ---------- */
-/* Says whether things are busier, steady or quieter than this client's own recent
-   past. Colour is never the only signal: the sentence states the answer and the dot
-   is decorative. Text always uses the ink token. No red exists here; steady is where
-   most stretches land and is styled calm. */
+/* Says whether things are busier, steady or quieter than this client's own recent past.
+   Colour is never the only signal: the sentence states the answer and the dot is
+   decorative. Text always uses the ink token. Steady is where most stretches land and is
+   styled calm. */
 .dash-status {
+  position: relative;
   margin-top: var(--dash-s5);
-  padding: var(--dash-s4) var(--dash-s4) var(--dash-s4) 40px;
+  padding: var(--dash-s4) var(--dash-s4) var(--dash-s4) calc(var(--dash-s6) + var(--dash-s2));
   border-radius: var(--dash-radius-sm);
   background: color-mix(in srgb, var(--dash-state, var(--dash-muted)) 9%, var(--dash-card));
-  position: relative;
 }
-.dash-status-dot { position: absolute; left: 16px; top: 22px; width: 10px; height: 10px; border-radius: 50%; background: var(--dash-state, var(--dash-muted)); }
+.dash-status-dot { position: absolute; left: var(--dash-s4); top: calc(var(--dash-s4) + .45em); width: 10px; height: 10px; border-radius: var(--dash-radius-pill); background: var(--dash-state, var(--dash-muted)); }
 .dash-status-head { margin: 0; font-weight: 700; }
-.dash-status-body, .dash-status-review { margin: var(--dash-s1) 0 0; line-height: 1.45; }
+.dash-status-body, .dash-status-review { margin: var(--dash-s1) 0 0; line-height: var(--dash-lh-snug); }
 .dash-status-review { color: var(--dash-muted); }
-.dash-status--busier  { --dash-state: #1E7F4F; }
-.dash-status--steady  { --dash-state: #6B6570; }
-.dash-status--quieter { --dash-state: #B5701A; }
+.dash-status--busier  { --dash-state: var(--dash-state-busier); }
+.dash-status--steady  { --dash-state: var(--dash-muted); }
+.dash-status--quieter { --dash-state: var(--dash-state-quieter); }
 
 /* ---------- month by month (columns) ---------- */
 .dash-chart { margin: var(--dash-s5) 0 0; }
 .dash-cols {
   display: flex; align-items: flex-end; justify-content: space-around;
-  height: 200px; padding: 0 var(--dash-s2);
+  height: var(--dash-plot-h); padding: 0 var(--dash-s2);
   border-bottom: 1px solid var(--dash-line);
 }
 .dash-col { flex: 1 1 0; min-width: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: var(--dash-s2); }
-.dash-col-val { font-weight: 700; font-size: 1rem; line-height: 1; }
-/* thin marks: the band's leftover is air, never filled */
-.dash-col-bar { width: 24px; min-height: 3px; border-radius: 4px 4px 0 0; background: var(--dash-accent-solid); }
+.dash-col-val { font-weight: 700; font-size: var(--dash-fs-meta); line-height: var(--dash-lh-display); }
+.dash-col-bar { width: var(--dash-col-w); min-height: 3px; border-radius: var(--dash-radius-mark) var(--dash-radius-mark) 0 0; background: var(--dash-accent-solid); }
 .dash-col--partial .dash-col-bar { background: color-mix(in srgb, var(--dash-accent-solid) 50%, var(--dash-card)); }
 .dash-col-labs { display: flex; justify-content: space-around; padding: var(--dash-s2) var(--dash-s2) 0; }
-.dash-col-lab { flex: 1 1 0; min-width: 0; text-align: center; font-size: var(--dash-fs-meta); color: var(--dash-muted); line-height: 1.3; }
-.dash-col-lab span { display: block; font-size: .75rem; }
-.dash-note { margin: var(--dash-s5) 0 0; padding-top: var(--dash-s4); border-top: 1px solid var(--dash-line); font-size: var(--dash-fs-meta); color: var(--dash-muted); line-height: 1.5; }
+.dash-col-lab { flex: 1 1 0; min-width: 0; margin: 0; text-align: center; font-size: var(--dash-fs-meta); color: var(--dash-muted); line-height: var(--dash-lh-heading); }
+.dash-col-lab span { display: block; }
+.dash-note { margin: var(--dash-s5) 0 0; padding-top: var(--dash-s4); border-top: 1px solid var(--dash-line); font-size: var(--dash-fs-meta); color: var(--dash-muted); line-height: var(--dash-lh-body); }
 
 /* ---------- what people ask about (horizontal bars) ---------- */
 .dash-bars { margin: var(--dash-s5) 0 0; padding: 0; list-style: none; display: grid; gap: var(--dash-s4); }
 .dash-bar-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--dash-s3); }
-.dash-bar-lab { margin: 0; line-height: 1.35; overflow-wrap: anywhere; }
-.dash-bar-val { font-weight: 700; flex: none; }
-.dash-bar-track { margin-top: 6px; height: 10px; border-radius: 4px; background: var(--dash-accent-soft); overflow: hidden; }
-.dash-bar-fill { height: 100%; border-radius: 4px; background: var(--dash-accent-solid); }
+.dash-bar-lab { margin: 0; line-height: var(--dash-lh-snug); overflow-wrap: anywhere; }
+/* the values stack down one right edge, so these digits line up */
+.dash-bar-val { font-weight: 700; flex: none; font-variant-numeric: tabular-nums; }
+.dash-bar-track { margin-top: var(--dash-s1); height: 10px; border-radius: var(--dash-radius-mark); background: var(--dash-accent-soft); overflow: hidden; }
+.dash-bar-fill { height: 100%; border-radius: var(--dash-radius-mark); background: var(--dash-accent-solid); }
 
 /* ---------- latest inquiries ---------- */
+/* phone (and the narrow wide-screen card): name and date on one line, what they asked
+   about underneath; tablet and desktop: three columns */
 .dash-list { margin: var(--dash-s4) 0 0; padding: 0; list-style: none; }
-.dash-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--dash-s4); row-gap: 2px; padding: 14px 0; border-top: 1px solid var(--dash-line); }
+.dash-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--dash-s4); row-gap: var(--dash-s1); padding: var(--dash-s3) 0; border-top: 1px solid var(--dash-line); }
 .dash-item:first-child { border-top: 0; }
 .dash-item-name { font-weight: 700; overflow-wrap: anywhere; }
-.dash-item-when { color: var(--dash-muted); font-size: var(--dash-fs-meta); font-variant-numeric: tabular-nums; white-space: nowrap; justify-self: end; }
-.dash-item-what { grid-column: 1 / -1; grid-row: 2; color: var(--dash-muted); font-size: .95rem; overflow-wrap: anywhere; }
-.dash-item-when { grid-column: 2; grid-row: 1; }
-@media (min-width: 900px) {
+.dash-item-when { grid-column: 2; grid-row: 1; justify-self: end; white-space: nowrap; color: var(--dash-muted); font-size: var(--dash-fs-meta); font-variant-numeric: tabular-nums; }
+.dash-item-what { grid-column: 1 / -1; grid-row: 2; color: var(--dash-muted); font-size: var(--dash-fs-meta); overflow-wrap: anywhere; }
+@media (min-width: 900px) and (max-width: 1799px) {
   .dash-item { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr) minmax(0, 1fr); align-items: baseline; }
-  .dash-item-what { grid-column: auto; grid-row: 1; grid-column-start: 2; }
-  .dash-item-when { grid-column-start: 3; grid-row: 1; }
+  .dash-item-what { grid-column: 2; grid-row: 1; }
+  .dash-item-when { grid-column: 3; }
 }
 
 /* ---------- generic rows (other blocks) ---------- */
-.dash-row { display: block; padding: 12px 0; border-top: 1px solid var(--dash-line); }
+.dash-row { display: block; padding: var(--dash-s3) 0; border-top: 1px solid var(--dash-line); }
 .dash-row:first-of-type { margin-top: var(--dash-s3); }
 .dash-row-label { display: block; font-weight: 700; }
-.dash-row-value { display: block; margin-top: 2px; color: var(--dash-muted); overflow-wrap: anywhere; }
+.dash-row-value { display: block; margin-top: var(--dash-s1); color: var(--dash-muted); overflow-wrap: anywhere; }
 .dash-state, .dash-loading { color: var(--dash-muted); }
 .dash-loading { margin: var(--dash-s6) 0; }
 
@@ -239,25 +262,28 @@
   display: grid; gap: var(--dash-s4);
   max-width: 420px; margin: var(--dash-s2) 0 0;   /* one alignment line with the heading above */
   background: var(--dash-card); border-radius: var(--dash-radius);
-  padding: clamp(24px, 4vw, 36px); box-shadow: 0 0 0 1px var(--dash-line), var(--dash-shadow);
+  padding: clamp(var(--dash-s5), 4vw, var(--dash-s6));
+  box-shadow: var(--dash-hairline), var(--dash-shadow);
 }
-.dash-gate-label { display: grid; gap: var(--dash-s2); font-weight: 700; line-height: 1.35; }
+.dash-gate-label { display: grid; gap: var(--dash-s2); font-weight: 700; line-height: var(--dash-lh-snug); }
+.dash-gate-input, .dash-gate-btn { box-sizing: border-box; height: var(--dash-control-h); font: inherit; }
 .dash-gate-input {
-  display: block; width: 100%; box-sizing: border-box;
-  min-height: 48px; padding: 12px 14px;
-  font: inherit; font-weight: 400; color: var(--dash-ink);
+  display: block; width: 100%;
+  padding: 0 var(--dash-s3);
+  font-weight: 400; color: var(--dash-ink);
   background: var(--dash-card);
-  border: 2px solid color-mix(in srgb, var(--dash-ink) 22%, transparent);
+  border: 2px solid var(--dash-muted);
   border-radius: var(--dash-radius-sm);
-  transition: border-color var(--dash-dur) var(--dash-ease-std), box-shadow var(--dash-dur) var(--dash-ease-std);
+  transition: border-color var(--dash-dur) var(--dash-ease-std);
 }
-.dash-gate-input:hover { border-color: color-mix(in srgb, var(--dash-ink) 40%, transparent); }
+.dash-gate-input:hover { border-color: var(--dash-ink); }
 .dash-gate-input:focus { outline: none; }
-.dash-gate-input:focus-visible { border-color: var(--dash-accent-solid); box-shadow: 0 0 0 4px color-mix(in srgb, var(--dash-accent-solid) 22%, transparent); }
+/* the focus ring appears at once; only the border colour eases */
+.dash-gate-input:focus-visible { border-color: var(--dash-accent-solid); box-shadow: 0 0 0 4px var(--dash-ring); }
 .dash-gate-input[aria-invalid="true"] { border-color: var(--dash-accent-ink); }
 .dash-gate-btn {
-  min-height: 48px; padding: 12px 20px;
-  font: inherit; font-weight: 700; color: #fff;
+  padding: 0 var(--dash-s5);
+  font-weight: 700; color: var(--dash-on-accent);
   background: var(--dash-accent-solid);
   border: 0; border-radius: var(--dash-radius-sm); cursor: pointer;
   transition: background-color var(--dash-dur) var(--dash-ease-std), transform var(--dash-dur) var(--dash-ease-emph);
@@ -266,8 +292,9 @@
 .dash-gate-btn:active { transform: translateY(1px); }
 .dash-gate-btn:focus { outline: none; }
 .dash-gate-btn:focus-visible { box-shadow: 0 0 0 3px var(--dash-card), 0 0 0 6px var(--dash-accent-solid); }
-.dash-gate-btn:disabled { cursor: progress; background: color-mix(in srgb, var(--dash-accent-solid) 70%, var(--dash-card)); transform: none; }
-.dash-gate-msg { margin: 0; color: var(--dash-accent-ink); font-weight: 700; line-height: 1.4; }
+/* while checking, the label and the cursor carry the state; the surface keeps its contrast */
+.dash-gate-btn:disabled { cursor: progress; transform: none; }
+.dash-gate-msg { margin: 0; color: var(--dash-accent-ink); font-weight: 700; line-height: var(--dash-lh-snug); }
 
 @media (prefers-reduced-motion: reduce) {
   .dash-gate-input, .dash-gate-btn { transition: none; }
