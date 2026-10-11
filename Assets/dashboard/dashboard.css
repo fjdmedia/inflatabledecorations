@@ -1,136 +1,279 @@
-/* dashboard.css — token-driven module styles. Brand comes from each client's
-   dashboard-config.js tokens; these are neutral fallbacks only.
-   Doctrine: full-width, page-level scroll only, no inner scrollbars, big at-a-glance numbers. */
+/* dashboard.css — token-driven styles for the client numbers page.
+   Brand comes from each client's dashboard-config.js tokens; the values below are
+   neutral fallbacks so a tenant without a skin still renders cleanly.
+   Layout rules: full width, page-level scroll only, no inner scrollbars, one big
+   answer at the top and the detail behind it. */
+
 :root {
-  --dash-bg: #fff; --dash-ink: #1c1b1f; --dash-accent: #e91e63;
-  --dash-card: #faf7f9; --dash-muted: #6b6570; --dash-radius: 16px;
+  /* colour — the decorative accent never carries text; text pinks are separate tokens */
+  --dash-bg: #fbf8f6;
+  --dash-card: #ffffff;
+  --dash-ink: #1c1b1f;
+  --dash-muted: #5f5a63;
+  --dash-accent: #e91e63;          /* decoration only: motif, tints */
+  --dash-accent-ink: #b0174f;      /* pink that may carry text (>= 4.5:1 on card + bg) */
+  --dash-accent-solid: #c2185b;    /* marks and button surfaces (holds white text) */
+  --dash-accent-solid-dk: #9c1349; /* button hover */
+  --dash-accent-soft: #fde4ee;     /* bar tracks, a lighter step of the same ramp */
+  --dash-line: color-mix(in srgb, var(--dash-ink) 11%, transparent);
+
+  /* type */
+  --dash-fs-hero: clamp(4.5rem, 12vw, 10rem);
+  --dash-fs-h1: clamp(2rem, 5.2vw, 3rem);
+  --dash-fs-title: 1.3rem;
+  --dash-fs-stat: 2.25rem;
+  --dash-fs-body: 1.0625rem;
+  --dash-fs-meta: .875rem;
+  --dash-fs-eyebrow: .8125rem;
+
+  /* space (4px base) */
+  --dash-s1: 4px; --dash-s2: 8px; --dash-s3: 12px; --dash-s4: 16px;
+  --dash-s5: 24px; --dash-s6: 32px; --dash-s7: 48px;
+  --dash-gutter: clamp(16px, 4vw, 48px);
+
+  /* shape */
+  --dash-radius: 22px;
+  --dash-radius-sm: 12px;
+  --dash-shadow: 0 1px 0 color-mix(in srgb, var(--dash-ink) 5%, transparent),
+                 0 18px 40px -26px color-mix(in srgb, var(--dash-ink) 32%, transparent);
+
+  /* motion — affordance only, nothing moves on load */
+  --dash-dur: 180ms;
+  --dash-ease-std: cubic-bezier(.4, 0, .2, 1);    /* colour, border, shadow */
+  --dash-ease-emph: cubic-bezier(.76, 0, .24, 1); /* the one spatial move: the button press */
 }
-.dash-wrap { max-width: none; padding: clamp(16px, 4vw, 48px); background: var(--dash-bg);
-  color: var(--dash-ink); font-family: var(--dash-font, system-ui, sans-serif); }
-.dash-month { font-size: 1.1rem; color: var(--dash-muted); text-transform: uppercase;
-  letter-spacing: .08em; margin: 0 0 4px; }
-.dash-card { background: var(--dash-card); border-radius: var(--dash-radius);
-  padding: clamp(16px, 3vw, 32px); margin-block: 16px; overflow: hidden; }
-.dash-card-title { margin: 0 0 .5em; font-size: 1.2rem; color: var(--dash-accent);
-  font-family: var(--dash-display, var(--dash-font)); font-weight: 400; letter-spacing: .01em; }
-.dash-big { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; line-height: 1;
-  font-family: var(--dash-display, var(--dash-font)); font-weight: 400; color: var(--dash-accent); }
-.dash-sentence { font-size: 1.15rem; margin: .35em 0 0; }
-.dash-prev { color: var(--dash-muted); margin: .25em 0 0; }
-.dash-row { display: block; padding: .7em 0;
-  border-top: 1px solid color-mix(in srgb, var(--dash-ink) 10%, transparent); margin-top: .5em; }
-.dash-row-label { display: block; font-weight: 700; font-size: 1.02rem; color: var(--dash-ink); }
-/* Long service strings must WRAP, never clip — nowrap was built for short numbers,
-   but leads rows carry sentences (caught by the 2026-08-31 sweep eye-test). */
-.dash-row-value { display: block; margin-top: 2px; font-weight: 400; font-size: .92rem;
-  color: var(--dash-ink); opacity: .7; overflow-wrap: anywhere; }
-/* Charts — single-series, brand accent on marks, ink on text (never colored text). */
-.dash-cols { display: flex; align-items: flex-end; gap: 16px; height: 160px; margin-top: 14px; }
-.dash-col { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center;
-  justify-content: flex-end; gap: 6px; }
-.dash-col-val { font-weight: 700; }
-.dash-col-bar { width: 100%; max-width: 56px; background: var(--dash-accent);
-  border-radius: 4px 4px 0 0; min-height: 4px; }
-.dash-col-lab { color: var(--dash-muted); font-size: .9rem; }
-.dash-bars { margin-top: 6px; }
-.dash-bar-row { margin-top: 12px; }
-.dash-bar-lab { margin: 0 0 4px; }
-.dash-bar-line { display: flex; align-items: center; gap: 10px; }
-.dash-bar-track { flex: 1; height: 12px; border-radius: 4px;
-  background: color-mix(in srgb, var(--dash-accent) 14%, transparent); }
-.dash-bar-fill { height: 100%; background: var(--dash-accent); border-radius: 4px; }
-.dash-bar-val { font-weight: 700; min-width: 2ch; text-align: right; }
-.dash-gate { display: grid; gap: 12px; max-width: 420px; margin: 15vh auto 0; }
-.dash-gate-input { display: block; width: 100%; margin-top: 8px; padding: 12px;
-  font-size: 1.1rem; border: 2px solid var(--dash-accent); border-radius: 8px; box-sizing: border-box; }
-.dash-gate-btn { padding: 12px; font-size: 1.05rem; font-weight: 700; border: 0;
-  border-radius: 8px; background: var(--dash-accent); color: #fff; cursor: pointer; }
-.dash-gate-msg, .dash-state, .dash-loading { color: var(--dash-muted); }
+
+/* ---------- frame ---------- */
+.dash-wrap {
+  max-width: none;
+  padding: var(--dash-s5) var(--dash-gutter) var(--dash-s7);
+  background: var(--dash-bg);
+  color: var(--dash-ink);
+  font-family: var(--dash-font, system-ui, sans-serif);
+  font-size: var(--dash-fs-body);
+  line-height: 1.5;
+}
+.dash-grid { display: grid; gap: var(--dash-s4); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 900px) {
-  #dash { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
-  .dash-month { grid-column: 1 / -1; }
-  .dash-gate, .dash-loading { grid-column: 1 / -1; }
+  .dash-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 20px; }
+  .dash-span-all { grid-column: 1 / -1; }
+  .dash-span-5 { grid-column: span 5; }
+  .dash-span-7 { grid-column: span 7; }
+  .dash-wrap { padding-top: var(--dash-s6); }
+}
+/* Very wide screens: the 7/5 rows spread a name and its date ~1,900px apart, so the
+   answer, the facts and the chart share one row and the two lists sit side by side. */
+@media (min-width: 1800px) {
+  .dash-c-hero { grid-column: span 4; }
+  .dash-c-facts { grid-column: span 3; }
+  .dash-c-months { grid-column: span 5; }
+  .dash-c-mix { grid-column: span 6; }
+  .dash-c-latest { grid-column: span 6; }
+  .dash-c-latest .dash-item { grid-template-columns: minmax(0, 1fr) auto; }
+  .dash-c-latest .dash-item-what { grid-column: 1 / -1; grid-row: 2; }
+  .dash-c-latest .dash-item-when { grid-column: 2; grid-row: 1; }
 }
 
-/* ---- headline strip: the two numbers she actually feels ---- */
-.dash-strip {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 12px; margin: 0 0 18px;
-}
-.dash-tile {
-  background: var(--dash-card); border-radius: 16px; padding: 18px 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.05);
-}
-.dash-tile-big {
-  margin: 0; font-size: 40px; line-height: 1.05; font-weight: 800;
-  color: var(--dash-accent); letter-spacing: -.02em;
-}
-.dash-tile-label {
-  margin: 6px 0 0; font-size: 14px; font-weight: 600; color: var(--dash-ink);
-}
-/* the as-of line — quiet, but never absent */
-.dash-tile-sub { margin: 4px 0 0; font-size: 12px; line-height: 1.45; color: var(--dash-ink); opacity: .65; }
-
-/* ---- signature detail: her scallop, in a rotating role ----
-   fjmedia-design's coherence rule — pick ONE detail and repeat it in a different
-   role on every surface. The header already wears it as a divider; here it caps
-   each card. Driven by --dash-motif so a tenant without a motif gets a plain
-   card and never inherits her balloons. */
-.dash-card { position: relative; }
-.dash-card::before {
-  content: ""; position: absolute; inset: 0 0 auto 0; height: 8px;
-  background: var(--dash-motif, none);
-  background-size: 16px 8px; background-repeat: repeat-x;
-}
-/* the headline tiles read as the answer, the cards as the working */
-.dash-tile { border: 2px solid color-mix(in srgb, var(--dash-accent) 22%, transparent); box-shadow: none; }
-.dash-tile-big { font-family: var(--dash-display, var(--dash-font)); font-weight: 400; }
-
-/* ---------- Status line ----------
-   Says in one sentence whether things are busier, steady or quieter than this
-   client's own recent past. Sits above the number tiles because it is the thing
-   a reader wants first; the tiles are the detail behind it.
-
-   Colour is NEVER the only signal. The sentence states the answer and the dot is
-   decorative (aria-hidden), so the line reads identically to someone who cannot
-   distinguish the three hues. Text always uses --dash-ink, so no state can push
-   contrast below the floor no matter what a tenant sets its accent to.
-
-   Three state colours, deliberately calm: a green, the muted grey, and a warm
-   amber. No red exists here. The worst state this can honestly report is a
-   quieter quarter, which is information, not an alarm -- and "steady" is where
-   most quarters land, so it must never look like a warning. */
-.dash-status {
+.dash-card {
   position: relative;
   background: var(--dash-card);
   border-radius: var(--dash-radius);
-  padding: 1em 1.2em 1em 2.4em;
-  margin: 0 0 1em;
-  /* An inset shadow, not border-left: a left border fights the 16px radius and
-     leaves a hooked arc at the two left corners. This follows the curve. */
-  box-shadow: inset 4px 0 0 var(--dash-state, var(--dash-muted));
+  padding: clamp(20px, 3vw, 32px);
+  /* depth by role: every card is a hairline, only the answer (and the password card
+     before it) lifts, so "one answer, then the detail" reads before a word does */
+  box-shadow: 0 0 0 1px var(--dash-line);
+  min-width: 0;
 }
-.dash-status-dot {
-  position: absolute; left: 1.1em; top: 1.45em;
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--dash-state, var(--dash-muted));
-}
-.dash-status-head {
-  margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--dash-ink);
+.dash-hero { box-shadow: 0 0 0 1px var(--dash-line), var(--dash-shadow); }
+.dash-card-title {
+  margin: 0;
   font-family: var(--dash-display, var(--dash-font));
+  font-weight: 400;
+  font-size: var(--dash-fs-title);
+  line-height: 1.2;
+  color: var(--dash-ink);
 }
-.dash-status-body,
-.dash-status-review {
-  margin: .3em 0 0; color: var(--dash-ink); opacity: .78; line-height: 1.45;
+.dash-sentence { margin: var(--dash-s2) 0 0; color: var(--dash-ink); }   /* the card's finding, not marginalia */
+.dash-eyebrow {
+  margin: 0;
+  font-size: var(--dash-fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dash-accent-ink);
 }
-.dash-status-review {
-  padding-top: .5em; margin-top: .55em;
-  border-top: 1px solid color-mix(in srgb, var(--dash-ink) 10%, transparent);
+.dash-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
+
+/* ---------- the answer: this month ---------- */
+/* The signature scallop: it caps the one card that answers the question, and the
+   password card before it. Driven by --dash-motif, so a tenant without a motif gets
+   a plain card. */
+.dash-hero { padding-top: clamp(28px, 3.6vw, 40px); }
+.dash-hero::before, .dash-gate::before {
+  content: ""; position: absolute; inset: 0 var(--dash-radius) auto var(--dash-radius); height: 9px;
+  background: var(--dash-motif, none); background-size: 16px 9px; background-repeat: repeat-x;
+}
+.dash-hero { display: flex; flex-direction: column; }
+.dash-hero-body, .dash-hero-main { flex: 1; display: flex; flex-direction: column; }
+.dash-hero .dash-context { margin-top: auto; padding-top: var(--dash-s5); }
+/* wide: the context sits in a right-aligned column beside the figure, so the answer
+   card is a composition across its width instead of a number with air beside it */
+@media (min-width: 900px) {
+  .dash-hero .dash-hero-main { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: var(--dash-s6); align-items: end; }
+  .dash-hero .dash-eyebrow { grid-column: 1 / -1; align-self: start; }
+  .dash-hero .dash-figure-row { grid-column: 1; }
+  .dash-hero .dash-context { grid-column: 2; justify-self: end; flex-direction: column; align-items: flex-end; margin: 0; padding: 0 0 6px; }
+}
+.dash-figure-row { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: var(--dash-s3); row-gap: var(--dash-s1); margin-top: var(--dash-s4); }
+/* The hero figure stays in the body face with proportional digits: a display face
+   on the number reads as decoration, and tabular digits look loose this large. */
+.dash-figure {
+  margin: 0;
+  font-family: var(--dash-font, system-ui, sans-serif);
+  font-weight: 800;
+  font-size: var(--dash-fs-hero);
+  line-height: .86;
+  letter-spacing: -.045em;
+  color: var(--dash-ink);
+}
+.dash-figure-label { margin: 0; font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 700; line-height: 1.2; max-width: 14ch; }
+.dash-context { display: flex; flex-wrap: wrap; gap: var(--dash-s2); margin: 0; padding: var(--dash-s4) 0 0; list-style: none; }
+.dash-chip {
+  font-size: var(--dash-fs-meta);
+  line-height: 1.3;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--dash-ink) 5%, var(--dash-card));
+  color: var(--dash-ink);
+}
+
+/* the two facts beside the answer: side by side on a phone, stacked beside the
+   answer on a wide screen, split by one hairline either way */
+.dash-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--dash-s5); align-content: center;
+  padding: clamp(16px, 2.4vw, 24px) clamp(20px, 3vw, 32px); }   /* support card: tighter than the answer */
+.dash-facts > .dash-stat + .dash-stat { border-left: 1px solid var(--dash-line); padding-left: var(--dash-s5); }
+@media (min-width: 900px) {
+  .dash-facts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .dash-facts > .dash-stat { padding: var(--dash-s5) 0; }
+  .dash-facts > .dash-stat:first-child { padding-top: 0; }
+  .dash-facts > .dash-stat:last-child { padding-bottom: 0; }
+  .dash-facts > .dash-stat + .dash-stat { border-left: 0; padding-left: 0; border-top: 1px solid var(--dash-line); }
+}
+.dash-stat-big { margin: 0; font-weight: 700; font-size: var(--dash-fs-stat); line-height: 1; letter-spacing: -.025em; }
+.dash-stat-label { margin: var(--dash-s1) 0 0; font-weight: 700; line-height: 1.3; }
+.dash-stat-sub { margin: 2px 0 0; font-size: var(--dash-fs-meta); color: var(--dash-muted); line-height: 1.4; }
+
+/* ---------- status line (needs six complete months) ---------- */
+/* Says whether things are busier, steady or quieter than this client's own recent
+   past. Colour is never the only signal: the sentence states the answer and the dot
+   is decorative. Text always uses the ink token. No red exists here; steady is where
+   most stretches land and is styled calm. */
+.dash-status {
+  margin-top: var(--dash-s5);
+  padding: var(--dash-s4) var(--dash-s4) var(--dash-s4) 40px;
+  border-radius: var(--dash-radius-sm);
+  background: color-mix(in srgb, var(--dash-state, var(--dash-muted)) 9%, var(--dash-card));
+  position: relative;
+}
+.dash-status-dot { position: absolute; left: 16px; top: 22px; width: 10px; height: 10px; border-radius: 50%; background: var(--dash-state, var(--dash-muted)); }
+.dash-status-head { margin: 0; font-weight: 700; }
+.dash-status-body, .dash-status-review { margin: var(--dash-s1) 0 0; line-height: 1.45; }
+.dash-status-review { color: var(--dash-muted); }
 .dash-status--busier  { --dash-state: #1E7F4F; }
-.dash-status--steady  { --dash-state: var(--dash-muted); }
+.dash-status--steady  { --dash-state: #6B6570; }
 .dash-status--quieter { --dash-state: #B5701A; }
 
-@media (prefers-reduced-motion: no-preference) {
-  .dash-status { transition: box-shadow 200ms ease; }
+/* ---------- month by month (columns) ---------- */
+.dash-chart { margin: var(--dash-s5) 0 0; }
+.dash-cols {
+  display: flex; align-items: flex-end; justify-content: space-around;
+  height: 200px; padding: 0 var(--dash-s2);
+  border-bottom: 1px solid var(--dash-line);
+}
+.dash-col { flex: 1 1 0; min-width: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: var(--dash-s2); }
+.dash-col-val { font-weight: 700; font-size: 1rem; line-height: 1; }
+/* thin marks: the band's leftover is air, never filled */
+.dash-col-bar { width: 24px; min-height: 3px; border-radius: 4px 4px 0 0; background: var(--dash-accent-solid); }
+.dash-col--partial .dash-col-bar { background: color-mix(in srgb, var(--dash-accent-solid) 50%, var(--dash-card)); }
+.dash-col-labs { display: flex; justify-content: space-around; padding: var(--dash-s2) var(--dash-s2) 0; }
+.dash-col-lab { flex: 1 1 0; min-width: 0; text-align: center; font-size: var(--dash-fs-meta); color: var(--dash-muted); line-height: 1.3; }
+.dash-col-lab span { display: block; font-size: .75rem; }
+.dash-note { margin: var(--dash-s5) 0 0; padding-top: var(--dash-s4); border-top: 1px solid var(--dash-line); font-size: var(--dash-fs-meta); color: var(--dash-muted); line-height: 1.5; }
+
+/* ---------- what people ask about (horizontal bars) ---------- */
+.dash-bars { margin: var(--dash-s5) 0 0; padding: 0; list-style: none; display: grid; gap: var(--dash-s4); }
+.dash-bar-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--dash-s3); }
+.dash-bar-lab { margin: 0; line-height: 1.35; overflow-wrap: anywhere; }
+.dash-bar-val { font-weight: 700; flex: none; }
+.dash-bar-track { margin-top: 6px; height: 10px; border-radius: 4px; background: var(--dash-accent-soft); overflow: hidden; }
+.dash-bar-fill { height: 100%; border-radius: 4px; background: var(--dash-accent-solid); }
+
+/* ---------- latest inquiries ---------- */
+.dash-list { margin: var(--dash-s4) 0 0; padding: 0; list-style: none; }
+.dash-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--dash-s4); row-gap: 2px; padding: 14px 0; border-top: 1px solid var(--dash-line); }
+.dash-item:first-child { border-top: 0; }
+.dash-item-name { font-weight: 700; overflow-wrap: anywhere; }
+.dash-item-when { color: var(--dash-muted); font-size: var(--dash-fs-meta); font-variant-numeric: tabular-nums; white-space: nowrap; justify-self: end; }
+.dash-item-what { grid-column: 1 / -1; grid-row: 2; color: var(--dash-muted); font-size: .95rem; overflow-wrap: anywhere; }
+.dash-item-when { grid-column: 2; grid-row: 1; }
+@media (min-width: 900px) {
+  .dash-item { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr) minmax(0, 1fr); align-items: baseline; }
+  .dash-item-what { grid-column: auto; grid-row: 1; grid-column-start: 2; }
+  .dash-item-when { grid-column-start: 3; grid-row: 1; }
+}
+
+/* ---------- generic rows (other blocks) ---------- */
+.dash-row { display: block; padding: 12px 0; border-top: 1px solid var(--dash-line); }
+.dash-row:first-of-type { margin-top: var(--dash-s3); }
+.dash-row-label { display: block; font-weight: 700; }
+.dash-row-value { display: block; margin-top: 2px; color: var(--dash-muted); overflow-wrap: anywhere; }
+.dash-state, .dash-loading { color: var(--dash-muted); }
+.dash-loading { margin: var(--dash-s6) 0; }
+
+/* ---------- password gate ---------- */
+.dash-gate {
+  position: relative;
+  display: grid; gap: var(--dash-s4);
+  max-width: 420px; margin: var(--dash-s2) 0 0;   /* one alignment line with the heading above */
+  background: var(--dash-card); border-radius: var(--dash-radius);
+  padding: clamp(24px, 4vw, 36px); box-shadow: 0 0 0 1px var(--dash-line), var(--dash-shadow);
+}
+.dash-gate-label { display: grid; gap: var(--dash-s2); font-weight: 700; line-height: 1.35; }
+.dash-gate-input {
+  display: block; width: 100%; box-sizing: border-box;
+  min-height: 48px; padding: 12px 14px;
+  font: inherit; font-weight: 400; color: var(--dash-ink);
+  background: var(--dash-card);
+  border: 2px solid color-mix(in srgb, var(--dash-ink) 22%, transparent);
+  border-radius: var(--dash-radius-sm);
+  transition: border-color var(--dash-dur) var(--dash-ease-std), box-shadow var(--dash-dur) var(--dash-ease-std);
+}
+.dash-gate-input:hover { border-color: color-mix(in srgb, var(--dash-ink) 40%, transparent); }
+.dash-gate-input:focus { outline: none; }
+.dash-gate-input:focus-visible { border-color: var(--dash-accent-solid); box-shadow: 0 0 0 4px color-mix(in srgb, var(--dash-accent-solid) 22%, transparent); }
+.dash-gate-input[aria-invalid="true"] { border-color: var(--dash-accent-ink); }
+.dash-gate-btn {
+  min-height: 48px; padding: 12px 20px;
+  font: inherit; font-weight: 700; color: #fff;
+  background: var(--dash-accent-solid);
+  border: 0; border-radius: var(--dash-radius-sm); cursor: pointer;
+  transition: background-color var(--dash-dur) var(--dash-ease-std), transform var(--dash-dur) var(--dash-ease-emph);
+}
+.dash-gate-btn:hover { background: var(--dash-accent-solid-dk); }
+.dash-gate-btn:active { transform: translateY(1px); }
+.dash-gate-btn:focus { outline: none; }
+.dash-gate-btn:focus-visible { box-shadow: 0 0 0 3px var(--dash-card), 0 0 0 6px var(--dash-accent-solid); }
+.dash-gate-btn:disabled { cursor: progress; background: color-mix(in srgb, var(--dash-accent-solid) 70%, var(--dash-card)); transform: none; }
+.dash-gate-msg { margin: 0; color: var(--dash-accent-ink); font-weight: 700; line-height: 1.4; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-gate-input, .dash-gate-btn { transition: none; }
+  .dash-gate-btn:active { transform: none; }
+}
+@media (forced-colors: active) {
+  .dash-col-bar, .dash-bar-fill { background: CanvasText; }
+  .dash-col--partial .dash-col-bar { background: GrayText; }
 }

@@ -1,34 +1,47 @@
-// dashboard.js — renders the payload contract. ALL client-readable chrome strings live
+// dashboard.js — renders the numbers payload. ALL client-readable chrome strings live
 // in the STRINGS block below (the banned-terms lint scans this file in full).
 (function () {
   /* STRINGS-START */
   var STRINGS = {
-    passwordLabel: 'Enter your password to see your numbers',
-    passwordButton: 'Show me',
-    wrongPassword: 'That password didn\'t work — check with James if you\'ve lost it.',
-    slowDown: 'Too many tries — wait a few minutes and try again.',
+    gateLabel: 'Enter your password to see your numbers',
+    gateButton: 'Show me',
+    gateChecking: 'Checking…',
+    emptyPassword: 'Type your password first.',
+    wrongPassword: 'That password didn\'t work. Lost it? Ask us for a new one.',
+    slowDown: 'Too many tries. Wait a few minutes, then try again.',
     loading: 'Getting your numbers…',
     pending: 'We\'re still hooking this up.',
-    blockError: 'We couldn\'t load this right now — try a refresh.',
-    offline: 'We couldn\'t reach your numbers — check your connection and refresh.',
+    blockError: 'This part didn\'t load. Try refreshing the page.',
+    offline: 'We couldn\'t reach your numbers. Check your connection and refresh.',
+    heroEyebrow: '{Month} so far',
+    daysIn: '{n} days in',
+    daysInOne: '1 day in',
+    windowLabel: 'inquiries from {Month} to now',
+    windowLabelOne: 'inquiry from {Month} to now',
+    factsLabel: 'Running total and Google rating',
+    ratingLabel: 'Google rating',
+    ratingSub: '{count} reviews · checked {date}',
+    ratingSubOne: '1 review · checked {date}',
     monthsTitle: 'Month by month',
+    partialMonth: 'so far',
+    earlyNote: 'Too early to tell if things are picking up or slowing down. That takes six full months. It\'ll show here once we have them.',
     mixTitle: 'What people ask about most',
+    latestTitle: 'Latest inquiries',
     sourcesTitle: 'How people found you',
     eventsTitle: 'What kind of events',
-    totalLabel: 'Inquiries since ',
-    reviewsLabel: 'Your Google rating',
-    reviewsFrom: ' from ',
-    reviewsCount: ' reviews',
-    checkedOn: 'Checked ',
     busierHead: 'A busier stretch',
-    busierBody: '{recent} inquiries came in over the last 3 months, up from {prior} in the 3 months before that. More coming in means more to handle.',
+    busierBody: '{recent} inquiries over the last 3 full months, up from {prior} in the 3 months before.',
     steadyHead: 'A steady stretch',
-    steadyBody: '{recent} inquiries came in over the last 3 months. That kind of consistency is easier to build a business around than the big swings up and down.',
+    steadyBody: '{recent} inquiries over the last 3 full months, about the same as the 3 months before.',
     quieterHead: 'A quieter stretch',
-    quieterBody: '{recent} inquiries came in over the last 3 months, down from {prior} in the 3 months before that. It happens for every business.',
-    reviewsGained: '{added} new reviews rolled in, bringing your total to {total}.'
+    quieterBody: '{recent} inquiries over the last 3 full months, down from {prior} in the 3 months before.',
+    reviewsGained: '{added} new Google reviews since our last check, {total} in all.',
+    reviewsGainedOne: '1 new Google review since our last check, {total} in all.'
   };
   /* STRINGS-END */
+
+  var MONTHS = { Jan: 'January', Feb: 'February', Mar: 'March', Apr: 'April', May: 'May', Jun: 'June',
+    Jul: 'July', Aug: 'August', Sep: 'September', Oct: 'October', Nov: 'November', Dec: 'December' };
 
   var cfg = window.DASH_CONFIG;
   var root = document.getElementById('dash');
@@ -45,29 +58,55 @@
   function el(tag, cls, text) {
     var n = document.createElement(tag);
     if (cls) n.className = cls;
-    if (text !== undefined) n.textContent = text;   // textContent everywhere — no HTML injection surface
+    if (text !== undefined) n.textContent = text;   // textContent everywhere: no HTML injection surface
     return n;
   }
 
+  function fill(s, map) {
+    return String(s).replace(/\{(\w+)\}/g, function (m, k) { return map[k] !== undefined ? map[k] : m; });
+  }
+
+  function title(key) {
+    return (cfg.blockTitles || {})[key] || STRINGS[key + 'Title'] || key;
+  }
+
+  // ---------- password gate ----------
   function showGate(msg) {
     root.replaceChildren();
     var form = el('form', 'dash-gate');
-    var label = el('label', 'dash-gate-label', STRINGS.passwordLabel);
+    form.noValidate = true;
+    var label = el('label', 'dash-gate-label', STRINGS.gateLabel);
     var input = el('input', 'dash-gate-input');
-    input.type = 'password'; input.autocomplete = 'current-password'; label.appendChild(input);
-    var btn = el('button', 'dash-gate-btn', STRINGS.passwordButton);
+    input.type = 'password'; input.name = 'password'; input.required = true;
+    input.autocomplete = 'current-password';
+    label.appendChild(input);
+    var btn = el('button', 'dash-gate-btn', STRINGS.gateButton);
+    btn.type = 'submit';
     form.append(label, btn);
-    if (msg) form.appendChild(el('p', 'dash-gate-msg', msg));
+    if (msg) {
+      var m = el('p', 'dash-gate-msg', msg);
+      m.id = 'dash-gate-msg'; m.setAttribute('role', 'alert');
+      input.setAttribute('aria-invalid', 'true');
+      input.setAttribute('aria-describedby', 'dash-gate-msg');
+      form.appendChild(m);
+    }
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
-      load({ password: input.value });
+      if (!input.value) {
+        var e = form.querySelector('.dash-gate-msg') || form.appendChild(el('p', 'dash-gate-msg'));
+        e.id = 'dash-gate-msg'; e.setAttribute('role', 'alert'); e.textContent = STRINGS.emptyPassword;
+        input.setAttribute('aria-invalid', 'true'); input.setAttribute('aria-describedby', 'dash-gate-msg');
+        input.focus(); return;
+      }
+      btn.disabled = true; btn.textContent = STRINGS.gateChecking;
+      load({ password: input.value }, true);
     });
     root.appendChild(form);
     input.focus();
   }
 
-  function load(auth) {
-    root.replaceChildren(el('p', 'dash-loading', STRINGS.loading));
+  function load(auth, fromGate) {
+    if (!fromGate) root.replaceChildren(el('p', 'dash-loading', STRINGS.loading));
     post(auth).then(function (res) {
       if (!res.ok) {
         try { sessionStorage.removeItem('dashToken'); } catch (e) {}
@@ -77,206 +116,279 @@
       if (res.token) { try { sessionStorage.setItem('dashToken', res.token); } catch (e) {} }
       render(res.data);
     }).catch(function (err) {
-      /* This catch sits downstream of render(), so a CODE error here was being
-         reported to the client as "check your connection" -- sending her to reboot
-         her router while the page was broken. The message she sees stays friendly;
-         the cause now reaches the console so it is diagnosable at all. */
+      /* This catch also sits downstream of render(), so a code error lands here too.
+         The message she sees stays friendly; the cause goes to the console so it can
+         be diagnosed instead of being blamed on her connection. */
       if (window.console && console.error) console.error('dashboard failed:', err);
       showGate(STRINGS.offline);
     });
   }
 
-  // Column chart (time trend) — single series, values direct-labeled, 4px data-end radius.
-  function colsChart(chart) {
-    var wrap = el('div', 'dash-cols');
-    var max = Math.max.apply(null, chart.points.map(function (p) { return p.value; })) || 1;
-    chart.points.forEach(function (p) {
-      var col = el('div', 'dash-col');
+  // ---------- helpers on the leads block ----------
+  function monthPoints(data) {
+    var leads = (data.blocks || {}).leads;
+    return (leads && leads.status === 'live' && leads.months && leads.months.points) || null;
+  }
+  // The server always ends the series on the current month, which is still filling up.
+  function lastIsPartial(pts, data) {
+    if (!pts || !pts.length) return false;
+    var cur = String(data.monthLabel || '').slice(0, 3);
+    return !!cur && pts[pts.length - 1].label === cur;
+  }
+  function sumPts(a) { return a.reduce(function (t, p) { return t + (Number(p.value) || 0); }, 0); }
+
+  // ---------- charts: visual marks are decorative, a real table carries the values ----------
+  // A table grows to fit its cells whatever width it is given, so the hidden copy sits
+  // inside a 1px clipping wrapper; on its own it widened the page at 320px.
+  function srTable(caption, rows) {
+    var wrap = el('div', 'dash-sr');
+    var t = el('table');
+    t.appendChild(el('caption', null, caption));
+    var tb = el('tbody');
+    rows.forEach(function (r) {
+      var tr = el('tr');
+      tr.appendChild(el('th', null, r[0])).setAttribute('scope', 'row');
+      tr.appendChild(el('td', null, String(r[1])));
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb);
+    wrap.appendChild(t);
+    return wrap;
+  }
+
+  function colsChart(chart, partial, caption) {
+    var fig = el('figure', 'dash-chart');
+    // The chart card holds about seven columns before the labels collide: on a phone, and
+    // between 900 and 1279px where it is the narrow card of its row. A long series draws its
+    // latest seven there; the hidden table below always lists every month.
+    var all = chart.points;
+    var narrow = window.matchMedia && window.matchMedia('(max-width: 599px), (min-width: 900px) and (max-width: 1279px)').matches;
+    var shown = narrow && all.length > 7 ? all.slice(-7) : all;
+    var vis = el('div', 'dash-cols'); vis.setAttribute('aria-hidden', 'true');
+    var labs = el('div', 'dash-col-labs'); labs.setAttribute('aria-hidden', 'true');
+    var max = Math.max.apply(null, shown.map(function (p) { return Number(p.value) || 0; })) || 1;
+    shown.forEach(function (p, i) {
+      var isPartial = partial && i === shown.length - 1;
+      var col = el('div', 'dash-col' + (isPartial ? ' dash-col--partial' : ''));
       col.appendChild(el('span', 'dash-col-val', String(p.value)));
       var bar = el('div', 'dash-col-bar');
-      bar.style.height = Math.max(4, Math.round(p.value / max * 110)) + 'px';
+      // 150px is the tallest mark; the value label and gap ride above it inside the 200px plot
+      bar.style.height = Math.max(3, Math.round((Number(p.value) || 0) / max * 150)) + 'px';
       col.appendChild(bar);
-      col.appendChild(el('span', 'dash-col-lab', p.label));
-      wrap.appendChild(col);
+      vis.appendChild(col);
+      var lab = el('p', 'dash-col-lab', p.label);
+      if (isPartial) lab.appendChild(el('span', null, STRINGS.partialMonth));
+      labs.appendChild(lab);
     });
-    return wrap;
+    var rows = all.map(function (p, i) {
+      var last = partial && i === all.length - 1;
+      return [(MONTHS[p.label] || p.label) + (last ? ' (' + STRINGS.partialMonth + ')' : ''), p.value];
+    });
+    fig.append(vis, labs, srTable(caption, rows));
+    return fig;
   }
 
-  // Horizontal bars (category mix) — sorted by the server, values at the end.
-  function barsChart(chart) {
-    var wrap = el('div', 'dash-bars');
-    var max = Math.max.apply(null, chart.points.map(function (p) { return p.value; })) || 1;
+  function barsChart(chart, caption) {
+    var fig = el('figure', 'dash-chart');
+    var list = el('ul', 'dash-bars'); list.setAttribute('aria-hidden', 'true');
+    var max = Math.max.apply(null, chart.points.map(function (p) { return Number(p.value) || 0; })) || 1;
     chart.points.forEach(function (p) {
-      var row = el('div', 'dash-bar-row');
-      row.appendChild(el('p', 'dash-bar-lab', p.label));
-      var line = el('div', 'dash-bar-line');
+      var li = el('li');
+      var head = el('div', 'dash-bar-head');
+      head.append(el('p', 'dash-bar-lab', p.label), el('span', 'dash-bar-val', String(p.value)));
       var track = el('div', 'dash-bar-track');
-      var fill = el('div', 'dash-bar-fill');
-      fill.style.width = Math.max(4, Math.round(p.value / max * 100)) + '%';
-      track.appendChild(fill);
-      line.appendChild(track);
-      line.appendChild(el('span', 'dash-bar-val', String(p.value)));
-      row.appendChild(line);
-      wrap.appendChild(row);
+      var f = el('div', 'dash-bar-fill');
+      f.style.width = Math.max(3, Math.round((Number(p.value) || 0) / max * 100)) + '%';
+      track.appendChild(f);
+      li.append(head, track);
+      list.appendChild(li);
     });
-    return wrap;
+    fig.append(list, srTable(caption, chart.points.map(function (p) { return [p.label, p.value]; })));
+    return fig;
   }
 
-  function chartCard(titleKey, chart, builder) {
-    var card = el('section', 'dash-card dash-chart');
-    card.appendChild(el('h2', 'dash-card-title',
-      (cfg.blockTitles || {})[titleKey] || STRINGS[titleKey + 'Title']));
-    if (chart.sentence) card.appendChild(el('p', 'dash-sentence', chart.sentence));
-    card.appendChild(builder(chart));
+  function chartCard(key, chart, builder, span) {
+    var card = el('section', 'dash-card dash-c-' + key + ' ' + span);
+    var t = title(key);
+    card.appendChild(el('h2', 'dash-card-title', t));
+    // the server's mix sentence restates the card title ("... is the thing people ask about
+    // most") and the first bar already says it, so only the other charts print theirs
+    if (chart.sentence && key !== 'mix') card.appendChild(el('p', 'dash-sentence', chart.sentence));
+    card.appendChild(builder(chart, t));
     return card;
   }
 
-  /* The headline strip. Two numbers, chosen because they are the two a business owner
-     actually feels: how many people have asked her for work, and what strangers see
-     when they look her up. Everything below this is the detail behind them.
-
-     Both are derived, never re-entered: the total is summed from the same months the
-     chart draws, so the strip can never disagree with the chart under it. The rating
-     comes from cfg.snapshot and is a MEASURED MONTHLY READ, not a live feed — Google
-     exposes no rating API we can use — so it renders with the date it was taken.
-     A static number shown without its as-of date rots invisibly, so the date ships
-     beside it and the reader can judge the number's age themselves. */
-  function tile(big, label, sub) {
-    var t = el('div', 'dash-tile');
-    t.appendChild(el('p', 'dash-tile-big', big));
-    t.appendChild(el('p', 'dash-tile-label', label));
-    if (sub) t.appendChild(el('p', 'dash-tile-sub', sub));
-    return t;
-  }
-
-  /* The status line. One plain sentence saying whether things are busier, steady or
-     quieter than THIS client's own recent past — never against a target, because
-     there is no honest absolute number to compare a small business to.
-
-     Three decisions hold this together, and all three exist because the volume is
-     low. This client averages about 9 or 10 inquiries a month, where a month of 6
-     and a month of 13 are both completely ordinary:
-
-     1. THREE-MONTH WINDOWS, never month over month. One slow month is noise. A slow
-        quarter is information. Month-over-month on these numbers would swing the
-        state constantly and teach the reader to ignore the whole page.
-     2. The band is max(3, 20% of the prior window). Roughly a standard deviation
-        at this volume, and the absolute floor of 3 stops a tiny client flipping
-        state on a single extra inquiry.
-     3. STEADY IS A GOOD STATE and is styled calm, not as a warning. It is where
-        most quarters land, and a dashboard whose normal reading looks like an
-        alarm is one nobody opens twice.
-
-     Needs 6 months of history to say anything at all; with less it renders nothing
-     rather than a verdict built on four data points. Colour is never the only
-     signal — the sentence says it, the dot only decorates. */
+  /* ---------- status line ----------
+     One plain sentence saying whether things are busier, steady or quieter than THIS
+     client's own recent past, never against a target.
+     1. THREE-MONTH WINDOWS of COMPLETE months. The current month is still filling up,
+        so counting it would tilt every reading toward "quieter".
+     2. The band is max(3, 20% of the prior window): roughly one standard deviation at
+        about ten inquiries a month, with a floor so one extra inquiry never flips it.
+     3. Needs six complete months. With fewer it says nothing, and the month card
+        explains why instead. */
   function statusLine(data) {
-    var leads = (data.blocks || {}).leads;
-    var pts = leads && leads.status === 'live' && leads.months && leads.months.points;
-    if (!pts || pts.length < 6) return null;
-
-    var n = function (p) { return Number(p.value) || 0; };
-    var sum = function (a) { return a.reduce(function (t, p) { return t + n(p); }, 0); };
-    var recent = sum(pts.slice(-3));
-    var prior = sum(pts.slice(-6, -3));
-    var band = Math.max(3, prior * 0.2);
-    var diff = recent - prior;
+    var pts = monthPoints(data);
+    if (!pts) return null;
+    var done = lastIsPartial(pts, data) ? pts.slice(0, -1) : pts;
+    if (done.length < 6) return null;
+    var recent = sumPts(done.slice(-3)), prior = sumPts(done.slice(-6, -3));
+    var band = Math.max(3, prior * 0.2), diff = recent - prior;
     var state = diff > band ? 'busier' : (diff < -band ? 'quieter' : 'steady');
-
-    var fill = function (s) {
-      return s.replace('{recent}', recent).replace('{prior}', prior);
-    };
     var box = el('div', 'dash-status dash-status--' + state);
-    box.appendChild(el('span', 'dash-status-dot'))
-      .setAttribute('aria-hidden', 'true');
+    box.appendChild(el('span', 'dash-status-dot')).setAttribute('aria-hidden', 'true');
     box.appendChild(el('p', 'dash-status-head', STRINGS[state + 'Head']));
-    box.appendChild(el('p', 'dash-status-body', fill(STRINGS[state + 'Body'])));
-
-    /* Reviews only go up, so this is the one unambiguous signal on the page. It
-       needs a previous count to subtract from; without `prev` in the snapshot it
-       stays silent rather than guessing at a delta. */
+    box.appendChild(el('p', 'dash-status-body', fill(STRINGS[state + 'Body'], { recent: recent, prior: prior })));
     var s = cfg.snapshot && cfg.snapshot.reviews;
     if (s && s.count && s.prev && s.count > s.prev) {
+      var added = s.count - s.prev;
       box.appendChild(el('p', 'dash-status-review',
-        STRINGS.reviewsGained.replace('{added}', s.count - s.prev).replace('{total}', s.count)));
+        fill(added === 1 ? STRINGS.reviewsGainedOne : STRINGS.reviewsGained, { added: added, total: s.count })));
     }
     return box;
   }
 
-  function summaryStrip(data) {
-    var strip = el('div', 'dash-strip'), any = false;
+  /* ---------- the answer: this month ----------
+     One big number, the one an owner feels first: how many people asked for work this
+     month. The partial month gets its day count beside it so a short month is never
+     read as a slow one. The two facts beside it are derived, never re-entered: the
+     window total is summed from the same months the chart draws, and the rating is a
+     monthly hand-read that always shows the date it was taken. */
+  function stat(big, label, sub) {
+    var d = el('div', 'dash-stat');
+    d.appendChild(el('p', 'dash-stat-big', big));
+    d.appendChild(el('p', 'dash-stat-label', label));
+    if (sub) d.appendChild(el('p', 'dash-stat-sub', sub));
+    return d;
+  }
 
-    var leads = (data.blocks || {}).leads;
-    var pts = leads && leads.status === 'live' && leads.months && leads.months.points;
-    if (pts && pts.length) {
-      var total = pts.reduce(function (n, p) { return n + (Number(p.value) || 0); }, 0);
-      strip.appendChild(tile(String(total), STRINGS.totalLabel + pts[0].label));
-      any = true;
+  function heroCard(data, leads) {
+    var card = el('section', 'dash-card dash-hero dash-c-hero dash-span-all');
+    card.setAttribute('aria-labelledby', 'dash-hero-eyebrow');
+    var body = el('div', 'dash-hero-body');
+    var main = el('div', 'dash-hero-main');
+    var month = data.monthLabel || '';
+    var eyebrow = el('h2', 'dash-eyebrow', fill(STRINGS.heroEyebrow, { Month: month }));
+    eyebrow.id = 'dash-hero-eyebrow';
+    main.appendChild(eyebrow);
+
+    var h = leads.headline;
+    var value = String(h.value);
+    var sentence = String(h.sentence || '');
+    // the server writes "3 new inquiries so far in October" (or "no new inquiries yet in
+    // October"). The figure carries the count and the eyebrow carries the month, so the
+    // label keeps only the noun: "new inquiries". Anything unexpected shows as sent.
+    var label = sentence;
+    var m = sentence.match(new RegExp('^(?:' + value + '|no) (.+?) (?:so far|yet) in ' + month + '$'));
+    if (m) label = m[1];
+    else if (sentence.indexOf(value + ' ') === 0) label = sentence.slice(value.length + 1);
+    var row = el('div', 'dash-figure-row');
+    row.append(el('p', 'dash-figure', value), el('p', 'dash-figure-label', label));
+    main.appendChild(row);
+
+    var ctx = el('ul', 'dash-context');
+    var pts = monthPoints(data);
+    if (lastIsPartial(pts, data)) {
+      var day = new Date().getDate();
+      ctx.appendChild(el('li', 'dash-chip', fill(day === 1 ? STRINGS.daysInOne : STRINGS.daysIn, { n: day, Month: month })));
     }
+    if (h.prev) ctx.appendChild(el('li', 'dash-chip', h.prev));
+    if (ctx.childNodes.length) main.appendChild(ctx);
+    body.appendChild(main);
+    card.appendChild(body);
 
+    var status = statusLine(data);
+    if (status) card.appendChild(status);
+
+    var facts = el('section', 'dash-card dash-facts dash-c-facts dash-span-5');
+    facts.setAttribute('aria-label', STRINGS.factsLabel);
+    if (pts && pts.length) {
+      var total = sumPts(pts);
+      facts.appendChild(stat(String(total),
+        fill(total === 1 ? STRINGS.windowLabelOne : STRINGS.windowLabel, { Month: MONTHS[pts[0].label] || pts[0].label })));
+    }
     var s = cfg.snapshot && cfg.snapshot.reviews;
     if (s && s.count) {
-      strip.appendChild(tile(
-        String(s.rating),
-        STRINGS.reviewsLabel,
-        // no rating here — the big number already said it
-        STRINGS.reviewsFrom.replace(/^ /, '') + s.count + STRINGS.reviewsCount +
-          (s.asOf ? ' · ' + STRINGS.checkedOn + s.asOf : '')
-      ));
-      any = true;
+      facts.appendChild(stat(String(s.rating), STRINGS.ratingLabel,
+        fill(Number(s.count) === 1 ? STRINGS.ratingSubOne : STRINGS.ratingSub, { count: s.count, date: String(s.asOf || '').replace(/ /g, ' ') })
+          .replace(/ · $/, '')));
     }
-    return any ? strip : null;
+    if (!facts.childNodes.length) facts = null;
+    else card.classList.replace('dash-span-all', 'dash-span-7');
+    return { card: card, facts: facts, hasStatus: !!status };
+  }
+
+  // the server writes "Balloon Columns — Oct 6"; the date goes in its own column
+  function splitMeta(meta) {
+    var s = String(meta || ''), i = s.lastIndexOf(' — ');
+    return i < 0 ? { what: s, when: '' } : { what: s.slice(0, i), when: s.slice(i + 3) };
+  }
+
+  function latestCard(list) {
+    var card = el('section', 'dash-card dash-c-latest dash-span-all');
+    card.appendChild(el('h2', 'dash-card-title', title('latest')));
+    var ul = el('ul', 'dash-list');
+    list.forEach(function (it) {
+      var m = splitMeta(it.meta);
+      var li = el('li', 'dash-item');
+      li.appendChild(el('span', 'dash-item-name', it.title || ''));
+      if (m.what) li.appendChild(el('span', 'dash-item-what', m.what));
+      if (m.when) li.appendChild(el('span', 'dash-item-when', m.when));
+      ul.appendChild(li);
+    });
+    card.appendChild(ul);
+    return card;
+  }
+
+  // any block other than leads keeps the plain card layout
+  function genericCard(name, b) {
+    var card = el('section', 'dash-card dash-span-all dash-' + name);
+    card.appendChild(el('h2', 'dash-card-title', title(name)));
+    if (b.status !== 'live') {
+      card.appendChild(el('p', 'dash-state', b.status === 'pending' ? STRINGS.pending : STRINGS.blockError));
+      return card;
+    }
+    if (b.headline) {
+      card.appendChild(el('p', 'dash-stat-big', b.headline.value));
+      card.appendChild(el('p', 'dash-sentence', b.headline.sentence));
+      if (b.headline.prev) card.appendChild(el('p', 'dash-stat-sub', b.headline.prev));
+    }
+    ['items', 'how', 'list'].forEach(function (kind) {
+      (Array.isArray(b[kind]) ? b[kind] : []).forEach(function (it) {
+        var row = el('div', 'dash-row');
+        row.appendChild(el('span', 'dash-row-label', it.title || it.label));
+        row.appendChild(el('span', 'dash-row-value', it.meta || it.value || ''));
+        card.appendChild(row);
+      });
+    });
+    return card;
   }
 
   function render(data) {
     root.replaceChildren();
-    root.appendChild(el('p', 'dash-month', data.monthLabel));
-    var status = statusLine(data);
-    if (status) root.appendChild(status);
-    var strip = summaryStrip(data);
-    if (strip) root.appendChild(strip);
+    var grid = el('div', 'dash-grid');
     (cfg.blockOrder || []).forEach(function (name) {
-      var b = data.blocks[name]; if (!b) return;
-      var card = el('section', 'dash-card dash-' + name);
-      card.appendChild(el('h2', 'dash-card-title', (cfg.blockTitles || {})[name] || name));
-      if (b.status !== 'live') {
-        card.appendChild(el('p', 'dash-state',
-          b.status === 'pending' ? STRINGS.pending : STRINGS.blockError));
-      } else {
-        if (b.headline) {
-          /* The server sends value "8" and sentence "8 new inquiries so far in September".
-             Rendering both printed the same number twice, with the largest type on the
-             page carrying no information the sentence did not already give. When the
-             sentence already opens with the value, the sentence wins. */
-          var dup = b.headline.sentence &&
-                    String(b.headline.sentence).indexOf(String(b.headline.value)) === 0;
-          if (!dup) card.appendChild(el('p', 'dash-big', b.headline.value));
-          card.appendChild(el('p', 'dash-sentence', b.headline.sentence));
-          if (b.headline.prev) card.appendChild(el('p', 'dash-prev', b.headline.prev));
-        }
-        ['items', 'how', 'list'].forEach(function (kind) {
-          (b[kind] || []).forEach(function (it) {
-            var row = el('div', 'dash-row');
-            row.appendChild(el('span', 'dash-row-label', it.title || it.label));
-            row.appendChild(el('span', 'dash-row-value', it.meta || it.value || ''));
-            card.appendChild(row);
-          });
-        });
+      var b = (data.blocks || {})[name]; if (!b) return;
+      if (name !== 'leads' || b.status !== 'live' || !b.headline) { grid.appendChild(genericCard(name, b)); return; }
+      var hero = heroCard(data, b);
+      grid.appendChild(hero.card);
+      if (hero.facts) grid.appendChild(hero.facts);
+      if (b.months) {
+        var pts = b.months.points || [];
+        var partial = lastIsPartial(pts, data);
+        var months = chartCard('months', b.months, function (c, cap) { return colsChart(c, partial, cap); }, 'dash-span-5');
+        if (!hero.hasStatus) months.appendChild(el('p', 'dash-note', STRINGS.earlyNote));
+        grid.appendChild(months);
       }
-      root.appendChild(card);
-      if (name === 'leads') {
-        if (b.months) root.appendChild(chartCard('months', b.months, colsChart));
-        /* how + events are OPTIONAL in the payload and stay absent until the backend
-           sends them -- an older deploy simply renders what it always did. They sit
-           above 'mix' because "where did they come from" and "what kind of job" are
-           the two she can act on; "which service" is detail under them. */
-        /* NOT named 'how' -- that key is already consumed as an ARRAY by the list
-           loop above, and an object there throws .forEach and blanks the whole page. */
-        if (b.sources) root.appendChild(chartCard('sources', b.sources, barsChart));
-        if (b.events) root.appendChild(chartCard('events', b.events, barsChart));
-        if (b.mix) root.appendChild(chartCard('mix', b.mix, barsChart));
-      }
+      /* sources and events are optional in the payload and stay absent until the
+         backend sends them. They are NOT named 'how': that key is an array on other
+         blocks, and an object there would throw inside the row loop. */
+      if (b.mix) grid.appendChild(chartCard('mix', b.mix, barsChart, b.months ? 'dash-span-7' : 'dash-span-all'));
+      if (b.sources) grid.appendChild(chartCard('sources', b.sources, barsChart, 'dash-span-all'));
+      if (b.events) grid.appendChild(chartCard('events', b.events, barsChart, 'dash-span-all'));
+      if (b.list && b.list.length) grid.appendChild(latestCard(b.list));
     });
+    root.appendChild(grid);
   }
 
   var token = null;

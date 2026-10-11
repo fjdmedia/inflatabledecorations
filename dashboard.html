@@ -5,36 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
   <meta name="color-scheme" content="light">
-  <title>Your Numbers — Inflatable Decorations</title>
+  <title>Your numbers · Inflatable Decorations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Assets/dashboard/dashboard.css">
   <style>
     :root { color-scheme: light only;
-      /* Brand tokens set statically so first paint matches (JS re-applies the same values
-         from dashboard-config.js — keep both in sync when re-skinning): */
-      --dash-accent: #FF5FA2; --dash-bg: #FFF9F5; --dash-ink: #3A2E39;
-      --dash-card: #FFFFFF; --dash-font: "DM Sans", system-ui, sans-serif; }
-    body { margin: 0; background: var(--dash-bg, #FFF9F5); }
-    .dash-header { padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 48px) 0;
-      font-family: "DM Sans", system-ui, sans-serif; color: #3A2E39; }
-    .dash-header h1 { font-family: "Caprasimo", "DM Sans", serif; font-size: clamp(1.8rem, 5vw, 2.6rem);
-      margin: 0; color: #FF5FA2; }
-    .dash-header p { margin: 6px 0 0; color: #6b6570; }
-    /* Her signature scallop edge (site-wide brand pattern), soft pink, one strip only */
-    .dash-scallop { height: 10px; margin-top: 18px;
-      background: radial-gradient(circle 8px at 8px 0, rgba(255, 95, 162, .28) 7px, transparent 8px);
-      background-size: 16px 10px; background-repeat: repeat-x; }
+      /* Brand tokens set statically so the first paint matches. dashboard.js re-applies
+         the same values from dashboard-config.js: keep the two in sync when re-skinning. */
+      --dash-bg: #FFF8F0; --dash-card: #FFFFFF; --dash-ink: #2D1B3D; --dash-muted: #6B6570;
+      --dash-accent: #FF5FA2; --dash-accent-ink: #B02E62; --dash-accent-solid: #C9356F;
+      --dash-accent-solid-dk: #A32A59; --dash-accent-soft: #FFE0EC;
+      --dash-font: "DM Sans", system-ui, sans-serif; --dash-display: "Caprasimo", "DM Sans", serif; }
+    body { margin: 0; background: var(--dash-bg); }
+    .dash-header { padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 48px) 0;
+      font-family: var(--dash-font); color: var(--dash-ink); }
+    .dash-brand { margin: 0 0 6px; font-size: .8125rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--dash-accent-ink); }
+    .dash-header h1 { font-family: var(--dash-display); font-weight: 400; font-size: clamp(2rem, 5.2vw, 3rem);
+      line-height: 1.05; margin: 0; color: var(--dash-ink); }
+    .dash-sub { margin: 10px 0 0; font-size: 1.0625rem; line-height: 1.45; color: var(--dash-muted); max-width: 46ch; }
   </style>
 </head>
 <body>
   <header class="dash-header">
+    <p class="dash-brand">Inflatable Decorations</p>
     <h1>Your numbers</h1>
-    <p>Inflatable Decorations — what your website is doing for you this month.</p>
-    <div class="dash-scallop" aria-hidden="true"></div>
+    <p class="dash-sub">Every inquiry from your website, counted as it comes in.</p>
   </header>
-  <main id="dash" class="dash-wrap"></main>
+  <main id="dash" class="dash-wrap" aria-live="polite"></main>
   <script src="Assets/dashboard/dashboard-config.js"></script>
   <script src="Assets/dashboard/dashboard.js"></script>
 </body>

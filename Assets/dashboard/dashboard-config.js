@@ -8,11 +8,11 @@ window.DASH_CONFIG = {
   // product on every visit. Put it back the day the property collects.
   blockOrder: ['leads'],
   blockTitles: { leads: 'People who reached out', traffic: 'Visits to your site',
-    months: 'Inquiries month by month', mix: 'What people ask about most',
+    months: 'Month by month', mix: 'What people ask about most', latest: 'Latest inquiries',
     sources: 'How people found you', events: 'What kind of events' },
   // Page display names live SERVER-SIDE in her DASH_TENANTS entry (the payload arrives
   // with final labels) — never duplicate them here.
-  // MEASURED MONTHLY, not live — Google exposes no rating API we can read, so this is
+  // MEASURED MONTHLY, not live: Google offers no rating feed we can read, so this is
   // read off her listing during the retainer cycle. `asOf` renders on the tile so a
   // reader can always see how fresh the number is instead of trusting it blindly.
   // UPDATE ALL THREE FIELDS TOGETHER, every cycle.
@@ -23,7 +23,11 @@ window.DASH_CONFIG = {
     reviews: { rating: '5.0', count: 32, prev: 30, asOf: 'Oct 8' }
   },
   tokens: {
-    '--dash-accent': '#FF5FA2', '--dash-bg': '#FFF9F5', '--dash-ink': '#3A2E39',
+    // Her site's own tokens. The bright pink is decoration only; text and marks use the
+    // two deeper pinks her site already defines for contrast (6.15:1 text, 4.97:1 white-on).
+    '--dash-accent': '#FF5FA2', '--dash-accent-ink': '#B02E62', '--dash-accent-solid': '#C9356F',
+    '--dash-accent-solid-dk': '#A32A59', '--dash-accent-soft': '#FFE0EC',
+    '--dash-bg': '#FFF8F0', '--dash-ink': '#2D1B3D', '--dash-muted': '#6B6570',
     '--dash-card': '#FFFFFF', '--dash-font': '"DM Sans", system-ui, sans-serif',
     // Personality, per tenant. A client without these gets the plain house style and
     // never inherits her balloons -- that is the point of keeping them in config.
