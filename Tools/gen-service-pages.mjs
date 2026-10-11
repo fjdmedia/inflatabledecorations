@@ -836,7 +836,7 @@ ${PAGES.map(s => `            <li><a href="${s.slug}.html">${s.nav}</a></li>`).j
           <h3>Stay in the loop</h3>
           <ul>
             <li><a href="https://instagram.com/inflatabledecorations" target="_blank" rel="noopener">Instagram @inflatabledecorations</a></li>
-            <li><a href="mailto:jhma24@hotmail.com">jhma24@hotmail.com</a></li>
+            <li><a href="mailto:inflatabledecorationswpg@gmail.com">inflatabledecorationswpg@gmail.com</a></li>
             <li>Winnipeg, Manitoba</li>
           </ul>
         </div>
