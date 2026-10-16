@@ -53,3 +53,9 @@ __pycache__/
 # Client work-log sources (retainer PDFs + render scripts) - never publish; this
 # repo is public and serves GitHub Pages. Delivered PDFs live in FJDMedia/Reports/.
 Reports/
+
+# Windows Explorer copy-duplicates. Assets/Gallery/ IS published, so an
+# unguarded `git add -A` ships these to her live site - the same class as the
+# Assets/Gallery/_duplicates/ leak caught on 2026-09-10. Referenced by nothing.
+* - Copy.*
+* - Copy (*).*

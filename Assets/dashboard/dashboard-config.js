@@ -20,7 +20,7 @@ window.DASH_CONFIG = {
     // `prev` is the count at the PREVIOUS cycle's read. The status line subtracts
     // it to say how many arrived since; without it that line stays silent rather
     // than guessing a delta. Roll it forward every cycle: prev <- old count.
-    reviews: { rating: '5.0', count: 32, prev: 30, asOf: 'Oct 8' }
+    reviews: { rating: '5.0', count: 33, prev: 32, asOf: 'Oct 16' }
   },
   // dashboard.html repeats these tokens in its inline :root so the first paint matches:
   // change both together.
