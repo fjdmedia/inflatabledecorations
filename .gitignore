@@ -59,3 +59,9 @@ Reports/
 # Assets/Gallery/_duplicates/ leak caught on 2026-09-10. Referenced by nothing.
 * - Copy.*
 * - Copy (*).*
+
+# Local-only sources and print files (2026-11-07). banner-swirl.png is the 852 KB
+# master _build_patterns.py writes; the page serves banner-swirl.jpg. Assets/QR/
+# holds the print QR pair (site + "Book online"), never served.
+Assets/Patterns/banner-swirl.png
+Assets/QR/

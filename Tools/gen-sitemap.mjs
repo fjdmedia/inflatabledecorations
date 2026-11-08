@@ -8,7 +8,7 @@
 
    Supersedes the 2026-07-30 script; adds the six service-page URLs.
 */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 const ORIGIN = 'https://inflatabledecorationswpg.ca';
 const TODAY = process.argv[2];              // pass the date in — no Date.now() so runs are reproducible
@@ -17,7 +17,10 @@ if (!/^\d{4}-\d{2}-\d{2}$/.test(TODAY || '')) {
   process.exit(1);
 }
 
-const abs = p => `${ORIGIN}/${p.split('/').map(encodeURIComponent).join('/')}`;
+/* Decode each segment before encoding it: the 2026-08-16 photo batch was written into
+   IMAGES pre-encoded (%20), and encoding it again served ten image:loc URLs as %2520
+   404s for twelve weeks. Decode-then-encode is a no-op on raw paths. */
+const abs = p => `${ORIGIN}/${p.split('/').map(s => encodeURIComponent(decodeURIComponent(s))).join('/')}`;
 const xesc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /* ---- homepage: the inline IMAGES array ---- */
@@ -48,7 +51,7 @@ const pageImgs = f => {
   for (const m of html.matchAll(/<img[^>]*?src="([^"]+)"[^>]*?alt="([^"]*)"/g)) {
     const [, src, alt] = m;
     if (src.startsWith('http') || /logo/i.test(src)) continue;   // brand marks aren't content images
-    out.push({ loc: `${ORIGIN}/${src}`, title: alt });
+    out.push({ loc: abs(src), title: alt });
   }
   return out;
 };
@@ -58,6 +61,13 @@ const urls = [
   ...SERVICE_PAGES.map(f => ({ loc: `${ORIGIN}/${f}`, pri: '0.8', freq: 'monthly', imgs: pageImgs(f) })),
   { loc: `${ORIGIN}/inquiry.html`, pri: '0.7', freq: 'yearly', imgs: [] }
 ];
+
+/* Every image loc must decode to a file that exists here. A double-encoded path
+   (%2520) decodes to a name with "%20" in it, which no file has, so it fails here
+   instead of shipping as a 404. */
+const missing = urls.flatMap(u => u.imgs).map(i => decodeURIComponent(i.loc.slice(ORIGIN.length + 1)))
+  .filter(p => !existsSync(p));
+if (missing.length) { console.error(`image:loc with no file on disk:\n  ${missing.join('\n  ')}`); process.exit(1); }
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
