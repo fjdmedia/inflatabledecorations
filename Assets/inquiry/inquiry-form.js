@@ -75,19 +75,26 @@
   // ---- Browser-only below ----
   if (typeof document === 'undefined') return;
 
+  // Resolves null for a photo the browser cannot decode (e.g. HEIC in Chrome) or draw.
+  // Before 2026-11-10 there was no onerror: the promise never settled and the form sat
+  // on "Sending..." forever with nothing sent. Losing one inspiration photo is cheap;
+  // losing the inquiry is not, so the photo is skipped and the rest still sends.
   function compressImage(file, maxEdge, quality) {
     return new Promise(function (resolve) {
       var img = new Image();
       var url = URL.createObjectURL(file);
       img.onload = function () {
-        var d = computeTargetDims(img.width, img.height, maxEdge);
-        var c = document.createElement('canvas');
-        c.width = d.w; c.height = d.h;
-        c.getContext('2d').drawImage(img, 0, 0, d.w, d.h);
+        try {
+          var d = computeTargetDims(img.width, img.height, maxEdge);
+          var c = document.createElement('canvas');
+          c.width = d.w; c.height = d.h;
+          c.getContext('2d').drawImage(img, 0, 0, d.w, d.h);
+          var dataUrl = c.toDataURL('image/jpeg', quality);
+          resolve({ filename: file.name.replace(/\.[^.]+$/, '') + '.jpg', mimeType: 'image/jpeg', dataBase64: dataUrl.split(',')[1] });
+        } catch (err) { resolve(null); }
         URL.revokeObjectURL(url);
-        var dataUrl = c.toDataURL('image/jpeg', quality);
-        resolve({ filename: file.name.replace(/\.[^.]+$/, '') + '.jpg', mimeType: 'image/jpeg', dataBase64: dataUrl.split(',')[1] });
       };
+      img.onerror = function () { URL.revokeObjectURL(url); resolve(null); };
       img.src = url;
     });
   }
@@ -272,7 +279,9 @@
         else if (f.type === 'radio') { var rr = form.querySelector('input[name="' + f.id + '"]:checked'); if (rr) fields[f.id] = rr.value; }
         else if (f.type !== 'file') { var el = fieldEl(f.id); if (el && el.value) fields[f.id] = el.value; }
       });
+      var sentPhotos = 0;
       Promise.all(selected.map(function (item) { return compressImage(item.file, 1280, 0.72); })).then(function (images) {
+        images = images.filter(Boolean); sentPhotos = images.length;
         var meta = { honeypot: form.querySelector('input[name="company_url"]').value, renderedAt: renderedAt, submittedAt: Date.now() };
         return fetch(config.endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(buildPayload(config, fields, images, meta)) });
       }).then(function (res) { return res.json(); }).then(function (out) {
@@ -281,7 +290,7 @@
         // If a thank-you page is configured, show the success tick briefly, then hand off.
         // Pass the photo count so the thank-you copy can adapt (only mention photos if any were sent).
         if (config.successRedirect) {
-          var url = config.successRedirect + (config.successRedirect.indexOf('?') > -1 ? '&' : '?') + 'photos=' + selected.length;
+          var url = config.successRedirect + (config.successRedirect.indexOf('?') > -1 ? '&' : '?') + 'photos=' + sentPhotos;
           setTimeout(function () { window.location.assign(url); }, 900); return;
         }
         setTimeout(function () {
